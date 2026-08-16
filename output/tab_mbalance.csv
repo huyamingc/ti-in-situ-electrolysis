@@ -6,6 +6,8 @@ Input,Ca (cyclic),837
 Output,Ti metal,1000
 Output,MgO (regenerated),842
 Output,CaO (regenerated),1171
-Output,O2 (anode gas),668
 Check,Input total,3013
 Check,Output total,3013
+Net,TiO2 consumed,1668
+Net,Ti produced,1000
+Net,O2 (anode gas),668

@@ -221,7 +221,7 @@ print(f"    E°(K⁺/K)    = {E_red_std['KCl'][T]:.4f} V  ← hardest")
 
 gap_CaNa = E_red_std['CaCl2'][T] - E_red_std['NaCl'][T]
 print(f"\n  Ca²⁺/Na⁺ gap (pure salts): {gap_CaNa*1000:.1f} mV")
-print(f"  → {'Na⁺ reduces first' if gap_CaNa < 0 else 'Ca²⁺ reduces first'} (consistent with Downs process producing Na)")
+print(f"  → {'Na⁺ reduces first' if gap_CaNa < 0 else 'Ca²⁺ reduces first'} (pure-salt thermodynamic preference only; in the Downs cell Na deposits for kinetic/compositional reasons, see manuscript Sec.~4.2)")
 
 RT_F = R*T/F
 RT_2F = R*T/(2*F)
@@ -264,8 +264,8 @@ print(f"  E_red(Mg²⁺/Mg) = {E_Mg:.4f} V")
 print(f"  E_red(Ca²⁺/Ca) = {E_Ca:.4f} V")
 print(f"  E_red(Na⁺/Na)  = {E_Na:.4f} V")
 print(f"  E_red(K⁺/K)    = {E_K:.4f} V")
-print(f"  Mg→Ca window: {(E_Ca-E_Mg)*1000:.0f} mV (wide, co-deposition easy)")
-print(f"  Ca→Na window: {(E_Na-E_Ca)*1000:.0f} mV (Ca²⁺ easier → GOOD)")
+print(f"  Mg→Ca window: {(E_Ca-E_Mg)*1000:.0f} mV (Mg reduces far earlier than Ca; controlled co-deposition requires Mg mass-transfer limitation)")
+print(f"  Ca→Na window: {(E_Ca-E_Na)*1000:.0f} mV (Ca²⁺ easier → GOOD)")
 print(f"  Cathode should be held between {E_Ca:.3f} V and {E_Na:.3f} V (vs Cl₂/Cl⁻)")
 
 # CSV: decomposition voltages
@@ -452,9 +452,11 @@ mbal_rows = [
     ['Output','Ti metal','1000'],
     ['Output','MgO (regenerated)',f"{m_MgO:.0f}"],
     ['Output','CaO (regenerated)',f"{m_CaO:.0f}"],
-    ['Output','O2 (anode gas)',f"{m_O2:.0f}"],
     ['Check','Input total',f"{m_TiO2+m_Mg+m_Ca:.0f}"],
     ['Check','Output total',f"{1000+m_MgO+m_CaO:.0f}"],
+    ['Net','TiO2 consumed',f"{m_TiO2:.0f}"],
+    ['Net','Ti produced','1000'],
+    ['Net','O2 (anode gas)',f"{m_O2:.0f}"],
 ]
 write_csv('tab_mbalance.csv', ['Category','Item','Mass(kg)'], mbal_rows)
 
@@ -540,8 +542,8 @@ print(f"""
 
 3. ELECTROCHEMISTRY (600°C):
    E_d: MgCl₂={E_d['MgCl2'][873]:.3f}V < NaCl={E_d['NaCl'][873]:.3f}V ≈ CaCl₂={E_d['CaCl2'][873]:.3f}V < KCl={E_d['KCl'][873]:.3f}V
-   Pure salts: Na⁺ slightly easier than Ca²⁺ (gap={gap_CaNa*1000:.0f}mV) → Downs makes Na
-   Low-NaK comp (xCa=0.40,xNa=0.15): Ca²⁺ before Na⁺ by ~103 mV → workable
+   Pure salts: Ca²⁺ slightly easier than Na⁺ (gap={gap_CaNa*1000:.0f}mV)
+   Low-NaK comp (xCa=0.40,xNa=0.15): Ca²⁺ before Na⁺ by ~120 mV → workable
 
 4. MATERIAL BALANCE (per ton Ti):
    TiO₂: {m_TiO2:.0f} kg (ore: {m_TiO2/0.90:.0f} kg)

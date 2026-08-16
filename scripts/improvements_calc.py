@@ -188,9 +188,8 @@ W = 4 * F * n_Ti_per_ton * VCELL / (ETA * 3.6e6)  # kWh/ton Ti
 fig, ax = plt.subplots(figsize=(7, 5.5))
 levels = np.arange(6000, 20000, 500)
 cs = ax.contourf(ETA * 100, VCELL, W, levels=levels, cmap='YlOrRd_r', extend='both')
-cs2 = ax.contour(ETA * 100, VCELL, W, levels=[6112], colors='blue',
-                 linewidths=2.5, linestyles='--')
-ax.clabel(cs2, fmt={6112: 'Theoretical min (6112)'}, fontsize=9, colors='blue')
+# Note: the theoretical minimum (6112 kWh/ton) lies below this practical
+# range (~8.7–18.7 kWh×10³), so it is not plotted as a contour here.
 cs3 = ax.contour(ETA * 100, VCELL, W, levels=[10000, 12000, 15000],
                  colors=['navy','blue','royalblue'], linewidths=1.2, linestyles=':')
 ax.clabel(cs3, fmt='%d', fontsize=8, colors='blue')
@@ -201,7 +200,7 @@ ax.plot(80, 4.0, 'w^', markersize=10, markeredgecolor='black', markeredgewidth=1
 cbar = fig.colorbar(cs, ax=ax, label='Energy consumption (kWh/ton Ti)')
 ax.set_xlabel('Current efficiency $\\eta_I$ (%)')
 ax.set_ylabel('Cell voltage $V_{cell}$ (V)')
-ax.set_title('Energy Sensitivity: $\\eta_I$ vs $V_{cell}$\n(Dashed blue = theoretical minimum 6112 kWh/ton)')
+ax.set_title('Energy Sensitivity: $\\eta_I$ vs $V_{cell}$ (practical range)')
 ax.legend(loc='upper right', fontsize=8)
 fig.tight_layout()
 fig.savefig(os.path.join(OUTPUT_DIR, 'fig_energy_sensitivity.pdf'), bbox_inches='tight')
@@ -295,10 +294,12 @@ print("\n" + "=" * 60)
 print("Module 4: E-pO²⁻ Thermodynamic Stability Diagram")
 print("=" * 60)
 
-# ΔG°f at 873K (J/mol) from Barin/literature
+# ΔG°f at 873K (J/mol) from Barin (1995); TiO2 value reconciled with the
+# Kirchhoff result in thermo_calc_v2.py (ΔG°f ≈ −784 kJ/mol) and with the
+# manuscript net-reaction reversible work (4550 kWh/ton ↔ 784 kJ/mol).
 dG_f = {
-    'TiO2': -748000, 'Fe2O3': -528000, 'SiO2': -680000,
-    'Al2O3': -1350000, 'MgO': -506000, 'CaO': -544000,
+    'TiO2': -784000, 'Fe2O3': -584000, 'SiO2': -752000,
+    'Al2O3': -1402000, 'MgO': -506000, 'CaO': -544000,
 }
 n_elec = {'TiO2': 4, 'Fe2O3': 6, 'SiO2': 4, 'Al2O3': 6, 'MgO': 2, 'CaO': 2}
 
@@ -381,7 +382,7 @@ print(f"  Pumping:           {Q_pumping:>8.0f} kWh ({Q_pumping/Q_input*100:.1f}%
 print(f"  Post-treatment:    {Q_post:>8.0f} kWh ({Q_post/Q_input*100:.1f}%)")
 print(f"  Total input:       {Q_input:>8.0f} kWh")
 print(f"CREDITS:")
-print(f"  Reaction heat:     {abs(Q_reaction):>8.0f} kWh (offsets heat loss)")
+print(f"  Reaction heat:     {abs(Q_reaction):>8.0f} kWh (already embedded in net electrolysis term)")
 print(f"  Ti cooling (50%):  {Q_cool_Ti*0.5:>8.0f} kWh (recoverable)")
 print(f"NET energy:          {W_net:>8.0f} kWh/ton")
 print(f"Thermodynamic efficiency (W_min/W_net): {thermo_eff:.1f}%")

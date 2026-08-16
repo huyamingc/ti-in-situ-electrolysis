@@ -149,18 +149,22 @@ print(f"        实际值取决于电极材料、表面状态和熔盐组成，�
 # 对于 Na⁺ (x=0.15, 较少): j_lim 较低, η_conc 较大
 D_Ca = 2.0e-9  # m²/s
 D_Na = 3.0e-9  # m²/s (Na⁺ 扩散更快)
-c_Ca = 635 * (0.40/0.30)  # 粗略估计 mol/m³
-c_Na = 635 * (0.15/0.30)
-delta = 0.001  # 扩散层厚度 1mm (自然对流)
+# 极限电流密度必须用熔盐中的 Ca²⁺/Na⁺ 离子浓度(而非溶解金属浓度)计算
+c_melt = 1800.0 / 0.093  # 熔盐总摩尔密度 mol/m³ (ρ=1.8 g/cm³, M_avg≈93 g/mol)
+c_Ca = 0.40 * c_melt    # Ca²⁺ 离子浓度 (x_CaCl2=0.40)
+c_Na = 0.15 * c_melt    # Na⁺ 离子浓度 (x_NaCl=0.15)
+delta = 1e-4  # 扩散层厚度 100 μm (自然对流)
 
-j_lim_Ca = n_val = 2 * F * D_Ca * c_Ca / delta / 1e4  # A/cm²
+j_lim_Ca = 2 * F * D_Ca * c_Ca / delta / 1e4  # A/cm²
 j_lim_Na = 1 * F * D_Na * c_Na / delta / 1e4
 
-eta_conc_Ca = (R * T / (2 * F)) * np.log(1 - j_operating/j_lim_Ca) if j_operating < j_lim_Ca else float('inf')
-eta_conc_Na = (R * T / (1 * F)) * np.log(1 - j_operating/j_lim_Na) if j_operating < j_lim_Na else float('inf')
+eta_conc_Ca = (R * T / (2 * F)) * np.log(1 - j_operating/j_lim_Ca) if j_operating < j_lim_Ca else np.nan
+eta_conc_Na = (R * T / (1 * F)) * np.log(1 - j_operating/j_lim_Na) if j_operating < j_lim_Na else np.nan
 
-print(f"\n  Ca²⁺ 浓差极化: {eta_conc_Ca*1000:.1f} mV (j_lim={j_lim_Ca:.2f} A/cm²)")
-print(f"  Na⁺  浓差极化: {eta_conc_Na*1000:.1f} mV (j_lim={j_lim_Na:.2f} A/cm²)")
+_ecC_str = f"{eta_conc_Ca*1000:.1f}" if not np.isnan(eta_conc_Ca) else "mass-transfer limited"
+_ecN_str = f"{eta_conc_Na*1000:.1f}" if not np.isnan(eta_conc_Na) else "mass-transfer limited"
+print(f"\n  Ca²⁺ 浓差极化: {_ecC_str} mV (j_lim={j_lim_Ca:.2f} A/cm²)")
+print(f"  Na⁺  浓差极化: {_ecN_str} mV (j_lim={j_lim_Na:.2f} A/cm²)")
 
 # 有效窗口 = 热力学窗口 - (η_Ca - η_Na) - (η_conc_Ca - η_conc_Na)
 # 注意: 过电位使还原电位更负，所以 Ca²⁺ 的有效还原电位 = E_Ca - η_Ca - η_conc_Ca
@@ -169,25 +173,26 @@ print(f"  Na⁺  浓差极化: {eta_conc_Na*1000:.1f} mV (j_lim={j_lim_Na:.2f} A
 #          = (E_Ca - E_Na) - (η_Ca - η_Na) - (η_conc_Ca - η_conc_Na)
 
 thermo_window = calc_window(1.0, 1.0)  # mV
-eta_diff = (eta_Ca - eta_Na) * 1000 + (eta_conc_Ca - eta_conc_Na) * 1000  # mV
-effective_window = thermo_window - eta_diff
+# 手稿的有效窗口只含活化过电位修正: E_eff = ΔE + (η_Na,act − η_Ca,act)
+eta_act_diff = (eta_Na - eta_Ca) * 1000  # mV
+effective_window = thermo_window + eta_act_diff  # 仅活化修正 (与手稿 Sec.4.2 一致)
 
 print(f"\n  热力学窗口 (理想): {thermo_window:.1f} mV")
-print(f"  过电位修正项 (η_Ca - η_Na + η_conc_Ca - η_conc_Na): {eta_diff:.1f} mV")
-print(f"  有效共沉积窗口: {effective_window:.1f} mV")
+print(f"  活化过电位修正 (η_Na − η_Ca): {eta_act_diff:.1f} mV")
+print(f"  有效共沉积窗口 (仅活化修正): {effective_window:.1f} mV")
 
-# 在不同电流密度下扫描
-print(f"\n  不同电流密度下的有效窗口:")
+# 在不同电流密度下扫描 (有效窗口仅含活化过电位; 浓差极化单独列出)
+print(f"\n  不同电流密度下的有效窗口 (仅活化修正):")
 print(f"  {'j (A/cm²)':>10} {'η_Ca(mV)':>10} {'η_Na(mV)':>10} {'窗口(mV)':>10}")
 for j in [0.1, 0.2, 0.3, 0.5, 0.8, 1.0]:
     eC = act_overpotential(j, j0_Ca, alpha, 2, T) * 1000
     eN = act_overpotential(j, j0_Na, alpha, 1, T) * 1000
-    # 浓差极化
+    # 浓差极化 (超过极限电流密度时标记为传质控制)
     jlim_Ca = 2 * F * D_Ca * c_Ca / delta / 1e4
     jlim_Na = 1 * F * D_Na * c_Na / delta / 1e4
-    ecC = (R * T / (2 * F)) * np.log(1 - j/jlim_Ca) * 1000 if j < jlim_Ca else 999
-    ecN = (R * T / (1 * F)) * np.log(1 - j/jlim_Na) * 1000 if j < jlim_Na else 999
-    eff = thermo_window - (eC - eN) - (ecC - ecN)
+    ecC = (R * T / (2 * F)) * np.log(1 - j/jlim_Ca) * 1000 if j < jlim_Ca else np.nan
+    ecN = (R * T / (1 * F)) * np.log(1 - j/jlim_Na) * 1000 if j < jlim_Na else np.nan
+    eff = thermo_window + (eN - eC)  # 仅活化修正
     print(f"  {j:10.1f} {eC:10.1f} {eN:10.1f} {eff:10.1f}")
 
 # ============================================================
@@ -500,16 +505,18 @@ output_dir = OUTPUT_DIR
 # 过电位表
 with open(f'{output_dir}/tab_overpotential.csv', 'w', newline='') as f:
     w = csv.writer(f)
-    w.writerow(['j (A/cm2)', 'eta_Ca (mV)', 'eta_Na (mV)', 'eta_conc_Ca (mV)', 'eta_conc_Na (mV)', 'effective_window (mV)'])
+    w.writerow(['j (A/cm2)', 'eta_Ca_act (mV)', 'eta_Na_act (mV)', 'eta_conc_Ca (mV)', 'eta_conc_Na (mV)', 'effective_window_act-only (mV)'])
     for j in [0.1, 0.2, 0.3, 0.5, 0.8, 1.0]:
         eC = act_overpotential(j, j0_Ca, alpha, 2, T) * 1000
         eN = act_overpotential(j, j0_Na, alpha, 1, T) * 1000
         jlim_Ca = 2 * F * D_Ca * c_Ca / delta / 1e4
         jlim_Na = 1 * F * D_Na * c_Na / delta / 1e4
-        ecC = (R * T / (2 * F)) * np.log(1 - j/jlim_Ca) * 1000 if j < jlim_Ca else 9999
-        ecN = (R * T / (1 * F)) * np.log(1 - j/jlim_Na) * 1000 if j < jlim_Na else 9999
-        eff = thermo_window - (eC - eN) - (ecC - ecN)
-        w.writerow([j, f'{eC:.1f}', f'{eN:.1f}', f'{ecC:.1f}', f'{ecN:.1f}', f'{eff:.1f}'])
+        ecC = (R * T / (2 * F)) * np.log(1 - j/jlim_Ca) * 1000 if j < jlim_Ca else np.nan
+        ecN = (R * T / (1 * F)) * np.log(1 - j/jlim_Na) * 1000 if j < jlim_Na else np.nan
+        eff = thermo_window + (eN - eC)  # 仅活化修正 (与手稿一致)
+        _ecC = f'{ecC:.1f}' if not np.isnan(ecC) else 'N/A'
+        _ecN = f'{ecN:.1f}' if not np.isnan(ecN) else 'N/A'
+        w.writerow([j, f'{eC:.1f}', f'{eN:.1f}', _ecC, _ecN, f'{eff:.1f}'])
 print(f"\n  已保存: tab_overpotential.csv")
 
 # 修正热平衡表
