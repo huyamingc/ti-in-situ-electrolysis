@@ -40,7 +40,7 @@ The core challenge in titanium metallurgy lies in the extremely high Ti--O bond 
 
 Recent studies have explored $\ce{MgCl2}$-based salt systems for titanium production. Okabe et al. \cite{okabe2004} demonstrated deoxidation in pure $\ce{MgCl2}$ melt. Lee et al. \cite{lee2025} investigated $\ce{CaMg2}$ as a reductant for $\ce{TiO2}$. Pang et al. \cite{pang2024} achieved ultralow-oxygen titanium by direct reduction. Dou et al. \cite{dou2020} proposed multi-stage deep reduction for titanium powder preparation. However, these approaches employ single-metal reduction, binary/ternary salt systems, and batch operation requiring preformed cathodes, differing in salt composition, reduction mechanism, and operational design from the process proposed here.
 
-This paper proposes a quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ molten salt system enabling in-situ electrolytic co-deposition of Mg and Ca for complementary reduction of $\ce{TiO2}$. The key innovation is an electrochemical-thermochemical coupling: Mg provides fast reduction kinetics while Ca delivers deep deoxidation. The by-product oxides ($\ce{MgO}$, $\ce{CaO}$) dissolve in the $\ce{CaCl2}$-containing melt and are electrolytically regenerated, establishing a closed-loop cycle. This work presents a comprehensive thermodynamic, electrochemical, and kinetic assessment using established databases \cite{barin1995,waldner1999,bin2025,wang2024} and literature parameters, providing a quantitative theoretical framework. The specific novelties of this study are:
+This paper proposes a quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ molten salt system enabling in-situ electrolytic co-deposition of Mg and Ca for complementary reduction of $\ce{TiO2}$. The key innovation is an electrochemical-thermochemical coupling: Mg provides fast reduction kinetics while Ca delivers deep deoxidation. The by-product oxides ($\ce{MgO}$, $\ce{CaO}$) dissolve in the $\ce{CaCl2}$-containing melt and are electrolytically regenerated, establishing a closed-loop cycle. This work presents a comprehensive thermodynamic, electrochemical, and kinetic assessment using established databases \cite{barin1995,waldner1999,xu2025,wang2024} and literature parameters, providing a quantitative theoretical framework. The specific novelties of this study are:
 
 \begin{itemize}
 \item To the authors' knowledge, the first proposal of in-situ electrolytic co-deposition of Mg and Ca in a quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ molten salt for titanium production, combining Mg's kinetic advantage with Ca's thermodynamic deoxidation depth in a single closed-loop process. While bimetallic Mg--Ca reductants (e.g., $\ce{CaMg2}$ \cite{lee2025}), $\ce{MgCl2}$-based deoxidation \cite{okabe2004}, and electrolytic Ca regeneration in the OS process \cite{ono2002} have been studied, the in-situ electrolytic co-deposition of both Mg and Ca in a quaternary system is novel.
@@ -477,7 +477,7 @@ The full-process energy balance (Table~\ref{tab:heatbal}), \emph{conditional on 
 \footnotesize
 \caption{Full-process heat balance (basis: 1 ton Ti, 600~$^{\circ}$C)}
 \label{tab:heatbal}
-\begin{tabular}{lcl}
+\begin{tabularx}{\linewidth}{l c X}
 \toprule
 Item & Energy (kWh/ton) & Note \\
 \midrule
@@ -506,11 +506,9 @@ Item & Energy (kWh/ton) & Note \\
 \quad Second-law efficiency & $\sim$40.7\% & $4550/11192$ \\
 \quad Electrolysis energy fraction & --- & 93.9\% ($W_{\mathrm{elec}}/W_{\mathrm{total}}$) \\
 \bottomrule
-\multicolumn{3}{l}{\footnotesize $^{\mathrm{a}}$\,Simplified accounting: the reaction exotherm ($\Delta H^{\circ} = -291.3$~kJ/mol-Ti for the combined} \\
-\multicolumn{3}{l}{\footnotesize \quad Mg+Ca reduction, from Table~\ref{tab:thermo}; $291.3 \times 20889 / 3600 \approx 1690$~kWh/ton-Ti) is treated as an} \\
-\multicolumn{3}{l}{\footnotesize \quad equivalent offset to the gross electrical demand. Strictly, thermal and electrical energy differ in} \\
-\multicolumn{3}{l}{\footnotesize \quad exergy; see Sec.~\ref{subsec:heatbal} text.} \\
-\end{tabular}
+\end{tabularx}
+
+\par\footnotesize $^{\mathrm{a}}$\,Simplified accounting: the reaction exotherm ($\Delta H^{\circ} = -291.3$~kJ/mol-Ti for the combined Mg+Ca reduction, from Table~\ref{tab:thermo}; $291.3 \times 20889 / 3600 \approx 1690$~kWh/ton-Ti) is treated as an equivalent offset to the gross electrical demand. Strictly, thermal and electrical energy differ in exergy; see Sec.~\ref{subsec:heatbal} text.
 \end{table}
 
 For comparison, the minimum thermodynamic work for $\ce{TiCl4}$ distillation (90\% $\to$ 99.9\%, 99\% recovery) in the Kroll process is 5.7~kWh/ton-Ti (estimated from the ideal-solution minimum work of separation at 136~$^{\circ}$C, $\Delta G_{\mathrm{sep}} = RT \sum_k n_k \sum_i x_{i,k}\ln(x_{i,k}/x_{i,\mathrm{feed}})$ summed over the product and waste streams $k$ and components $i = \{\ce{TiCl4}, \mathrm{impurity}\}$), while the actual distillation consumes $\sim$300~kWh/ton-Ti---a second-law efficiency of 1.9\% ($= 5.7/300$). The proposed process eliminates this separation step entirely by using metallurgical-grade $\ce{TiO2}$ directly.
@@ -567,8 +565,9 @@ $\ce{TiCl4(g)}$ & $-727$ \\
 $\ce{Ti + TiCl4 -> 2TiCl2}$ (298~K) & $-202$ \\
 $\ce{Ti + TiCl4 -> 2TiCl2}$ (873~K, est.) & $\approx -80$ \\
 \bottomrule
-\multicolumn{2}{l}{\footnotesize The 873~K value is estimated as $\Delta G(873) \approx \Delta H^{\circ}(298) - 873\,\Delta S^{\circ}(298)$ using the 298~K Barin enthalpy and entropy of formation (neglecting $C_p$ temperature dependence).} \\
 \end{tabular}
+
+\par\footnotesize The 873~K value is estimated as $\Delta G(873) \approx \Delta H^{\circ}(298) - 873\,\Delta S^{\circ}(298)$ using the 298~K Barin enthalpy and entropy of formation (neglecting $C_p$ temperature dependence).
 \end{table}
 
 \section{Process Comparison}
