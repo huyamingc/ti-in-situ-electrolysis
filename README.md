@@ -13,7 +13,7 @@ prepared for submission to *Metallurgical and Materials Transactions B (MMTB)*. 
 ```
 .
 ├── revised_paper_v5.tex         — Manuscript (sn-journal format, main submission)
-├── refs.bib                     — BibTeX reference database (27 entries)
+├── refs.bib                     — BibTeX reference database (26 entries)
 ├── sn-jnl.cls                   — Springer Nature LaTeX class
 ├── sn-mathphys.bst              — Springer math-physics BibTeX style
 ├── sn-aps.bst                   — Springer APS BibTeX style
