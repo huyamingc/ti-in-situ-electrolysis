@@ -168,6 +168,7 @@ for dname, drxn in [('Ca',{'Ca':-1,'O2':-0.5,'CaO':1}),('Mg',{'Mg':-1,'O2':-0.5,
 
 print("\nCa/Mg deoxidation ratio:")
 deox_rows = []
+aM = 0.263  # Mg-Ca liquid alloy activity (gamma_alloy = 0.526, x_M = 0.5)
 for T in temps:
     dG_Ca,_,_ = reaction_GHS({'Ca':-1,'O2':-0.5,'CaO':1}, T)
     dG_Mg,_,_ = reaction_GHS({'Mg':-1,'O2':-0.5,'MgO':1}, T)
@@ -175,9 +176,11 @@ for T in temps:
     wO_Ca = 1.0/math.exp(-(dG_Ca-dG_diss)/(R*T))
     wO_Mg = 1.0/math.exp(-(dG_Mg-dG_diss)/(R*T))
     print(f"  {T-273}°C: Mg→{wO_Mg:.4f} wt%, Ca→{wO_Ca:.4f} wt%, ratio={wO_Mg/wO_Ca:.0f}x")
-    deox_rows.append(['Mg', f"{T-273}", f"{(dG_Mg-dG_diss)/1000:.1f}", f"{wO_Mg:.4f}", f"{wO_Mg*10000:.0f}"])
-    deox_rows.append(['Ca', f"{T-273}", f"{(dG_Ca-dG_diss)/1000:.1f}", f"{wO_Ca:.4f}", f"{wO_Ca*10000:.0f}"])
-write_csv('tab_deox.csv', ['Deoxidant','T(C)','dG_deox(kJ/mol)','wO_eq(wt%)','wO_eq(ppm)'], deox_rows)
+    ppm_Mg = round(wO_Mg * 10000, 1)
+    ppm_Ca = round(wO_Ca * 10000, 1)
+    deox_rows.append(['Mg', f"{T-273}", f"{(dG_Mg-dG_diss)/1000:.1f}", f"{wO_Mg:.4f}", f"{ppm_Mg:.1f}", f"{ppm_Mg/aM/10000:.4f}", f"{ppm_Mg/aM:.1f}"])
+    deox_rows.append(['Ca', f"{T-273}", f"{(dG_Ca-dG_diss)/1000:.1f}", f"{wO_Ca:.4f}", f"{ppm_Ca:.1f}", f"{ppm_Ca/aM/10000:.4f}", f"{ppm_Ca/aM:.1f}"])
+write_csv('tab_deox.csv', ['Deoxidant','T(C)','dG_deox(kJ/mol)','wO_eq(wt%)','wO_eq(ppm)','wO_alloy(wt%)','wO_alloy(ppm)'], deox_rows)
 
 # ============================================================
 # PART 3: Electrochemistry (CORRECTED)
