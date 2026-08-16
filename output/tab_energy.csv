@@ -1,0 +1,8 @@
+﻿eta_I,V_cell(V),Energy(kWh/ton),Note
+0.85,3.5,9222,best
+0.80,4.0,11198,moderate
+0.75,4.0,11944,conservative
+0.75,4.3,12840,graphite anode
+0.70,4.5,14397,worst case
+,,,
+Theoretical,2.729,6112,min possible

@@ -1,0 +1,11 @@
+﻿Category,Item,Mass(kg)
+Input,TiO2 (pure),1668
+Input,TiO2 ore (90wt%),1854
+Input,Mg (cyclic),508
+Input,Ca (cyclic),837
+Output,Ti metal,1000
+Output,MgO (regenerated),842
+Output,CaO (regenerated),1171
+Output,O2 (anode gas),668
+Check,Input total,3013
+Check,Output total,3013

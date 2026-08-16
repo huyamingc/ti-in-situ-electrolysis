@@ -1,0 +1,25 @@
+# LaTeX auxiliary / compiled output
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+
+# Compiled manuscript PDF (keep figures/, which are inputs)
+*.pdf
+!figures/*.pdf
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
