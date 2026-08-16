@@ -129,6 +129,7 @@ All thermodynamic data are from published literature (no experimental measuremen
 - Kleppa OJ, McCarty FG. Thermochemistry of charge-unsymmetrical binary fused halide systems. II. *J. Phys. Chem.*, 1966, 70(4): 1249–1255. — MgCl₂–alkali chloride mixing enthalpies
 - Nayeb-Hashemi AA, Clark JB. The Ca–Mg system. *Bull. Alloy Phase Diagrams*, 1987, 8(1): 58–65.
 - Zhang H, Wang Y, Shang S, Chen L-Q, Liu Z-K. Thermodynamic modeling of Mg–Ca–Ce system. *J. Alloys Compd.*, 2008, 463(1-2): 294–301. — Ca–Mg Redlich–Kister parameters
+- Hallstedt B. The SGTE collection of binary datasets. *Calphad*, 2025, 89: 102833. — open-access (CC-BY) SGTE binary datasets, incl. Ca–Mg
 - Pelton AD, Degterov SA, Eriksson G, Robelin C, Dessureault Y. The modified quasichemical model I—Binary solutions. *Metall. Mater. Trans. B*, 2000, 31(4): 651–659. — MQM framework
 - Ito M, Morita K. The solubility of MgO in molten MgCl₂–CaCl₂ salt. *Mater. Trans.*, 2004, 45(8): 2712–2718. — MgO solubility
 - Kvande H, Drabløs PA. The aluminum smelting process. *J. Occup. Environ. Med.*, 2014, 56(5 Suppl): S23–S32. — Hall–Héroult comparison
