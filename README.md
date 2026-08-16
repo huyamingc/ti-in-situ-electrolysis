@@ -120,14 +120,18 @@ All thermodynamic data are from published literature (no experimental measuremen
 
 - Barin I. *Thermochemical Data of Pure Substances*, 3rd ed. VCH, Weinheim, 1995. — Cp(T) coefficients, standard enthalpy/entropy
 - Kubaschewski O, Alcock CB. *Metallurgical Thermochemistry*, 5th ed. Pergamon, 1979. — Supplementary Cp(T) coefficients
-- Waldner P, Eriksson A. Thermodynamic assessment of the Ti–O system. *Calphad*, 1999, 23(2): 189–218. — O dissolution free energy in Ti
-- Fray DJ, Farthing TW, Chen GZ. Direct electrochemical reduction of titanium dioxide in molten salts. *Nature*, 2000, 407: 361–364. — FFC process, diffusion coefficient reference
+- Waldner P, Eriksson G. Thermodynamic modelling of the system titanium–oxygen. *Calphad*, 1999, 23(2): 189–218. — O dissolution free energy in Ti
+- Chen GZ, Fray DJ, Farthing TW. Direct electrochemical reduction of titanium dioxide in molten salts. *Nature*, 2000, 407: 361–364. — FFC process, diffusion coefficient reference
 - Yan XY, Fray DJ. *Miner. Process. Extr. Metall.*, 2007, 116(1): 17–24. — O²⁻ diffusivity in CaCl₂-based melts
-- Nayeb-Hashemi AA, Clark JB. The Ca–Mg system. *Bull. Alloy Phase Diagrams*, 1988, 8(4): 362–374.
-- Zhang J, Liu Y, Du Y, et al. Thermodynamic assessment of the Ca–Mg system. *J. Alloys Compd.*, 2008, 463: 294–301. — Redlich–Kister parameters L₀, L₁
-- Pelton AD, Degterov SA, Eriksson G, et al. The modified quasichemical model. *Calphad*, 2000, 24(3): 295–311. — MQM framework
-- Morita K, Oguchi T, Sugimoto T, et al. The solubility of MgO in molten MgCl₂–CaCl₂ salt. *Mater. Trans.*, 2004, 45(8): 2712–2718. — MgO solubility
-- Kvande H, Drabløs PA. The aluminum smelting process. *JOM*, 2014, 66(2): 342–348. — Hall–Héroult comparison
+- Taninouchi Y, Hamanaka Y, Okabe TH. Electrochemical deoxidation of titanium and its alloy using molten magnesium chloride. *Metall. Mater. Trans. B*, 2016, 47(6): 3394–3404. — MgCl₂ electrochemical deoxidation
+- Jiao H, Liu M, Wang Z, Lin M, Qu Z, Song J, Jiao S. Upcycling of titanium by molten salt electrorefining. *ACS Sustainable Chem. Eng.*, 2023, 11(14): 5764–5772. — USTB molten-salt electrorefining
+- Chartrand P, Pelton AD. Thermodynamic evaluation and optimization of the LiCl–NaCl–KCl–RbCl–CsCl–MgCl₂–CaCl₂–SrCl₂ system using the modified quasichemical model. *Can. Metall. Q.*, 2000, 39(4): 405–420. — binary chloride thermodynamics
+- Kleppa OJ, McCarty FG. Thermochemistry of charge-unsymmetrical binary fused halide systems. II. *J. Phys. Chem.*, 1966, 70(4): 1249–1255. — MgCl₂–alkali chloride mixing enthalpies
+- Nayeb-Hashemi AA, Clark JB. The Ca–Mg system. *Bull. Alloy Phase Diagrams*, 1987, 8(1): 58–65.
+- Zhang H, Wang Y, Shang S, Chen L-Q, Liu Z-K. Thermodynamic modeling of Mg–Ca–Ce system. *J. Alloys Compd.*, 2008, 463(1-2): 294–301. — Ca–Mg Redlich–Kister parameters
+- Pelton AD, Degterov SA, Eriksson G, Robelin C, Dessureault Y. The modified quasichemical model I—Binary solutions. *Metall. Mater. Trans. B*, 2000, 31(4): 651–659. — MQM framework
+- Ito M, Morita K. The solubility of MgO in molten MgCl₂–CaCl₂ salt. *Mater. Trans.*, 2004, 45(8): 2712–2718. — MgO solubility
+- Kvande H, Drabløs PA. The aluminum smelting process. *J. Occup. Environ. Med.*, 2014, 56(5 Suppl): S23–S32. — Hall–Héroult comparison
 
 ---
 
