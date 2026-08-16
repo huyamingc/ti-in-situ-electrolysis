@@ -1,43 +1,36 @@
-\documentclass[a4paper,11pt]{article}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{booktabs}
-\usepackage{caption}
-\usepackage[version=4]{mhchem}
-\usepackage{geometry}
-\usepackage{hyperref}
-\usepackage{tabularx}
-\usepackage{multirow}
+\documentclass[sn-mathphys,Numbered]{sn-jnl}
+
 \usepackage{graphicx}
-\usepackage{float}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usepackage{manyfoot}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[title]{appendix}
+\usepackage[version=4]{mhchem}
 
 \graphicspath{{figures/}}
-\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
-\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 
-% Table numbering: Arabic numerals (Springer Nature standard)
+% Text-based ORCID iD link (the class's default \orcid needs Orcidlogo.eps, which is not bundled)
+\gdef\orcid#1{\href{https://orcid.org/#1}{\textsuperscript{iD}}}
 
 \begin{document}
 
-\begin{center}
-\Large\textbf{Thermodynamic and Kinetic Assessment of Titanium Production via In-Situ Electrolysis and Bimetallic Complementary Reduction in $\ce{MgCl2-CaCl2-NaCl-KCl}$ Molten Salt}
-\par
-\vspace{0.8em}
-\large Yaming Hu$^{1,*}$
-\par
-\small $^{1}$ Independent Researcher, Guiyang, Guizhou Province, China
-\par
-\small $^{*}$ Corresponding author. E-mail: 64687555@qq.com. ORCID: 0009-0003-1406-0485
-\par
-\vspace{1em}
-\end{center}
+\title[Thermodynamic and Kinetic Assessment of Ti Production]{Thermodynamic and Kinetic Assessment of Titanium Production via In-Situ Electrolysis and Bimetallic Complementary Reduction in \ce{MgCl2-CaCl2-NaCl-KCl} Molten Salt}
 
-\noindent\textbf{Abstract}: This computational study proposes a novel titanium production process using a quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ molten salt for in-situ electrolytic co-deposition of Mg and Ca for complementary reduction of $\ce{TiO2}$. Thermodynamic calculations ($\Delta G^{\circ} = -231.0$ to $-307.5$~kJ/mol at 600~$^{\circ}$C) show Ca deoxidation reaches 20~ppm versus 3908~ppm for Mg (194$\times$ difference), justifying the bimetallic strategy. Nernst analysis yields a $\ce{Ca^{2+}/Na+}$ co-deposition window of 120~mV (ideal), remaining positive (74.9--147.1~mV) under activity coefficient sensitivity ($\gamma_{\ce{CaCl2}} = 0.3$--1.0). The Mg--Ca liquid alloy ($\Delta G_{\mathrm{mix}} = -9.69$~kJ/mol) is thermodynamically stable. A shrinking-core model estimates complete reduction of 100~$\mu$m particles in 5.8~min ($D = 2.0\times10^{-9}$~m$^2$/s). Full-process energy balance, conditional on achieving $>$70\% current efficiency, indicates a net consumption of 11{,}192~kWh/ton-Ti (excluding impurity separation, which may add $\sim$2--4\%), with a second-law efficiency of $\sim$40.7\% based on the $\ce{TiO2 -> Ti + O2}$ reversible work of 4{,}550~kWh/ton-Ti. A Monte Carlo analysis with a broad current-efficiency distribution ($\eta_I \sim \mathrm{Tri}(0.50, 0.75, 0.88)$) yields $P(W < 14{,}000) = 85.8\%$, highlighting significant sensitivity to this unvalidated parameter. All quantitative results are theoretical predictions based on ideal solution assumptions and literature parameters. The process viability hinges critically on two unvalidated prerequisites: (i) sufficient MgO/CaO solubility ($\gtrsim$0.5~wt\%) at 600~$^{\circ}$C in the quaternary melt to close the salt loop, and (ii) sustained current efficiency $>$0.70 via a durable oxygen-evolving inert anode. Experimental validation of these bounds is mandatory before any pilot-scale assessment.
+\author*{Yaming Hu\orcid{0009-0003-1406-0485}}\email{64687555@qq.com}
 
-\vspace{0.5em}
-\noindent\textbf{Keywords}: Titanium production; Quaternary chloride molten salt; Bimetallic complementary reduction; Electrochemical co-deposition; Thermodynamic modeling; Shrinking core kinetics
+\affil*{Independent Researcher, Guiyang, Guizhou Province, China}
 
-\vspace{2em}
+\abstract{This computational study proposes a novel titanium production process using a quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ molten salt for in-situ electrolytic co-deposition of Mg and Ca for complementary reduction of $\ce{TiO2}$. Thermodynamic calculations ($\Delta G^{\circ} = -231.0$ to $-307.5$~kJ/mol at 600~$^{\circ}$C) show Ca deoxidation reaches 20~ppm versus 3908~ppm for Mg (194$\times$ difference), justifying the bimetallic strategy. Nernst analysis yields a $\ce{Ca^{2+}/Na+}$ co-deposition window of 120~mV (ideal), remaining positive (74.9--147.1~mV) under activity coefficient sensitivity ($\gamma_{\ce{CaCl2}} = 0.3$--1.0). The Mg--Ca liquid alloy ($\Delta G_{\mathrm{mix}} = -9.69$~kJ/mol) is thermodynamically stable. A shrinking-core model estimates complete reduction of 100~$\mu$m particles in 5.8~min ($D = 2.0\times10^{-9}$~m$^2$/s). Full-process energy balance, conditional on achieving $>$70\% current efficiency, indicates a net consumption of 11{,}192~kWh/ton-Ti (excluding impurity separation, which may add $\sim$2--4\%), with a second-law efficiency of $\sim$40.7\% based on the $\ce{TiO2 -> Ti + O2}$ reversible work of 4{,}550~kWh/ton-Ti. A Monte Carlo analysis with a broad current-efficiency distribution ($\eta_I \sim \mathrm{Tri}(0.50, 0.75, 0.88)$) yields $P(W < 14{,}000) = 85.8\%$, highlighting significant sensitivity to this unvalidated parameter. All quantitative results are theoretical predictions based on ideal solution assumptions and literature parameters. The process viability hinges critically on two unvalidated prerequisites: (i) sufficient MgO/CaO solubility ($\gtrsim$0.5~wt\%) at 600~$^{\circ}$C in the quaternary melt to close the salt loop, and (ii) sustained current efficiency $>$0.70 via a durable oxygen-evolving inert anode. Experimental validation of these bounds is mandatory before any pilot-scale assessment.}
+
+\keywords{Titanium production; Quaternary chloride molten salt; Bimetallic complementary reduction; Electrochemical co-deposition; Thermodynamic modeling; Shrinking core kinetics}
+
+\maketitle
 
 \section{Introduction}
 
@@ -359,7 +352,7 @@ A sensitivity analysis over $D = 1.0$--$3.0\times10^{-9}$~m$^2$/s (Fig.~\ref{fig
 
 It is important to note that the above $D$ range ($10^{-9}$~m$^2$/s) corresponds to the \emph{chemical diffusion control} mechanism, where the rate-limiting step is liquid-phase diffusion of Mg/Ca through the porous Ti layer. If the actual rate-limiting mechanism were \emph{solid-state diffusion} of O$^{2-}$ through the Ti product layer, $D$ could be 2--3 orders of magnitude lower ($\sim$10$^{-12}$--10$^{-10}$~m$^2$/s), yielding reduction times of $\sim$2--193~hours for 100~$\mu$m particles. This would make the process impractical for single-step batch reduction. The present process must therefore rely on the chemical diffusion mechanism, which is plausible given that the co-deposited Mg--Ca alloy is liquid at 600~$^{\circ}$C (the Mg--Ca eutectic is $\approx$517~$^{\circ}$C, Sec.~\ref{subsec:MgCa}), so the reductant can permeate the porous product layer as a liquid phase, but this mechanistic assumption requires experimental confirmation. Furthermore, the SCM model assumes internal (pore) diffusion through the product layer as the rate-limiting step. External film diffusion around the particle could become rate-limiting at very high flow rates or very small particle sizes ($<$10~$\mu$m), but for the 25--100~$\mu$m particle range of interest and typical melt agitation conditions, the internal diffusion resistance is expected to dominate by 1--2 orders of magnitude based on the Sherwood number criterion ($\mathrm{Sh} \gg 1$). A quantitative comparison of internal vs.\ external diffusion resistances requires melt hydrodynamic data (stirring speed, viscosity) that are not available at the conceptual design stage.
 
-To propagate uncertainties globally, a Monte Carlo simulation ($N = 10^5$) was performed with all parameters sampled simultaneously: $D \sim U(1, 3) \times 10^{-9}$~m$^2$/s, $\varepsilon \sim U(0.1, 0.5)$, $\tau \sim U(1.5, 5.0)$, $\eta_I \sim \mathrm{Tri}(0.50, 0.75, 0.88)$, and $V_{\mathrm{cell}} \sim \mathcal{N}(4.1, 0.3)$ truncated to [3.5, 4.5]~V. The $\eta_I$ distribution spans 0.50--0.88 so that the analysis encompasses both the target range and the worst-case FFC-like scenario ($\eta_I = 0.50$--0.60) without presupposing the feasibility threshold. The distributions for $\varepsilon$ and $\tau$ are based on typical ranges for porous metallic product layers reported in the FFC and powder metallurgy literature \cite{fray2000}; these parameters are treated as static uncertainty intervals for sensitivity analysis. The results (Fig.~\ref{fig:monte_carlo}) show that the SCM reduction time follows a lognormal distribution with median 6.6~min (P5--P95: 2.5--19.9~min), while the net energy consumption follows a right-skewed distribution with median 11{,}781~kWh/ton-Ti (P5--P95: 9{,}515--15{,}362~kWh/ton-Ti). The probability of achieving $W_{\mathrm{net}} < 11{,}192$~kWh/ton-Ti (the nominal value) is 35.8\%, and $P(W_{\mathrm{net}} < 14{,}000) = 85.8\%$. For comparison, $P(W_{\mathrm{net}} < 16{,}000) \approx 97\%$ and $P(W_{\mathrm{net}} < 20{,}000) \approx 100\%$. The second-law efficiency (based on 4{,}550~kWh/ton-Ti reversible work) has a mean of 38.6\% (P5--P95: 29.6--47.8\%). Spearman rank correlation analysis (Fig.~\ref{fig:tornado}) reveals that $\eta_I$ ($\rho = -0.85$) dominates energy uncertainty, followed by $V_{\mathrm{cell}}$ ($\rho = 0.50$); for SCM time, $\varepsilon$ ($\rho = -0.68$) and $\tau$ ($\rho = 0.52$) are the dominant parameters. The energy feasibility conclusion is therefore highly sensitive to the $\eta_I$ assumption, and experimental validation of current efficiency is the most critical prerequisite for process viability. It should be noted that the present Monte Carlo analysis does not include uncertainties in $\gamma_{\ce{CaCl2}}$, liquidus temperature, or oxide solubility; a more comprehensive global uncertainty analysis incorporating these thermochemical parameters is recommended for future work. Semi-quantitatively, these omitted terms act on \emph{feasibility} rather than on the energy figure: (i) the $\gamma_{\ce{CaCl2}} = 0.3$--1.0 scan (Table~\ref{tab:window_sens}) changes the co-deposition window by $\sim$60--75~mV but never closes it, so it does not materially perturb the energy estimate; (ii) the liquidus uncertainty ($\pm$50~$^{\circ}$C) instead constrains the \emph{operable} temperature, hence the process viability (Limitations~(4)); and (iii) the oxide-solubility uncertainty (0.5--1.2~wt\%) changes the required salt inventory by a factor of 2--4 (Sec.~\ref{subsec:dissolution}), which affects capital cost and closed-loop feasibility far more than it affects the per-ton energy. The energy prediction is therefore dominated by $\eta_I$ (as the Spearman analysis shows), whereas process \emph{feasibility} is governed more critically by the 600~$^{\circ}$C oxide solubility and the liquidus.
+To propagate uncertainties globally, a Monte Carlo simulation ($N = 10^5$, fixed random seed $= 42$ for reproducibility) was performed with the five uncertain parameters sampled simultaneously: $D \sim U(1, 3) \times 10^{-9}$~m$^2$/s, $\varepsilon \sim U(0.1, 0.5)$, $\tau \sim U(1.5, 5.0)$, $\eta_I \sim \mathrm{Tri}(0.50, 0.75, 0.88)$, and $V_{\mathrm{cell}} \sim \mathcal{N}(4.1, 0.3)$ truncated to [3.5, 4.5]~V. The $\eta_I$ distribution spans 0.50--0.88 so that the analysis encompasses both the target range and the worst-case FFC-like scenario ($\eta_I = 0.50$--0.60) without presupposing the feasibility threshold. The distributions for $\varepsilon$ and $\tau$ are based on typical ranges for porous metallic product layers reported in the FFC and powder metallurgy literature \cite{fray2000}; these parameters are treated as static uncertainty intervals for sensitivity analysis. The results (Fig.~\ref{fig:monte_carlo}) show that the SCM reduction time follows a lognormal distribution with median 6.6~min (P5--P95: 2.5--19.9~min), while the net energy consumption follows a right-skewed distribution with median 11{,}781~kWh/ton-Ti (P5--P95: 9{,}515--15{,}362~kWh/ton-Ti). The probability of achieving $W_{\mathrm{net}} < 11{,}192$~kWh/ton-Ti (the nominal value) is 35.8\%, and $P(W_{\mathrm{net}} < 14{,}000) = 85.8\%$. For comparison, $P(W_{\mathrm{net}} < 16{,}000) \approx 97\%$ and $P(W_{\mathrm{net}} < 20{,}000) \approx 100\%$. The second-law efficiency (based on 4{,}550~kWh/ton-Ti reversible work) has a mean of 38.6\% (P5--P95: 29.6--47.8\%). Spearman rank correlation analysis (Fig.~\ref{fig:tornado}) reveals that $\eta_I$ ($\rho = -0.85$) dominates energy uncertainty, followed by $V_{\mathrm{cell}}$ ($\rho = 0.50$); for SCM time, $\varepsilon$ ($\rho = -0.68$) and $\tau$ ($\rho = 0.52$) are the dominant parameters. The energy feasibility conclusion is therefore highly sensitive to the $\eta_I$ assumption, and experimental validation of current efficiency is the most critical prerequisite for process viability. It should be noted that the present Monte Carlo analysis does not include uncertainties in $\gamma_{\ce{CaCl2}}$, liquidus temperature, or oxide solubility; a more comprehensive global uncertainty analysis incorporating these thermochemical parameters is recommended for future work. Semi-quantitatively, these omitted terms act on \emph{feasibility} rather than on the energy figure: (i) the $\gamma_{\ce{CaCl2}} = 0.3$--1.0 scan (Table~\ref{tab:window_sens}) changes the co-deposition window by $\sim$60--75~mV but never closes it, so it does not materially perturb the energy estimate; (ii) the liquidus uncertainty ($\pm$50~$^{\circ}$C) instead constrains the \emph{operable} temperature, hence the process viability (Limitations~(4)); and (iii) the oxide-solubility uncertainty (0.5--1.2~wt\%) changes the required salt inventory by a factor of 2--4 (Sec.~\ref{subsec:dissolution}), which affects capital cost and closed-loop feasibility far more than it affects the per-ton energy. The energy prediction is therefore dominated by $\eta_I$ (as the Spearman analysis shows), whereas process \emph{feasibility} is governed more critically by the 600~$^{\circ}$C oxide solubility and the liquidus.
 
 \begin{figure}[!htbp]
 \centering
@@ -599,7 +592,7 @@ Table~\ref{tab:compare} compares the proposed process with established technolog
   Proposed & In-situ electrolysis + Mg-Ca complementary reduction & Cyclic (conceptual) & 580--650 & Moderate$^{a}$ & High (target) & Anode corrosion, unvalidated $\eta_I$ \\
   \bottomrule
   \end{tabularx}
-  \vspace{2pt}\\
+  \par\vspace{2pt}
   \footnotesize $^{a}$Theoretical prediction conditional on $\eta_I > 0.70$; industrial/pilot values shown for Kroll/FFC/USTB are not directly equivalent.
 \end{table}
 
@@ -645,76 +638,16 @@ This study is a conceptual design based on thermodynamic calculations and litera
 
 (9) As go/no-go decision criteria for subsequent pilot funding, the following bounds are proposed: (i) if the measured current efficiency falls below $\eta_I = 0.60$ at $V_{\mathrm{cell}} = 4.0$~V, the net equivalent consumption rises to $\sim$13{,}900~kWh/ton-Ti, eroding the energy advantage over the FFC route (15{,}000--20{,}000~kWh/ton-Ti); and (ii) if the 600~$^{\circ}$C oxide solubility is confirmed below 0.5~wt\%, the salt inventory exceeds $\sim$400~t per ton Ti and the closed loop becomes impracticable. In either case, the closed-loop design should be reconsidered (e.g., a simpler open-loop Mg-reduction variant) rather than progressed to pilot scale.
 
-\vspace{1em}
+\noindent\textbf{Declarations}
+
 \noindent\textbf{Data Availability}: All thermodynamic data are from the cited literature. The Python scripts used for calculations and figure generation are available from the author upon request and will be deposited in a public repository (GitHub/Zenodo) upon acceptance.
 
-\vspace{0.5em}
 \noindent\textbf{Conflict of Interest}: The author declares no conflict of interest.
 
-\vspace{0.5em}
 \noindent\textbf{Author Contributions}: Yaming Hu: Conceptualization, Methodology, Formal analysis, Investigation, Writing---original draft, Writing---review \& editing, Visualization.
 
-\vspace{0.5em}
 \noindent\textbf{Funding}: This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
 
-\vspace{1em}
-\noindent\textbf{References}
-\begin{thebibliography}{27}
-
-\bibitem{kroll1937} KROLL W J. Verformbares Titan und Zirkon [J]. Zeitschrift f\"ur Anorganische und Allgemeine Chemie, 1937, 234(1-2): 42--50.
-
-\bibitem{ji2026} JI H H, GUO S H, GAO L, et al. Revolutionizing titanium production: a comprehensive review of thermochemical and molten salt electrolysis processes [J]. International Journal of Minerals, Metallurgy and Materials, 2026, 33(1): 15--34.
-
-\bibitem{fray2000} FRAY D J, FARTHING T W, CHEN G Z. Direct electrochemical reduction of titanium dioxide in molten salts [J]. Nature, 2000, 407(6802): 361--364.
-
-\bibitem{yan2007} YAN X Y, FRAY D J. Fused salt electrolytic reduction of solid oxides and oxide mixtures for green production of metals and alloys [J]. Mineral Processing and Extractive Metallurgy, 2007, 116(1): 17--24.
-
-\bibitem{zhu2025} ZHU H M. Engineering bottlenecks and breakthrough pathways for molten salt electrolytic titanium production [J]. Iron and Steel, 2025, 60(1): 1--12 [in Chinese].
-
-\bibitem{ono2002} ONO K, SUZUKI R O. A new concept for producing Ti sponge: Calciothermic reduction of $\ce{TiO2}$ in molten $\ce{CaCl2}$ [J]. JOM, 2002, 54(2): 59--61.
-
-\bibitem{pal2001} PAL U B, WOOLLEY A C, KENNEY G B. Emerging SOM technology for green production of metals from oxides [J]. JOM, 2001, 53(10): 32--35.
-
-\bibitem{okabe1997} OKABE T H, WASEDA Y. Producing titanium through an electronically mediated reaction [J]. JOM, 1997, 49(6): 28--32.
-
-\bibitem{zhang2024} ZHANG J, YAN H W, LIU Z W, et al. Review---Progress in research and application of molten salt electrolysis for titanium extraction [J]. Journal of The Electrochemical Society, 2024, 171(8): 082502.
-
-\bibitem{okabe2004} OKABE T H, ODA T, MITSUDA Y. Deoxidation of titanium using $\ce{MgCl2}$ molten salt [J]. Materials Transactions, 2004, 45(12): 3255--3261.
-
-\bibitem{lee2025} LEE J H, NERSISYAN H, LIM K S, et al. Thermochemical response of $\ce{TiO2}$ upon heating with $\ce{CaMg2}$ reductant: experimental findings and theoretical modeling [J]. Next Materials, 2025, 8: 100803.
-
-\bibitem{pang2024} PANG J, KONG L X, ZHU L G, et al. Preparation of ultralow-oxygen titanium by direct reduction of $\ce{TiO2}$ [J]. Transactions of Nonferrous Metals Society of China, 2024, 34(2): 457--467.
-
-\bibitem{dou2020} DOU Z H, NIU L P, ZHANG T A, et al. Direct preparation of titanium powder by multi-stage deep reduction [J]. Rare Metal Materials and Engineering, 2020, 49(3): 1020--1023 [in Chinese].
-
-\bibitem{barin1995} BARIN I. Thermochemical Data of Pure Substances [M]. 3rd ed. Weinheim: VCH, 1995.
-
-\bibitem{waldner1999} WALDNER P, ERIKSSON A. Thermodynamic assessment of the Ti--O system [J]. Calphad, 1999, 23(2): 189--218.
-
-\bibitem{bin2025} BIN L, ZHANG Y, WANG H, et al. Molten salt electrolysis--magnesiothermic reduction for low-oxygen titanium powder production [J]. Electrochimica Acta, 2025, 533: 143689.
-
-\bibitem{wang2024} WANG Q D, LV Y Z. Industrial progress and development directions of titanium production technology [J]. Chinese Journal of Nonferrous Metals, 2024, 34(8): 2213--2230 [in Chinese].
-
-\bibitem{sato1999} SATO Y, KURODA Y, NAGATSU T, et al. Density and electrical conductivity of molten $\ce{MgCl2-CaCl2}$ binary melt [C] In: Electrochemical Society Proceedings, 1999, 1999-41: 313.
-
-\bibitem{hagemark1966} HAGEMARK K. Thermodynamics of the molten salt system $\ce{MgCl2-NaCl}$ [J]. Journal of Chemical Physics, 1966, 45(11): 4134--4140.
-
-\bibitem{kleppa1964} KLEPPA O J. Thermochemistry of the liquid mixtures of aluminum and silver halides [J]. Journal of Physical Chemistry, 1964, 68(12): 3352--3358.
-
-\bibitem{pelton2000} PELTON A D, DEGTEROV S A, ERIKSSON G, et al. The modified quasichemical model in the pairwise approximation for the molten salt solution of $\ce{LiCl-KCl}$ [J]. Calphad, 2000, 24(3): 295--311.
-
-\bibitem{nayeb1988} NAYEB-HASHEMI A A, CLARK J B. The Ca--Mg (Calcium--Magnesium) system [J]. Bulletin of Alloy Phase Diagrams, 1988, 8(4): 362--374.
-
-\bibitem{zhang2008} ZHANG J, LIU Y, DU Y, et al. Thermodynamic assessment of the Ca--Mg system [J]. Journal of Alloys and Compounds, 2008, 463(1-2): 294--301.
-
-\bibitem{plettcher1990} PLETCHER D, WALSH F C. Industrial Electrochemistry [M]. 2nd ed. London: Chapman and Hall, 1990.
-
-\bibitem{kvande2014} KVANDE H, DRABL\O S P A. The aluminum smelting process and innovative alternative technologies [J]. JOM, 2014, 66(2): 342--348.
-
-\bibitem{morita2004} MORITA K, OGUCHI T, SUGIMOTO T, et al. The solubility of MgO in molten $\ce{MgCl2-CaCl2}$ salt [J]. Materials Transactions, 2004, 45(8): 2712--2718.
-
-\bibitem{levenspiel1999} LEVENSPIEL O. Chemical Reaction Engineering [M]. 3rd ed. New York: Wiley, 1999.
-
-\end{thebibliography}
+\bibliography{refs}
 
 \end{document}
