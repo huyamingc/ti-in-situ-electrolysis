@@ -53,7 +53,6 @@ prepared for submission to *Metallurgical and Materials Transactions B (MMTB)*. 
     ├── tab_overpotential.csv
     ├── tab_heat_balance_revised.csv
     └── tab_monte_carlo_stats.csv
-└── script-verification-report/        — Two-round script-vs-manuscript verification report (HTML, self-contained)
 ```
 
 ---
