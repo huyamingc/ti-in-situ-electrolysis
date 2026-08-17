@@ -17,8 +17,8 @@ prepared for submission to *Metallurgical and Materials Transactions B (MMTB)*. 
 ├── manuscript.tex                — Manuscript (sn-journal format, first submission)
 ├── refs.bib                     — BibTeX reference database (27 entries)
 ├── sn-jnl.cls                   — Springer Nature LaTeX class
-├── sn-mathphys.bst              — Springer math-physics BibTeX style
-├── sn-aps.bst                   — Springer APS BibTeX style
+├── sn-mathphys.bst              — Springer math-physics BibTeX style (used, auto-loaded)
+├── sn-aps.bst                   — Springer APS BibTeX style (bundled, unused)
 ├── README.md
 ├── .gitignore
 ├── scripts/
@@ -53,6 +53,7 @@ prepared for submission to *Metallurgical and Materials Transactions B (MMTB)*. 
     ├── tab_overpotential.csv
     ├── tab_heat_balance_revised.csv
     └── tab_monte_carlo_stats.csv
+└── script-verification-report/        — Two-round script-vs-manuscript verification report (HTML, self-contained)
 ```
 
 ---
@@ -72,7 +73,7 @@ The `sn-journal` class auto-loads `sn-mathphys.bst`; no explicit `\bibliographys
 
 ## Requirements
 
-- Python 3.8+ with `numpy`, `matplotlib`, `scipy` (required by `improvements_calc.py`, `verification_fix.py`, `monte_carlo_uncertainty.py`, `supplement_calc.py`)
+- Python 3.8+ with `numpy`, `matplotlib` (all plotting scripts); `scipy` additionally required by `verification_fix.py` and `monte_carlo_uncertainty.py`
 - `thermo_calc_v2.py` uses only the standard library (`math`, `csv`)
 - A LaTeX distribution (MiKTeX or TeX Live) with the `sn-journal` class dependencies (`cuted`, `xcolor`, `manyfoot`, `textcomp`, `amsthm`, `mathrsfs`, `appendix`)
 
@@ -90,7 +91,7 @@ pip install numpy matplotlib scipy
 |---|---|---|---|
 | `thermo_calc_v2.py` | Core thermodynamics (Meyer-Kelly Cp), deoxidation limits, chloride decomposition voltages, Ca²⁺/Na⁺ window, material/energy balance | stdlib only | 8 CSVs |
 | `improvements_calc.py` | SCM kinetics, energy sensitivity, liquidus estimation, E–pO²⁻ diagram, heat balance, TiCl₄ separation work | numpy, matplotlib | 6 figures |
-| `verification_fix.py` | Overpotential and heat-balance numerical verification | numpy, matplotlib | 2 CSVs + 2 verification figures |
+| `verification_fix.py` | Overpotential and heat-balance numerical verification | numpy, matplotlib, scipy | 2 CSVs + 2 verification figures |
 | `monte_carlo_uncertainty.py` | Monte Carlo global uncertainty analysis (N = 10⁵, seed = 42) | numpy, matplotlib, scipy | 2 figures + 1 CSV |
 | `supplement_calc.py` | Butler–Volmer activation overpotential, anode O₂/Cl₂ selectivity boundary, cell-voltage split | numpy, matplotlib | 3 figures |
 
@@ -109,7 +110,7 @@ python scripts/supplement_calc.py
 ## Key Results (600 °C design-basis temperature)
 
 - Reduction thermodynamics: ΔG° = −231.0 to −307.5 kJ/mol for the three pathways (Mg, Ca, and combined Mg + Ca)
-- Deoxidation limit: Mg → 3908 ppm O, Ca → 20 ppm O (193× difference)
+- Deoxidation limit: Mg → 3908 ppm O, Ca → 20.2 ppm O (193× difference)
 - Ca²⁺/Na⁺ co-deposition window: +120 mV (ideal), 74.9–147.1 mV under activity-coefficient sensitivity
 - Mg–Ca liquid alloy: ΔG_mix = −9.69 kJ/mol (equimolar)
 - Shrinking-core kinetics: 100 μm particles reduced in 6.3 min (D = 2.0×10⁻⁹ m²/s)
