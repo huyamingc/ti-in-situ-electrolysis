@@ -33,7 +33,7 @@ n_Ti = 1e6 / M_Ti  # mol Ti per ton = 20891.2
 
 # SCM固定参数
 c_O = 1.06e5       # mol/m³ (oxygen in TiO2)
-c_red = 635         # mol/m³ (reductant concentration)
+c_red = 581         # mol/m³ (reductant concentration; 0.03 × 1800/0.0929, M_avg mole-fraction weighted)
 R_particle = 50e-6  # m (100 μm diameter particle, R=50μm)
 
 # 输出目录
@@ -91,11 +91,11 @@ print(f"  Max:    {np.max(t_min_samples):.1f} min")
 
 # --- 输出量2: 全流程净能耗 ---
 # W_practical = 4F * n_Ti * V_cell / (η_I * 3.6e6)  [kWh/ton]
-# W_net ≈ W_practical + 680 (auxiliary) - 42 (Ti cooling)
-# 其中电解部分 = W_practical, 辅助能耗固定680, 回收42
+# W_net ≈ W_practical + 679 (auxiliary) - 42 (Ti cooling)
+# 其中电解部分 = W_practical, 辅助能耗固定679, 回收42
 W_electrolysis = (4 * F * n_Ti * V_samples) / (eta_samples * 3.6e6)  # kWh/ton
-# Net equivalent consumption: gross electrolysis - reaction exotherm (1690 kWh/ton) + auxiliary (680) - Ti cooling (42)
-W_net_samples = W_electrolysis - 1690 + 680 - 42  # = W_electrolysis - 1052
+# Net equivalent consumption: gross electrolysis - reaction exotherm (1690 kWh/ton) + auxiliary (679) - Ti cooling (42)
+W_net_samples = W_electrolysis - 1690 + 679 - 42  # = W_electrolysis - 1053
 
 print(f"\n--- Net Energy Consumption ---")
 print(f"  Mean:   {np.mean(W_net_samples):.0f} kWh/ton-Ti")
@@ -123,7 +123,7 @@ print(f"  P5:     {np.percentile(eff_2nd_law_samples, 5):.1f}%")
 print(f"  P95:    {np.percentile(eff_2nd_law_samples, 95):.1f}%")
 
 # --- 概率分析：低于目标值的概率 ---
-targets_energy = [11192, 12000, 14000, 16000, 20000]
+targets_energy = [11191, 12000, 14000, 16000, 20000]
 print(f"\n--- P(W_net < target) ---")
 for target in targets_energy:
     prob = np.mean(W_net_samples < target) * 100
@@ -151,7 +151,7 @@ shape, loc, scale = lognorm.fit(t_min_samples, floc=0)
 x_fit = np.linspace(0, np.percentile(t_min_samples, 99), 500)
 ax.plot(x_fit, lognorm.pdf(x_fit, shape, loc, scale), 'r-', linewidth=2, label='Lognormal fit')
 ax.axvline(np.median(t_min_samples), color='green', linestyle='--', linewidth=2, label=f'Median={np.median(t_min_samples):.1f} min')
-ax.axvline(5.8, color='orange', linestyle='--', linewidth=2, label='Nominal (5.8 min)')
+ax.axvline(6.3, color='orange', linestyle='--', linewidth=2, label='Nominal (6.3 min)')
 ax.set_xlabel('Complete Reduction Time (min)', fontsize=12)
 ax.set_ylabel('Probability Density', fontsize=12)
 ax.set_title('SCM Reduction Time Distribution\n(100 μm particles, global uncertainty)', fontsize=13)
@@ -168,7 +168,7 @@ mu_w, sigma_w = stats.norm.fit(W_net_samples)
 x_fit = np.linspace(np.percentile(W_net_samples, 0.5), np.percentile(W_net_samples, 99.5), 500)
 ax.plot(x_fit, stats.norm.pdf(x_fit, mu_w, sigma_w), 'r-', linewidth=2, label=f'Normal fit\n(μ={mu_w:.0f}, σ={sigma_w:.0f})')
 ax.axvline(np.median(W_net_samples), color='green', linestyle='--', linewidth=2, label=f'Median={np.median(W_net_samples):.0f}')
-ax.axvline(11192, color='orange', linestyle='--', linewidth=2, label='Nominal (11,192)')
+ax.axvline(11191, color='orange', linestyle='--', linewidth=2, label='Nominal (11,191)')
 ax.axvline(20000, color='red', linestyle=':', linewidth=2, label='FFC upper (20,000)')
 ax.set_xlabel('Net Energy Consumption (kWh/ton-Ti)', fontsize=12)
 ax.set_ylabel('Probability Density', fontsize=12)

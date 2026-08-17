@@ -6,14 +6,16 @@ This repository contains the manuscript and all Python scripts for the paper
 
 prepared for submission to *Metallurgical and Materials Transactions B (MMTB)*. The manuscript is in the Springer Nature `sn-journal` format and compiles with `pdflatex` + `bibtex`.
 
+> Repository: <https://github.com/huyamingc/ti-in-situ-electrolysis>
+
 ---
 
 ## Repository Structure
 
 ```
 .
-├── revised_paper_v5.tex         — Manuscript (sn-journal format, main submission)
-├── refs.bib                     — BibTeX reference database (26 entries)
+├── manuscript.tex                — Manuscript (sn-journal format, first submission)
+├── refs.bib                     — BibTeX reference database (27 entries)
 ├── sn-jnl.cls                   — Springer Nature LaTeX class
 ├── sn-mathphys.bst              — Springer math-physics BibTeX style
 ├── sn-aps.bst                   — Springer APS BibTeX style
@@ -25,7 +27,7 @@ prepared for submission to *Metallurgical and Materials Transactions B (MMTB)*. 
 │   ├── verification_fix.py          — Overpotential and heat-balance numerical verification
 │   ├── monte_carlo_uncertainty.py   — Monte Carlo global uncertainty analysis (seed = 42)
 │   └── supplement_calc.py           — Butler–Volmer overpotential, Cl₂ boundary, voltage split
-├── figures/                        — 11 PDF vector figures (all referenced by the manuscript)
+├── figures/                        — 13 PDF vector figures (11 referenced by the manuscript + 2 verification-only)
 │   ├── fig_liquidus.pdf
 │   ├── fig_scm_conversion.pdf
 │   ├── fig_scm_time_vs_size.pdf
@@ -36,7 +38,9 @@ prepared for submission to *Metallurgical and Materials Transactions B (MMTB)*. 
 │   ├── fig_energy_sensitivity.pdf
 │   ├── fig_cl2_boundary.pdf
 │   ├── fig_monte_carlo.pdf
-│   └── fig_sensitivity_tornado.pdf
+│   ├── fig_sensitivity_tornado.pdf
+│   ├── fig_overpotential_window.pdf      — verification-only (not referenced)
+│   └── fig_heat_balance_revised.pdf      — verification-only (not referenced)
 └── output/                         — 11 CSV data tables (data traceability)
     ├── tab_thermo.csv
     ├── tab_deox.csv
@@ -56,10 +60,10 @@ prepared for submission to *Metallurgical and Materials Transactions B (MMTB)*. 
 ## Compiling the Manuscript
 
 ```bash
-pdflatex revised_paper_v5
-bibtex    revised_paper_v5
-pdflatex revised_paper_v5
-pdflatex revised_paper_v5
+pdflatex manuscript
+bibtex    manuscript
+pdflatex manuscript
+pdflatex manuscript
 ```
 
 The `sn-journal` class auto-loads `sn-mathphys.bst`; no explicit `\bibliographystyle` is needed.
@@ -86,7 +90,7 @@ pip install numpy matplotlib scipy
 |---|---|---|---|
 | `thermo_calc_v2.py` | Core thermodynamics (Meyer-Kelly Cp), deoxidation limits, chloride decomposition voltages, Ca²⁺/Na⁺ window, material/energy balance | stdlib only | 8 CSVs |
 | `improvements_calc.py` | SCM kinetics, energy sensitivity, liquidus estimation, E–pO²⁻ diagram, heat balance, TiCl₄ separation work | numpy, matplotlib | 6 figures |
-| `verification_fix.py` | Overpotential and heat-balance numerical verification | numpy, matplotlib | 2 CSVs |
+| `verification_fix.py` | Overpotential and heat-balance numerical verification | numpy, matplotlib | 2 CSVs + 2 verification figures |
 | `monte_carlo_uncertainty.py` | Monte Carlo global uncertainty analysis (N = 10⁵, seed = 42) | numpy, matplotlib, scipy | 2 figures + 1 CSV |
 | `supplement_calc.py` | Butler–Volmer activation overpotential, anode O₂/Cl₂ selectivity boundary, cell-voltage split | numpy, matplotlib | 3 figures |
 
@@ -105,11 +109,11 @@ python scripts/supplement_calc.py
 ## Key Results (600 °C design-basis temperature)
 
 - Reduction thermodynamics: ΔG° = −231.0 to −307.5 kJ/mol for the three pathways (Mg, Ca, and combined Mg + Ca)
-- Deoxidation limit: Mg → 3908 ppm O, Ca → 20 ppm O (194× difference)
+- Deoxidation limit: Mg → 3908 ppm O, Ca → 20 ppm O (193× difference)
 - Ca²⁺/Na⁺ co-deposition window: +120 mV (ideal), 74.9–147.1 mV under activity-coefficient sensitivity
 - Mg–Ca liquid alloy: ΔG_mix = −9.69 kJ/mol (equimolar)
-- Shrinking-core kinetics: 100 μm particles reduced in 5.8 min (D = 2.0×10⁻⁹ m²/s)
-- Net energy consumption: 11,192 kWh/ton-Ti (conditional on η_I > 0.70)
+- Shrinking-core kinetics: 100 μm particles reduced in 6.3 min (D = 2.0×10⁻⁹ m²/s)
+- Net energy consumption: 11,191 kWh/ton-Ti (conditional on η_I > 0.70)
 - Monte Carlo (N = 10⁵, seed = 42): P(W_net < 14,000 kWh/ton) = 85.8%
 
 ---
@@ -121,7 +125,7 @@ All thermodynamic data are from published literature (no experimental measuremen
 - Barin I. *Thermochemical Data of Pure Substances*, 3rd ed. VCH, Weinheim, 1995. — Cp(T) coefficients, standard enthalpy/entropy
 - Kubaschewski O, Alcock CB. *Metallurgical Thermochemistry*, 5th ed. Pergamon, 1979. — Supplementary Cp(T) coefficients
 - Waldner P, Eriksson G. Thermodynamic modelling of the system titanium–oxygen. *Calphad*, 1999, 23(2): 189–218. — O dissolution free energy in Ti
-- Chen GZ, Fray DJ, Farthing TW. Direct electrochemical reduction of titanium dioxide in molten salts. *Nature*, 2000, 407: 361–364. — FFC process, diffusion coefficient reference
+- Chen GZ, Fray DJ, Farthing TW. Direct electrochemical reduction of titanium dioxide to titanium in molten calcium chloride. *Nature*, 2000, 407: 361–364. — FFC process, diffusion coefficient reference
 - Yan XY, Fray DJ. *Miner. Process. Extr. Metall.*, 2007, 116(1): 17–24. — O²⁻ diffusivity in CaCl₂-based melts
 - Taninouchi Y, Hamanaka Y, Okabe TH. Electrochemical deoxidation of titanium and its alloy using molten magnesium chloride. *Metall. Mater. Trans. B*, 2016, 47(6): 3394–3404. — MgCl₂ electrochemical deoxidation
 - Jiao H, Liu M, Wang Z, Lin M, Qu Z, Song J, Jiao S. Upcycling of titanium by molten salt electrorefining. *ACS Sustainable Chem. Eng.*, 2023, 11(14): 5764–5772. — USTB molten-salt electrorefining

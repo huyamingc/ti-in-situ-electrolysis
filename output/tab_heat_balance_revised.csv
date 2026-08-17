@@ -3,13 +3,13 @@ Electrolysis (gross),12244,Before reaction exotherm offset
 Reaction exotherm,-1690,"Internal heat recovery, offsets electrolysis"
 Electrolysis (net),10554,Net electrical input
 TiO2 preheating,184,
-Salt makeup preheating,8,
+Salt makeup preheating,7,
 Cell wall heat loss,138,External thermal input (reaction exotherm fully used for electrolysis offset)
 Salt circulation pumping,50,
 Post-treatment,300,
-Total external input,11234,
+Total external input,11233,
 Ti powder cooling recovery,-42,External heat recovery
-Net consumption,11192,
+Net consumption,11191,
 Theoretical minimum,6112,
 Thermodynamic efficiency,54.6%,W_min/W_net
-Energy utilization ratio,93.9%,Electrolysis/Total input (NOT thermal efficiency)
+Energy utilization ratio,94.0%,Electrolysis/Total input (NOT thermal efficiency)

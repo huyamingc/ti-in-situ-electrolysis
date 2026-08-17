@@ -78,7 +78,7 @@ print("\n" + "=" * 60)
 print("2. 共沉积窗口验证 (Sec.3.3, Sec.4.2)")
 print("=" * 60)
 
-# 纯盐标准还原电位 (vs Cl2/Cl-), 来自论文Table (revised_paper_v5)
+# 纯盐标准还原电位 (vs Cl2/Cl-), 来自论文Table (manuscript.tex)
 E0_CaCl2 = -3.428  # V
 E0_NaCl  = -3.440  # V
 
@@ -166,11 +166,11 @@ _ecN_str = f"{eta_conc_Na*1000:.1f}" if not np.isnan(eta_conc_Na) else "mass-tra
 print(f"\n  Ca²⁺ 浓差极化: {_ecC_str} mV (j_lim={j_lim_Ca:.2f} A/cm²)")
 print(f"  Na⁺  浓差极化: {_ecN_str} mV (j_lim={j_lim_Na:.2f} A/cm²)")
 
-# 有效窗口 = 热力学窗口 - (η_Ca - η_Na) - (η_conc_Ca - η_conc_Na)
-# 注意: 过电位使还原电位更负，所以 Ca²⁺ 的有效还原电位 = E_Ca - η_Ca - η_conc_Ca
-# Na⁺ 的有效还原电位 = E_Na - η_Na - η_conc_Na
-# 有效窗口 = (E_Ca - η_Ca - η_conc_Ca) - (E_Na - η_Na - η_conc_Na)
-#          = (E_Ca - E_Na) - (η_Ca - η_Na) - (η_conc_Ca - η_conc_Na)
+# 有效窗口（带符号约定: eta_conc = (RT/nF)ln(1-j/j_lim) < 0, 使还原电位更负）
+# Ca²⁺ 的有效还原电位 = E_Ca - η_Ca + η_conc_Ca
+# Na⁺ 的有效还原电位 = E_Na - η_Na + η_conc_Na
+# 有效窗口 = (E_Ca - η_Ca + η_conc_Ca) - (E_Na - η_Na + η_conc_Na)
+#          = (E_Ca - E_Na) - (η_Ca - η_Na) + (η_conc_Ca - η_conc_Na)
 
 thermo_window = calc_window(1.0, 1.0)  # mV
 # 手稿的有效窗口只含活化过电位修正: E_eff = ΔE + (η_Na,act − η_Ca,act)
@@ -203,7 +203,7 @@ print("4. SCM 动力学验证 (Sec.4.4)")
 print("=" * 60)
 
 c_O = 1.06e5      # mol/m³
-c_red = 635        # mol/m³
+c_red = 581        # mol/m³ (0.03 × 1800/0.0929, M_avg 摩尔分数加权)
 D = 2.0e-9         # m²/s
 eps = 0.3
 tau = 3.0
@@ -221,7 +221,7 @@ print(f"    t = {t_50:.0f} s = {t_50/60:.1f} min")
 R_100 = 100e-6  # m
 t_100 = (c_O * R_100**2) / (6 * D_eff * c_red)
 print(f"\n  R = 100 μm (200 μm 直径颗粒):")
-print(f"    t = {t_100:.0f} s = {t_100/60:.1f} min  ← 论文报告的 23 min 对应此值")
+print(f"    t = {t_100:.0f} s = {t_100/60:.1f} min")
 
 # 敏感性分析 (R = 50 μm, 即 100 μm 颗粒)
 print(f"\n  敏感性分析 (R = 50 μm, 即 100 μm 直径颗粒):")
@@ -272,10 +272,6 @@ V_theory = 2.729
 W_theory = (4 * F * n_Ti * V_theory) / (1.0 * 3.6e6)
 print(f"  理论最低 (V=2.729): {W_theory:.0f} kWh/ton (论文: 6112)")
 
-V_theory_precise = 2.729
-W_theory_precise = (4 * F * n_Ti * V_theory_precise) / (1.0 * 3.6e6)
-print(f"  理论最低 (V=2.729): {W_theory_precise:.0f} kWh/ton")
-
 # 实际能耗表
 print(f"\n  实际能耗验证:")
 energy_cases = [
@@ -299,7 +295,7 @@ print("=" * 60)
 # 原始数据
 electrolysis = 10554
 TiO2_preheat = 184
-salt_makeup = 8
+salt_makeup = 7
 cell_loss = 138
 salt_pump = 50
 post_treat = 300
@@ -318,24 +314,24 @@ print(f"  正确净值 = {total_input} - {total_recovery} = {net_correct}")
 
 # 但是！如果 1690 已嵌入电解能耗中:
 # 即电解实际需要 10554+1690=12244，但反应放热覆盖了1690，净电解=10554
-# 那么总外部输入 = 10554 + 680 = 11234
-# 净值 = 11234 - 42(Ti冷却) = 11192
+# 那么总外部输入 = 10554 + 679 = 11233
+# 净值 = 11233 - 42(Ti冷却) = 11191
 # 这种解释下 1690 是内部热回收，不从总输入中额外扣除
 print(f"\n  解释B: 1690为内部热循环(已嵌入电解项)")
 print(f"    电解毛需求 = 10554 + 1690 = {10554+1690}")
 print(f"    反应放热覆盖 = {reaction_exotherm}")
 print(f"    净电解输入 = {10554+1690} - {reaction_exotherm} = {10554}")
 print(f"    总外部输入 = 10554 + {total_input-10554} = {total_input}")
-print(f"    净值 = {total_input} - {Ti_cooling} = {total_input - Ti_cooling} ≈ 11192")
+print(f"    净值 = {total_input} - {Ti_cooling} = {total_input - Ti_cooling} ≈ 11191")
 
 # 效率重新定义
 print(f"\n  效率重新定义:")
 W_min = 6112
-W_net = 11192
+W_net = 11191
 print(f"  理论最低能耗 W_min = {W_min} kWh/ton")
 print(f"  实际净能耗 W_net = {W_net} kWh/ton")
 print(f"  热力学效率 = W_min/W_net = {W_min/W_net*100:.1f}%")
-print(f"  论文报告电解占比 = 93.9% (= 电解/总输入 = {electrolysis}/{total_input} = {electrolysis/total_input*100:.1f}%)")
+print(f"  论文报告电解占比 = 94.0% (= 电解/总输入 = {electrolysis}/{total_input} = {electrolysis/total_input*100:.1f}%)")
 print(f"  论文报告过程能效 = {W_min/W_net*100:.1f}% (W_min/W_net)")
 
 # 正确的火用效率估计
@@ -346,7 +342,7 @@ T0 = 298.15  # 环境温度
 T_proc = 873.15  # 工艺温度
 
 # 电解火用 = 10554 kWh (电能)
-# 预热等热火用 = (184+8+50+300) × (1 - 298/873) = 542 × 0.659 = 357 kWh
+# 预热等热火用 = (184+7+50+300) × (1 - 298/873) = 541 × 0.659 = 357 kWh
 thermal_input = TiO2_preheat + salt_makeup + salt_pump + post_treat
 exergy_thermal = thermal_input * (1 - T0/T_proc)
 exergy_electrical = electrolysis
@@ -427,7 +423,7 @@ for salt in dGf_table:
     print(f"    {salt}: 论文={paper_Ed[salt]:.3f}, 计算(n={n})={Ed_calc:.3f}")
 
 # 注意: 上方 dGf_table 为 298K 参考值；旧版论文 Table 曾混用 298K ΔG°f 与 873K E_d
-# revised_paper_v5 已统一为 873K 值: ΔG°f = MgCl2 -501.9, NaCl -331.9, CaCl2 -661.5, KCl -354.6 kJ/mol
+# manuscript.tex 已统一为 873K 值: ΔG°f = MgCl2 -501.9, NaCl -331.9, CaCl2 -661.5, KCl -354.6 kJ/mol
 print(f"\n  结论(已解决): v5 论文已统一使用 873K 的 ΔG°f 与 E_d (见表 tab:Ed)")
 print(f"    (上方 298K 参考值仅供对比)")
 
@@ -458,8 +454,8 @@ for j in j_range:
         ecC = (R * T / (2 * F)) * np.log(1 - j/jlim_Ca)
         ecN = (R * T / (1 * F)) * np.log(1 - j/jlim_Na)
     else:
-        ecC = ecN = 0
-    eff = thermo_window/1000 - (eC - eN) - (ecC - ecN)
+        ecC = ecN = np.nan  # 传质受限，与表格/CSV 的 NaN 口径一致
+    eff = thermo_window/1000 - (eC - eN) + (ecC - ecN)
     windows.append(eff * 1000)
 
 ax.plot(j_range, windows, 'b-', linewidth=2, label='Effective window')
@@ -471,7 +467,7 @@ ax.set_xlabel('Current density (A/cm²)', fontsize=12)
 ax.set_ylabel('Effective co-deposition window (mV)', fontsize=12)
 ax.set_title('Effective Ca²⁺/Na⁺ Co-deposition Window\nwith Overpotential Correction (600°C)', fontsize=13)
 ax.legend(fontsize=10)
-ax.set_ylim(-50, 150)
+ax.set_ylim(0, None)
 ax.grid(True, alpha=0.3)
 plt.tight_layout()
 plt.savefig(os.path.join(FIGURE_DIR, 'fig_overpotential_window.pdf'), bbox_inches='tight')
@@ -480,7 +476,7 @@ print("  已保存: fig_overpotential_window.pdf")
 # 10b. 修正后的热平衡 Sankey-style 柱状图
 fig, ax = plt.subplots(1, 1, figsize=(8, 5))
 categories = ['Electrolysis\n(gross)', 'Reaction\nexotherm', 'Auxiliary\ninputs', 'Ti cooling\nrecovery', 'Net\nconsumption']
-values = [12244, -1690, 680, -42, 11192]
+values = [12244, -1690, 679, -42, 11191]
 colors = ['#2196F3', '#4CAF50', '#FF9800', '#4CAF50', '#F44336']
 bars = ax.bar(categories, values, color=colors, edgecolor='black', linewidth=0.5)
 ax.axhline(y=0, color='black', linewidth=0.8)
@@ -527,16 +523,16 @@ with open(f'{output_dir}/tab_heat_balance_revised.csv', 'w', newline='') as f:
     w.writerow(['Reaction exotherm', '-1690', 'Internal heat recovery, offsets electrolysis'])
     w.writerow(['Electrolysis (net)', '10554', 'Net electrical input'])
     w.writerow(['TiO2 preheating', '184', ''])
-    w.writerow(['Salt makeup preheating', '8', ''])
+    w.writerow(['Salt makeup preheating', '7', ''])
     w.writerow(['Cell wall heat loss', '138', 'External thermal input (reaction exotherm fully used for electrolysis offset)'])
     w.writerow(['Salt circulation pumping', '50', ''])
     w.writerow(['Post-treatment', '300', ''])
-    w.writerow(['Total external input', '11234', ''])
+    w.writerow(['Total external input', '11233', ''])
     w.writerow(['Ti powder cooling recovery', '-42', 'External heat recovery'])
-    w.writerow(['Net consumption', '11192', ''])
+    w.writerow(['Net consumption', '11191', ''])
     w.writerow(['Theoretical minimum', '6112', ''])
     w.writerow(['Thermodynamic efficiency', '54.6%', 'W_min/W_net'])
-    w.writerow(['Energy utilization ratio', '93.9%', 'Electrolysis/Total input (NOT thermal efficiency)'])
+    w.writerow(['Energy utilization ratio', '94.0%', 'Electrolysis/Total input (NOT thermal efficiency)'])
 print(f"  已保存: tab_heat_balance_revised.csv")
 
 print("\n" + "=" * 60)

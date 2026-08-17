@@ -78,7 +78,7 @@ rho_TiO2 = 4230  # kg/m³
 M_TiO2 = 79.87   # g/mol
 c_O_in_TiO2 = (rho_TiO2 / (M_TiO2 / 1000)) * 2  # mol/m³
 rho_melt = 1800  # kg/m³
-M_melt_avg = 0.085  # kg/mol
+M_melt_avg = 0.0929  # kg/mol; mole-fraction weighted: 0.30×95.21 + 0.40×110.98 + 0.15×58.44 + 0.15×74.55
 c_reductant = 0.03 * (rho_melt / M_melt_avg)  # 3 mol%
 
 porosity = 0.3
@@ -153,7 +153,7 @@ for i, D_val in enumerate(D_list):
     t100 = c_O_in_TiO2 * (50e-6)**2 / (6 * D_eff_sens * c_reductant) / 60
     ax.plot(100, t100, 'o', color=colors_D[i], markersize=5)
 
-ax.axhspan(3.9, 11.6, alpha=0.1, color='green', label='Range for 100 μm (3.9–11.6 min)')
+ax.axhspan(4.2, 12.7, alpha=0.1, color='green', label='Range for 100 μm (4.2–12.7 min)')
 ax.axhline(y=30, color='r', linestyle='--', alpha=0.5, linewidth=1)
 ax.set_xlabel('Particle diameter (μm)')
 ax.set_ylabel('Complete reduction time (min)')
@@ -193,8 +193,8 @@ cs = ax.contourf(ETA * 100, VCELL, W, levels=levels, cmap='YlOrRd_r', extend='bo
 cs3 = ax.contour(ETA * 100, VCELL, W, levels=[10000, 12000, 15000],
                  colors=['navy','blue','royalblue'], linewidths=1.2, linestyles=':')
 ax.clabel(cs3, fmt='%d', fontsize=8, colors='blue')
-ax.plot(75, 4.0, 'w*', markersize=15, markeredgecolor='black', markeredgewidth=1,
-        label='Recommended ($\\eta$=75%, V=4.0V)')
+ax.plot(75, 4.1, 'w*', markersize=15, markeredgecolor='black', markeredgewidth=1,
+        label='Recommended ($\\eta$=75%, V=4.1V)')
 ax.plot(80, 4.0, 'w^', markersize=10, markeredgecolor='black', markeredgewidth=1,
         label='Optimistic ($\\eta$=80%, V=4.0V)')
 cbar = fig.colorbar(cs, ax=ax, label='Energy consumption (kWh/ton Ti)')
@@ -357,19 +357,19 @@ print("=" * 60)
 
 Cp_TiO2 = 55; n_TiO2 = n_Ti_per_ton
 Q_preheat_TiO2 = n_TiO2 * Cp_TiO2 * (600 - 25) / 3.6e6  # kWh/ton-Ti; Cp from Barin (1995)
-Q_preheat_salt = (50 / 0.085) * 80 * (600 - 25) / 3.6e6  # kWh/ton-Ti; 50 kg salt makeup, Cp_salt~80 J/(mol·K)
+Q_preheat_salt = (50 / 0.0929) * 80 * (600 - 25) / 3.6e6  # kWh/ton-Ti; 50 kg salt makeup, Cp_salt~80 J/(mol·K)
 W_electrolysis = 10554  # kWh/ton-Ti; net equivalent electrolysis input (see Table tab:heatbal)
 A_cell = np.pi * 3.0 * 4.0 + 2 * np.pi * 1.5**2  # m²; cell surface area (3m dia × 4m height + 2 ends)
 Q_loss_rate = 0.15 * A_cell * (600 - 80) / 0.3  # W; conductive heat loss, k=0.15 W/(m·K), insulation thickness 0.3m
 Q_loss_kWh = Q_loss_rate * 10.23 / 1000  # kWh/ton-Ti; 10.23 h batch time
-Q_reaction = -1690  # kWh/ton-Ti; exothermic, from ΔH° = -291.3 kJ/mol-Ti (Table tab:thermo, combined R1+R2)
+Q_reaction = -1690  # kWh/ton-Ti; exothermic, from ΔH° = -291.3 kJ/mol-Ti (Table tab:thermo, reaction R3: TiO2+Mg+Ca→Ti+MgO+CaO)
 Q_cool_Ti = n_Ti_per_ton * 25 * (600 - 25) / 3.6e6  # kWh/ton-Ti; Cp_Ti ≈ 25 J/(mol·K)
 Q_pumping = 50  # kWh/ton-Ti; salt circulation pumping (estimated, ref: Pletcher & Walsh 1990)
 Q_post = 300  # kWh/ton-Ti; post-treatment (salt washing/drying/screening); impurity acid-leaching is excluded (see Limitations (7))
 
 Q_input = W_electrolysis + Q_preheat_TiO2 + Q_preheat_salt + Q_loss_kWh + Q_pumping + Q_post
 W_net = Q_input - Q_cool_Ti * 0.5
-exergy_eff = W_electrolysis / Q_input * 100
+electrolysis_fraction = W_electrolysis / Q_input * 100  # 能量占比（非㶲效率）
 W_min = 6112  # theoretical minimum kWh/ton
 thermo_eff = W_min / W_net * 100
 
@@ -386,7 +386,7 @@ print(f"  Reaction heat:     {abs(Q_reaction):>8.0f} kWh (already embedded in ne
 print(f"  Ti cooling (50%):  {Q_cool_Ti*0.5:>8.0f} kWh (recoverable)")
 print(f"NET energy:          {W_net:>8.0f} kWh/ton")
 print(f"Thermodynamic efficiency (W_min/W_net): {thermo_eff:.1f}%")
-print(f"Electrolysis utilization ratio (W_elec/W_total): {exergy_eff:.1f}%")
+print(f"Electrolysis utilization ratio (W_elec/W_total): {electrolysis_fraction:.1f}%")
 
 # ============================================================
 # Module 6: Minimum Separation Work (CORRECTED formula)
@@ -411,7 +411,7 @@ x_Bw = 1 - x_Aw
 term_prod = n_prod * (x_Ap * np.log(x_Ap / x_Af) + x_Bp * np.log(x_Bp / x_Bf))
 term_waste = n_waste * (x_Aw * np.log(x_Aw / x_Af) + x_Bw * np.log(x_Bw / x_Bf))
 W_min_per_mol = R * T_distill * (term_prod + term_waste)
-W_min_kWh = W_min_per_mol * n_Ti_per_ton / 3.6e6
+W_min_kWh = W_min_per_mol * n_Ti_per_ton / n_TiCl4_prod / 3.6e6  # Ti 基准: 每吨 Ti 需 n_Ti/n_TiCl4_prod mol 进料
 
 actual_distill = 300  # kWh/ton Ti (literature)
 second_law_eff = W_min_kWh / actual_distill * 100
@@ -432,7 +432,7 @@ for x_target in [0.95, 0.99, 0.999, 0.9999]:
     if x_aw > 0 and x_bw > 0 and x_bp > 0:
         tp = n_p * (x_p * np.log(x_p / x_Af) + x_bp * np.log(x_bp / x_Bf))
         tw = n_w * (x_aw * np.log(x_aw / x_Af) + x_bw * np.log(x_bw / x_Bf))
-        w = R * T_distill * (tp + tw) * n_Ti_per_ton / 3.6e6
+        w = R * T_distill * (tp + tw) * n_Ti_per_ton / n_TiCl4_prod / 3.6e6
         print(f"  {x_target*100:.2f}%: W_min = {w:.2f} kWh/ton Ti")
 
 our_total = 12638
