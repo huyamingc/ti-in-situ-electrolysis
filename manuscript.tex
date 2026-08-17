@@ -12,8 +12,9 @@
 \usepackage{tabularx}
 \usepackage[title]{appendix}
 \usepackage[version=4]{mhchem}
+\usepackage{epstopdf}
 
-\graphicspath{{figures/}}
+\graphicspath{{figures_eps/}}
 
 \gdef\orcid#1{\href{https://orcid.org/#1}{\textsuperscript{iD}}}
 
@@ -128,7 +129,7 @@ with $T_{m,i}$ and $\Delta H_{\mathrm{fus},i}$ for $\ce{MgCl2}$ (987~K/43.1~kJ/m
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.95\linewidth]{fig_liquidus.pdf}
+\includegraphics[width=0.95\linewidth]{fig_liquidus.eps}
 \caption{Liquidus projection of the quaternary $\ce{MgCl2-CaCl2-NaCl}$ system at $x_{\ce{KCl}}=0.15$ (ideal solution model).}
 \label{fig:liquidus}
 \end{figure}
@@ -305,7 +306,7 @@ The above window is an \emph{equilibrium} quantity. Under polarization, the effe
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.85\linewidth]{fig_overpotential_bv.pdf}
+\includegraphics[width=0.85\linewidth]{fig_overpotential_bv.eps}
 \caption{Butler--Volmer activation overpotentials of $\ce{Ca^{2+}}$ ($n=2$) and $\ce{Na+}$ ($n=1$) versus current density at 600~$^{\circ}$C ($\alpha=0.5$, order-of-magnitude $j_0$). The dashed line is the kinetic enlargement of the co-deposition window, $\eta_{\mathrm{Na}} - \eta_{\mathrm{Ca}}$.}
 \label{fig:overpotential}
 \end{figure}
@@ -323,7 +324,7 @@ where $p\ce{O^{2-}} = -\log_{10}(a_{\ce{O^{2-}}})$ and $E^{\circ}_{\mathrm{red}}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.95\linewidth]{fig_E_pO2.pdf}
+\includegraphics[width=0.95\linewidth]{fig_E_pO2.eps}
 \caption{E--$p\ce{O^{2-}}$ stability diagram at 600~$^{\circ}$C. All potentials are referenced to the $\ce{O2/O^{2-}}$ electrode ($p_{\ce{O2}}=1$~atm, $a_{\ce{O^{2-}}}=1$), not the $\ce{Cl2/Cl-}$ electrode used in Table~\ref{tab:Ed}. Lines based on pure oxide standard states; in real molten salt, $\ce{Ca^{2+}}$--$\ce{O^{2-}}$ complexation lowers $a_{\ce{O^{2-}}}$, shifting all potentials positively, but the relative reduction order ($\ce{Fe2O3} > \ce{SiO2} > \ce{TiO2} > \ce{Al2O3} > \ce{MgO} > \ce{CaO}$) is preserved.}
 \label{fig:EpO2}
 \end{figure}
@@ -342,7 +343,7 @@ where $c_{[\mathrm{O}]\in\ce{TiO2}} \approx 1.06\times10^5$~mol/m$^3$ (oxygen co
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.95\linewidth]{fig_scm_conversion.pdf}
+\includegraphics[width=0.95\linewidth]{fig_scm_conversion.eps}
 \caption{SCM-predicted conversion versus time for different particle sizes ($D = 2.0\times10^{-9}$~m$^2$/s, 600~$^{\circ}$C).}
 \label{fig:scm}
 \end{figure}
@@ -355,28 +356,28 @@ To propagate uncertainties globally, a Monte Carlo simulation ($N = 10^5$, fixed
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.95\linewidth]{fig_monte_carlo.pdf}
+\includegraphics[width=0.95\linewidth]{fig_monte_carlo.eps}
 \caption{Monte Carlo global uncertainty analysis ($N = 10^5$): (left) SCM reduction time distribution with lognormal fit; (right) net energy consumption distribution. Dashed lines indicate nominal values. The analysis simultaneously sampled five parameters: diffusion coefficient $D$, porosity $\varepsilon$, tortuosity $\tau$, current efficiency $\eta_I \sim \mathrm{Tri}(0.50, 0.75, 0.88)$, and cell voltage $V_{\mathrm{cell}} \sim \mathcal{N}(4.1, 0.3)$. The $\eta_I$ lower bound of 0.50 encompasses the worst-case FFC-like scenario.}
 \label{fig:monte_carlo}
 \end{figure}
 
 \begin{figure}[!htbp]
 \centering
-\includegraphics[width=0.95\linewidth]{fig_sensitivity_tornado.pdf}
+\includegraphics[width=0.95\linewidth]{fig_sensitivity_tornado.eps}
 \caption{Global parameter sensitivity (Spearman rank correlation): (left) SCM reduction time; (right) net energy consumption.}
 \label{fig:tornado}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.95\linewidth]{fig_scm_sensitivity.pdf}
+\includegraphics[width=0.95\linewidth]{fig_scm_sensitivity.eps}
 \caption{SCM sensitivity analysis: reduction time versus particle diameter for $D = 1$--$3\times10^{-9}$~m$^2$/s.}
 \label{fig:scm_sens}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.95\linewidth]{fig_scm_time_vs_size.pdf}
+\includegraphics[width=0.95\linewidth]{fig_scm_time_vs_size.eps}
 \caption{Complete reduction time versus particle diameter at $D = 2.0\times10^{-9}$~m$^2$/s (600~$^{\circ}$C), showing the inverse-square scaling.}
 \label{fig:scm_time}
 \end{figure}
@@ -444,7 +445,7 @@ $\eta_I$ & $V_{\mathrm{cell}}$ (V) & Energy (kWh/ton) & Condition \\
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.7\linewidth]{fig_voltage_split.pdf}
+\includegraphics[width=0.7\linewidth]{fig_voltage_split.eps}
 \caption{Decomposition of the assumed cell voltage ($\sim$4.1~V) into the thermodynamic decomposition term (2.73~V), anode and cathode overpotentials, and ohmic drop (order-of-magnitude estimates).}
 \label{fig:voltage_split}
 \end{figure}
@@ -459,7 +460,7 @@ A particularly relevant analogy is the Hall--H\'eroult process for aluminum prod
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.95\linewidth]{fig_energy_sensitivity.pdf}
+\includegraphics[width=0.95\linewidth]{fig_energy_sensitivity.eps}
 \caption{Energy sensitivity: $\eta_I$ vs.\ $V_{\mathrm{cell}}$ (practical range; the electrolysis step minimum 6112~kWh/ton and the net reaction reversible work $\sim$4550~kWh/ton both lie below this range and are not shown).}
 \label{fig:energy}
 \end{figure}
@@ -540,7 +541,7 @@ Fig.~\ref{fig:cl2} renders this boundary parametrically: the critical free oxide
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.85\linewidth]{fig_cl2_boundary.pdf}
+\includegraphics[width=0.85\linewidth]{fig_cl2_boundary.eps}
 \caption{Anode $\ce{O2}$/$\ce{Cl2}$ selectivity boundary at 600~$^{\circ}$C. The critical free-oxide activity $a_{\ce{O^{2-}},crit}$ (solid line) is plotted as a function of the melt oxoacidity $E^{\circ}(\ce{O2/O^{2-}}~\text{vs}~\ce{Cl2/Cl^-})$, which has not been measured for this quaternary system. The green band is the estimated operating $a_{\ce{O^{2-}}}$ from oxide solubility and $\ce{Ca^{2+}}$--$\ce{O^{2-}}$ complexation. The marked crossing ($E^{\circ} \approx -0.35$~V) is derived from the assumed $a_{\ce{O^{2-}}}$ range ($10^{-4}$--$10^{-3}$), not from any measured oxoacidity; $\ce{O2}$ evolution is thermodynamically favored only to its left.}
 \label{fig:cl2}
 \end{figure}
@@ -639,7 +640,7 @@ This study is a conceptual design based on thermodynamic calculations and litera
 
 \noindent\textbf{Declarations}
 
-\noindent\textbf{Data Availability}: All thermodynamic data are from the cited literature. The Python scripts used for calculations and figure generation are publicly available at \url{https://github.com/huyamingc/ti-in-situ-electrolysis}.
+\noindent\textbf{Data Availability}: All thermodynamic data are from the cited literature. The Python scripts used for calculations and figure generation are publicly available at \url{https://github.com/huyamingc/ti-in-situ-electrolysis}. A preprint version of this work has been deposited on Zenodo (DOI: \href{https://doi.org/10.5281/zenodo.21973470}{10.5281/zenodo.21973470}).
 
 \noindent\textbf{Conflict of Interest}: The author declares no conflict of interest.
 
