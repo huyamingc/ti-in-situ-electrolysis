@@ -7,7 +7,7 @@ This repository contains the manuscript and all Python scripts for the paper
 prepared for submission to the *Journal of The Electrochemical Society (JES)*, Electrochemical Engineering area. The manuscript uses the standard `article` class with double spacing and embedded `thebibliography` (ECS reference format), and compiles with `pdflatex` alone.
 
 > Repository: <https://github.com/huyamingc/ti-in-situ-electrolysis>
-> Preprint: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22129477.svg)](https://doi.org/10.5281/zenodo.22129477)
+> Preprint: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21973469.svg)](https://doi.org/10.5281/zenodo.21973469)
 
 ---
 
