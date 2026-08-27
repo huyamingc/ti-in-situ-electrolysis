@@ -1,6 +1,7 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[margin=2.1cm]{geometry}
 \usepackage[T1]{fontenc}
+\usepackage{amssymb}
 \usepackage{times}
 \usepackage[version=4]{mhchem}
 \usepackage{enumitem}
@@ -14,41 +15,44 @@
 \begin{flushright}
 Yaming Hu\\
 Independent Researcher\\
-Guiyang, China\\
+Guiyang, Guizhou Province, China\\
 Email: \href{mailto:64687555@qq.com}{64687555@qq.com}\\
 ORCID: 0009-0003-1406-0485\\[0.4em]
-August 17, 2026
+August 27, 2026
 \end{flushright}
 
 \vspace{0.3em}
 
 \begin{flushleft}
 Editor-in-Chief\\
-\emph{Metallurgical and Materials Transactions B}\\
-Springer / TMS
+\emph{Journal of The Electrochemical Society}\\
+The Electrochemical Society, Inc.\\
+(ScholarOne submission --- Technical Area: Electrochemical Engineering)
 \end{flushleft}
 
 \vspace{0.4em}
 
 Dear Editor-in-Chief,
 
-\textbf{Re: Submission of an original research article --- ``Thermodynamic and Kinetic Assessment of Titanium Production via In-Situ Electrolysis and Bimetallic Complementary Reduction in MgCl$_2$--CaCl$_2$--NaCl--KCl Molten Salt''}
+\textbf{Re: Submission of an original research article --- ``Electrochemical Design Basis for Titanium Production by Mg--Ca Co-Deposition in a Quaternary Chloride Melt''}
 
-I am pleased to submit the above-referenced manuscript (34 pages, 11 figures, 10 tables, 27 references) for consideration as a \emph{research article} in MMTB.
+I am pleased to submit the above-referenced manuscript for consideration as a \emph{research article} in the Electrochemical Engineering area of JES. The submission consists of the manuscript (12 figures, 10 tables, 27 references), a graphical abstract, and this cover letter.
 
-The titanium industry remains dominated by the batch-type Kroll process, with its long reduction cycles, high energy intensity, and limited scalability. Building on the molten-salt electrochemistry of the FFC Cambridge and OS processes, this work proposes and quantitatively assesses an alternative concept: \emph{in-situ} electrolytic co-deposition of Mg and Ca in a low-melting quaternary MgCl$_2$--CaCl$_2$--NaCl--KCl melt (580--650~$^{\circ}$C), in which Mg performs fast bulk reduction of \ce{TiO2} while Ca provides deep deoxidation, regenerating both reductants electrochemically within the same cell.
+Titanium production remains dominated by the batch Kroll process. Building on the molten-salt electrochemistry of the FFC Cambridge and OS processes, this work develops a quantitative \emph{electrochemical design basis} for an alternative: in-situ co-deposition of Mg and Ca in a low-melting quaternary \ce{MgCl2}--\ce{CaCl2}--NaCl--KCl melt (580--650~$^{\circ}$C), in which Mg performs fast bulk reduction of \ce{TiO2} while Ca provides deep deoxidation, both reductants being regenerated electrochemically in the same cell.
 
-The main contributions of the manuscript are:
+The electrochemical core of the manuscript includes:
 
 \begin{enumerate}[itemsep=2pt,topsep=2pt]
-  \item \textbf{A self-consistent thermodynamic framework}: all reduction pathways are strongly exergonic ($\Delta G^{\circ} = -231.0$ to $-307.5$~kJ/mol at 600~$^{\circ}$C); the Mg/Ca deoxidation limits (3908 vs.\ 20.2~ppm O, 193$\times$) provide a quantitative basis for the bimetallic design.
-  \item \textbf{Electrochemical design criteria}: a \ce{Ca^{2+}/Na+} co-deposition window of +120~mV (ideal), positive (74.9--147.1~mV) across the activity-coefficient sensitivity range, plus an anode \ce{O2}/\ce{Cl2} selectivity boundary and Butler--Volmer overpotential analysis.
-  \item \textbf{Kinetic and process-energy assessments}: shrinking-core kinetics predict $\sim$6.3~min for complete reduction of 100~$\mu$m particles; the conditional net energy consumption is 11{,}191~kWh/ton-Ti (second-law efficiency $\sim$40.7\%), and a Monte Carlo uncertainty analysis ($P(W<14{,}000) = 85.8\%$) exposes the dominance of the unvalidated current-efficiency parameter.
+  \item \textbf{Co-deposition window analysis}: the \ce{Ca^{2+}/Na+} reduction-potential separation at 600~$^{\circ}$C is +120~mV in the ideal solution and remains positive (74.9--147.1~mV) across the full activity-coefficient sensitivity range, establishing the thermodynamic accessibility of Mg--Ca co-deposition without alkali-metal co-reduction. Butler--Volmer analysis shows that the corresponding activation overpotentials do not invert this ordering.
+  \item \textbf{Cathode mass-transport design map} (new in this version): a diffusion-layer analysis quantifies the limiting current densities of \ce{Mg^{2+}} and \ce{Ca^{2+}}, identifies the three deposition regimes, fixes the equimolar-alloy operating point at $j = 2\,j_{\mathrm{lim,Mg}} \approx 1.1$~A/cm$^2$, and couples it to an ohmic-drop constraint ($L \lesssim 1.1$~cm at the 0.9~V budget) that dictates the electrode-configuration requirement.
+  \item \textbf{Anode electrochemistry}: an E--$p\ce{O^{2-}}$ stability diagram and an \ce{O2}/\ce{Cl2} selectivity boundary map the free-oxide-activity conditions under which inert-anode oxygen evolution---and hence the closed chemical cycle---is preserved, and connect \ce{Cl2} crossover to the well-known titanium valence-cycle current-loss mechanism.
 \end{enumerate}
 
-The paper is deliberately framed as a \emph{theoretical feasibility assessment}: two prerequisites (oxide solubility $\geq$0.5~wt\% and sustained current efficiency $>$0.70 with an inert oxygen-evolving anode) are identified as mandatory experimental validation targets. All calculations are fully reproducible; the Python scripts and data tables are publicly available at\\ \url{https://github.com/huyamingc/ti-in-situ-electrolysis}. A preprint version of this work has been deposited on Zenodo (DOI: \href{https://doi.org/10.5281/zenodo.21973470}{10.5281/zenodo.21973470}).
+The thermodynamic framework ($\Delta G^{\circ} = -231.0$ to $-307.5$~kJ/mol at 600~$^{\circ}$C; Mg/Ca deoxidation limits of 3908 vs.\ 20.2~ppm O), shrinking-core kinetics ($\sim$6.3~min for 100~$\mu$m particles), conditional net energy consumption (11{,}191~kWh/t-Ti), and Monte Carlo uncertainty analysis ($P(W<14{,}000~\mathrm{kWh/t}) = 85.8\%$) provide the process-level context for these electrochemical criteria.
 
-I believe this work falls squarely within the scope of \emph{Metallurgical and Materials Transactions B}---process metallurgy, molten-salt electrochemistry, and process modeling---and will interest readers working on emerging titanium production routes.
+The paper is framed as a theoretical design study; two prerequisites (oxide solubility $\geq$0.5~wt\% and sustained current efficiency $>$0.70 with an oxygen-evolving inert anode) are identified explicitly as experimental validation targets, with the required measurement methods (cyclic voltammetry at a rotating or microelectrode, oxide solubility and oxoacidity determination) specified. All calculations are fully reproducible; the Python scripts and data tables are publicly available at\\ \url{https://github.com/huyamingc/ti-in-situ-electrolysis}. A preprint version has been deposited on Zenodo (DOI: \href{https://doi.org/10.5281/zenodo.21973470}{10.5281/zenodo.21973470}).
+
+I believe this work falls squarely within the scope of the Electrochemical Engineering area of JES---molten-salt electrolysis, electrode kinetics, and electrochemical process design---and will interest readers working on electrified metals production and emerging titanium routes.
 
 I confirm that this manuscript is original, unpublished, and not under consideration by any other journal; I have no conflicts of interest to disclose and received no funding. As the sole author, I have approved the manuscript and agree with its submission.
 

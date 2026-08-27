@@ -1,41 +1,46 @@
-\documentclass[sn-mathphys,Numbered]{sn-jnl}
+\documentclass[11pt]{article}
 
+\usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
 \usepackage{multirow}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{amsthm}
-\usepackage{mathrsfs}
 \usepackage{xcolor}
 \usepackage{textcomp}
-\usepackage{manyfoot}
 \usepackage{booktabs}
 \usepackage{tabularx}
-\usepackage[title]{appendix}
 \usepackage[version=4]{mhchem}
 \usepackage{epstopdf}
 \usepackage[mathlines]{lineno}
+\usepackage{setspace}
+\usepackage{etoolbox}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
 
 \graphicspath{{figures_eps/}}
 
-\gdef\orcid#1{\href{https://orcid.org/#1}{\textsuperscript{iD}}}
+% JES requires double spacing throughout; tables are reset to single spacing.
+\AtBeginEnvironment{table}{\singlespacing}
 
 \begin{document}
 
 \linenumbers
+\doublespacing
 
-\title[Thermodynamic and Kinetic Assessment of Ti Production]{Thermodynamic and Kinetic Assessment of Titanium Production via In-Situ Electrolysis and Bimetallic Complementary Reduction in \ce{MgCl2-CaCl2-NaCl-KCl} Molten Salt}
+\title{Electrochemical Design Basis for Titanium Production by Mg--Ca Co-Deposition in a Quaternary Chloride Melt}
 
-\author*{Yaming Hu\orcid{0009-0003-1406-0485}}\email{64687555@qq.com}
+\author{Yaming Hu\thanks{Independent Researcher, Guiyang, Guizhou Province, China. E-mail: 64687555@qq.com}}
 
-\affil*{Independent Researcher, Guiyang, Guizhou Province, China}
+\date{}
 
-\abstract{This computational study proposes a novel titanium production process using a quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ molten salt for in-situ electrolytic co-deposition of Mg and Ca for complementary reduction of $\ce{TiO2}$. Thermodynamic calculations ($\Delta G^{\circ} = -231.0$ to $-307.5$~kJ/mol at 600~$^{\circ}$C) show Ca deoxidation reaches 20.2~ppm versus 3908~ppm for Mg (193$\times$ difference), justifying the bimetallic strategy. Nernst analysis yields a $\ce{Ca^{2+}/Na+}$ co-deposition window of 120~mV (ideal), remaining positive (74.9--147.1~mV) under activity coefficient sensitivity ($\gamma_{\ce{CaCl2}} = 0.3$--1.0). The Mg--Ca liquid alloy ($\Delta G_{\mathrm{mix}} = -9.69$~kJ/mol) is thermodynamically stable. A shrinking-core model estimates complete reduction of 100~$\mu$m particles in 6.3~min ($D = 2.0\times10^{-9}$~m$^2$/s). Full-process energy balance, conditional on achieving $>$70\% current efficiency, indicates a net consumption of 11{,}191~kWh/ton-Ti (excluding impurity separation, which may add $\sim$2--4\%), with a second-law efficiency of $\sim$40.7\% based on the $\ce{TiO2 -> Ti + O2}$ reversible work of 4{,}550~kWh/ton-Ti. A Monte Carlo analysis with a broad current-efficiency distribution ($\eta_I \sim \mathrm{Tri}(0.50, 0.75, 0.88)$) yields $P(W < 14{,}000) = 85.8\%$, highlighting significant sensitivity to this unvalidated parameter. All quantitative results are theoretical predictions based on ideal solution assumptions and literature parameters. The process viability hinges critically on two unvalidated prerequisites: (i) sufficient MgO/CaO solubility ($\gtrsim$0.5~wt\%) at 600~$^{\circ}$C in the quaternary melt to close the salt loop, and (ii) sustained current efficiency $>$0.70 via a durable oxygen-evolving inert anode. Experimental validation of these bounds is mandatory before any pilot-scale assessment.}
-
-\keywords{Titanium production; Quaternary chloride molten salt; Bimetallic complementary reduction; Electrochemical co-deposition; Thermodynamic modeling; Shrinking core kinetics}
+\begin{abstract}
+This work establishes an electrochemical design basis for titanium production by in situ co-deposition of Mg and Ca, acting as cyclic complementary reductants of $\ce{TiO2}$, in a quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ melt. Thermodynamic calculations at 600~$^{\circ}$C give $\Delta G^{\circ} = -231$ to $-308$~kJ/mol for the reduction pathways, with Ca deoxidation reaching 20.2~ppm O versus 3908~ppm for Mg. The $\ce{Ca^{2+}/Na+}$ co-deposition window is 120~mV (ideal) and remains positive (74.9--147.1~mV) for $\gamma_{\ce{CaCl2}} = 0.3$--1.0. Mass-transport analysis yields a Mg limiting current density of 0.56~A/cm$^2$; Mg--Ca co-deposition spans 0.56--1.31~A/cm$^2$, the equimolar deposit of the material balance requires $j \approx 1.1$~A/cm$^2$, and the 0.9~V ohmic budget constrains the electrode gap to $\lesssim$1.1~cm. The shrinking-core model predicts complete reduction of 100~$\mu$m particles in 6.3~min. Conditional on $\eta_I > 0.70$, the net equivalent energy consumption is 11{,}191~kWh/ton-Ti; a Monte Carlo analysis with $\eta_I \sim \mathrm{Tri}(0.50, 0.75, 0.88)$ yields $P(W < 14{,}000) = 85.8\%$. All results are theoretical predictions; viability hinges on $\ce{MgO}$/$\ce{CaO}$ solubility $\geq$0.5~wt\% at 600~$^{\circ}$C and a durable oxygen-evolving inert anode.
+\end{abstract}
 
 \maketitle
 
-\section{Introduction}
+\newpage
+
+\section*{Introduction}
 
 Titanium is a strategic material for aerospace, marine engineering, and energy applications owing to its low density, high specific strength, and exceptional corrosion resistance. However, widespread civilian use remains limited by high production costs. The Kroll process, the dominant industrial route, requires multiple batch operations---chlorination, magnesiothermic reduction, and vacuum distillation---resulting in high energy consumption, severe pollution, and intermittent production \cite{kroll1937,ji2026}.
 
@@ -47,7 +52,7 @@ This paper proposes a quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ molten salt system 
 
 \begin{itemize}
 \item To the authors' knowledge, the first proposal of in-situ electrolytic co-deposition of Mg and Ca in a quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ molten salt for titanium production, combining Mg's kinetic advantage with Ca's thermodynamic deoxidation depth in a single closed-loop process. While bimetallic Mg--Ca reductants (e.g., $\ce{CaMg2}$ \cite{lee2025}), $\ce{MgCl2}$-based deoxidation \cite{taninouchi2016}, and electrolytic Ca regeneration in the OS process \cite{ono2002} have been studied, the in-situ electrolytic co-deposition of both Mg and Ca in a quaternary system is novel.
-\item The CALPHAD-derived Redlich--Kister parameters of the Mg--Ca system adopted in the assessment of Zhang et al.\ \cite{zhang2008mgce} are introduced to characterize alloy mixing behavior. Additionally, the robustness of the $\ce{Ca^{2+}/Na+}$ co-deposition window is evaluated by combining Nernst-equation calculation, activity-coefficient sensitivity analysis, and overpotential qualitative analysis.
+\item The CALPHAD-derived Redlich--Kister parameters of the Mg--Ca system adopted in the assessment of Zhang et al.\ \cite{zhang2008mgce} are introduced to characterize alloy mixing behavior. Additionally, the robustness of the $\ce{Ca^{2+}/Na+}$ co-deposition window is evaluated by combining Nernst-equation calculation, activity-coefficient sensitivity analysis, and overpotential qualitative analysis, and a cathode diffusion-layer analysis (limiting current densities, Mg--Ca co-deposition regimes, and the ohmic-drop cell-geometry constraint) converts the equilibrium window into an operating current-density design map.
 \item Kinetic prediction via the shrinking core model with multi-parameter sensitivity analysis ($D = 1$--$3\times10^{-9}$~m$^2$/s, $\varepsilon = 0.1$--0.5, $\tau = 1.5$--5.0), providing reduction time estimates for process design.
 \item Full-process energy and exergy analysis (11{,}191~kWh/ton-Ti net consumption, \emph{theoretical prediction conditional on $\eta_I > 0.70$}; process energy efficiency 54.6\%, electrolysis energy fraction 94.0\%) with preliminary comparison to both Kroll and FFC routes, acknowledging boundary differences.
 \end{itemize}
@@ -100,13 +105,13 @@ $p_{\mathrm{O}^{2-}}$ & Negative logarithm of oxide ion activity, $-\log_{10}(a_
 $n_{\mathrm{Ti}}$ & Moles of Ti per metric ton ($\mathrm{mol/ton}$) \\
 \end{tabular}
 
-\section{Process Description}
+\section*{Process Description}
 
 The proposed process is designed over a 580--650~$^{\circ}$C operating range, with 600~$^{\circ}$C taken as the nominal \emph{design-basis} temperature at which all thermodynamic and kinetic figures herein are reported. Because of the liquidus uncertainty (Limitations~(4)), a pilot-scale operating floor of $\geq$620~$^{\circ}$C is recommended; the shift from 600 to 620~$^{\circ}$C changes the energy and co-deposition-window figures by only a few percent and does not alter the qualitative conclusions. The melt is a quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ mixture. $\ce{MgCl2}$ serves as the primary salt and magnesium source; $\ce{CaCl2}$ enhances oxide solubility and lowers the melting point; NaCl and KCl act as fluxes to improve ionic conductivity and reduce viscosity \cite{sato1999}. The operational cycle consists of: (i) electrolytic co-deposition of Mg and Ca at the cathode; (ii) reduction of $\ce{TiO2}$ powder by the co-deposited metals; (iii) dissolution of $\ce{MgO}$ and $\ce{CaO}$ in the melt; and (iv) electrolytic regeneration of $\ce{Mg^{2+}}$ and $\ce{Ca^{2+}}$ with oxygen evolution at the anode. The net reaction is $\ce{TiO2 -> Ti + O2}$, driven by electrical energy, with Mg and Ca acting as cyclic mediators.
 
-\section{Thermodynamic Framework}
+\section*{Thermodynamic Framework}
 
-\subsection{Data Sources and Computational Methods}
+\subsection*{Data Sources and Computational Methods}
 \label{subsec:data}
 
 All thermodynamic calculations use standard thermochemical data from Barin \cite{barin1995} and Kubaschewski and Alcock \cite{kubaschewski1979}, together with the CALPHAD (Calculation of Phase Diagrams) assessment of the Ti--O system by Waldner and Eriksson \cite{waldner1999}. Temperature-dependent Gibbs free energies are computed via the Gibbs-Helmholtz relation:
@@ -121,18 +126,18 @@ E_{\mathrm{red}} = E^{\circ}_{\mathrm{red}} + \frac{RT}{nF}\ln(a_{\mathrm{M}^{n+
 \end{equation}
 The standard-state data from Barin \cite{barin1995} are compiled for the range 298--1000~K; their use at 873~K (600~$^{\circ}$C) involves Cp extrapolation through the solid--liquid transition for Mg and Ca, which is expected to introduce an uncertainty of approximately $\pm$1--2~kJ/mol in $\Delta G^{\circ}$. All calculations are implemented in Python with CSV output for data traceability.
 
-\subsection{Salt Composition Design and Liquidus Estimation}
+\subsection*{Salt Composition Design and Liquidus Estimation}
 
 The liquidus temperature of the quaternary system is estimated using the ideal solution model. For each component $i$, the liquidus condition is:
 \begin{equation}
 \label{eq:liquidus}
 x_i \le \exp\!\left[-\frac{\Delta H_{\mathrm{fus},i}}{R}\left(\frac{1}{T} - \frac{1}{T_{m,i}}\right)\right]
 \end{equation}
-with $T_{m,i}$ and $\Delta H_{\mathrm{fus},i}$ for $\ce{MgCl2}$ (987~K/43.1~kJ/mol), $\ce{CaCl2}$ (1045~K/28.5~kJ/mol), NaCl (1074~K/28.2~kJ/mol), and KCl (1043~K/26.6~kJ/mol). The recommended composition ($x_{\ce{MgCl2}}=0.30$, $x_{\ce{CaCl2}}=0.40$, $x_{\ce{NaCl}}=0.15$, $x_{\ce{KCl}}=0.15$) yields a calculated liquidus of 544~$^{\circ}$C, 36~$^{\circ}$C below the target minimum operating temperature (Fig.~\ref{fig:liquidus}). The composition was selected based on three criteria: (i) the calculated liquidus must remain $>$30~$^{\circ}$C below the target operating temperature floor (580~$^{\circ}$C), providing a safety margin against freezing; (ii) the $\ce{Ca^{2+}/Na+}$ co-deposition window must exceed 50~mV (Sec.~\ref{subsec:activity}); and (iii) the $\ce{CaCl2}$ content must be sufficient to dissolve the by-product oxides ($\ce{MgO}$, $\ce{CaO}$), based on the well-established solubility of alkaline earth oxides in $\ce{CaCl2}$-rich melts \cite{ono2002}. The selected composition satisfies all three: liquidus = 544~$^{\circ}$C (margin = 36~$^{\circ}$C), co-deposition window $\geq$74.9~mV across the full sensitivity range (Table~\ref{tab:window_sens}), and $x_{\ce{CaCl2}} = 0.40$ provides theoretically feasible oxide solubility pending 600~$^{\circ}$C experimental validation (see Sec.~\ref{subsec:dissolution}).
+with $T_{m,i}$ and $\Delta H_{\mathrm{fus},i}$ for $\ce{MgCl2}$ (987~K/43.1~kJ/mol), $\ce{CaCl2}$ (1045~K/28.5~kJ/mol), NaCl (1074~K/28.2~kJ/mol), and KCl (1043~K/26.6~kJ/mol). The recommended composition ($x_{\ce{MgCl2}}=0.30$, $x_{\ce{CaCl2}}=0.40$, $x_{\ce{NaCl}}=0.15$, $x_{\ce{KCl}}=0.15$) yields a calculated liquidus of 544~$^{\circ}$C, 36~$^{\circ}$C below the target minimum operating temperature (Fig.~\ref{fig:liquidus}). The composition was selected based on three criteria: (i) the calculated liquidus must remain $>$30~$^{\circ}$C below the target operating temperature floor (580~$^{\circ}$C), providing a safety margin against freezing; (ii) the $\ce{Ca^{2+}/Na+}$ co-deposition window must exceed 50~mV (see the Activity Coefficient Sensitivity Analysis section); and (iii) the $\ce{CaCl2}$ content must be sufficient to dissolve the by-product oxides ($\ce{MgO}$, $\ce{CaO}$), based on the well-established solubility of alkaline earth oxides in $\ce{CaCl2}$-rich melts \cite{ono2002}. The selected composition satisfies all three: liquidus = 544~$^{\circ}$C (margin = 36~$^{\circ}$C), co-deposition window $\geq$74.9~mV across the full sensitivity range (Table~\ref{tab:window_sens}), and $x_{\ce{CaCl2}} = 0.40$ provides theoretically feasible oxide solubility pending 600~$^{\circ}$C experimental validation (see the Oxide Dissolution section).
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.95\linewidth]{fig_liquidus.eps}
+\includegraphics[width=0.95\linewidth]{figure1.eps}
 \caption{Liquidus projection of the quaternary $\ce{MgCl2-CaCl2-NaCl}$ system at $x_{\ce{KCl}}=0.15$ (ideal solution model).}
 \label{fig:liquidus}
 \end{figure}
@@ -158,7 +163,7 @@ $\ce{NaCl-KCl}$ & solid solution & $\sim$657 \\
 \end{tabular}
 \end{table}
 
-\subsection{Activity Coefficient Sensitivity Analysis}
+\subsection*{Activity Coefficient Sensitivity Analysis}
 \label{subsec:activity}
 
 In the quaternary chloride melt, ion-ion interactions cause deviations from ideality ($\gamma \neq 1$). Experimental activity coefficient data for the quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ system at 600~$^{\circ}$C are limited in the open literature. Thermodynamic optimization of the $\ce{MgCl2-NaCl}$ binary system \cite{chartrand2000} reports negative deviation ($\gamma < 1$) due to strong $\ce{Mg^{2+}-Cl^{-}}$ interactions. By analogy, $\ce{CaCl2-NaCl}$ and other charge-unsymmetrical chloride mixtures are expected to exhibit similar negative deviation, as established by Kleppa's thermochemical studies of charge-unsymmetrical halide melts \cite{kleppa1966}, though direct activity measurements in the quaternary system remain scarce. The modified quasichemical model (MQM) used in the FactSage Salt database \cite{pelton2000mqm} formally captures these effects, but the database parameters are not publicly available.
@@ -208,7 +213,7 @@ $\gamma_{\ce{CaCl2}}$ & $\gamma_{\ce{NaCl}}$ & Window (mV) & Assessment \\
 \end{tabular}
 \end{table}
 
-\subsection{Mg--Ca Liquid Alloy Thermodynamic Parameters}
+\subsection*{Mg--Ca Liquid Alloy Thermodynamic Parameters}
 \label{subsec:MgCa}
 
 The in-situ co-deposited Mg--Ca forms a liquid alloy at 600~$^{\circ}$C (above the Mg--Ca eutectic at $\approx$517~$^{\circ}$C). The Mg--Ca system has been assessed by Nayeb-Hashemi and Clark \cite{nayeb1987} and re-assessed by Zhang et al. \cite{zhang2008mgce} using the CALPHAD method. The liquid phase is described by a Redlich--Kister expansion:
@@ -225,9 +230,9 @@ At 600~$^{\circ}$C (873~K), the mixing thermodynamics are:
 \end{equation}
 At equimolar composition: $\Delta G_{\mathrm{mix}} = -9.69$~kJ/mol, $\Delta H_{\mathrm{mix}} = -4.66$~kJ/mol, $\Delta S_{\mathrm{mix}} = 5.76$~J/(mol$\cdot$K), and activity coefficients $\gamma_{\mathrm{Mg(alloy)}} = \gamma_{\mathrm{Ca(alloy)}} = 0.526$. The negative $\Delta G_{\mathrm{mix}}$ indicates spontaneous alloy formation, suggesting homogeneous Mg--Ca co-deposition at the cathode. The strong negative deviation ($\gamma \ll 1$) suggests that the Mg--Ca liquid alloy is thermodynamically stable, which is favorable for sustained complementary reduction. The regular solution approximation ($L_1 = 0$) introduces a minor deviation: at equimolar composition, the neglected $L_1$ term contributes $L_1 \cdot (x_{\mathrm{Mg}} - x_{\mathrm{Ca}}) \cdot x_{\mathrm{Mg}} x_{\mathrm{Ca}} = 0$ at $x = 0.5$ (since $x_{\mathrm{Mg}} - x_{\mathrm{Ca}} = 0$), and the maximum deviation occurs off-equimolar compositions at $<$1~kJ/mol, which does not affect the qualitative conclusion of spontaneous mixing. Additionally, the regular-solution approximation neglects ordering effects associated with the stable $\ce{Mg2Ca}$ intermetallic; the resulting $\Delta G_{\mathrm{mix}}$ uncertainty is estimated at $\pm$2--3~kJ/mol near the $\ce{Mg2Ca}$ stoichiometry, but the qualitative conclusion of spontaneous alloy formation remains valid.
 
-\section{Results and Discussion}
+\section*{Results and Discussion}
 
-\subsection{Reduction Thermodynamics and Deoxidation Limits}
+\subsection*{Reduction Thermodynamics and Deoxidation Limits}
 
 Table~\ref{tab:thermo} presents the calculated $\Delta G^{\circ}$ and $\Delta H^{\circ}$ for three reduction pathways at 550--650~$^{\circ}$C.
 
@@ -280,7 +285,7 @@ Ca / 650~$^{\circ}$C & $-44.7$ & 0.0029 & 29.4 & 0.0112 & 111.8 \\
 \end{tabular}
 \end{table}
 
-\subsection{\texorpdfstring{$\ce{Ca^{2+}/Na+}$}{Ca2+/Na+} Co-Deposition Window}
+\subsection*{\texorpdfstring{$\ce{Ca^{2+}/Na+}$}{Ca2+/Na+} Co-Deposition Window}
 
 Table~\ref{tab:Ed} lists the standard decomposition voltages ($E_d$) and the corresponding reduction potentials ($E^{\circ}_{\mathrm{red}} = -E_d$) of the four pure chlorides at 600~$^{\circ}$C, all referenced to the $\ce{Cl2/Cl-}$ electrode.
 
@@ -301,40 +306,68 @@ $\ce{KCl}$   & $-354.6$ & 3.675 & $-3.675$ \\
 \end{tabular}
 \end{table}
 
-Among the pure salts, $\ce{Mg^{2+}}$ is the easiest to reduce ($E^{\circ}_{\mathrm{red}} = -2.601$~V), while $\ce{K+}$ is the hardest ($-3.675$~V). Critically, $\ce{Ca^{2+}}$ and $\ce{Na+}$ have nearly identical reduction potentials in pure salts: $E^{\circ}_{\mathrm{red}}(\ce{Ca^{2+}/Ca}) - E^{\circ}_{\mathrm{red}}(\ce{Na+/Na}) = +12$~mV, meaning $\ce{Ca^{2+}}$ is marginally easier to reduce in pure salts. This $\pm$12~mV gap is within the $\approx\pm$2~kJ/mol uncertainty of the underlying $\Delta G^{\circ}_f$ data (Sec.~\ref{subsec:data}), which translates to $\approx\pm$20~mV for a monovalent chloride; the intrinsic Ca/Na preference is therefore weak, and the practical co-deposition selectivity is dominated by the concentration ratio ($x_{\ce{CaCl2}}/x_{\ce{NaCl}} = 0.40/0.15$) rather than by the intrinsic potential difference. The Downs process operates with a $\ce{CaCl2}$-majority electrolyte ($\sim$67~wt\% $\ce{CaCl2}$ / 33~wt\% $\ce{NaCl}$, roughly equimolar on a molar basis), yet deposits Na, because $\ce{Ca^{2+}}$ reduction is kinetically inhibited (large activation overpotential) relative to $\ce{Na+}$. The pure-salt near-identical potentials thus bear only superficial similarity to the Downs process: the Downs selectivity is \emph{kinetic} in origin, whereas the present $\ce{CaCl2}$-rich composition ($x_{\ce{CaCl2}}/x_{\ce{NaCl}} = 0.40/0.15$) adds a $\sim$120~mV \emph{thermodynamic} bias favoring Ca.
+Among the pure salts, $\ce{Mg^{2+}}$ is the easiest to reduce ($E^{\circ}_{\mathrm{red}} = -2.601$~V), while $\ce{K+}$ is the hardest ($-3.675$~V). Critically, $\ce{Ca^{2+}}$ and $\ce{Na+}$ have nearly identical reduction potentials in pure salts: $E^{\circ}_{\mathrm{red}}(\ce{Ca^{2+}/Ca}) - E^{\circ}_{\mathrm{red}}(\ce{Na+/Na}) = +12$~mV, meaning $\ce{Ca^{2+}}$ is marginally easier to reduce in pure salts. This $\pm$12~mV gap is within the $\approx\pm$2~kJ/mol uncertainty of the underlying $\Delta G^{\circ}_f$ data (see Data Sources and Computational Methods), which translates to $\approx\pm$20~mV for a monovalent chloride; the intrinsic Ca/Na preference is therefore weak, and the practical co-deposition selectivity is dominated by the concentration ratio ($x_{\ce{CaCl2}}/x_{\ce{NaCl}} = 0.40/0.15$) rather than by the intrinsic potential difference. The Downs process operates with a $\ce{CaCl2}$-majority electrolyte ($\sim$67~wt\% $\ce{CaCl2}$ / 33~wt\% $\ce{NaCl}$, roughly equimolar on a molar basis), yet deposits Na, because $\ce{Ca^{2+}}$ reduction is kinetically inhibited (large activation overpotential) relative to $\ce{Na+}$. The pure-salt near-identical potentials thus bear only superficial similarity to the Downs process: the Downs selectivity is \emph{kinetic} in origin, whereas the present $\ce{CaCl2}$-rich composition ($x_{\ce{CaCl2}}/x_{\ce{NaCl}} = 0.40/0.15$) adds a $\sim$120~mV \emph{thermodynamic} bias favoring Ca.
 
-In the recommended quaternary composition ($x_{\ce{MgCl2}}=0.30$, $x_{\ce{CaCl2}}=0.40$, $x_{\ce{NaCl}}=0.15$, $x_{\ce{KCl}}=0.15$), Nernst concentration correction shifts the effective reduction potentials. The Nernst-corrected window $\Delta E = E_{\mathrm{red}}(\ce{Ca^{2+}}) - E_{\mathrm{red}}(\ce{Na+})$ becomes +120~mV under the ideal solution assumption (calculated using the $E^{\circ}_{\mathrm{red}}$ values from Table~\ref{tab:Ed} at 600~$^{\circ}$C), meaning $\ce{Ca^{2+}}$ now reduces before $\ce{Na+}$. As shown in Section~\ref{subsec:activity}, the activity coefficient sensitivity analysis supports that this window remains positive (74.9--147.1~mV) across all 18 tested $\gamma$ combinations ($\gamma_{\ce{CaCl2}} = 0.3$--1.0), suggesting the robustness of the composition design.
+In the recommended quaternary composition ($x_{\ce{MgCl2}}=0.30$, $x_{\ce{CaCl2}}=0.40$, $x_{\ce{NaCl}}=0.15$, $x_{\ce{KCl}}=0.15$), Nernst concentration correction shifts the effective reduction potentials. The Nernst-corrected window $\Delta E = E_{\mathrm{red}}(\ce{Ca^{2+}}) - E_{\mathrm{red}}(\ce{Na+})$ becomes +120~mV under the ideal solution assumption (calculated using the $E^{\circ}_{\mathrm{red}}$ values from Table~\ref{tab:Ed} at 600~$^{\circ}$C), meaning $\ce{Ca^{2+}}$ now reduces before $\ce{Na+}$. As shown by the activity-coefficient sensitivity analysis, the window remains positive (74.9--147.1~mV) across all 18 tested $\gamma$ combinations ($\gamma_{\ce{CaCl2}} = 0.3$--1.0), suggesting the robustness of the composition design.
 
 The above window is an \emph{equilibrium} quantity. Under polarization, the effective deposition potentials shift by the activation overpotential $\eta_{\mathrm{act}} = (RT/\alpha nF)\,\mathrm{asinh}(j/2j_0)$, where $j$ is the current density and $j_0$ the exchange current density. Adopting order-of-magnitude $j_0$ values typical of metal deposition in chloride melts ($j_0^{\mathrm{Ca}}\approx 0.05$~A/cm$^2$, $j_0^{\mathrm{Na}}\approx 0.03$~A/cm$^2$, transfer coefficient $\alpha = 0.5$) \cite{pletcher1990}, the activation overpotential of the monovalent $\ce{Na+}$ grows far faster than that of the divalent $\ce{Ca^{2+}}$ (Fig.~\ref{fig:overpotential}): at $j = 0.5$~A/cm$^2$, $\eta_{\mathrm{act}}^{\mathrm{Ca}} \approx 174$~mV versus $\eta_{\mathrm{act}}^{\mathrm{Na}} \approx 424$~mV. The effective window $E_{\mathrm{eff}}(\ce{Ca^{2+}}) - E_{\mathrm{eff}}(\ce{Na+}) = \Delta E + (\eta_{\mathrm{Na}} - \eta_{\mathrm{Ca}})$ therefore \emph{widens} from 120~mV (equilibrium) to $\sim$370~mV at $j = 0.5$~A/cm$^2$, and to $\sim$470~mV at $j = 2$~A/cm$^2$. Kinetic polarization thus favors Ca co-deposition, but this estimate is qualitative and its sign is not established: the assumed $j_0^{\mathrm{Ca}} > j_0^{\mathrm{Na}}$ favors Ca, yet the Downs cell deposits Na from a $\ce{CaCl2}$-majority melt, indicating that $\ce{Ca^{2+}}$ reduction may instead be kinetically \emph{slower}, which would \emph{narrow} rather than widen the practical window. The $j_0$ and $\alpha$ values for the quaternary melt are unknown and require cyclic-voltammetry measurement, so the direction of the kinetic correction must be established before the enlarged window of Fig.~\ref{fig:overpotential} can be relied upon; concentration polarization at very high $j$ could additionally reverse the trend by depleting $\ce{Ca^{2+}}$ at the cathode.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.85\linewidth]{fig_overpotential_bv.eps}
+\includegraphics[width=0.85\linewidth]{figure2.eps}
 \caption{Butler--Volmer activation overpotentials of $\ce{Ca^{2+}}$ ($n=2$) and $\ce{Na+}$ ($n=1$) versus current density at 600~$^{\circ}$C ($\alpha=0.5$, order-of-magnitude $j_0$). The dashed line is the kinetic enlargement of the co-deposition window, $\eta_{\mathrm{Na}} - \eta_{\mathrm{Ca}}$.}
 \label{fig:overpotential}
 \end{figure}
 
-\emph{Mg/Ca co-deposition ratio.} The analysis above concerns only the $\ce{Ca^{2+}/Na+}$ selectivity. The far larger $\ce{Mg^{2+}/Ca^{2+}}$ gap is not addressed by the equilibrium window: at the recommended composition ($x_{\ce{MgCl2}}=0.30$, $x_{\ce{CaCl2}}=0.40$), the Nernst-corrected potentials give $E_{\mathrm{red}}(\ce{Ca^{2+}}) - E_{\mathrm{red}}(\ce{Mg^{2+}}) \approx -816$~mV, i.e., Mg reduces $\sim$816~mV earlier than Ca. The equimolar Mg--Ca alloy assumed in Sec.~\ref{subsec:MgCa} and in the material balance (Table~\ref{tab:mbalance}) is therefore \emph{not} a thermodynamic outcome: it can only be approached when Mg deposition reaches its mass-transfer (diffusion) limit at the cathode, after which Ca co-deposits, as in conventional alloy co-deposition (e.g., Zn--Ni, Li--Na). The actual Mg/Ca ratio is thus set by the operating current density relative to the Mg limiting current density---a design variable requiring experimental determination---and the 1:1 assumption should be regarded as a bounding idealization.
+\emph{Mg/Ca co-deposition ratio.} The analysis above concerns only the $\ce{Ca^{2+}/Na+}$ selectivity. The far larger $\ce{Mg^{2+}/Ca^{2+}}$ gap is not addressed by the equilibrium window: at the recommended composition ($x_{\ce{MgCl2}}=0.30$, $x_{\ce{CaCl2}}=0.40$), the Nernst-corrected potentials give $E_{\mathrm{red}}(\ce{Ca^{2+}}) - E_{\mathrm{red}}(\ce{Mg^{2+}}) \approx -816$~mV, i.e., Mg reduces $\sim$816~mV earlier than Ca. The equimolar Mg--Ca alloy assumed in the Mg--Ca alloy thermodynamic analysis and in the material balance (Table~\ref{tab:mbalance}) is therefore \emph{not} a thermodynamic outcome: it can only be approached when Mg deposition reaches its mass-transfer (diffusion) limit at the cathode, after which Ca co-deposits, as in conventional alloy co-deposition (e.g., Zn--Ni, Li--Na). The actual Mg/Ca ratio is thus set by the operating current density relative to the Mg limiting current density, as quantified in the following section, and the 1:1 assumption should be regarded as a bounding idealization.
 
-\subsection{\texorpdfstring{E--$p\ce{O^{2-}}$}{E-pO2-} Stability Diagram and Impurity Separation}
+\subsection*{Cathode Mass Transport and Operating Current Density}
+\label{subsec:masstransport}
+
+The qualitative argument above is made quantitative through a diffusion-layer analysis of the cathode. For each depositing cation, the limiting current density is
+\begin{equation}
+\label{eq:jlim}
+j_{\mathrm{lim},i} = \frac{n F D_i\, c_{i,b}}{\delta}
+\end{equation}
+where $D_i$ is the melt-phase diffusivity, $c_{i,b}$ the bulk molar concentration, and $\delta$ the cathodic diffusion-layer thickness. The bulk concentrations follow from the melt density and composition: with $\rho \approx 1.8$~g/cm$^3$ and $M_{\mathrm{avg}} \approx 92.9$~g/mol at 600~$^{\circ}$C \cite{sato1999}, $c_{\mathrm{melt}} \approx 1.94\times10^{4}$~mol/m$^3$, giving $c_{\ce{MgCl2}} \approx 5.8\times10^{3}$~mol/m$^3$ and $c_{\ce{CaCl2}} \approx 7.8\times10^{3}$~mol/m$^3$ at the recommended composition. Taking $D = 1.0\times10^{-9}$~m$^2$/s, representative of divalent cations in chloride melts and consistent with the diffusivity range adopted in the SCM analysis \cite{fray2000,yan2007}, and $\delta = 200~\mu$m for an unstirred-to-mildly-agitated melt, Eq.~\ref{eq:jlim} gives $j_{\mathrm{lim,Mg}} = 0.56$~A/cm$^2$ and $j_{\mathrm{lim,Ca}} = 0.75$~A/cm$^2$. The physical basis of this $\delta$ value follows from the melt hydrodynamics: chloride melts near their liquidus have viscosities of order 1--3~mPa$\cdot$s, so with $\rho \approx 1.8$~g/cm$^3$ the Schmidt number is $Sc = \mu/(\rho D) \sim 10^{3}$, and natural-convection or mild-stirring correlations for centimeter-scale electrodes give $\mathrm{Sh} = L/\delta \sim 10$--$10^{2}$, placing $\delta$ in the $10^{2}$--$10^{3}$~$\mu$m range, consistent with the adopted 200~$\mu$m.
+
+Figure~\ref{fig:current_regimes}a maps the resulting deposition regimes. In Regime~I ($j < j_{\mathrm{lim,Mg}}$), Mg deposits alone under activation control. In Regime~II ($j_{\mathrm{lim,Mg}} < j < j_{\mathrm{lim,Mg}} + j_{\mathrm{lim,Ca}} = 1.31$~A/cm$^2$), Mg deposition is mass-transfer-limited and the additional current is carried by $\ce{Ca^{2+}}$, so the Ca molar fraction of the deposit rises as
+\begin{equation}
+\label{eq:xca}
+x_{\mathrm{Ca}} = 1 - \frac{j_{\mathrm{lim,Mg}}}{j}
+\end{equation}
+both metals being divalent, the charge and mole fractions coincide. The equimolar alloy of the material balance (Table~\ref{tab:mbalance}) is thus obtained at $j = 2\,j_{\mathrm{lim,Mg}} \approx 1.1$~A/cm$^2$---a concrete operating design point in place of the earlier bounding idealization. In Regime~III ($j > 1.31$~A/cm$^2$), $\ce{Na+}$ begins to co-deposit; the Ca fraction is then capped at 57\%, and the Na co-deposition loss mechanism (iii) of the current-efficiency budget is triggered. The 816~mV Mg/Ca equilibrium gap is consistent with this picture: the concentration overpotential required to deplete $\ce{Mg^{2+}}$ at the cathode surface, $\eta_{\mathrm{conc}} = (RT/2F)\ln(c_b/c_s)$, reaches 816~mV only at $c_s/c_b = 3.8\times10^{-10}$, i.e., Mg deposition becomes essentially fully diffusion-limited well before the potential is driven to the $\ce{Ca^{2+}/Ca}$ onset, which is precisely the condition under which Regime~II exists.
+
+The analysis also fixes the cell-geometry constraint implicit in the ohmic term of the voltage budget (see the Material and Energy Balance section). With a representative melt conductivity $\kappa = 1.4$~S/cm \cite{sato1999}, the ohmic drop $jL/\kappa$ at $j \approx 1.1$~A/cm$^2$ is 0.40, 0.80, and 2.00~V for interelectrode gaps $L$ = 0.5, 1.0, and 2.5~cm, respectively (Fig.~\ref{fig:current_regimes}b). The 0.90~V ohmic budget allocated in the energy analysis therefore requires a melt path of $L \lesssim 1.1$~cm (tighter still once contact and busbar resistances are included), pointing to a close-spaced or diaphragm-integrated electrode configuration; at the 2.5~cm scale typical of many laboratory cells, the melt ohmic term alone would consume half of the 4.1~V cell voltage.
+
+Because $j_{\mathrm{lim}} \propto D/\delta$, the regime boundaries inherit the uncertainty of the transport parameters: over $D = 0.3$--$3\times10^{-9}$~m$^2$/s and $\delta = 100$--$500~\mu$m, $j_{\mathrm{lim,Mg}}$ spans 0.07--3.4~A/cm$^2$, an order of magnitude on either side of the nominal value. The operating current density must therefore be established for the actual melt---e.g., by cyclic voltammetry at a rotating or microelectrode---before the co-deposition design point can be fixed; the design framework (Eqs.~\ref{eq:jlim}--\ref{eq:xca}) then applies unchanged.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.95\linewidth]{figure3.eps}
+\caption{Cathode co-deposition design map at 600~$^{\circ}$C ($D = 1.0\times10^{-9}$~m$^2$/s, $\delta = 200~\mu$m). (a) Deposition regimes versus current density: Regime~I, Mg only; Regime~II, Mg--Ca co-deposition with Mg at its limiting current and the Ca fraction given by Eq.~\ref{eq:xca} (solid), extrapolated beyond the Na$^+$ onset (dashed); Regime~III, Na$^+$ co-deposition onset. The marked point is the equimolar-alloy design point $j = 2\,j_{\mathrm{lim,Mg}} \approx 1.1$~A/cm$^2$. (b) Ohmic drop $jL/\kappa$ versus current density for interelectrode gaps $L$ = 0.5, 1.0, and 2.5~cm at $\kappa = 1.4$~S/cm; the 0.9~V budget requires $L \lesssim 1.1$~cm.}
+\label{fig:current_regimes}
+\end{figure}
+
+\subsection*{\texorpdfstring{E--$p\ce{O^{2-}}$}{E-pO2-} Stability Diagram and Impurity Separation}
 
 The E--$p\ce{O^{2-}}$ diagram (Fig.~\ref{fig:EpO2}) plots the M/MO equilibrium lines according to:
 \begin{equation}
 \label{eq:epo2}
 E = E^{\circ}_{\mathrm{red}} + \frac{RT}{2F}\ln(10)\cdot p\ce{O^{2-}}
 \end{equation}
-where $p\ce{O^{2-}} = -\log_{10}(a_{\ce{O^{2-}}})$ and $E^{\circ}_{\mathrm{red}} = \Delta G^{\circ}_{f,\mathrm{MO}}/(nF)$ is the standard reduction potential referenced to the $\ce{O2/O^{2-}}$ couple ($p_{\ce{O2}}=1$~atm, $a_{\ce{O^{2-}}}=1$), with $n = 2$ electrons transferred per $\ce{O^{2-}}$ in the oxide formula unit ($n=4$ for $\ce{TiO2}$ and $\ce{SiO2}$, $n=6$ for $\ce{Fe2O3}$ and $\ce{Al2O3}$, $n=2$ for $\ce{MgO}$ and $\ce{CaO}$). The derivation proceeds as follows: for a divalent-oxide half-reaction $\ce{MO + 2e^- -> M + O^{2-}}$, the Nernst equation gives $E = E^{\circ}_{\mathrm{red}} - (RT/2F)\ln(a_{\ce{O^{2-}}})$; substituting $\ln(a_{\ce{O^{2-}}}) = -\ln(10)\cdot p\ce{O^{2-}}$ yields the above equation with a positive slope. The Nernst slope at 600~$^{\circ}$C is 86.6~mV per $p\ce{O^{2-}}$ unit.
+where $p\ce{O^{2-}} = -\log_{10}(a_{\ce{O^{2-}}})$ and $E^{\circ}_{\mathrm{red}} = \Delta G^{\circ}_{f,\mathrm{MO}}/(nF)$ is the standard reduction potential referenced to the $\ce{O2/O^{2-}}$ couple ($p_{\ce{O2}}=1$~atm, $a_{\ce{O^{2-}}}=1$), with $n$ the number of electrons transferred per oxide formula unit ($n=2$ for $\ce{MgO}$ and $\ce{CaO}$, $n=4$ for $\ce{TiO2}$ and $\ce{SiO2}$, $n=6$ for $\ce{Fe2O3}$ and $\ce{Al2O3}$). The derivation proceeds as follows: for a divalent-oxide half-reaction $\ce{MO + 2e^- -> M + O^{2-}}$, the Nernst equation gives $E = E^{\circ}_{\mathrm{red}} - (RT/2F)\ln(a_{\ce{O^{2-}}})$; substituting $\ln(a_{\ce{O^{2-}}}) = -\ln(10)\cdot p\ce{O^{2-}}$ yields the above equation with a positive slope. The slope is universal for all oxides: for a higher oxide such as $\ce{TiO2 + 4e^- -> Ti + 2O^{2-}}$, each $\ce{O^{2-}}$ exchanged still carries two electrons, so the coefficient of $p\ce{O^{2-}}$ remains $RT/2F$ and the stoichiometry enters only the intercept through $n$ in $E^{\circ}_{\mathrm{red}}$. All M/MO lines in Fig.~\ref{fig:EpO2} are therefore parallel, with the common slope of 86.6~mV per $p\ce{O^{2-}}$ unit at 600~$^{\circ}$C.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.95\linewidth]{fig_E_pO2.eps}
+\includegraphics[width=0.95\linewidth]{figure4.eps}
 \caption{E--$p\ce{O^{2-}}$ stability diagram at 600~$^{\circ}$C. All potentials are referenced to the $\ce{O2/O^{2-}}$ electrode ($p_{\ce{O2}}=1$~atm, $a_{\ce{O^{2-}}}=1$), not the $\ce{Cl2/Cl-}$ electrode used in Table~\ref{tab:Ed}. Lines based on pure oxide standard states; in real molten salt, $\ce{Ca^{2+}}$--$\ce{O^{2-}}$ complexation lowers $a_{\ce{O^{2-}}}$, shifting all potentials positively, but the relative reduction order ($\ce{Fe2O3} > \ce{SiO2} > \ce{TiO2} > \ce{Al2O3} > \ce{MgO} > \ce{CaO}$) is preserved.}
 \label{fig:EpO2}
 \end{figure}
 
 The reduction potentials follow: $\ce{Fe2O3}$ ($-1.01$~V) $>$ $\ce{SiO2}$ ($-1.95$~V) $>$ $\ce{TiO2}$ ($-2.03$~V) $>$ $\ce{Al2O3}$ ($-2.42$~V) $>$ $\ce{MgO}$ $>$ $\ce{CaO}$, indicating that Fe and Si impurities reduce before Ti. This thermodynamic preferential reduction, combined with density differences (Fe: 7.87~g/cm$^3$ vs.\ Ti: 4.51~g/cm$^3$), suggests a potential pathway for physical separation of impurity metals from titanium powder. However, it should be noted that the Fe--Ti and Si--Ti systems exhibit extensive solid solubility and form intermetallic compounds (e.g., FeTi, $\ce{Fe2Ti}$, $\ce{Ti5Si3}$, $\ce{TiSi2}$) at 600~$^{\circ}$C, which may complicate gravity-based separation. The use of metallurgical-grade $\ce{TiO2}$ ($\geq$90~wt\%) thus requires further investigation of impurity phase distribution and may need complementary separation strategies (e.g., acid leaching). This thermodynamic basis indicates potential compatibility with metallurgical-grade $\ce{TiO2}$, subject to kinetic and purity validation. Notably, because $\ce{Ca^{2+}}$ exhibits stronger complexation with $\ce{O^{2-}}$ than $\ce{Mg^{2+}}$ does, the activity coefficient of dissolved CaO is suppressed more significantly than that of MgO. This differential non-ideality suggests that in a real chloride--oxide melt, the difference between CaO and MgO reduction potentials may be larger than predicted from pure-oxide standard states. Such a shift would be favorable for the proposed complementary mechanism, reinforcing the sequential roles of Mg for rapid bulk reduction and Ca for deep deoxidation.
 
-\subsection{SCM Kinetics and Parameter Sensitivity}
+\subsection*{SCM Kinetics and Parameter Sensitivity}
 \label{subsec:scm}
 
 The reduction kinetics are modeled using the shrinking core model (SCM) with diffusion control through the porous Ti product layer \cite{levenspiel1999}:
@@ -346,46 +379,46 @@ where $c_{[\mathrm{O}]\in\ce{TiO2}} \approx 1.06\times10^5$~mol/m$^3$ (oxygen co
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.95\linewidth]{fig_scm_conversion.eps}
+\includegraphics[width=0.95\linewidth]{figure5.eps}
 \caption{SCM-predicted conversion versus time for different particle sizes ($D = 2.0\times10^{-9}$~m$^2$/s, 600~$^{\circ}$C).}
 \label{fig:scm}
 \end{figure}
 
 A sensitivity analysis over $D = 1.0$--$3.0\times10^{-9}$~m$^2$/s (Fig.~\ref{fig:scm_sens}) shows that 100~$\mu$m-diameter particle reduction time ranges from 4.2~min ($D=3.0\times10^{-9}$) to 12.7~min ($D=1.0\times10^{-9}$), with the nominal 6.3~min falling within this range. The complete reduction time as a function of particle diameter is shown in Fig.~\ref{fig:scm_time}, illustrating the inverse-square scaling. Additional sensitivity to $\varepsilon$ (0.1--0.5) and $\tau$ (1.5--5.0) yields a broader $D_{\mathrm{eff}}$ range of $0.2\times10^{-10}$--$10\times10^{-10}$~m$^2$/s, corresponding to 1.3--63~min, indicating that precise prediction requires determination of product-layer microstructure.
 
-It is important to note that the above $D$ range ($10^{-9}$~m$^2$/s) corresponds to the \emph{chemical diffusion control} mechanism, where the rate-limiting step is liquid-phase diffusion of Mg/Ca through the porous Ti layer. If the actual rate-limiting mechanism were \emph{solid-state diffusion} of O$^{2-}$ through the Ti product layer, $D$ could be 2--3 orders of magnitude lower ($\sim$10$^{-12}$--10$^{-10}$~m$^2$/s), yielding reduction times of $\sim$2--211~hours for 100~$\mu$m particles. This would make the process impractical for single-step batch reduction. The present process must therefore rely on the chemical diffusion mechanism, which is plausible given that the co-deposited Mg--Ca alloy is liquid at 600~$^{\circ}$C (the Mg--Ca eutectic is $\approx$517~$^{\circ}$C, Sec.~\ref{subsec:MgCa}), so the reductant can permeate the porous product layer as a liquid phase, but this mechanistic assumption requires experimental confirmation. Furthermore, the SCM model assumes internal (pore) diffusion through the product layer as the rate-limiting step. External film diffusion around the particle could become rate-limiting at very high flow rates or very small particle sizes ($<$10~$\mu$m), but for the 25--100~$\mu$m particle range of interest and typical melt agitation conditions, the internal diffusion resistance is expected to dominate by 1--2 orders of magnitude based on the Sherwood number criterion ($\mathrm{Sh} \gg 1$). A quantitative comparison of internal vs.\ external diffusion resistances requires melt hydrodynamic data (stirring speed, viscosity) that are not available at the conceptual design stage.
+It is important to note that the above $D$ range ($10^{-9}$~m$^2$/s) corresponds to the \emph{chemical diffusion control} mechanism, where the rate-limiting step is liquid-phase diffusion of Mg/Ca through the porous Ti layer. If the actual rate-limiting mechanism were \emph{solid-state diffusion} of O$^{2-}$ through the Ti product layer, $D$ could be 2--3 orders of magnitude lower ($\sim$10$^{-12}$--10$^{-10}$~m$^2$/s), yielding reduction times of $\sim$2--211~hours for 100~$\mu$m particles. This would make the process impractical for single-step batch reduction. The present process must therefore rely on the chemical diffusion mechanism, which is plausible given that the co-deposited Mg--Ca alloy is liquid at 600~$^{\circ}$C (the Mg--Ca eutectic is $\approx$517~$^{\circ}$C; see the Mg--Ca Liquid Alloy section), so the reductant can permeate the porous product layer as a liquid phase, but this mechanistic assumption requires experimental confirmation. Furthermore, the SCM model assumes internal (pore) diffusion through the product layer as the rate-limiting step. External film diffusion around the particle could become rate-limiting at very high flow rates or very small particle sizes ($<$10~$\mu$m), but for the 25--100~$\mu$m particle range of interest and typical melt agitation conditions, the internal diffusion resistance is expected to dominate by 1--2 orders of magnitude based on the Sherwood number criterion ($\mathrm{Sh} \gg 1$). A quantitative comparison of internal vs.\ external diffusion resistances requires melt hydrodynamic data (stirring speed, viscosity) that are not available at the conceptual design stage.
 
-To propagate uncertainties globally, a Monte Carlo simulation ($N = 10^5$, fixed random seed $= 42$ for reproducibility) was performed with the five uncertain parameters sampled simultaneously: $D \sim U(1, 3) \times 10^{-9}$~m$^2$/s, $\varepsilon \sim U(0.1, 0.5)$, $\tau \sim U(1.5, 5.0)$, $\eta_I \sim \mathrm{Tri}(0.50, 0.75, 0.88)$, and $V_{\mathrm{cell}} \sim \mathcal{N}(4.1, 0.3)$ truncated to [3.5, 4.5]~V. The $\eta_I$ distribution spans 0.50--0.88 so that the analysis encompasses both the target range and the worst-case FFC-like scenario ($\eta_I = 0.50$--0.60) without presupposing the feasibility threshold. The distributions for $\varepsilon$ and $\tau$ are based on typical ranges for porous metallic product layers reported in the FFC and powder metallurgy literature \cite{fray2000}; these parameters are treated as static uncertainty intervals for sensitivity analysis. The results (Fig.~\ref{fig:monte_carlo}) show that the SCM reduction time follows a lognormal distribution with median 7.2~min (P5--P95: 2.7--21.8~min), while the net energy consumption follows a right-skewed distribution with median 11{,}780~kWh/ton-Ti (P5--P95: 9{,}514--15{,}361~kWh/ton-Ti). The probability of achieving $W_{\mathrm{net}} < 11{,}191$~kWh/ton-Ti (the nominal value) is 35.8\%, and $P(W_{\mathrm{net}} < 14{,}000) = 85.8\%$. For comparison, $P(W_{\mathrm{net}} < 16{,}000) \approx 97\%$ and $P(W_{\mathrm{net}} < 20{,}000) \approx 100\%$. The second-law efficiency (based on 4{,}550~kWh/ton-Ti reversible work) has a mean of 38.6\% (P5--P95: 29.6--47.8\%). Spearman rank correlation analysis (Fig.~\ref{fig:tornado}) reveals that $\eta_I$ ($\rho = -0.85$) dominates energy uncertainty, followed by $V_{\mathrm{cell}}$ ($\rho = 0.50$); for SCM time, $\varepsilon$ ($\rho = -0.68$) and $\tau$ ($\rho = 0.52$) are the dominant parameters. The energy feasibility conclusion is therefore highly sensitive to the $\eta_I$ assumption, and experimental validation of current efficiency is the most critical prerequisite for process viability. It should be noted that the present Monte Carlo analysis does not include uncertainties in $\gamma_{\ce{CaCl2}}$, liquidus temperature, or oxide solubility; a more comprehensive global uncertainty analysis incorporating these thermochemical parameters is recommended for future work. Semi-quantitatively, these omitted terms act on \emph{feasibility} rather than on the energy figure: (i) the $\gamma_{\ce{CaCl2}} = 0.3$--1.0 scan (Table~\ref{tab:window_sens}) changes the co-deposition window by $\sim$60--75~mV but never closes it, so it does not materially perturb the energy estimate; (ii) the liquidus uncertainty ($\pm$50~$^{\circ}$C) instead constrains the \emph{operable} temperature, hence the process viability (Limitations~(4)); and (iii) the oxide-solubility uncertainty (0.5--1.2~wt\%) changes the required salt inventory by a factor of 2--4 (Sec.~\ref{subsec:dissolution}), which affects capital cost and closed-loop feasibility far more than it affects the per-ton energy. The energy prediction is therefore dominated by $\eta_I$ (as the Spearman analysis shows), whereas process \emph{feasibility} is governed more critically by the 600~$^{\circ}$C oxide solubility and the liquidus.
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.95\linewidth]{fig_monte_carlo.eps}
-\caption{Monte Carlo global uncertainty analysis ($N = 10^5$): (left) SCM reduction time distribution with lognormal fit; (right) net energy consumption distribution. Dashed lines indicate nominal values. The analysis simultaneously sampled five parameters: diffusion coefficient $D$, porosity $\varepsilon$, tortuosity $\tau$, current efficiency $\eta_I \sim \mathrm{Tri}(0.50, 0.75, 0.88)$, and cell voltage $V_{\mathrm{cell}} \sim \mathcal{N}(4.1, 0.3)$. The $\eta_I$ lower bound of 0.50 encompasses the worst-case FFC-like scenario.}
-\label{fig:monte_carlo}
-\end{figure}
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=0.95\linewidth]{fig_sensitivity_tornado.eps}
-\caption{Global parameter sensitivity (Spearman rank correlation): (left) SCM reduction time; (right) net energy consumption.}
-\label{fig:tornado}
-\end{figure}
+To propagate uncertainties globally, a Monte Carlo simulation ($N = 10^5$, fixed random seed $= 42$ for reproducibility) was performed with the five uncertain parameters sampled simultaneously: $D \sim U(1, 3) \times 10^{-9}$~m$^2$/s, $\varepsilon \sim U(0.1, 0.5)$, $\tau \sim U(1.5, 5.0)$, $\eta_I \sim \mathrm{Tri}(0.50, 0.75, 0.88)$, and $V_{\mathrm{cell}} \sim \mathcal{N}(4.1, 0.3)$ truncated to [3.5, 4.5]~V. The $\eta_I$ distribution spans 0.50--0.88 so that the analysis encompasses both the target range and the worst-case FFC-like scenario ($\eta_I = 0.50$--0.60) without presupposing the feasibility threshold. The distributions for $\varepsilon$ and $\tau$ are based on typical ranges for porous metallic product layers reported in the FFC and powder metallurgy literature \cite{fray2000}; these parameters are treated as static uncertainty intervals for sensitivity analysis. The results (Fig.~\ref{fig:monte_carlo}) show that the SCM reduction time follows a lognormal distribution with median 7.2~min (P5--P95: 2.7--21.8~min), while the net energy consumption follows a right-skewed distribution with median 11{,}780~kWh/ton-Ti (P5--P95: 9{,}514--15{,}361~kWh/ton-Ti). The probability of achieving $W_{\mathrm{net}} < 11{,}191$~kWh/ton-Ti (the nominal value) is 35.8\%, and $P(W_{\mathrm{net}} < 14{,}000) = 85.8\%$. For comparison, $P(W_{\mathrm{net}} < 16{,}000) \approx 97\%$ and $P(W_{\mathrm{net}} < 20{,}000) \approx 100\%$. The second-law efficiency (based on 4{,}550~kWh/ton-Ti reversible work) has a mean of 38.6\% (P5--P95: 29.6--47.8\%). Spearman rank correlation analysis (Fig.~\ref{fig:tornado}) reveals that $\eta_I$ ($\rho = -0.85$) dominates energy uncertainty, followed by $V_{\mathrm{cell}}$ ($\rho = 0.50$); for SCM time, $\varepsilon$ ($\rho = -0.68$) and $\tau$ ($\rho = 0.52$) are the dominant parameters. The energy feasibility conclusion is therefore highly sensitive to the $\eta_I$ assumption, and experimental validation of current efficiency is the most critical prerequisite for process viability. It should be noted that the present Monte Carlo analysis does not include uncertainties in $\gamma_{\ce{CaCl2}}$, liquidus temperature, or oxide solubility, nor the current-density dependence of $\eta_I$ discussed in the Material and Energy Balance section; a more comprehensive global uncertainty analysis incorporating these parameters is recommended for future work. Semi-quantitatively, these omitted terms act on \emph{feasibility} rather than on the energy figure: (i) the $\gamma_{\ce{CaCl2}} = 0.3$--1.0 scan (Table~\ref{tab:window_sens}) changes the co-deposition window by $\sim$60--75~mV but never closes it, so it does not materially perturb the energy estimate; (ii) the liquidus uncertainty ($\pm$50~$^{\circ}$C) instead constrains the \emph{operable} temperature, hence the process viability (Limitations~(4)); and (iii) the oxide-solubility uncertainty (0.5--1.2~wt\%) changes the required salt inventory by a factor of 2--4 (see the Oxide Dissolution section), which affects capital cost and closed-loop feasibility far more than it affects the per-ton energy. The energy prediction is therefore dominated by $\eta_I$ (as the Spearman analysis shows), whereas process \emph{feasibility} is governed more critically by the 600~$^{\circ}$C oxide solubility and the liquidus.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.95\linewidth]{fig_scm_sensitivity.eps}
+\includegraphics[width=0.95\linewidth]{figure6.eps}
 \caption{SCM sensitivity analysis: reduction time versus particle diameter for $D = 1$--$3\times10^{-9}$~m$^2$/s.}
 \label{fig:scm_sens}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.95\linewidth]{fig_scm_time_vs_size.eps}
+\includegraphics[width=0.95\linewidth]{figure7.eps}
 \caption{Complete reduction time versus particle diameter at $D = 2.0\times10^{-9}$~m$^2$/s (600~$^{\circ}$C), showing the inverse-square scaling.}
 \label{fig:scm_time}
 \end{figure}
 
-\subsection{Material and Energy Balance}
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figure8.eps}
+\caption{Monte Carlo global uncertainty analysis ($N = 10^5$): (left) SCM reduction time distribution with lognormal fit; (right) net energy consumption distribution. Dashed lines indicate nominal values. The analysis simultaneously sampled five parameters: diffusion coefficient $D$, porosity $\varepsilon$, tortuosity $\tau$, current efficiency $\eta_I \sim \mathrm{Tri}(0.50, 0.75, 0.88)$, and cell voltage $V_{\mathrm{cell}} \sim \mathcal{N}(4.1, 0.3)$. The $\eta_I$ lower bound of 0.50 encompasses the worst-case FFC-like scenario.}
+\label{fig:monte_carlo}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=0.95\linewidth]{figure9.eps}
+\caption{Global parameter sensitivity (Spearman rank correlation): (left) SCM reduction time; (right) net energy consumption.}
+\label{fig:tornado}
+\end{figure}
+
+\subsection*{Material and Energy Balance}
 \label{subsec:energy}
 
 The material balance per ton Ti is split into two steps: (i) the chemical reduction step and (ii) the electrolytic regeneration step. In Step~(i), $\ce{TiO2}$ is reduced by Mg and Ca:
@@ -396,7 +429,7 @@ In Step~(ii), the by-product oxides are electrolytically regenerated:
 \begin{equation}
 \ce{MgO + CaO -> Mg + Ca + O2} \quad (2013~\mathrm{kg} = 2013~\mathrm{kg})
 \end{equation}
-The net reaction is $\ce{TiO2 -> Ti + O2}$ ($1668~\mathrm{kg} = 1668~\mathrm{kg}$), with Mg and Ca acting as cyclic mediators. When using 90~wt\% metallurgical-grade $\ce{TiO2}$ ore, the impurity mass (186~kg/ton-Ti, mainly $\ce{Fe2O3}$ and $\ce{SiO2}$) enters as part of the ore input and exits as reduced impurity metals (Fe, Si), which require separation from the Ti product as discussed in Section~4.3.
+The net reaction is $\ce{TiO2 -> Ti + O2}$ ($1668~\mathrm{kg} = 1668~\mathrm{kg}$), with Mg and Ca acting as cyclic mediators. When using 90~wt\% metallurgical-grade $\ce{TiO2}$ ore, the impurity mass (186~kg/ton-Ti, mainly $\ce{Fe2O3}$ and $\ce{SiO2}$) enters as part of the ore input and exits as reduced impurity metals (Fe, Si), which require separation from the Ti product as discussed in the E--$p\ce{O^{2-}}$ stability diagram section.
 
 \begin{table}[!ht]
 \centering
@@ -423,7 +456,7 @@ Net & $\ce{TiO2} \to \ce{Ti} + \ce{O2}$ & 1668 = 1000 + 668 \\
 \end{tabular}
 \end{table}
 
-The theoretical decomposition voltage for simultaneous regeneration of MgO and CaO (4~e$^-$ per mol Ti) is 2.73~V, giving a theoretical minimum electrolysis energy of 6112~kWh/ton-Ti. The assumed cell voltage ($\sim$4.1~V) is decomposed as $V_{\mathrm{cell}} = E_{\mathrm{decomp}} + \eta_{\mathrm{anode}} + \eta_{\mathrm{cathode}} + IR_{\mathrm{ohm}}$ (Fig.~\ref{fig:voltage_split}): the 2.73~V decomposition term is augmented by $\sim$0.30~V anode overpotential ($\ce{O2}$ evolution), $\sim$0.20~V cathode overpotential (Mg/Ca deposition), and $\sim$0.90~V ohmic drop (melt conductivity, contacts, busbars), summing to $\sim$4.13~V. These overpotential and ohmic terms are order-of-magnitude estimates, but they make explicit where the voltage---and hence the energy---is spent, and identify the anode overpotential and ohmic drop as the primary targets for cell design. Practical energy consumption depends on current efficiency $\eta_I$ and cell voltage $V_{\mathrm{cell}}$:
+The theoretical decomposition voltage for simultaneous regeneration of MgO and CaO (4~e$^-$ per mol Ti) is 2.73~V, giving a theoretical minimum electrolysis energy of 6112~kWh/ton-Ti. The assumed cell voltage ($\sim$4.1~V) is decomposed as $V_{\mathrm{cell}} = E_{\mathrm{decomp}} + \eta_{\mathrm{anode}} + \eta_{\mathrm{cathode}} + IR_{\mathrm{ohm}}$ (Fig.~\ref{fig:voltage_split}): the 2.73~V decomposition term is augmented by $\sim$0.30~V anode overpotential ($\ce{O2}$ evolution), $\sim$0.20~V cathode overpotential (Mg/Ca deposition), and $\sim$0.90~V ohmic drop (melt conductivity, contacts, busbars), summing to $\sim$4.13~V; the ohmic term is consistent with the interelectrode-gap constraint $L \lesssim 1.1$~cm at the co-deposition design current $j \approx 1.1$~A/cm$^2$ (Fig.~\ref{fig:current_regimes}b). These overpotential and ohmic terms are order-of-magnitude estimates, but they make explicit where the voltage---and hence the energy---is spent, and identify the anode overpotential and ohmic drop as the primary targets for cell design. Practical energy consumption depends on current efficiency $\eta_I$ and cell voltage $V_{\mathrm{cell}}$:
 \begin{equation}
 W_{\mathrm{practical}} = \frac{4F \cdot n_{\mathrm{Ti}} \cdot V_{\mathrm{cell}}}{\eta_I \cdot 3.6\times10^{6}}
 \end{equation}
@@ -448,30 +481,30 @@ $\eta_I$ & $V_{\mathrm{cell}}$ (V) & Energy (kWh/ton) & Condition \\
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.7\linewidth]{fig_voltage_split.eps}
+\includegraphics[width=0.7\linewidth]{figure10.eps}
 \caption{Decomposition of the assumed cell voltage ($\sim$4.1~V) into the thermodynamic decomposition term (2.73~V), anode and cathode overpotentials, and ohmic drop (order-of-magnitude estimates).}
 \label{fig:voltage_split}
 \end{figure}
 
-Under realistic conditions ($\eta_I = 0.75$--0.80, $V_{\mathrm{cell}} = 4.0$--4.3~V), the electrolysis-step energy consumption is 11{,}200--12{,}800~kWh/ton-Ti (electrolysis step only; full-process net consumption is 11{,}191~kWh/ton-Ti, see Sec.~\ref{subsec:heatbal}). The sensitivity analysis (Fig.~\ref{fig:energy}) shows that $\eta_I \geq 74.7\%$ at $V = 4.0$~V is required to stay below 12{,}000~kWh/ton.
+Under realistic conditions ($\eta_I = 0.75$--0.80, $V_{\mathrm{cell}} = 4.0$--4.3~V), the electrolysis-step energy consumption is 11{,}200--12{,}800~kWh/ton-Ti (electrolysis step only; full-process net consumption is 11{,}191~kWh/ton-Ti, see the Full-Process Energy Balance section). The sensitivity analysis (Fig.~\ref{fig:energy}) shows that $\eta_I \geq 74.7\%$ at $V = 4.0$~V is required to stay below 12{,}000~kWh/ton.
 
-The assumed current efficiency range ($\eta_I = 0.75$--0.80) requires justification, as it significantly exceeds the FFC Cambridge process (30--50\%) \cite{fray2000}. The key difference is that FFC involves direct electro-deoxidation of solid $\ce{TiO2}$ at the cathode, where slow solid-state diffusion and side reactions cause severe current leakage. In the proposed process, electrolysis targets dissolved MgO and CaO rather than a solid oxide cathode. This mechanism bears greater mechanistic similarity to the Hall--H\'eroult process, where dissolved $\ce{Al2O3}$ is electrolyzed with current efficiencies of 90--95\% under industrial conditions \cite{kvande2014}. Although the higher decomposition voltage and the chemical reactivity of Mg/Ca may introduce additional loss pathways absent in aluminum electrolysis, the dissolved-oxide route fundamentally avoids solid-state diffusion limitations, providing a mechanistic basis for expecting current efficiencies substantially higher than those of the FFC process. The target range of 75--80\% is therefore an \emph{unvalidated hypothesis} rather than a physically established result. This is further supported by the Downs process for sodium production (70--90\%) and by industrial Mg electrolysis from molten $\ce{MgCl2}$---the primary salt of the present process---which achieves 80--90\% current efficiency, both well-established for dissolved-salt electrolysis in chloride melts \cite{pletcher1990,ji2026}. The main current efficiency loss mechanisms expected in this process are: (i) electronic conduction through the melt, estimated at 2--5\% loss; (ii) back-reaction between deposited Mg/Ca and dissolved O$^{2-}$ at the anode--cathode interface, estimated at 5--10\% loss depending on cell geometry; (iii) Na co-deposition at high current densities, estimated at 3--8\% loss; and (iv) impurity-related side reactions, estimated at 2--5\% loss. Summing these estimates yields $\eta_I \approx 0.72$--0.88, centered on the assumed 0.75--0.80 range. The loss mechanisms are assumed additive and independent; potential overlap (e.g., between electronic conduction and parasitic reactions) is not quantified. However, it must be emphasized that these estimates are preliminary. The analogy to Hall--H\'eroult and Downs processes provides an upper-bound estimate; the actual $\eta_I$ in a TiO$_2$ reduction system may differ due to side reactions specific to this chemistry, such as formation of sub-valent titanium chlorides (TiCl$_2$, TiCl$_3$) that consume current without producing useful reductant, and re-oxidation of deposited Mg/Ca by dissolved O$^{2-}$ at higher rates than in Al or Na systems due to the higher chemical reactivity of Mg and Ca. If $\eta_I$ proves to be only 0.50--0.60 (comparable to FFC), the energy consumption would rise to 14{,}000--19{,}000~kWh/ton-Ti, approaching the FFC range (15{,}000--20{,}000~kWh/ton-Ti). Therefore, the ``energy-efficient'' characterization of this process is \emph{conditional on achieving $\eta_I > 0.70$}.
+The assumed current efficiency range ($\eta_I = 0.75$--0.80) requires justification, as it significantly exceeds the FFC Cambridge process (30--50\%) \cite{fray2000}. The key difference is that FFC involves direct electro-deoxidation of solid $\ce{TiO2}$ at the cathode, where slow solid-state diffusion and side reactions cause severe current leakage. In the proposed process, electrolysis targets dissolved MgO and CaO rather than a solid oxide cathode. This mechanism bears greater mechanistic similarity to the Hall--H\'eroult process, where dissolved $\ce{Al2O3}$ is electrolyzed with current efficiencies of 90--95\% under industrial conditions \cite{kvande2014}. Although the higher decomposition voltage and the chemical reactivity of Mg/Ca may introduce additional loss pathways absent in aluminum electrolysis, the dissolved-oxide route fundamentally avoids solid-state diffusion limitations, providing a mechanistic basis for expecting current efficiencies substantially higher than those of the FFC process. The target range of 75--80\% is therefore an \emph{unvalidated hypothesis} rather than a physically established result. This is further supported by the Downs process for sodium production (70--90\%) and by industrial Mg electrolysis from molten $\ce{MgCl2}$---the primary salt of the present process---which achieves 80--90\% current efficiency, both well-established for dissolved-salt electrolysis in chloride melts \cite{pletcher1990,ji2026}. The main current efficiency loss mechanisms expected in this process are: (i) electronic conduction through the melt, estimated at 2--5\% loss; (ii) back-reaction between deposited Mg/Ca and dissolved O$^{2-}$ at the anode--cathode interface, estimated at 5--10\% loss depending on cell geometry; (iii) Na co-deposition at high current densities, estimated at 3--8\% loss; and (iv) impurity-related side reactions, estimated at 2--5\% loss. Summing these estimates yields $\eta_I \approx 0.72$--0.88, centered on the assumed 0.75--0.80 range. These loss mechanisms are treated as additive and independent in the nominal estimate; potential overlap (e.g., between electronic conduction and parasitic reactions) is not quantified. Moreover, mechanisms (ii) and (iii) are both current-density-dependent---back-reaction scales with the amount of freshly deposited Mg/Ca, and Na co-deposition intensifies as $j$ approaches $j_{\mathrm{lim,Mg}} + j_{\mathrm{lim,Ca}}$---so the attainable $\eta_I$ at the co-deposition design point ($j \approx 1.1$~A/cm$^2$) may fall below the sum of the independent estimates. The mass-transport analysis (Cathode Mass Transport section) partially bounds mechanism (iii): within Regime~II the $\ce{Na+}$ onset is postponed because $\ce{Ca^{2+}}$ still carries the surplus current, but the margin from the design point to the Regime~III onset ($1.31$~A/cm$^2$) is only $\sim$0.2~A/cm$^2$ at the nominal transport parameters---a $\sim$17\% overestimate of $D/\delta$ would erase it. The Monte Carlo analysis propagates $\eta_I$ as an independent distribution and does not encode this $\eta_I$--$j$ correlation; establishing it requires experimental polarization and current-efficiency data for the quaternary melt, and remains a key uncertainty of the energy balance. However, it must be emphasized that these estimates are preliminary. The analogy to Hall--H\'eroult and Downs processes provides an upper-bound estimate; the actual $\eta_I$ in a TiO$_2$ reduction system may differ due to side reactions specific to this chemistry, such as formation of sub-valent titanium chlorides (TiCl$_2$, TiCl$_3$) that consume current without producing useful reductant, and re-oxidation of deposited Mg/Ca by dissolved O$^{2-}$ at higher rates than in Al or Na systems due to the higher chemical reactivity of Mg and Ca. If $\eta_I$ proves to be only 0.50--0.60 (comparable to FFC), the energy consumption would rise to 14{,}000--19{,}000~kWh/ton-Ti, approaching the FFC range (15{,}000--20{,}000~kWh/ton-Ti). Therefore, the ``energy-efficient'' characterization of this process is \emph{conditional on achieving $\eta_I > 0.70$}.
 
 For context, the Kroll process consumes approximately 30{,}000--40{,}000~kWh/ton-Ti (industrial measured, including chlorination, Mg reduction, and vacuum distillation) \cite{ji2026}, while the FFC Cambridge process is estimated at 15{,}000--20{,}000~kWh/ton-Ti (pilot-scale measured, due to lower current efficiency of 30--50\% and higher operating temperature of $\sim$950~$^{\circ}$C) \cite{fray2000,ji2026}. The proposed process predicts 11{,}200--12{,}800~kWh/ton-Ti (\emph{theoretical prediction} based on assumed $\eta_I = 0.75$--0.80 and $V_{\mathrm{cell}} = 4.0$--4.3~V) primarily through reduced operating temperature (600~$^{\circ}$C), higher target current efficiency (75--80\%, conditional on achieving dissolved-oxide electrolysis performance comparable to Hall--H\'eroult and Downs processes), and elimination of the chlorination step. It should be emphasized that these are \emph{non-equivalent comparisons}: the proposed process values are theoretical predictions based on assumed parameters, while the Kroll and FFC figures are industrial/pilot-scale measured values with different system boundaries. A rigorous comparison requires unified cradle-to-gate boundary analysis.
 
-A particularly relevant analogy is the Hall--H\'eroult process for aluminum production \cite{kvande2014}, which also electrolyzes a dissolved oxide ($\ce{Al2O3}$ in cryolite melt) rather than a solid cathode. Hall--H\'eroult achieves current efficiencies of 90--95\% at $\sim$950~$^{\circ}$C with DC energy consumption of $\sim$13{,}000~kWh/ton-Al and cell voltages of 4.0--4.2~V. The proposed Ti process shares the dissolved-oxide electrolysis mechanism but operates at significantly lower temperature (600~$^{\circ}$C), which reduces thermal losses and material corrosion. However, the higher decomposition voltage of $\ce{TiO2}$ (thermodynamic minimum $\sim$2.73~V vs.\ $\sim$2.2~V for $\ce{Al2O3}$, both on an O$_2$-evolving inert-anode basis) and the additional overpotentials for Mg/Ca co-deposition result in a higher cell voltage ($\sim$4.0--4.3~V). If the dissolved-oxide electrolysis mechanism can be confirmed experimentally, the Hall--H\'eroult analogy supports the feasibility of achieving $\eta_I > 0.70$, since the fundamental current-loss mechanisms (electronic conduction, back-reaction) are mitigated by the lower operating temperature and the chemical mediation via Mg/Ca cycling.
+A particularly relevant analogy is the Hall--H\'eroult process for aluminum production \cite{kvande2014}, which also electrolyzes a dissolved oxide ($\ce{Al2O3}$ in cryolite melt) rather than a solid cathode. Hall--H\'eroult achieves current efficiencies of 90--95\% at $\sim$950~$^{\circ}$C with DC energy consumption of $\sim$13{,}000~kWh/ton-Al and cell voltages of 4.0--4.2~V. The proposed Ti process shares the dissolved-oxide electrolysis mechanism but operates at significantly lower temperature (600~$^{\circ}$C), which reduces thermal losses and material corrosion. However, the higher decomposition voltage of $\ce{TiO2}$ (thermodynamic minimum $\sim$2.73~V vs.\ $\sim$2.2~V for $\ce{Al2O3}$, both on an O$_2$-evolving inert-anode basis) and the additional overpotentials for Mg/Ca co-deposition result in a higher cell voltage ($\sim$4.0--4.3~V). If the dissolved-oxide electrolysis mechanism can be confirmed experimentally, the Hall--H\'eroult analogy supports the feasibility of achieving $\eta_I > 0.70$, since the fundamental current-loss mechanisms (electronic conduction, back-reaction) are mitigated by the lower operating temperature and the chemical mediation via Mg/Ca cycling. The analogy is, however, limited to the electrolysis step: Hall--H\'eroult taps liquid aluminum directly from the metal pad, whereas the present process requires the co-deposited Mg--Ca alloy to contact and reduce suspended $\ce{TiO2}$ particles---an additional liquid--solid reaction step (quantified by the SCM kinetics analysis) that aluminum electrolysis does not face.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.95\linewidth]{fig_energy_sensitivity.eps}
+\includegraphics[width=0.95\linewidth]{figure11.eps}
 \caption{Energy sensitivity: $\eta_I$ vs.\ $V_{\mathrm{cell}}$ (practical range; the electrolysis step minimum 6112~kWh/ton and the net reaction reversible work $\sim$4550~kWh/ton both lie below this range and are not shown).}
 \label{fig:energy}
 \end{figure}
 
-\subsection{Full-Process Energy Balance}
+\subsection*{Full-Process Energy Balance}
 \label{subsec:heatbal}
 
-The full-process energy balance (Table~\ref{tab:heatbal}), \emph{conditional on achieving $\eta_I > 0.70$} as discussed in Sec.~\ref{subsec:energy}, is structured to distinguish electrical energy inputs from thermal effects. The electrolysis gross electrical demand is 12{,}244~kWh/ton ($\eta_I=0.75$, $V_{\mathrm{cell}}=4.1$~V). The exothermic reduction reaction releases 1{,}690~kWh/ton of thermal energy, which is treated as an equivalent internal heat source that reduces the equivalent external energy requirement; this yields a net equivalent electrolysis input of 10{,}554~kWh/ton. Auxiliary processes (preheating, pumping, post-treatment) contribute 679~kWh/ton, giving a total equivalent external input of 11{,}233~kWh/ton. Ti powder cooling recovers 42~kWh/ton, yielding a net equivalent consumption of 11{,}191~kWh/ton-Ti.
+The full-process energy balance (Table~\ref{tab:heatbal}), \emph{conditional on achieving $\eta_I > 0.70$} as discussed in the Material and Energy Balance section, is structured to distinguish electrical energy inputs from thermal effects. The electrolysis gross electrical demand is 12{,}244~kWh/ton ($\eta_I=0.75$, $V_{\mathrm{cell}}=4.1$~V). The exothermic reduction reaction releases 1{,}690~kWh/ton of thermal energy, which is treated as an equivalent internal heat source that reduces the equivalent external energy requirement; this yields a net equivalent electrolysis input of 10{,}554~kWh/ton. Auxiliary processes (preheating, pumping, post-treatment) contribute 679~kWh/ton, giving a total equivalent external input of 11{,}233~kWh/ton. Ti powder cooling recovers 42~kWh/ton, yielding a net equivalent consumption of 11{,}191~kWh/ton-Ti.
 
 \emph{It is important to note that the treatment of the reaction exotherm as an offset to the gross electrical demand is a simplified accounting convention. Strictly, thermal energy and electrical energy are distinct in quality (exergy): reaction heat (chemical energy converted to thermal energy) cannot directly substitute for electrical energy at 100\% conversion efficiency. The 11{,}191~kWh/ton figure therefore represents an \emph{equivalent net external energy demand} rather than a rigorous thermodynamic minimum. A separate exergetic analysis---which accounts for the Carnot-limited convertibility of heat to work---would yield a higher effective energy consumption: crediting the 1{,}690~kWh/ton exotherm at its Carnot work-equivalent (factor $1 - 298/873 \approx 0.66$, i.e., $\sim$1{,}100~kWh/ton) instead of 1:1 would raise the net equivalent consumption to $\sim$11{,}800~kWh/ton.} The process energy efficiency, defined here as the ratio of the electrolysis step's theoretical minimum (6{,}112~kWh/ton) to the net equivalent external energy consumption (11{,}191~kWh/ton), is 54.6\% ($= 6112/11191$), reflecting the combined irreversibilities of electrolysis (voltage efficiency $\sim$68\%, current efficiency 75--80\%) and thermal losses. It is important to distinguish this from the true second-law (exergetic) efficiency: the net reaction $\ce{TiO2 -> Ti + O2}$ has a reversible work of $\sim$4{,}550~kWh/ton-Ti ($\Delta G^{\circ}_{\ce{TiO2}} \approx 783$~kJ/mol at 873~K), yielding a second-law efficiency of $\sim$40.7\% ($= 4550/11191$). In summary, the 54.6\% figure represents the ratio of the electrolysis step's theoretical minimum ($\ce{MgO + CaO -> Mg + Ca + O2}$, 6{,}112~kWh/ton) to the equivalent net energy consumption, whereas the 40.7\% figure represents the ratio of the overall reaction's reversible Gibbs free energy ($\ce{TiO2 -> Ti + O2}$, 4{,}550~kWh/ton) to the same denominator; the difference arises because the electrolysis step minimum exceeds the net reaction reversible work due to the additional energy required for Mg/Ca regeneration. The electrolysis energy fraction of 94.0\% ($= 10554/11233$) indicates that electrolysis dominates the energy budget; it is \emph{not} a thermodynamic efficiency. Regarding the heat balance, the reaction exotherm (1{,}690~kWh/ton) is \emph{accounted for} as an equivalent offset to the gross demand (12{,}244 $\to$ 10{,}554~kWh/ton) in the simplified energy accounting and is \emph{not} additionally applied to the cell wall heat loss (138~kWh/ton), which is a separate external thermal requirement supplied by auxiliary heating.
 
@@ -511,12 +544,12 @@ Item & Energy (kWh/ton) & Note \\
 \bottomrule
 \end{tabularx}
 
-\par\footnotesize $^{\mathrm{a}}$\,Simplified accounting: the reaction exotherm ($\Delta H^{\circ} = -291.3$~kJ/mol-Ti for the mixed reduction $\ce{TiO2 + Mg + Ca -> Ti + MgO + CaO}$, from Table~\ref{tab:thermo}; $291.3 \times 20891 / 3600 \approx 1690$~kWh/ton-Ti) is treated as an equivalent offset to the gross electrical demand. Strictly, thermal and electrical energy differ in exergy; see Sec.~\ref{subsec:heatbal} text.
+\par\footnotesize $^{\mathrm{a}}$\,Simplified accounting: the reaction exotherm ($\Delta H^{\circ} = -291.3$~kJ/mol-Ti for the mixed reduction $\ce{TiO2 + Mg + Ca -> Ti + MgO + CaO}$, from Table~\ref{tab:thermo}; $291.3 \times 20891 / 3600 \approx 1690$~kWh/ton-Ti) is treated as an equivalent offset to the gross electrical demand. Strictly, thermal and electrical energy differ in exergy; see the text above.
 \end{table}
 
 For comparison, the minimum thermodynamic work for $\ce{TiCl4}$ distillation (90\% $\to$ 99.9\%, 99\% recovery) in the Kroll process is 6.4~kWh/ton-Ti (estimated from the ideal-solution minimum work of separation at 136~$^{\circ}$C, $\Delta G_{\mathrm{sep}} = RT \sum_k n_k \sum_i x_{i,k}\ln(x_{i,k}/x_{i,\mathrm{feed}})$ summed over the product and waste streams $k$ and components $i = \{\ce{TiCl4}, \mathrm{impurity}\}$), while the actual distillation consumes $\sim$300~kWh/ton-Ti---a second-law efficiency of 2.1\% ($= 6.4/300$). The proposed process eliminates this separation step entirely by using metallurgical-grade $\ce{TiO2}$ directly.
 
-\subsection{Oxide Dissolution Mechanism and Salt Circulation}
+\subsection*{Oxide Dissolution Mechanism and Salt Circulation}
 \label{subsec:dissolution}
 
 A critical feature of the process is the dissolution of $\ce{MgO}$ and $\ce{CaO}$ in the $\ce{CaCl2}$-containing melt. Ito and Morita \cite{morita2004} measured $\ce{MgO}$ solubility of 2.35~wt\% in $\ce{MgCl2-CaCl2}$ melt at 800~$^{\circ}$C, with solubility increasing significantly with $\ce{CaCl2}$ content. It should be noted that the actual operating temperature (580--650~$^{\circ}$C) is 150--250~$^{\circ}$C lower than the measurement temperature, and oxide solubility typically decreases with temperature. A rough Arrhenius extrapolation suggests that the solubility at 600~$^{\circ}$C may be approximately 0.5--1.2~wt\% (roughly 30--50\% of the 800~$^{\circ}$C value), which still provides meaningful dissolution capacity but at a reduced rate. This estimate is an \emph{order-of-magnitude estimate based on single-point Arrhenius extrapolation}: due to the lack of multi-temperature solubility data, the activation energy $E_a$ is not independently determined, and the estimated range carries a factor-of-2.4 uncertainty. The extrapolation parameters (activation energy, number of data points, and confidence interval) are not available in the literature; the estimate is based on the general trend that oxide solubility in chloride melts decreases with temperature following an Arrhenius relationship. Within the estimated 0.5--1.2~wt\% range, the reduced solubility would increase the required salt circulation rate by a factor of 2--4 compared to the 800~$^{\circ}$C baseline, which is theoretically manageable. To fix the scale: at 1~wt\% oxide solubility the salt inventory needed to hold the 2013~kg of MgO+CaO produced per ton Ti is $\sim$201~t of salt per ton Ti (117~t for CaO alone and 84~t for MgO), rising to $\sim$400~t at 0.5~wt\%. This is a large but not unphysical inventory---comparable to the cryolite inventory of industrial Hall--H\'eroult cells---and the \emph{circulation rate} (t/h) is set by the production rate rather than by this inventory. However, if the actual 600~$^{\circ}$C solubility falls below 0.5~wt\%, the required salt inventory and circulation rate increase by more than 4$\times$, potentially invalidating the closed-loop design. \textbf{The closed-loop salt circulation is therefore a theoretical hypothesis pending experimental validation of 600~$^{\circ}$C oxide solubility---this is the most critical experimental uncertainty in the present process concept.} The dissolution mechanism involves the formation of calcium oxychloride complexes:
@@ -540,11 +573,11 @@ E^{\circ}_{\ce{O2/O^{2-}}}(\mathrm{vs}~\ce{Cl2/Cl^-}) \;<\; \frac{RT}{2F}\ln(a_{
 \end{equation}
 i.e., the free oxide-ion activity must stay above the threshold $a_{\ce{O^{2-}}} > \exp\!\big[2F\,E^{\circ}_{\ce{O2/O^{2-}}}(\mathrm{vs}~\ce{Cl2/Cl^-})/(RT)\big]$, otherwise $\ce{Cl2}$ evolution is thermodynamically preferred. The standard potential $E^{\circ}_{\ce{O2/O^{2-}}}(\mathrm{vs}~\ce{Cl2/Cl^-})$ is the melt's \emph{oxoacidity} (the standard free energy of $\ce{O^{2-} + Cl2 -> 1/2\,O2 + 2Cl^-}$), a melt-specific quantity that has not been reported for the quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ system and cannot be inferred from pure oxide/chloride formation data alone. Until this oxoacidity is measured or obtained from a CALPHAD salt-model (MQM) calculation, the critical $a_{\ce{O^{2-}}}$ below which $\ce{Cl2}$ evolution becomes competitive is a missing quantitative boundary for the closed-loop $\ce{O2}$-evolution assumption underlying the energy balance.
 
-Fig.~\ref{fig:cl2} renders this boundary parametrically: the critical free oxide activity $a_{\ce{O^{2-}},crit} = \exp[2F\,E^{\circ}(\mathrm{vs}~\ce{Cl2/Cl^-})/(RT)]$ is plotted against the oxoacidity $E^{\circ}$. The actual free-oxide activity in the melt is estimated from the oxide solubility (Sec.~\ref{subsec:dissolution}): $\sim$1~wt\% dissolved oxide corresponds to a formal $x_{\ce{O^{2-}}} \sim 10^{-2}$, and the strong $\ce{Ca^{2+}}$--$\ce{O^{2-}}$ complexation reduces the \emph{free} $a_{\ce{O^{2-}}}$ by roughly 1--2 orders of magnitude, placing the operating point in the range $a_{\ce{O^{2-}}} \approx 10^{-4}$--$10^{-3}$. Oxygen evolution is therefore safe (the operating point lies above the critical line) only if the oxoacidity is more negative than $\approx -0.35$~V; conversely, if $E^{\circ}(\mathrm{vs}~\ce{Cl2/Cl^-})$ is less negative than $\approx -0.26$~V, the operating point falls below the critical line and $\ce{Cl2}$ evolution becomes thermodynamically preferred. These two thresholds are \emph{not} measured oxoacidities: they follow from substituting the assumed operating bounds ($a_{\ce{O^{2-}}} = 10^{-4}$ and $10^{-3}$) back into $a_{\ce{O^{2-}},crit}$, so they serve only to locate the boundary relative to the estimated operating band. Because typical chloride-melt oxoacidities span roughly this range, the anode selectivity cannot be assumed \emph{a priori} and must be established for the specific quaternary composition. This coupling between oxide dissolution and electrochemistry is a distinctive feature of the $\ce{CaCl2}$-containing system.
+Fig.~\ref{fig:cl2} renders this boundary parametrically: the critical free oxide activity $a_{\ce{O^{2-}},crit} = \exp[2F\,E^{\circ}(\mathrm{vs}~\ce{Cl2/Cl^-})/(RT)]$ is plotted against the oxoacidity $E^{\circ}$. The actual free-oxide activity in the melt is estimated from the oxide solubility (see the solubility estimate above): $\sim$1~wt\% dissolved oxide corresponds to a formal $x_{\ce{O^{2-}}} \sim 10^{-2}$, and the strong $\ce{Ca^{2+}}$--$\ce{O^{2-}}$ complexation reduces the \emph{free} $a_{\ce{O^{2-}}}$ by roughly 1--2 orders of magnitude, placing the operating point in the range $a_{\ce{O^{2-}}} \approx 10^{-4}$--$10^{-3}$. Oxygen evolution is therefore safe (the operating point lies above the critical line) only if the oxoacidity is more negative than $\approx -0.35$~V; conversely, if $E^{\circ}(\mathrm{vs}~\ce{Cl2/Cl^-})$ is less negative than $\approx -0.26$~V, the operating point falls below the critical line and $\ce{Cl2}$ evolution becomes thermodynamically preferred. These two thresholds are \emph{not} measured oxoacidities: they follow from substituting the assumed operating bounds ($a_{\ce{O^{2-}}} = 10^{-4}$ and $10^{-3}$) back into $a_{\ce{O^{2-}},crit}$, so they serve only to locate the boundary relative to the estimated operating band. Because typical chloride-melt oxoacidities span roughly this range, the anode selectivity cannot be assumed \emph{a priori} and must be established for the specific quaternary composition. This coupling between oxide dissolution and electrochemistry is a distinctive feature of the $\ce{CaCl2}$-containing system.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.85\linewidth]{fig_cl2_boundary.eps}
+\includegraphics[width=0.85\linewidth]{figure12.eps}
 \caption{Anode $\ce{O2}$/$\ce{Cl2}$ selectivity boundary at 600~$^{\circ}$C. The critical free-oxide activity $a_{\ce{O^{2-}},crit}$ (solid line) is plotted as a function of the melt oxoacidity $E^{\circ}(\ce{O2/O^{2-}}~\text{vs}~\ce{Cl2/Cl^-})$, which has not been measured for this quaternary system. The green band is the estimated operating $a_{\ce{O^{2-}}}$ from oxide solubility and $\ce{Ca^{2+}}$--$\ce{O^{2-}}$ complexation. The marked crossing ($E^{\circ} \approx -0.35$~V) is derived from the assumed $a_{\ce{O^{2-}}}$ range ($10^{-4}$--$10^{-3}$), not from any measured oxoacidity; $\ce{O2}$ evolution is thermodynamically favored only to its left.}
 \label{fig:cl2}
 \end{figure}
@@ -573,7 +606,9 @@ $\ce{Ti + TiCl4 -> 2TiCl2}$ (873~K, est.) & $\approx -80$ \\
 \par\footnotesize The 873~K value is estimated as $\Delta G(873) \approx \Delta H^{\circ}(298) - 873\,\Delta S^{\circ}(298)$ using the 298~K Barin enthalpy and entropy of formation (neglecting $C_p$ temperature dependence).
 \end{table}
 
-\section{Process Comparison}
+A third chemical constraint on the salt cycle, distinct from the anode-side chlorine chemistry discussed above, is the moisture sensitivity of the $\ce{MgCl2}$-bearing salt. Anhydrous $\ce{MgCl2}$ cannot be obtained by open thermal dehydration of the hydrates: heating above $\sim$200--300~$^{\circ}$C causes hydrolysis ($\ce{MgCl2.H2O -> MgOHCl + HCl}$), so improperly dried salt carries moisture and hydroxychloride into the cell. These species are reduced at the cathode far positive of the Mg/Ca deposition potentials ($\ce{H2O + 2e^- -> H2 + O^{2-}}$), opening a parasitic hydrogen-evolution channel, and the HCl released by hydrolysis directly re-chlorinates the freshly deposited reductant ($\ce{Mg + 2HCl -> MgCl2 + H2}$). Moisture thus adds a current-efficiency loss mechanism not included in items (i)--(iv) of the energy balance, together with HCl corrosion and hydrogen gas-handling concerns. Industrial $\ce{MgCl2}$ electrolysis routinely controls this by vacuum dehydration or chlorinating pretreatment of the feed and a dry atmosphere over the cell \cite{pletcher1990}; these standard measures are assumed here, and the associated energy cost---endothermic dehydration of the small makeup-salt stream of the closed loop---is not itemized in Table~\ref{tab:heatbal}, whose post-treatment entry covers only product washing and drying. The moisture constraint is therefore an avoidable engineering requirement rather than an intrinsic process limitation, but it must be met before the assumed $\eta_I = 0.75$--0.80 can be pursued experimentally.
+
+\section*{Process Comparison}
 
 Table~\ref{tab:compare} compares the proposed process with established technologies. The key distinction is the electrochemical-thermochemical coupling: unlike FFC (pure electro-deoxidation) or Kroll (pure metallothermic), this process uses electrolysis to regenerate reductants in situ while leveraging bimetallic complementary reduction for both rate and purity.
 
@@ -599,13 +634,13 @@ Table~\ref{tab:compare} compares the proposed process with established technolog
   \footnotesize $^{a}$Theoretical prediction conditional on $\eta_I > 0.70$; industrial/pilot values shown for Kroll/FFC/USTB are not directly equivalent.
 \end{table}
 
-\section{Uncertainties and Limitations}
+\section*{Uncertainties and Limitations}
 
 This study is a conceptual design based on thermodynamic calculations and literature data. All quantitative results require future experimental validation; the key uncertainties are acknowledged below:
 
-(1) \textbf{Activity coefficients}: The ideal solution assumption introduces uncertainty in the co-deposition window; the sensitivity analysis (Section~\ref{subsec:activity}) suggests viability for $\gamma_{\ce{CaCl2}} = 0.3$--1.0, but precise values require FactSage/MQM calculation or direct measurement.
+(1) \textbf{Activity coefficients}: The ideal solution assumption introduces uncertainty in the co-deposition window; the sensitivity analysis (see the Activity Coefficient Sensitivity Analysis section) suggests viability for $\gamma_{\ce{CaCl2}} = 0.3$--1.0, but precise values require FactSage/MQM calculation or direct measurement.
 
-(2) \textbf{Electrode overpotentials and Mg/Ca co-deposition ratio}: The co-deposition window analysis is based on equilibrium Nernst equations. In practice, activation overpotentials (Butler--Volmer), concentration polarization, and ohmic drops modify the effective window. Qualitative analysis suggests that Na$^+$ may exhibit a higher activation overpotential than Ca$^{2+}$, which may \emph{enlarge} the practical window; however, the sign of this kinetic correction is not established---the Downs cell deposits Na from a $\ce{CaCl2}$-majority melt, suggesting $\ce{Ca^{2+}}$ reduction may instead be kinetically slower, which would \emph{narrow} the window. Quantitative assessment therefore requires electrode-kinetic parameters (exchange current density, transfer coefficient) that are not currently available for the quaternary chloride melt. A further and larger uncertainty is the Mg/Ca co-deposition ratio: because Mg reduces $\sim$816~mV earlier than Ca, the equimolar Mg--Ca alloy assumed in the material balance and Sec.~\ref{subsec:MgCa} can only be approached when Mg deposition reaches its mass-transfer (diffusion) limit, and the actual ratio must be determined experimentally. Concentration polarization at high current densities and ohmic losses also require detailed electrode-kinetic modeling for definitive assessment.
+(2) \textbf{Electrode overpotentials and Mg/Ca co-deposition ratio}: The co-deposition window analysis is based on equilibrium Nernst equations. In practice, activation overpotentials (Butler--Volmer), concentration polarization, and ohmic drops modify the effective window. Qualitative analysis suggests that Na$^+$ may exhibit a higher activation overpotential than Ca$^{2+}$, which may \emph{enlarge} the practical window; however, the sign of this kinetic correction is not established---the Downs cell deposits Na from a $\ce{CaCl2}$-majority melt, suggesting $\ce{Ca^{2+}}$ reduction may instead be kinetically slower, which would \emph{narrow} the window. Quantitative assessment therefore requires electrode-kinetic parameters (exchange current density, transfer coefficient) that are not currently available for the quaternary chloride melt. A further and larger uncertainty is the Mg/Ca co-deposition ratio: because Mg reduces $\sim$816~mV earlier than Ca, the equimolar Mg--Ca alloy assumed in the material balance and the Mg--Ca alloy analysis can only be approached when Mg deposition reaches its mass-transfer (diffusion) limit, and the actual ratio must be determined experimentally. The limiting-current analysis (Fig.~\ref{fig:current_regimes}) frames this as the choice of the operating current density relative to $j_{\mathrm{lim,Mg}}$, but $D$ and $\delta$ for the quaternary melt are themselves uncertain by about an order of magnitude ($j_{\mathrm{lim,Mg}} = 0.07$--3.4~A/cm$^2$), so the co-deposition design point must be established electrochemically. Concentration polarization at high current densities and ohmic losses also require detailed electrode-kinetic modeling for definitive assessment.
 
 (3) \textbf{SCM kinetics}: The model assumes pure diffusion control with constant $D$, neglecting convection and electromigration; the 6.3~min estimate for 100~$\mu$m-diameter particles ($R = 50~\mu$m) uses an order-of-magnitude $D$ estimate from FFC literature data \cite{fray2000,yan2007}, noting that the rate-limiting species (Mg/Ca diffusion inward vs.\ O$^{2-}$ diffusion outward) requires further study. Multi-parameter sensitivity ($D$, $\varepsilon$, $\tau$) yields 1.3--63~min, indicating that product-layer microstructure is the dominant uncertainty. The model further assumes the porous Ti product layer remains open and continuously wetted by the liquid reductant; if the liquid Mg--Ca alloy wets and progressively blocks the pores, or if the product layer coarsens (sintering/neck growth) at 600~$^{\circ}$C, $D_{\mathrm{eff}}$ could decay toward the solid-state value ($\sim$10$^{-12}$~m$^2$/s), extending the reduction time from minutes toward hours. Liquid Mg and Ca are essentially immiscible with Ti (no Mg--Ti or Ca--Ti intermetallics form), so interfacial compound formation is not expected; however, wetting, pore-clogging, and morphology evolution remain unquantified and require dedicated study.
 
@@ -621,11 +656,11 @@ This study is a conceptual design based on thermodynamic calculations and litera
 
 (9) \textbf{Current efficiency assumption}: The assumed $\eta_I = 0.75$--0.80 is based on analogy with the Downs process (dissolved-oxide/salt electrolysis) \cite{pletcher1990,ji2026} rather than the FFC process (solid-oxide direct reduction, $\eta_I = 30$--50\%) \cite{fray2000}. The estimated loss mechanisms (electronic conduction 2--5\%, back-reaction 5--10\%, Na co-deposition 3--8\%, impurity side reactions 2--5\%) yield $\eta_I \approx 0.72$--0.88. However, these loss estimates are rough estimates, not experimentally measured values. If $\eta_I$ proves to be only 0.50--0.60 (comparable to FFC), the energy consumption would rise to 14{,}000--19{,}000~kWh/ton-Ti, approaching the FFC range (15{,}000--20{,}000~kWh/ton-Ti). The Monte Carlo analysis uses a broad distribution $\eta_I \sim \mathrm{Tri}(0.50, 0.75, 0.88)$ to encompass this worst case, yielding $P(W < 14{,}000) = 85.8\%$ and confirming the high sensitivity of the energy conclusion to this unvalidated parameter.
 
-\section{Conclusions}
+\section*{Conclusions}
 
 (1) The proposed quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ molten salt process is designed to enable in-situ electrolytic co-deposition of Mg and Ca for complementary reduction of $\ce{TiO2}$. If the proposed bimetallic co-deposition can be realized experimentally, the process would combine Mg's kinetic advantage with Ca's thermodynamic deoxidation depth (20.2~ppm vs.\ 3908~ppm, 193$\times$ difference).
 
-(2) Thermodynamic calculations indicate all three reduction pathways are strongly exergonic ($\Delta G^{\circ} = -231.0$ to $-307.5$~kJ/mol at 600~$^{\circ}$C). The $\ce{Ca^{2+}/Na+}$ co-deposition window of 120~mV (ideal) remains positive (74.9--147.1~mV) under activity coefficient sensitivity analysis ($\gamma_{\ce{CaCl2}} = 0.3$--1.0), with the critical $\gamma_{\ce{CaCl2}}$ estimated at $\sim$0.02--0.04. Preliminary overpotential analysis suggests that Na$^+$ activation overpotential may exceed that of Ca$^{2+}$, potentially enlarging the practical window, subject to detailed electrode-kinetic modeling.
+(2) Thermodynamic calculations indicate all three reduction pathways are strongly exergonic ($\Delta G^{\circ} = -231.0$ to $-307.5$~kJ/mol at 600~$^{\circ}$C). The $\ce{Ca^{2+}/Na+}$ co-deposition window of 120~mV (ideal) remains positive (74.9--147.1~mV) under activity coefficient sensitivity analysis ($\gamma_{\ce{CaCl2}} = 0.3$--1.0), with the critical $\gamma_{\ce{CaCl2}}$ estimated at $\sim$0.02--0.04. Preliminary overpotential analysis suggests that Na$^+$ activation overpotential may exceed that of Ca$^{2+}$, potentially enlarging the practical window, subject to detailed electrode-kinetic modeling. A diffusion-layer analysis ($D = 1.0\times10^{-9}$~m$^2$/s, $\delta = 200~\mu$m) locates Mg--Ca co-deposition between the Mg limiting current (0.56~A/cm$^2$) and the Na$^+$ onset (1.31~A/cm$^2$); the equimolar deposit of the material balance corresponds to $j \approx 1.1$~A/cm$^2$, and the 0.9~V ohmic budget constrains the interelectrode gap to $\lesssim$1.1~cm at $\kappa = 1.4$~S/cm, dictating a close-spaced or diaphragm-integrated cell design.
 
 (3) The Mg--Ca liquid alloy, described by the regular solution approximation from Zhang et al. (2008) CALPHAD assessment ($\Omega \approx L_0 = -18.64$~kJ/mol at 873~K, $\Delta G_{\mathrm{mix}} = -9.69$~kJ/mol at equimolar), is thermodynamically stable, favoring homogeneous co-deposition.
 
@@ -651,6 +686,62 @@ This study is a conceptual design based on thermodynamic calculations and litera
 
 \noindent\textbf{Funding}: This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
 
-\bibliography{refs}
+\begin{thebibliography}{99}
+
+\bibitem{kroll1937} W. J. Kroll, Z. Anorg. Allg. Chem., 234, 42 (1937).
+
+\bibitem{ji2026} H. Ji, S. Guo, L. Gao, L. Yang, H. Yan, and H. Zeng, Int. J. Miner. Metall. Mater., 33, 15 (2026).
+
+\bibitem{fray2000} G. Z. Chen, D. J. Fray, and T. W. Farthing, Nature, 407, 361 (2000).
+
+\bibitem{jiao2023} H. Jiao, M. Liu, Z. Wang, M. Lin, Z. Qu, J. Song, and S. Jiao, ACS Sustainable Chem. Eng., 11, 5764 (2023).
+
+\bibitem{ono2002} K. Ono and R. O. Suzuki, JOM, 54, 59 (2002).
+
+\bibitem{pal2001} U. B. Pal, D. E. Woolley, and G. B. Kenney, JOM, 53, 32 (2001).
+
+\bibitem{okabe1997} T. H. Okabe and Y. Waseda, JOM, 49, 28 (1997).
+
+\bibitem{zhang2024} J. Zhang, H. Yan, Z. Liu, S. Guo, Y. Yang, G. Yang, R. Xia, M. Hu, and L. Li, J. Electrochem. Soc., 171, 082502 (2024).
+
+\bibitem{taninouchi2016} Y. Taninouchi, Y. Hamanaka, and T. H. Okabe, Metall. Mater. Trans. B, 47, 3394 (2016).
+
+\bibitem{lee2025} K. S. Lim, H. Nersisyan, S. K. Han, K.-T. Park, H. Suh, and J. H. Lee, Next Mater., 8, 100803 (2025).
+
+\bibitem{pang2024} J. Pang, L.-X. Kong, L.-G. Zhu, B.-Q. Xu, J.-J. Xu, C.-L. Bai, and B. Yang, Trans. Nonferrous Met. Soc. China, 34, 681 (2024).
+
+\bibitem{xu2025} L. Zhu, Z. Zhang, L. Kong, B. Xu, and B. Yang, Electrochim. Acta, 533, 146478 (2025).
+
+\bibitem{barin1995} I. Barin, Thermochemical Data of Pure Substances, 3rd ed., VCH, Weinheim (1995).
+
+\bibitem{waldner1999} P. Waldner and G. Eriksson, Calphad, 23, 189 (1999).
+
+\bibitem{zhang2008mgce} H. Zhang, Y. Wang, S. L. Shang, L.-Q. Chen, and Z.-K. Liu, J. Alloys Compd., 463, 294 (2008).
+
+\bibitem{sato1999} Y. Sato, Y. Kuroda, T. Nagatsu, M. Hoshi, J.-I. Kim, and T. Yamamura, in Molten Salts XII, P. C. Trulove, H. C. DeLong, G. R. Stafford, and S. Deki, Editors, PV 99-41, p. 313, The Electrochemical Society Proceedings Series, Pennington, NJ (1999).
+
+\bibitem{kubaschewski1979} O. Kubaschewski and C. B. Alcock, Metallurgical Thermochemistry, 5th ed., Pergamon Press, Oxford (1979).
+
+\bibitem{chartrand2000} P. Chartrand and A. D. Pelton, Can. Metall. Q., 39, 405 (2000).
+
+\bibitem{pletcher1990} D. Pletcher and F. C. Walsh, Industrial Electrochemistry, 2nd ed., Chapman and Hall, London (1990).
+
+\bibitem{kleppa1966} O. J. Kleppa and F. G. McCarty, J. Phys. Chem., 70, 1249 (1966).
+
+\bibitem{pelton2000mqm} A. D. Pelton, S. A. Degterov, G. Eriksson, C. Robelin, and Y. Dessureault, Metall. Mater. Trans. B, 31, 651 (2000).
+
+\bibitem{nayeb1987} A. A. Nayeb-Hashemi and J. B. Clark, Bull. Alloy Phase Diagrams, 8, 58 (1987).
+
+\bibitem{hallstedt2025} B. Hallstedt, Calphad, 89, 102833 (2025).
+
+\bibitem{levenspiel1999} O. Levenspiel, Chemical Reaction Engineering, 3rd ed., Wiley, New York (1999).
+
+\bibitem{yan2007} X. Y. Yan and D. J. Fray, Miner. Process. Extr. Metall., 116, 17 (2007).
+
+\bibitem{kvande2014} H. Kvande and P. A. Drabl{\o}s, J. Occup. Environ. Med., 56, S23 (2014).
+
+\bibitem{morita2004} M. Ito and K. Morita, Mater. Trans., 45, 2712 (2004).
+
+\end{thebibliography}
 
 \end{document}
