@@ -30,6 +30,9 @@ _archive_mmtb/
 # Local JES transfer planning notes (not part of the repo)
 jes-transfer-plan/
 
+# Local review workspace: agent review reports, compile logs, rendered page PNGs, rerun outputs
+review_workspace/
+
 # TRAE tooling
 .trae-html-share-packages/
 .uploads/
