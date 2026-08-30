@@ -16,6 +16,8 @@ prepared for submission to the *Journal of The Electrochemical Society (JES)*, E
 ```
 .
 ├── manuscript.tex                — Manuscript (JES format, double-spaced, line-numbered)
+├── manuscript_v1.tex             — Reviewed/revised manuscript (v1: review fixes applied; see
+│                                   review_workspace/modification_log_v1.md)
 ├── Highlights.tex                — Highlights (5 bullets ≤ 85 chars, separate source file per ECS guide)
 ├── cover_letter.tex              — JES cover letter (Electrochemical Engineering area)
 ├── GA_process.png                — Graphical abstract (uploaded separately in ScholarOne)
@@ -110,13 +112,13 @@ python scripts/supplement_calc.py
 ## Key Results (600 °C design-basis temperature)
 
 - Reduction thermodynamics: ΔG° = −231.0 to −307.5 kJ/mol for the three pathways (Mg, Ca, and combined Mg + Ca)
-- Deoxidation limit: Mg → 3908 ppm O, Ca → 20.2 ppm O (193× difference)
-- Ca²⁺/Na⁺ co-deposition window: +120 mV (ideal), 74.9–147.1 mV under activity-coefficient sensitivity
+- Deoxidation limit: Mg → 3908 ppm O, Ca → 20.2 ppm O (193× difference); equimolar Mg–Ca alloy → ≈77 ppm O (design-relevant value)
+- Ca²⁺/Na⁺ co-deposition window: +120.2 mV (ideal), 74.9–147.1 mV under activity-coefficient sensitivity
 - Cathode mass transport: j_lim,Mg = 0.56 A/cm², co-deposition regime 0.56–1.31 A/cm², equimolar-alloy design point j ≈ 1.1 A/cm², ohmic budget L ≲ 1.1 cm
 - Mg–Ca liquid alloy: ΔG_mix = −9.69 kJ/mol (equimolar)
 - Shrinking-core kinetics: 100 μm particles reduced in 6.3 min (D = 2.0×10⁻⁹ m²/s)
-- Net energy consumption: 11,191 kWh/ton-Ti (conditional on η_I > 0.70)
-- Monte Carlo (N = 10⁵, seed = 42): P(W_net < 14,000 kWh/ton) = 85.8%
+- Net energy consumption: 12,552 kWh/ton-Ti at the nominal design point (η_I = 0.75, V_cell = 4.1 V; conditional on η_I > 0.70; heat-integration credit capped at 329 kWh/ton, reaction exotherm rejected as waste heat)
+- Monte Carlo (N = 10⁵, seed = 42): median 13,141 kWh/ton-Ti, P(W_net < 15,000 kWh/ton) = 82.1%
 
 ---
 

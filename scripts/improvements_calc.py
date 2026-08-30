@@ -435,7 +435,7 @@ for x_target in [0.95, 0.99, 0.999, 0.9999]:
         w = R * T_distill * (tp + tw) * n_Ti_per_ton / n_TiCl4_prod / 3.6e6
         print(f"  {x_target*100:.2f}%: W_min = {w:.2f} kWh/ton Ti")
 
-our_total = 12638
+our_total = 4 * 96485 * (1e6 / 47.867) * 4.1 / (0.75 * 3.6e6)  # gross electrical, eta=0.75 V=4.1 V -> 12244 kWh/ton
 print(f"\nComparison:")
 print(f"  Kroll TiCl4 distillation (actual): {actual_distill} kWh/ton Ti")
 print(f"  Kroll TiCl4 distillation (min):    {W_min_kWh:.2f} kWh/ton Ti")

@@ -89,10 +89,10 @@ ax.text(3.05, 5.12, 'closed salt loop', ha='center', fontsize=10.5, color=C_MUT)
 
 # ===================== right panel: four key numbers =====================
 stats = [
-    ('Ca$^{2+}$/Na$^+$ co-deposition window', '75–147 mV', '#1d5fa2'),
-    ('Ca deoxidation limit', '20.2 ppm O', '#b4541c'),
+    ('Ca$^{2+}$/Na$^+$ co-deposition window', '74.9–147.1 mV', '#1d5fa2'),
+    ('Ca deoxidation limit (alloy)', '≈77 ppm O', '#b4541c'),
     ('100 μm particle reduction', '6.3 min', '#2e7d4f'),
-    ('Net energy ($\\eta_I > 0.70$)', '11,191 kWh t$^{-1}$-Ti', '#455a64'),
+    ('Net energy ($\\eta_I > 0.70$)', '12,552 kWh t$^{-1}$-Ti', '#455a64'),
 ]
 y0 = 4.35
 for i, (lab, val, col) in enumerate(stats):

@@ -474,10 +474,12 @@ plt.savefig(os.path.join(FIGURE_DIR, 'fig_overpotential_window.pdf'), bbox_inche
 print("  已保存: fig_overpotential_window.pdf")
 
 # 10b. 修正后的热平衡 Sankey-style 柱状图
+# 新口径：电解槽 V_cell=4.1 V > 热中性电压 3.204 V，还原放热为槽内废热，
+# 仅可抵扣外部热需求 329 kWh/ton（预热184+盐预热7+槽壁138，经热集成供给）。
 fig, ax = plt.subplots(1, 1, figsize=(8, 5))
-categories = ['Electrolysis\n(gross)', 'Reaction\nexotherm', 'Auxiliary\ninputs', 'Ti cooling\nrecovery', 'Net\nconsumption']
-values = [12244, -1690, 679, -42, 11191]
-colors = ['#2196F3', '#4CAF50', '#FF9800', '#4CAF50', '#F44336']
+categories = ['Electrolysis\n(gross)', 'Waste heat\nrejected', 'Heat-integration\ncredit', 'Pump +\npost-treatment', 'Ti cooling\nrecovery', 'Net\nconsumption']
+values = [12244, 6760, -329, 350, -42, 12552]
+colors = ['#2196F3', '#B0BEC5', '#4CAF50', '#FF9800', '#4CAF50', '#F44336']
 bars = ax.bar(categories, values, color=colors, edgecolor='black', linewidth=0.5)
 ax.axhline(y=0, color='black', linewidth=0.8)
 ax.set_ylabel('Energy (kWh/ton-Ti)', fontsize=12)
@@ -515,24 +517,23 @@ with open(f'{output_dir}/tab_overpotential.csv', 'w', newline='') as f:
         w.writerow([j, f'{eC:.1f}', f'{eN:.1f}', _ecC, _ecN, f'{eff:.1f}'])
 print(f"\n  已保存: tab_overpotential.csv")
 
-# 修正热平衡表
+# 修正热平衡表（新口径：放热不抵扣电能，仅热集成抵扣外部热需求329）
 with open(f'{output_dir}/tab_heat_balance_revised.csv', 'w', newline='') as f:
     w = csv.writer(f)
     w.writerow(['Item', 'Energy (kWh/ton)', 'Note'])
-    w.writerow(['Electrolysis (gross)', '12244', 'Before reaction exotherm offset'])
-    w.writerow(['Reaction exotherm', '-1690', 'Internal heat recovery, offsets electrolysis'])
-    w.writerow(['Electrolysis (net)', '10554', 'Net electrical input'])
-    w.writerow(['TiO2 preheating', '184', ''])
-    w.writerow(['Salt makeup preheating', '7', ''])
-    w.writerow(['Cell wall heat loss', '138', 'External thermal input (reaction exotherm fully used for electrolysis offset)'])
+    w.writerow(['Electrolysis (gross)', '12244', '4F*n_Ti*V/(eta*3.6e6) at eta=0.75, V=4.1 V'])
+    w.writerow(['Reaction enthalpy absorbed (net)', '5483', 'dH = 944.7 kJ/mol-Ti (TiO2 -> Ti + O2), 20891 mol/ton'])
+    w.writerow(['Waste heat rejected', '6760', 'V_cell 4.1 V > thermoneutral 3.204 V; includes reduction exotherm 1690 (NOT credited against electricity)'])
+    w.writerow(['External thermal demand', '329', 'TiO2 preheating 184 + salt preheating 7 + wall loss 138; met by reject-heat integration (credit -329)'])
     w.writerow(['Salt circulation pumping', '50', ''])
     w.writerow(['Post-treatment', '300', ''])
-    w.writerow(['Total external input', '11233', ''])
+    w.writerow(['Total external input', '12594', 'Electricity 12244 + pump/post 350 (thermal needs met by integration)'])
     w.writerow(['Ti powder cooling recovery', '-42', 'External heat recovery'])
-    w.writerow(['Net consumption', '11191', ''])
-    w.writerow(['Theoretical minimum', '6112', ''])
-    w.writerow(['Thermodynamic efficiency', '54.6%', 'W_min/W_net'])
-    w.writerow(['Energy utilization ratio', '94.0%', 'Electrolysis/Total input (NOT thermal efficiency)'])
+    w.writerow(['Net consumption', '12552', 'Without heat integration: 12881'])
+    w.writerow(['Theoretical minimum (electrolysis step)', '6112', ''])
+    w.writerow(['Process energy efficiency', '48.7%', '6112/12552'])
+    w.writerow(['Second-law efficiency', '36.3%', '4550/12552'])
+    w.writerow(['Electrolysis energy fraction', '97.2%', '12244/12594 (NOT a thermodynamic efficiency)'])
 print(f"  已保存: tab_heat_balance_revised.csv")
 
 print("\n" + "=" * 60)

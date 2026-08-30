@@ -1,15 +1,14 @@
 Item,Energy (kWh/ton),Note
-Electrolysis (gross),12244,Before reaction exotherm offset
-Reaction exotherm,-1690,"Internal heat recovery, offsets electrolysis"
-Electrolysis (net),10554,Net electrical input
-TiO2 preheating,184,
-Salt makeup preheating,7,
-Cell wall heat loss,138,External thermal input (reaction exotherm fully used for electrolysis offset)
+Electrolysis (gross),12244,"4F*n_Ti*V/(eta*3.6e6) at eta=0.75, V=4.1 V"
+Reaction enthalpy absorbed (net),5483,"dH = 944.7 kJ/mol-Ti (TiO2 -> Ti + O2), 20891 mol/ton"
+Waste heat rejected,6760,V_cell 4.1 V > thermoneutral 3.204 V; includes reduction exotherm 1690 (NOT credited against electricity)
+External thermal demand,329,TiO2 preheating 184 + salt preheating 7 + wall loss 138; met by reject-heat integration (credit -329)
 Salt circulation pumping,50,
 Post-treatment,300,
-Total external input,11233,
+Total external input,12594,Electricity 12244 + pump/post 350 (thermal needs met by integration)
 Ti powder cooling recovery,-42,External heat recovery
-Net consumption,11191,
-Theoretical minimum,6112,
-Thermodynamic efficiency,54.6%,W_min/W_net
-Energy utilization ratio,94.0%,Electrolysis/Total input (NOT thermal efficiency)
+Net consumption,12552,Without heat integration: 12881
+Theoretical minimum (electrolysis step),6112,
+Process energy efficiency,48.7%,6112/12552
+Second-law efficiency,36.3%,4550/12552
+Electrolysis energy fraction,97.2%,12244/12594 (NOT a thermodynamic efficiency)

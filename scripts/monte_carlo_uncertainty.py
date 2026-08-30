@@ -91,11 +91,11 @@ print(f"  Max:    {np.max(t_min_samples):.1f} min")
 
 # --- 输出量2: 全流程净能耗 ---
 # W_practical = 4F * n_Ti * V_cell / (η_I * 3.6e6)  [kWh/ton]
-# W_net ≈ W_practical + 679 (auxiliary) - 42 (Ti cooling)
-# 其中电解部分 = W_practical, 辅助能耗固定679, 回收42
+# W_net = W_practical + 350 (pump 50 + post-treatment 300) - 42 (Ti cooling recovery)
+# 外部热需求（TiO2预热184 + 盐预热7 + 槽壁散热138 = 329 kWh/ton）由电解槽废热集成供给
+# （heat-integration credit -329）；反应放热为自热盈余槽内的废热，不再按1:1抵扣电能。
 W_electrolysis = (4 * F * n_Ti * V_samples) / (eta_samples * 3.6e6)  # kWh/ton
-# Net equivalent consumption: gross electrolysis - reaction exotherm (1690 kWh/ton) + auxiliary (679) - Ti cooling (42)
-W_net_samples = W_electrolysis - 1690 + 679 - 42  # = W_electrolysis - 1053
+W_net_samples = W_electrolysis + 350 - 42  # = W_electrolysis + 308
 
 print(f"\n--- Net Energy Consumption ---")
 print(f"  Mean:   {np.mean(W_net_samples):.0f} kWh/ton-Ti")
@@ -123,7 +123,7 @@ print(f"  P5:     {np.percentile(eff_2nd_law_samples, 5):.1f}%")
 print(f"  P95:    {np.percentile(eff_2nd_law_samples, 95):.1f}%")
 
 # --- 概率分析：低于目标值的概率 ---
-targets_energy = [11191, 12000, 14000, 16000, 20000]
+targets_energy = [12552, 13000, 14000, 15000, 20000]
 print(f"\n--- P(W_net < target) ---")
 for target in targets_energy:
     prob = np.mean(W_net_samples < target) * 100
@@ -168,8 +168,8 @@ mu_w, sigma_w = stats.norm.fit(W_net_samples)
 x_fit = np.linspace(np.percentile(W_net_samples, 0.5), np.percentile(W_net_samples, 99.5), 500)
 ax.plot(x_fit, stats.norm.pdf(x_fit, mu_w, sigma_w), 'r-', linewidth=2, label=f'Normal fit\n(μ={mu_w:.0f}, σ={sigma_w:.0f})')
 ax.axvline(np.median(W_net_samples), color='green', linestyle='--', linewidth=2, label=f'Median={np.median(W_net_samples):.0f}')
-ax.axvline(11191, color='orange', linestyle='--', linewidth=2, label='Nominal (11,191)')
-ax.axvline(20000, color='red', linestyle=':', linewidth=2, label='FFC upper (20,000)')
+ax.axvline(12552, color='orange', linestyle='--', linewidth=2, label='Nominal (12,552)')
+ax.axvline(15000, color='red', linestyle=':', linewidth=2, label='FFC lower (15,000)')
 ax.set_xlabel('Net Energy Consumption (kWh/ton-Ti)', fontsize=12)
 ax.set_ylabel('Probability Density', fontsize=12)
 ax.set_title('Net Energy Consumption Distribution\n(global uncertainty, N=100k)', fontsize=13)
@@ -214,8 +214,8 @@ for bar, rho in zip(bars, correlations):
 # 能耗 vs 各参数
 ax = axes[1]
 params_energy = {
-    'η_I (current eff.)': eta_samples,
-    'V_cell (V)': V_samples,
+    '$\\eta_I$ (current eff.)': eta_samples,
+    '$V_{\\mathrm{cell}}$ (V)': V_samples,
 }
 correlations_e = []
 labels_e = []
