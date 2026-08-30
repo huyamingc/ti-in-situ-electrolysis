@@ -16,8 +16,6 @@ prepared for submission to the *Journal of The Electrochemical Society (JES)*, E
 ```
 .
 ├── manuscript.tex                — Manuscript (JES format, double-spaced, line-numbered)
-├── manuscript_v1.tex             — Reviewed/revised manuscript (v1: review fixes applied; see
-│                                   review_workspace/modification_log_v1.md)
 ├── Highlights.tex                — Highlights (5 bullets ≤ 85 chars, separate source file per ECS guide)
 ├── cover_letter.tex              — JES cover letter (Electrochemical Engineering area)
 ├── GA_process.png                — Graphical abstract (uploaded separately in ScholarOne)
