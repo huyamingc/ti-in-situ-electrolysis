@@ -38,7 +38,7 @@ ax.add_patch(Rectangle((0.62, 1.0), 0.42, 3.1, fc=C_CATH, ec='none', zorder=3))
 ax.text(0.83, 4.35, 'Cathode', ha='center', fontsize=13, color=C_CATH, fontweight='bold')
 # anode (right)
 ax.add_patch(Rectangle((5.16, 1.0), 0.42, 3.1, fc=C_AN, ec='none', zorder=3))
-ax.text(5.37, 4.35, 'Inert anode', ha='center', fontsize=13, color=C_AN, fontweight='bold')
+ax.text(5.30, 4.35, 'Inert anode', ha='center', fontsize=13, color=C_AN, fontweight='bold')
 
 # Mg-Ca droplets at cathode
 rng = np.random.default_rng(7)
@@ -77,7 +77,7 @@ ax.text(3.28, 0.72, 'MgO/CaO dissolve $\\rightarrow$ electrolytic regeneration',
 ax.add_patch(FancyArrowPatch((0.83, 4.15), (0.83, 4.15), color=C_CATH))  # placeholder
 ax.annotate('', xy=(1.05, 4.12), xytext=(4.9, 4.12),
             arrowprops=dict(arrowstyle='-', color='none'))
-ax.text(3.28, 4.62, '600 °C  MgCl$_2$–CaCl$_2$–NaCl–KCl melt', ha='center',
+ax.text(3.28, 4.78, '600 °C  MgCl$_2$–CaCl$_2$–NaCl–KCl melt', ha='center',
         fontsize=12, color=C_TXT, style='italic')
 ax.annotate('', xy=(5.05, 4.95), xytext=(1.0, 4.95),
             arrowprops=dict(arrowstyle='-|>', color=C_MUT, lw=1.6,
@@ -85,7 +85,7 @@ ax.annotate('', xy=(5.05, 4.95), xytext=(1.0, 4.95),
 ax.annotate('', xy=(1.0, 4.95), xytext=(5.05, 4.95),
             arrowprops=dict(arrowstyle='-|>', color=C_MUT, lw=1.6,
                             connectionstyle='arc3,rad=-0.12'))
-ax.text(3.05, 5.12, 'closed salt loop', ha='center', fontsize=10.5, color=C_MUT)
+ax.text(3.05, 5.30, 'closed salt loop', ha='center', fontsize=10.5, color=C_MUT)
 
 # ===================== right panel: four key numbers =====================
 stats = [
