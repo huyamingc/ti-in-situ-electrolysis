@@ -1,0 +1,11 @@
+Highlights
+
+Electrochemical Design Basis for Titanium Production by Mg-Ca Co-Deposition in a Quaternary Chloride Melt
+
+Yaming Hu
+
+- An electrochemical design basis is established for molten-salt titanium production
+- Magnesium and calcium are co-deposited as regenerable reductants in one cell
+- A 75-147 mV co-deposition window survives activity-coefficient uncertainty
+- Mass-transport analysis sets the operating current density and electrode gap
+- Net energy of 12,552 kWh per ton of titanium requires current efficiency above 0.70
