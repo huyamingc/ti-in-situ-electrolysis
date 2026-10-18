@@ -4,7 +4,7 @@ This repository contains the manuscript and all Python scripts for the paper
 
 **"Electrochemical Design Basis for Titanium Production by Mg–Ca Co-Deposition in a Quaternary Chloride Melt"**
 
-prepared for submission to the *Journal of The Electrochemical Society (JES)*, Electrochemical Engineering area. This repository now holds the **post-review revision** (54 pages): the mechanism has been rebuilt around the Ca + MgO -> CaO + Mg reaction with Case I / Case II carried through, engineering content (flowsheet, settled-bed reactor, semi-continuous operation, electrostatic separation) has been added, the uncertainty analysis has been expanded to eleven parameters, and results are reported at both 600 and 620 C. See `review_workspace/response_and_resubmission_v1.md` for the point-by-point response. The manuscript uses the standard `article` class with double spacing and embedded `thebibliography` (ECS reference format), and compiles with `pdflatex` alone.
+prepared for submission to the *Journal of Sustainable Metallurgy* (Springer). This repository holds the **conceptual process-design revision** (54 pages): the mechanism has been rebuilt around the Ca + MgO -> CaO + Mg reaction with Case I / Case II carried through, engineering content (flowsheet, settled-bed reactor, semi-continuous operation, electrostatic separation) has been added, the uncertainty analysis covers eleven parameters, and results are reported at both 600 and 620 C. See `review_workspace/response_and_resubmission_v1.md` for the point-by-point response to the earlier review round. The manuscript uses the standard `article` class with double spacing, line numbering and an embedded `thebibliography` in Springer reference style, and compiles with `pdflatex` alone. A ready-to-upload package is generated in `submission_jsm/`.
 
 > Repository: <https://github.com/huyamingc/ti-in-situ-electrolysis>
 > Preprint: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21973469.svg)](https://doi.org/10.5281/zenodo.21973469)
@@ -15,12 +15,10 @@ prepared for submission to the *Journal of The Electrochemical Society (JES)*, E
 
 ```
 .
-├── manuscript.tex                — Manuscript (JES format, double-spaced, line-numbered)
-├── Highlights.tex                — Highlights (5 bullets ≤ 85 chars, separate source file per ECS guide)
-├── cover_letter.tex              — JES cover letter (Electrochemical Engineering area)
-├── GA_process.png                — Graphical abstract (uploaded separately in ScholarOne)
-├── refs.bib                      — BibTeX source database (27 entries; references are
-│                                   embedded in manuscript.tex as thebibliography in ECS format)
+├── manuscript.tex                — Manuscript (Springer reference style, double-spaced, line-numbered)
+├── manuscript.pdf                — Compiled PDF (54 pages)
+├── submission_jsm/               — Generated upload package (manuscript + JSM cover letter + 15 EPS)
+├── GA_process.png                — Graphical abstract (uploaded separately)
 ├── README.md
 ├── .gitignore
 ├── scripts/
@@ -64,7 +62,7 @@ prepared for submission to the *Journal of The Electrochemical Society (JES)*, E
 
 Note: `_archive_mmtb/` (previous MMTB submission package: Springer class files, old-named
 EPS figures, submission zips) is retained for the record of the first submission and is
-not part of the JES submission.
+not part of the current submission.
 
 ---
 
@@ -75,8 +73,8 @@ pdflatex manuscript
 pdflatex manuscript
 ```
 
-No `bibtex` run is required: the references are embedded in `thebibliography` (ECS format,
-citation-order numbering, full author lists, CAS journal abbreviations).
+No `bibtex` run is required: the references are embedded in `thebibliography` (Springer
+numeric style, citation-order numbering, full author lists, CAS journal abbreviations).
 
 The manuscript references EPS figures in `figures_eps/` via `\graphicspath`; compilation
 with `pdflatex` + `epstopdf` automatically converts them to PDF on-the-fly. The compiled

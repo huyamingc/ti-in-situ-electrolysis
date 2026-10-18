@@ -40,3 +40,6 @@ review_workspace/
 # Tool-generated index/copies (see manuscript_v1.tex == manuscript.tex)
 _index/
 manuscript_v1.tex
+
+# Generated submission package (rebuilt from manuscript.tex)
+submission_jsm/
