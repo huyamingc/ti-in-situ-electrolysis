@@ -1,0 +1,3 @@
+﻿scenario,V_cell,gross_kWh_t,net_kWh_t,process_eff_%,second_law_%,electrolysis_share_%
+manuscript (MgO+CaO),4.13,12330,12638,48.4,36.0,97.2
+reconstructed (CaO only),4.23,12625,12933,49.0,35.2,97.3

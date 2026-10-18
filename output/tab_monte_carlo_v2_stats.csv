@@ -1,0 +1,16 @@
+﻿quantity,value,note
+samples,100000,seed 42
+t_SCM median (min),13.6,P5-P95 4.0-55.2 (nominal 6.3 min at c_red = 3 mol%)
+W_net median (kWh/t),"13,141",P5-P95 10875-16722
+P(W_net < 15000),82.1 %,FFC lower bound
+"W median, eta correlated with j (kWh/t)","13,981",P5-P95 11148-19320
+"P(W < 15000), eta correlated with j",65.9 %,beta = 0.10 per unit j/j_ref
+"j_lim,Mg median (A/cm2)",0.75,P5-P95 0.33-2.02
+j_design median (A/cm2),1.49,equimolar deposit
+L_req median (cm),0.84,P95 1.88 cm
+P(window > 50 mV),100.0 %,P5 window 89 mV
+P(liquidus < 600 C),100.0 %,
+P(liquidus < 620 C),100.0 %,
+P(L_req >= 0.30 cm),95.8 %,gap engineering floor
+P(all feasible @620 C),95.8 %,window + liquidus + gap
+P(all feasible @600 C),95.8 %,

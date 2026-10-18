@@ -1,0 +1,6 @@
+﻿quantity,value,cross-check,note
+"dG(Ca+MgO->CaO+Mg) at 600 C, kJ/mol",-38.23,-38.23,reviewer 3 correct; both routes agree
+a_MgO ceiling for 77 ppm O (Ca-couple),see text,-,new constraint forced by R3 objection
+"reductant flux A (paper), kg Mg / kg Ca",508 / 837,-,1:1 assumption
+"reductant flux B (sequential), kg Mg / kg Ca",1009 / 10,-,"Mg to its own limit, then Ca"
+"reductant flux C (CaO sole carrier), kg Mg / kg Ca",0 / 1675,-,Mg only a liquid carrier
