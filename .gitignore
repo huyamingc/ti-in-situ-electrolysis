@@ -36,3 +36,7 @@ review_workspace/
 # TRAE tooling
 .trae-html-share-packages/
 .uploads/
+
+# Tool-generated index/copies (see manuscript_v1.tex == manuscript.tex)
+_index/
+manuscript_v1.tex

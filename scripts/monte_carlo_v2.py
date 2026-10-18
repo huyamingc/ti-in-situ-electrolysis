@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Monte Carlo, extended to ten parameters (Reviewer 2, items 3 and 6).
+"""Monte Carlo, extended to eleven parameters (Reviewer 2, items 3 and 6).
 
-Additions over the original five-parameter run:
+Additions over the original five-parameter run (six further parameters, so the
+sampler draws eleven in total):
   * gamma_CaCl2 ~ U(0.3, 1.0), gamma_NaCl ~ U(0.7, 1.0)   -> co-deposition window
   * liquidus    ~ N(544, 25) truncated to [494, 594] C     -> operable temperature
   * MgO solubility ~ U(0.5, 1.2) wt%                       -> salt inventory
