@@ -15,6 +15,12 @@
 # Compiled manuscript PDF (keep figures/, which are inputs)
 *.pdf
 !figures/*.pdf
+# Orcidlogo-mark.pdf is an input, not compiled output: sn-jnl.cls needs it.
+!Orcidlogo-mark.pdf
+
+# The generated bibliography IS tracked: it is part of the submission package and
+# lets manuscript.pdf be rebuilt with pdflatex alone (no bibtex run).
+!manuscript.bbl
 
 # Python
 __pycache__/
@@ -43,3 +49,7 @@ manuscript_v1.tex
 
 # Generated submission package (rebuilt from manuscript.tex)
 submission_jsm/
+
+# Downloaded Springer Nature template sources (third-party; the files actually
+# used, sn-jnl.cls and the two .bst, are vendored at the repository root)
+_snjnl/

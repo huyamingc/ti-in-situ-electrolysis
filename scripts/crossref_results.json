@@ -1,0 +1,827 @@
+[
+  {
+    "key": "kroll1937",
+    "query": "Kroll Zeitschrift fur anorganische und allgemeine Chemie 234 42 1937",
+    "candidates": [
+      {
+        "title": "Verformbares Titan und Zirkon",
+        "journal": "Zeitschrift für anorganische und allgemeine Chemie",
+        "volume": "234",
+        "page": "42-50",
+        "year": "1937",
+        "doi": "10.1002/zaac.19372340105",
+        "type": "journal-article"
+      },
+      {
+        "title": "",
+        "journal": "Zeitschrift für anorganische und allgemeine Chemie",
+        "volume": "234",
+        "page": "",
+        "year": "1937",
+        "doi": "10.1002/zaac.v234:1",
+        "type": "journal-issue"
+      },
+      {
+        "title": "",
+        "journal": "Zeitschrift für anorganische und allgemeine Chemie",
+        "volume": "234",
+        "page": "",
+        "year": "1937",
+        "doi": "10.1002/zaac.v234:4",
+        "type": "journal-issue"
+      }
+    ]
+  },
+  {
+    "key": "ji2026",
+    "query": "Ji Guo Gao Yang Yan Zeng International Journal of Minerals Metallurgy and Materials 33 15 2026",
+    "candidates": [
+      {
+        "title": "Revolutionizing titanium production: A comprehensive review of thermochemical and molten salt electrolysis processes",
+        "journal": "International Journal of Minerals, Metallurgy and Materials",
+        "volume": "33",
+        "page": "15-34",
+        "year": "2025",
+        "doi": "10.1007/s12613-025-3210-y",
+        "type": "journal-article"
+      },
+      {
+        "title": "Semisolid A356 alloy feedstock poured through a serpentine channel",
+        "journal": "International Journal of Minerals, Metallurgy and Materials",
+        "volume": "16",
+        "page": "603-607",
+        "year": "2009",
+        "doi": "10.1016/s1674-4799(09)60104-7",
+        "type": "journal-article"
+      },
+      {
+        "title": "Intelligent prediction method of rockburst driven by microseismic temporal features in deep near-vertical coal seams",
+        "journal": "International Journal of Minerals, Metallurgy and Materials",
+        "volume": "33",
+        "page": "2403-2418",
+        "year": "2026",
+        "doi": "10.1007/s12613-026-3408-7",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "fray2000",
+    "query": "Chen Fray Farthing Nature 407 361 2000",
+    "candidates": [
+      {
+        "title": "Direct electrochemical reduction of titanium dioxide to titanium in molten calcium chloride",
+        "journal": "Nature",
+        "volume": "407",
+        "page": "361-364",
+        "year": "2000",
+        "doi": "10.1038/35030069",
+        "type": "journal-article"
+      },
+      {
+        "title": "Fray-Farthing-Chen Cambridge Process: From Serendipity to Space Exploration",
+        "journal": "Treatise on Process Metallurgy, Volume 2B",
+        "volume": "",
+        "page": "589-600",
+        "year": "2025",
+        "doi": "10.1016/b978-0-443-40294-4.00050-5",
+        "type": "book-chapter"
+      },
+      {
+        "title": "The next big thing",
+        "journal": "Nature",
+        "volume": "407",
+        "page": "575-575",
+        "year": "2000",
+        "doi": "10.1038/35036670",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "jiao2023",
+    "query": "Jiao Liu Wang Lin Qu Song Jiao ACS Sustainable Chemistry & Engineering 11 5764 2023",
+    "candidates": [
+      {
+        "title": "Upcycling of Titanium by Molten Salt Electrorefining",
+        "journal": "ACS Sustainable Chemistry &amp; Engineering",
+        "volume": "11",
+        "page": "5764-5772",
+        "year": "2023",
+        "doi": "10.1021/acssuschemeng.3c00645",
+        "type": "journal-article"
+      },
+      {
+        "title": "Facile and General Electrochemical Diselenylation of Terminal Alkynes",
+        "journal": "ACS Sustainable Chemistry &amp; Engineering",
+        "volume": "11",
+        "page": "2607-2612",
+        "year": "2023",
+        "doi": "10.1021/acssuschemeng.2c06864",
+        "type": "journal-article"
+      },
+      {
+        "title": "Novel Thin-Layer Fountain Photobioreactors for the High-Density Cultivation of <i>Spirulina</i> sp",
+        "journal": "ACS Sustainable Chemistry &amp; Engineering",
+        "volume": "11",
+        "page": "16818-16827",
+        "year": "2023",
+        "doi": "10.1021/acssuschemeng.3c05509",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "ono2002",
+    "query": "Ono Suzuki JOM 54 59 2002",
+    "candidates": [
+      {
+        "title": "A new concept for producing Ti sponge: Calciothermic reduction",
+        "journal": "JOM",
+        "volume": "54",
+        "page": "59-61",
+        "year": "2002",
+        "doi": "10.1007/bf02701078",
+        "type": "journal-article"
+      },
+      {
+        "title": "Presenting upcoming TMS meetings and calls for papers",
+        "journal": "JOM",
+        "volume": "54",
+        "page": "56-59",
+        "year": "2002",
+        "doi": "10.1007/bf02709096",
+        "type": "journal-article"
+      },
+      {
+        "title": "Correction",
+        "journal": "JOM",
+        "volume": "54",
+        "page": "54-54",
+        "year": "2002",
+        "doi": "10.1007/bf02711868",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "pal2001",
+    "query": "Pal Woolley Kenney JOM 53 32 2001",
+    "candidates": [
+      {
+        "title": "Emerging SOM technology for the green synthesis of metals from oxides",
+        "journal": "JOM",
+        "volume": "53",
+        "page": "32-35",
+        "year": "2001",
+        "doi": "10.1007/s11837-001-0053-4",
+        "type": "journal-article"
+      },
+      {
+        "title": "Emerging technologies for metals production",
+        "journal": "JOM",
+        "volume": "53",
+        "page": "27-27",
+        "year": "2001",
+        "doi": "10.1007/s11837-001-0051-6",
+        "type": "journal-article"
+      },
+      {
+        "title": "Jarofix: Addressing iron disposal in the zinc industry",
+        "journal": "JOM",
+        "volume": "53",
+        "page": "32-35",
+        "year": "2001",
+        "doi": "10.1007/s11837-001-0010-2",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "okabe1997",
+    "query": "Okabe Waseda JOM 49 28 1997",
+    "candidates": [
+      {
+        "title": "Producing titanium through an electronically mediated reaction",
+        "journal": "JOM",
+        "volume": "49",
+        "page": "28-32",
+        "year": "1997",
+        "doi": "10.1007/bf02914710",
+        "type": "journal-article"
+      },
+      {
+        "title": "A sampling of highlights from theEPD Congress 1997",
+        "journal": "JOM",
+        "volume": "49",
+        "page": "28-32",
+        "year": "1997",
+        "doi": "10.1007/bf02914871",
+        "type": "journal-article"
+      },
+      {
+        "title": "Degassing aluminum using static fine-pore refractory diffusers",
+        "journal": "JOM",
+        "volume": "49",
+        "page": "27-28",
+        "year": "1997",
+        "doi": "10.1007/bf02914396",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "zhang2024",
+    "query": "Zhang Yan Liu Guo Yang Yang Xia Hu Li Journal of The Electrochemical Society 171 082502 2024",
+    "candidates": [
+      {
+        "title": "Review—Progress in Research and Application of Molten Salt Electrolysis for Titanium Extraction",
+        "journal": "Journal of The Electrochemical Society",
+        "volume": "171",
+        "page": "082502",
+        "year": "2024",
+        "doi": "10.1149/1945-7111/ad6d95",
+        "type": "journal-article"
+      },
+      {
+        "title": "Deuterated perovskite for room temperature spin device",
+        "journal": "Nature Communications",
+        "volume": "17",
+        "page": "",
+        "year": "2026",
+        "doi": "10.1038/s41467-026-71582-x",
+        "type": "journal-article"
+      },
+      {
+        "title": "Posttransplant complications: molecular mechanisms and therapeutic interventions",
+        "journal": "MedComm",
+        "volume": "5",
+        "page": "",
+        "year": "2024",
+        "doi": "10.1002/mco2.669",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "taninouchi2016",
+    "query": "Taninouchi Hamanaka Okabe Metallurgical and Materials Transactions B 47 3394 2016",
+    "candidates": [
+      {
+        "title": "Electrochemical Deoxidation of Titanium and Its Alloy Using Molten Magnesium Chloride",
+        "journal": "Metallurgical and Materials Transactions B",
+        "volume": "47",
+        "page": "3394-3404",
+        "year": "2016",
+        "doi": "10.1007/s11663-016-0792-9",
+        "type": "journal-article"
+      },
+      {
+        "title": "Chlorination-Volatilization Behavior of Titanium Metal Scraps during Recycling Using Reaction-Mediating Molten Salt",
+        "journal": "MATERIALS TRANSACTIONS",
+        "volume": "57",
+        "page": "1309-1318",
+        "year": "2016",
+        "doi": "10.2320/matertrans.m-m2016818",
+        "type": "journal-article"
+      },
+      {
+        "title": "Reaction-Mediator-Based Chlorination for the Recycling of Titanium Metal Scrap Utilizing Chloride Waste",
+        "journal": "MATERIALS TRANSACTIONS",
+        "volume": "56",
+        "page": "1-9",
+        "year": "2015",
+        "doi": "10.2320/matertrans.m-m2014838",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "lee2025",
+    "query": "Lim Nersisyan Han Park Suh Lee Next Materials 8 100803 2025",
+    "candidates": [
+      {
+        "title": "Thermochemical response of TiO2 upon heating with CaMg2 reductant: Experimental findings and theoretical modeling",
+        "journal": "Next Materials",
+        "volume": "8",
+        "page": "100803",
+        "year": "2025",
+        "doi": "10.1016/j.nxmate.2025.100803",
+        "type": "journal-article"
+      },
+      {
+        "title": "Thermochemical Response of Camg2 Solid Fuel Upon Heating with Tio2 Powder: Experimental Findings and Theoretical Modeling",
+        "journal": "",
+        "volume": "",
+        "page": "",
+        "year": "2024",
+        "doi": "10.2139/ssrn.4968974",
+        "type": "posted-content"
+      },
+      {
+        "title": "Innovative Thermochemical Pathway for High-Purity Ti Metal Synthesis Using Camg2 Reductant: Experimental Findings and Theoretical Insights into the Reaction Mechanism",
+        "journal": "",
+        "volume": "",
+        "page": "",
+        "year": "2024",
+        "doi": "10.2139/ssrn.4750034",
+        "type": "posted-content"
+      }
+    ]
+  },
+  {
+    "key": "pang2024",
+    "query": "Pang Kong Zhu Xu Xu Bai Yang Transactions of Nonferrous Metals Society of China 34 681 2024",
+    "candidates": [
+      {
+        "title": "Preparation of ultralow-oxygen titanium by direct reduction of TiO2",
+        "journal": "Transactions of Nonferrous Metals Society of China",
+        "volume": "34",
+        "page": "681-693",
+        "year": "2024",
+        "doi": "10.1016/s1003-6326(23)66427-1",
+        "type": "journal-article"
+      },
+      {
+        "title": "Preparation of low-oxygen titanium powder by magnesiothermic reduction of TiO2 assisted by MgCl2-HoCl3 molten salt",
+        "journal": "Transactions of Nonferrous Metals Society of China",
+        "volume": "34",
+        "page": "3749-3761",
+        "year": "2024",
+        "doi": "10.1016/s1003-6326(24)66638-0",
+        "type": "journal-article"
+      },
+      {
+        "title": "Kinetics study on separation and recovery of In-Pb solder by vacuum volatilization",
+        "journal": "Transactions of Nonferrous Metals Society of China",
+        "volume": "35",
+        "page": "3147-3160",
+        "year": "2025",
+        "doi": "10.1016/s1003-6326(25)66872-5",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "xu2025",
+    "query": "Zhu Zhang Kong Xu Yang Electrochimica Acta 533 146478 2025",
+    "candidates": [
+      {
+        "title": "The clean production of low-oxygen titanium powder through molten salt electrolysis-magnesiothermic reduction (MSE-MR) of TiO2",
+        "journal": "Electrochimica Acta",
+        "volume": "533",
+        "page": "146478",
+        "year": "2025",
+        "doi": "10.1016/j.electacta.2025.146478",
+        "type": "journal-article"
+      },
+      {
+        "title": "A novel method for preparing titanium by synergistic electrolysis and thermal deoxidation in NaCl-KCl-YCl3 molten salt",
+        "journal": "Electrochimica Acta",
+        "volume": "537",
+        "page": "146868",
+        "year": "2025",
+        "doi": "10.1016/j.electacta.2025.146868",
+        "type": "journal-article"
+      },
+      {
+        "title": "Effect of tilted wall in through glass via on the electrochemical deposition process",
+        "journal": "Electrochimica Acta",
+        "volume": "533",
+        "page": "146556",
+        "year": "2025",
+        "doi": "10.1016/j.electacta.2025.146556",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "waldner1999",
+    "query": "Waldner Eriksson Calphad 23 189 1999",
+    "candidates": [
+      {
+        "title": "Thermodynamic modelling of the system titanium-oxygen",
+        "journal": "Calphad",
+        "volume": "23",
+        "page": "189-218",
+        "year": "1999",
+        "doi": "10.1016/s0364-5916(99)00025-5",
+        "type": "journal-article"
+      },
+      {
+        "title": "First announcement CALPHAD XXIX",
+        "journal": "Calphad",
+        "volume": "23",
+        "page": "163",
+        "year": "1999",
+        "doi": "10.1016/s0364-5916(99)90007-x",
+        "type": "journal-article"
+      },
+      {
+        "title": "Second announcement of CALPHAD XXIX",
+        "journal": "Calphad",
+        "volume": "23",
+        "page": "263",
+        "year": "1999",
+        "doi": "10.1016/s0364-5916(99)90008-1",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "zhang2008mgce",
+    "query": "Zhang Wang Shang Chen Liu Journal of Alloys and Compounds 463 294 2008",
+    "candidates": [
+      {
+        "title": "Thermodynamic modeling of Mg–Ca–Ce system by combining first-principles and CALPHAD method",
+        "journal": "Journal of Alloys and Compounds",
+        "volume": "463",
+        "page": "294-301",
+        "year": "2008",
+        "doi": "10.1016/j.jallcom.2007.09.020",
+        "type": "journal-article"
+      },
+      {
+        "title": "First principles calculation of elastic and lattice constants of orthorhombic Cu3Sn crystal",
+        "journal": "Journal of Alloys and Compounds",
+        "volume": "466",
+        "page": "517-520",
+        "year": "2008",
+        "doi": "10.1016/j.jallcom.2007.11.095",
+        "type": "journal-article"
+      },
+      {
+        "title": "Low-temperature synthesis and characterization of ZnO quantum dots",
+        "journal": "Journal of Alloys and Compounds",
+        "volume": "463",
+        "page": "92-95",
+        "year": "2008",
+        "doi": "10.1016/j.jallcom.2007.12.006",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "chartrand2000",
+    "query": "Chartrand Pelton Canadian Metallurgical Quarterly 39 405 2000",
+    "candidates": [
+      {
+        "title": "Thermodynamic Evaluation and Optimization of the LiCl-NaCl-KCl-RbCl-CsCl-MgCl<sub>2</sub>-CaCl<sub>2</sub>-SrCl<sub>2</sub>System Using The Modified Quasichemical Model",
+        "journal": "Canadian Metallurgical Quarterly",
+        "volume": "39",
+        "page": "405-420",
+        "year": "2000",
+        "doi": "10.1179/cmq.2000.39.4.405",
+        "type": "journal-article"
+      },
+      {
+        "title": "Thermodynamic Evaluation and Optimization of the LiCl-NaCl-KCl-RbCl-CsCl-MgCl&lt;SUB&gt;2&lt;/SUB&gt;-CaCl&lt;SUB&gt;2&lt;/SUB&gt;-SrCl&lt;SUB&gt;2&lt;/SUB&gt; System Using The Modified Quasichemical Model",
+        "journal": "Canadian Metallurgical Quarterly",
+        "volume": "39",
+        "page": "405-420",
+        "year": "2000",
+        "doi": "10.1179/000844300794388624",
+        "type": "journal-article"
+      },
+      {
+        "title": "Thermodynamic Modeling of Zinc Distribution Among Matte, Slag and Liquid Copper",
+        "journal": "Canadian Metallurgical Quarterly",
+        "volume": "39",
+        "page": "43-54",
+        "year": "2000",
+        "doi": "10.1179/cmq.2000.39.1.43",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "kleppa1966",
+    "query": "Kleppa McCarty Journal of Physical Chemistry 70 1249 1966",
+    "candidates": [
+      {
+        "title": "Thermochemistry of Charge-Unsymmetrical Binary Fused Halide Systems. II. Mixtures of Magnesium Chloride with the Alkali Chlorides and with Silver Chloride",
+        "journal": "The Journal of Physical Chemistry",
+        "volume": "70",
+        "page": "1249-1255",
+        "year": "1966",
+        "doi": "10.1021/j100876a045",
+        "type": "journal-article"
+      },
+      {
+        "title": "The Thermodynamic Properties of the Aluminum Silicates",
+        "journal": "The Journal of Physical Chemistry",
+        "volume": "70",
+        "page": "1690-1690",
+        "year": "1966",
+        "doi": "10.1021/j100877a519",
+        "type": "journal-article"
+      },
+      {
+        "title": "Thermochemistry of the Alkali Chloride—Lead Chloride Liquid Mixtures",
+        "journal": "The Journal of Physical Chemistry",
+        "volume": "68",
+        "page": "3846-3852",
+        "year": "1964",
+        "doi": "10.1021/j100794a053",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "pelton2000mqm",
+    "query": "Pelton Degterov Eriksson Robelin Dessureault Metallurgical and Materials Transactions B 31 651 2000",
+    "candidates": [
+      {
+        "title": "The modified quasichemical model I—Binary solutions",
+        "journal": "Metallurgical and Materials Transactions B",
+        "volume": "31",
+        "page": "651-659",
+        "year": "2000",
+        "doi": "10.1007/s11663-000-0103-2",
+        "type": "journal-article"
+      },
+      {
+        "title": "Thermodynamic Modeling of Zinc Distribution Among Matte, Slag and Liquid Copper",
+        "journal": "Canadian Metallurgical Quarterly",
+        "volume": "39",
+        "page": "43-54",
+        "year": "2000",
+        "doi": "10.1179/000844300794388912",
+        "type": "journal-article"
+      },
+      {
+        "title": "Thermodynamic Modeling of Zinc Distribution Among Matte, Slag and Liquid Copper",
+        "journal": "Canadian Metallurgical Quarterly",
+        "volume": "39",
+        "page": "43-54",
+        "year": "2000",
+        "doi": "10.1179/cmq.2000.39.1.43",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "nayeb1987",
+    "query": "Nayeb-Hashemi Clark Bulletin of Alloy Phase Diagrams 8 58 1987",
+    "candidates": [
+      {
+        "title": "The Be−Mg (Beryllium-Magnesium) system",
+        "journal": "Bulletin of Alloy Phase Diagrams",
+        "volume": "8",
+        "page": "57-58",
+        "year": "1987",
+        "doi": "10.1007/bf02868899",
+        "type": "journal-article"
+      },
+      {
+        "title": "The Ca−Mg (Calcium-Magnesium) system",
+        "journal": "Bulletin of Alloy Phase Diagrams",
+        "volume": "8",
+        "page": "58-65",
+        "year": "1987",
+        "doi": "10.1007/bf02868900",
+        "type": "journal-article"
+      },
+      {
+        "title": "The Co-Mg (Cobalt-Magnesium) system",
+        "journal": "Bulletin of Alloy Phase Diagrams",
+        "volume": "8",
+        "page": "352-355",
+        "year": "1987",
+        "doi": "10.1007/bf02869272",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "hallstedt2025",
+    "query": "Hallstedt Calphad 89 102833 2025",
+    "candidates": [
+      {
+        "title": "The SGTE collection of binary datasets",
+        "journal": "Calphad",
+        "volume": "89",
+        "page": "102833",
+        "year": "2025",
+        "doi": "10.1016/j.calphad.2025.102833",
+        "type": "journal-article"
+      },
+      {
+        "title": "Thermodynamic modelling of the Al–Ni–V system",
+        "journal": "Calphad",
+        "volume": "91",
+        "page": "102887",
+        "year": "2025",
+        "doi": "10.1016/j.calphad.2025.102887",
+        "type": "journal-article"
+      },
+      {
+        "title": "The Magnesium — Oxygen system",
+        "journal": "Calphad",
+        "volume": "17",
+        "page": "281-286",
+        "year": "1993",
+        "doi": "10.1016/0364-5916(93)90006-w",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "tang2015",
+    "query": "Tang Ren Wang Deng Cai Shao Zhao Gao Yan Zhang Journal of The Electrochemical Society 162 D520 2015",
+    "candidates": [
+      {
+        "title": "Electrochemical Co-Deposition of Mg–Ca Alloys from KCl–CaCl<sub>2</sub>–MgCl<sub>2</sub>Melts",
+        "journal": "Journal of The Electrochemical Society",
+        "volume": "162",
+        "page": "D520-D524",
+        "year": "2015",
+        "doi": "10.1149/2.0421510jes",
+        "type": "journal-article"
+      },
+      {
+        "title": "Electrochemical behavior of praseodymium and Pr-Al intermetallics in LiCl-KCl-AlCl3-PrCl3 melts",
+        "journal": "Journal of Rare Earths",
+        "volume": "34",
+        "page": "428-434",
+        "year": "2016",
+        "doi": "10.1016/s1002-0721(16)60044-3",
+        "type": "journal-article"
+      },
+      {
+        "title": "Quantum Dots Based Electrochemiluminescent Immunosensor for Ultrasensitive and Specific Determination of Mercury (II) Ions Using Gold Nanoparticles and a Monoclonal Antibody",
+        "journal": "Journal of The Electrochemical Society",
+        "volume": "162",
+        "page": "B22-B26",
+        "year": "2014",
+        "doi": "10.1149/2.0631501jes",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "yan2007",
+    "query": "Yan Fray Mineral Processing and Extractive Metallurgy 116 17 2007",
+    "candidates": [
+      {
+        "title": "Fused salt electrolytic reduction of solid oxides and oxide mixtures for green production of metals and alloys",
+        "journal": "Mineral Processing and Extractive Metallurgy",
+        "volume": "116",
+        "page": "17-24",
+        "year": "2007",
+        "doi": "10.1179/174328507x163742",
+        "type": "journal-article"
+      },
+      {
+        "title": "Christopher Cambridge Dell",
+        "journal": "Mineral Processing and Extractive Metallurgy",
+        "volume": "116",
+        "page": "144-144",
+        "year": "2007",
+        "doi": "10.1179/174328507x198663",
+        "type": "journal-article"
+      },
+      {
+        "title": "Innovative electrochemical processing using molten salts",
+        "journal": "Mineral Processing and Extractive Metallurgy",
+        "volume": "115",
+        "page": "3-7",
+        "year": "2006",
+        "doi": "10.1179/174328506x91301",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "littlewood1962",
+    "query": "Littlewood Journal of The Electrochemical Society 109 525 1962",
+    "candidates": [
+      {
+        "title": "Diagrammatic Representation of the Thermodynamics of Metal-Fused Chloride Systems",
+        "journal": "Journal of The Electrochemical Society",
+        "volume": "109",
+        "page": "525",
+        "year": "1962",
+        "doi": "10.1149/1.2425462",
+        "type": "journal-article"
+      },
+      {
+        "title": "Closure to “Discussion of ‘Diagrammatic Representation of the Thermodynamics of Metal-Fused Chloride Systems’ [R. Littlewood (pp. 525–534, Vol. 109, No. 6)]”",
+        "journal": "Journal of The Electrochemical Society",
+        "volume": "109",
+        "page": "1222",
+        "year": "1962",
+        "doi": "10.1149/1.2425303",
+        "type": "journal-article"
+      },
+      {
+        "title": "Discussion of “Diagrammatic Representation of the Thermodynamics of Metal-Fused Chloride Systems” [R. Littlewood (pp. 525–534, Vol. 109, No. 6)]",
+        "journal": "Journal of The Electrochemical Society",
+        "volume": "109",
+        "page": "1222",
+        "year": "1962",
+        "doi": "10.1149/1.2425302",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "kvande2014",
+    "query": "Kvande Drablos Journal of Occupational and Environmental Medicine 56 S23 2014",
+    "candidates": [
+      {
+        "title": "The Aluminum Smelting Process and Innovative Alternative Technologies",
+        "journal": "Journal of Occupational &amp; Environmental Medicine",
+        "volume": "56",
+        "page": "S23-S32",
+        "year": "2014",
+        "doi": "10.1097/jom.0000000000000062",
+        "type": "journal-article"
+      },
+      {
+        "title": "The Aluminum Smelting Process",
+        "journal": "Journal of Occupational &amp; Environmental Medicine",
+        "volume": "56",
+        "page": "S2-S4",
+        "year": "2014",
+        "doi": "10.1097/jom.0000000000000154",
+        "type": "journal-article"
+      },
+      {
+        "title": "Performing a Lung Disability Evaluation",
+        "journal": "Journal of Occupational &amp; Environmental Medicine",
+        "volume": "56",
+        "page": "S23-S29",
+        "year": "2014",
+        "doi": "10.1097/jom.0000000000000282",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "morita2004",
+    "query": "Ito Morita Materials Transactions 45 2712 2004",
+    "candidates": [
+      {
+        "title": "The Solubility of MgO in Molten MgCl&lt;SUB&gt;2&lt;/SUB&gt;-CaCl&lt;SUB&gt;2&lt;/SUB&gt; Salt",
+        "journal": "MATERIALS TRANSACTIONS",
+        "volume": "45",
+        "page": "2712-2718",
+        "year": "2004",
+        "doi": "10.2320/matertrans.45.2712",
+        "type": "journal-article"
+      },
+      {
+        "title": "Micromechanics Model Concerning Yield Behavior of Nanocrystalline Materials",
+        "journal": "MATERIALS TRANSACTIONS",
+        "volume": "45",
+        "page": "502-508",
+        "year": "2004",
+        "doi": "10.2320/matertrans.45.502",
+        "type": "journal-article"
+      },
+      {
+        "title": "Fluorescent Properties of Porcelain-Restored Teeth and Their Discrimination",
+        "journal": "MATERIALS TRANSACTIONS",
+        "volume": "45",
+        "page": "1010-1014",
+        "year": "2004",
+        "doi": "10.2320/matertrans.45.1010",
+        "type": "journal-article"
+      }
+    ]
+  },
+  {
+    "key": "song2024",
+    "query": "Song Zhao He Lu Journal of The Electrochemical Society 171 062501 2024",
+    "candidates": [
+      {
+        "title": "Rare Earth Chlorides in Low-Hydration Magnesium Chloride Electrolysis: Mechanistic Insights",
+        "journal": "Journal of The Electrochemical Society",
+        "volume": "171",
+        "page": "062501",
+        "year": "2024",
+        "doi": "10.1149/1945-7111/ad4f1d",
+        "type": "journal-article"
+      },
+      {
+        "title": "Preparation of Niobium through Electrolysis of NbC<sub>x</sub>O<sub>y</sub> Soluble Anode",
+        "journal": "Journal of The Electrochemical Society",
+        "volume": "171",
+        "page": "122505",
+        "year": "2024",
+        "doi": "10.1149/1945-7111/ad9d7f",
+        "type": "journal-article"
+      },
+      {
+        "title": "Communication—Serialization of Electrochemical Impedance Spectra to Forecast Low-Frequency Impedances via Deep Learning Neural Networks",
+        "journal": "Journal of The Electrochemical Society",
+        "volume": "171",
+        "page": "086506",
+        "year": "2024",
+        "doi": "10.1149/1945-7111/ad6c0c",
+        "type": "journal-article"
+      }
+    ]
+  }
+]

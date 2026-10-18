@@ -1,0 +1,275 @@
+==========================================================================================
+KEY: kroll1937
+  [0] 1937 | Zeitschrift für anorganische und allgemeine Chemie | v234 p42-50
+      T: Verformbares Titan und Zirkon
+      D: 10.1002/zaac.19372340105
+  [1] 1937 | Zeitschrift für anorganische und allgemeine Chemie | v234 p
+      T: 
+      D: 10.1002/zaac.v234:1
+  [2] 1937 | Zeitschrift für anorganische und allgemeine Chemie | v234 p
+      T: 
+      D: 10.1002/zaac.v234:4
+==========================================================================================
+KEY: ji2026
+  [0] 2025 | International Journal of Minerals, Metallurgy and Mater | v33 p15-34
+      T: Revolutionizing titanium production: A comprehensive review of thermochemical and molten salt electrolysis processes
+      D: 10.1007/s12613-025-3210-y
+  [1] 2009 | International Journal of Minerals, Metallurgy and Mater | v16 p603-607
+      T: Semisolid A356 alloy feedstock poured through a serpentine channel
+      D: 10.1016/s1674-4799(09)60104-7
+  [2] 2026 | International Journal of Minerals, Metallurgy and Mater | v33 p2403-2418
+      T: Intelligent prediction method of rockburst driven by microseismic temporal features in deep near-vertical coal seams
+      D: 10.1007/s12613-026-3408-7
+==========================================================================================
+KEY: fray2000
+  [0] 2000 | Nature | v407 p361-364
+      T: Direct electrochemical reduction of titanium dioxide to titanium in molten calcium chloride
+      D: 10.1038/35030069
+  [1] 2025 | Treatise on Process Metallurgy, Volume 2B | v p589-600
+      T: Fray-Farthing-Chen Cambridge Process: From Serendipity to Space Exploration
+      D: 10.1016/b978-0-443-40294-4.00050-5
+  [2] 2000 | Nature | v407 p575-575
+      T: The next big thing
+      D: 10.1038/35036670
+==========================================================================================
+KEY: jiao2023
+  [0] 2023 | ACS Sustainable Chemistry &amp; Engineering | v11 p5764-5772
+      T: Upcycling of Titanium by Molten Salt Electrorefining
+      D: 10.1021/acssuschemeng.3c00645
+  [1] 2023 | ACS Sustainable Chemistry &amp; Engineering | v11 p2607-2612
+      T: Facile and General Electrochemical Diselenylation of Terminal Alkynes
+      D: 10.1021/acssuschemeng.2c06864
+  [2] 2023 | ACS Sustainable Chemistry &amp; Engineering | v11 p16818-16827
+      T: Novel Thin-Layer Fountain Photobioreactors for the High-Density Cultivation of <i>Spirulina</i> sp
+      D: 10.1021/acssuschemeng.3c05509
+==========================================================================================
+KEY: ono2002
+  [0] 2002 | JOM | v54 p59-61
+      T: A new concept for producing Ti sponge: Calciothermic reduction
+      D: 10.1007/bf02701078
+  [1] 2002 | JOM | v54 p56-59
+      T: Presenting upcoming TMS meetings and calls for papers
+      D: 10.1007/bf02709096
+  [2] 2002 | JOM | v54 p54-54
+      T: Correction
+      D: 10.1007/bf02711868
+==========================================================================================
+KEY: pal2001
+  [0] 2001 | JOM | v53 p32-35
+      T: Emerging SOM technology for the green synthesis of metals from oxides
+      D: 10.1007/s11837-001-0053-4
+  [1] 2001 | JOM | v53 p27-27
+      T: Emerging technologies for metals production
+      D: 10.1007/s11837-001-0051-6
+  [2] 2001 | JOM | v53 p32-35
+      T: Jarofix: Addressing iron disposal in the zinc industry
+      D: 10.1007/s11837-001-0010-2
+==========================================================================================
+KEY: okabe1997
+  [0] 1997 | JOM | v49 p28-32
+      T: Producing titanium through an electronically mediated reaction
+      D: 10.1007/bf02914710
+  [1] 1997 | JOM | v49 p28-32
+      T: A sampling of highlights from theEPD Congress 1997
+      D: 10.1007/bf02914871
+  [2] 1997 | JOM | v49 p27-28
+      T: Degassing aluminum using static fine-pore refractory diffusers
+      D: 10.1007/bf02914396
+==========================================================================================
+KEY: zhang2024
+  [0] 2024 | Journal of The Electrochemical Society | v171 p082502
+      T: Review—Progress in Research and Application of Molten Salt Electrolysis for Titanium Extraction
+      D: 10.1149/1945-7111/ad6d95
+  [1] 2026 | Nature Communications | v17 p
+      T: Deuterated perovskite for room temperature spin device
+      D: 10.1038/s41467-026-71582-x
+  [2] 2024 | MedComm | v5 p
+      T: Posttransplant complications: molecular mechanisms and therapeutic interventions
+      D: 10.1002/mco2.669
+==========================================================================================
+KEY: taninouchi2016
+  [0] 2016 | Metallurgical and Materials Transactions B | v47 p3394-3404
+      T: Electrochemical Deoxidation of Titanium and Its Alloy Using Molten Magnesium Chloride
+      D: 10.1007/s11663-016-0792-9
+  [1] 2016 | MATERIALS TRANSACTIONS | v57 p1309-1318
+      T: Chlorination-Volatilization Behavior of Titanium Metal Scraps during Recycling Using Reaction-Mediating Molten Salt
+      D: 10.2320/matertrans.m-m2016818
+  [2] 2015 | MATERIALS TRANSACTIONS | v56 p1-9
+      T: Reaction-Mediator-Based Chlorination for the Recycling of Titanium Metal Scrap Utilizing Chloride Waste
+      D: 10.2320/matertrans.m-m2014838
+==========================================================================================
+KEY: lee2025
+  [0] 2025 | Next Materials | v8 p100803
+      T: Thermochemical response of TiO2 upon heating with CaMg2 reductant: Experimental findings and theoretical modeling
+      D: 10.1016/j.nxmate.2025.100803
+  [1] 2024 |  | v p
+      T: Thermochemical Response of Camg2 Solid Fuel Upon Heating with Tio2 Powder: Experimental Findings and Theoretical Modeling
+      D: 10.2139/ssrn.4968974
+  [2] 2024 |  | v p
+      T: Innovative Thermochemical Pathway for High-Purity Ti Metal Synthesis Using Camg2 Reductant: Experimental Findings and Theoretical Insights into the Reaction Mechanism
+      D: 10.2139/ssrn.4750034
+==========================================================================================
+KEY: pang2024
+  [0] 2024 | Transactions of Nonferrous Metals Society of China | v34 p681-693
+      T: Preparation of ultralow-oxygen titanium by direct reduction of TiO2
+      D: 10.1016/s1003-6326(23)66427-1
+  [1] 2024 | Transactions of Nonferrous Metals Society of China | v34 p3749-3761
+      T: Preparation of low-oxygen titanium powder by magnesiothermic reduction of TiO2 assisted by MgCl2-HoCl3 molten salt
+      D: 10.1016/s1003-6326(24)66638-0
+  [2] 2025 | Transactions of Nonferrous Metals Society of China | v35 p3147-3160
+      T: Kinetics study on separation and recovery of In-Pb solder by vacuum volatilization
+      D: 10.1016/s1003-6326(25)66872-5
+==========================================================================================
+KEY: xu2025
+  [0] 2025 | Electrochimica Acta | v533 p146478
+      T: The clean production of low-oxygen titanium powder through molten salt electrolysis-magnesiothermic reduction (MSE-MR) of TiO2
+      D: 10.1016/j.electacta.2025.146478
+  [1] 2025 | Electrochimica Acta | v537 p146868
+      T: A novel method for preparing titanium by synergistic electrolysis and thermal deoxidation in NaCl-KCl-YCl3 molten salt
+      D: 10.1016/j.electacta.2025.146868
+  [2] 2025 | Electrochimica Acta | v533 p146556
+      T: Effect of tilted wall in through glass via on the electrochemical deposition process
+      D: 10.1016/j.electacta.2025.146556
+==========================================================================================
+KEY: waldner1999
+  [0] 1999 | Calphad | v23 p189-218
+      T: Thermodynamic modelling of the system titanium-oxygen
+      D: 10.1016/s0364-5916(99)00025-5
+  [1] 1999 | Calphad | v23 p163
+      T: First announcement CALPHAD XXIX
+      D: 10.1016/s0364-5916(99)90007-x
+  [2] 1999 | Calphad | v23 p263
+      T: Second announcement of CALPHAD XXIX
+      D: 10.1016/s0364-5916(99)90008-1
+==========================================================================================
+KEY: zhang2008mgce
+  [0] 2008 | Journal of Alloys and Compounds | v463 p294-301
+      T: Thermodynamic modeling of Mg–Ca–Ce system by combining first-principles and CALPHAD method
+      D: 10.1016/j.jallcom.2007.09.020
+  [1] 2008 | Journal of Alloys and Compounds | v466 p517-520
+      T: First principles calculation of elastic and lattice constants of orthorhombic Cu3Sn crystal
+      D: 10.1016/j.jallcom.2007.11.095
+  [2] 2008 | Journal of Alloys and Compounds | v463 p92-95
+      T: Low-temperature synthesis and characterization of ZnO quantum dots
+      D: 10.1016/j.jallcom.2007.12.006
+==========================================================================================
+KEY: chartrand2000
+  [0] 2000 | Canadian Metallurgical Quarterly | v39 p405-420
+      T: Thermodynamic Evaluation and Optimization of the LiCl-NaCl-KCl-RbCl-CsCl-MgCl<sub>2</sub>-CaCl<sub>2</sub>-SrCl<sub>2</sub>System Using The Modified Quasichemical Model
+      D: 10.1179/cmq.2000.39.4.405
+  [1] 2000 | Canadian Metallurgical Quarterly | v39 p405-420
+      T: Thermodynamic Evaluation and Optimization of the LiCl-NaCl-KCl-RbCl-CsCl-MgCl&lt;SUB&gt;2&lt;/SUB&gt;-CaCl&lt;SUB&gt;2&lt;/SUB&gt;-SrCl&lt;SUB&gt;2&lt;/SUB&gt; System Using The Modified Quasichemical Model
+      D: 10.1179/000844300794388624
+  [2] 2000 | Canadian Metallurgical Quarterly | v39 p43-54
+      T: Thermodynamic Modeling of Zinc Distribution Among Matte, Slag and Liquid Copper
+      D: 10.1179/cmq.2000.39.1.43
+==========================================================================================
+KEY: kleppa1966
+  [0] 1966 | The Journal of Physical Chemistry | v70 p1249-1255
+      T: Thermochemistry of Charge-Unsymmetrical Binary Fused Halide Systems. II. Mixtures of Magnesium Chloride with the Alkali Chlorides and with Silver Chloride
+      D: 10.1021/j100876a045
+  [1] 1966 | The Journal of Physical Chemistry | v70 p1690-1690
+      T: The Thermodynamic Properties of the Aluminum Silicates
+      D: 10.1021/j100877a519
+  [2] 1964 | The Journal of Physical Chemistry | v68 p3846-3852
+      T: Thermochemistry of the Alkali Chloride—Lead Chloride Liquid Mixtures
+      D: 10.1021/j100794a053
+==========================================================================================
+KEY: pelton2000mqm
+  [0] 2000 | Metallurgical and Materials Transactions B | v31 p651-659
+      T: The modified quasichemical model I—Binary solutions
+      D: 10.1007/s11663-000-0103-2
+  [1] 2000 | Canadian Metallurgical Quarterly | v39 p43-54
+      T: Thermodynamic Modeling of Zinc Distribution Among Matte, Slag and Liquid Copper
+      D: 10.1179/000844300794388912
+  [2] 2000 | Canadian Metallurgical Quarterly | v39 p43-54
+      T: Thermodynamic Modeling of Zinc Distribution Among Matte, Slag and Liquid Copper
+      D: 10.1179/cmq.2000.39.1.43
+==========================================================================================
+KEY: nayeb1987
+  [0] 1987 | Bulletin of Alloy Phase Diagrams | v8 p57-58
+      T: The Be−Mg (Beryllium-Magnesium) system
+      D: 10.1007/bf02868899
+  [1] 1987 | Bulletin of Alloy Phase Diagrams | v8 p58-65
+      T: The Ca−Mg (Calcium-Magnesium) system
+      D: 10.1007/bf02868900
+  [2] 1987 | Bulletin of Alloy Phase Diagrams | v8 p352-355
+      T: The Co-Mg (Cobalt-Magnesium) system
+      D: 10.1007/bf02869272
+==========================================================================================
+KEY: hallstedt2025
+  [0] 2025 | Calphad | v89 p102833
+      T: The SGTE collection of binary datasets
+      D: 10.1016/j.calphad.2025.102833
+  [1] 2025 | Calphad | v91 p102887
+      T: Thermodynamic modelling of the Al–Ni–V system
+      D: 10.1016/j.calphad.2025.102887
+  [2] 1993 | Calphad | v17 p281-286
+      T: The Magnesium — Oxygen system
+      D: 10.1016/0364-5916(93)90006-w
+==========================================================================================
+KEY: tang2015
+  [0] 2015 | Journal of The Electrochemical Society | v162 pD520-D524
+      T: Electrochemical Co-Deposition of Mg–Ca Alloys from KCl–CaCl<sub>2</sub>–MgCl<sub>2</sub>Melts
+      D: 10.1149/2.0421510jes
+  [1] 2016 | Journal of Rare Earths | v34 p428-434
+      T: Electrochemical behavior of praseodymium and Pr-Al intermetallics in LiCl-KCl-AlCl3-PrCl3 melts
+      D: 10.1016/s1002-0721(16)60044-3
+  [2] 2014 | Journal of The Electrochemical Society | v162 pB22-B26
+      T: Quantum Dots Based Electrochemiluminescent Immunosensor for Ultrasensitive and Specific Determination of Mercury (II) Ions Using Gold Nanoparticles and a Monoclonal Antibody
+      D: 10.1149/2.0631501jes
+==========================================================================================
+KEY: yan2007
+  [0] 2007 | Mineral Processing and Extractive Metallurgy | v116 p17-24
+      T: Fused salt electrolytic reduction of solid oxides and oxide mixtures for green production of metals and alloys
+      D: 10.1179/174328507x163742
+  [1] 2007 | Mineral Processing and Extractive Metallurgy | v116 p144-144
+      T: Christopher Cambridge Dell
+      D: 10.1179/174328507x198663
+  [2] 2006 | Mineral Processing and Extractive Metallurgy | v115 p3-7
+      T: Innovative electrochemical processing using molten salts
+      D: 10.1179/174328506x91301
+==========================================================================================
+KEY: littlewood1962
+  [0] 1962 | Journal of The Electrochemical Society | v109 p525
+      T: Diagrammatic Representation of the Thermodynamics of Metal-Fused Chloride Systems
+      D: 10.1149/1.2425462
+  [1] 1962 | Journal of The Electrochemical Society | v109 p1222
+      T: Closure to “Discussion of ‘Diagrammatic Representation of the Thermodynamics of Metal-Fused Chloride Systems’ [R. Littlewood (pp. 525–534, Vol. 109, No. 6)]”
+      D: 10.1149/1.2425303
+  [2] 1962 | Journal of The Electrochemical Society | v109 p1222
+      T: Discussion of “Diagrammatic Representation of the Thermodynamics of Metal-Fused Chloride Systems” [R. Littlewood (pp. 525–534, Vol. 109, No. 6)]
+      D: 10.1149/1.2425302
+==========================================================================================
+KEY: kvande2014
+  [0] 2014 | Journal of Occupational &amp; Environmental Medicine | v56 pS23-S32
+      T: The Aluminum Smelting Process and Innovative Alternative Technologies
+      D: 10.1097/jom.0000000000000062
+  [1] 2014 | Journal of Occupational &amp; Environmental Medicine | v56 pS2-S4
+      T: The Aluminum Smelting Process
+      D: 10.1097/jom.0000000000000154
+  [2] 2014 | Journal of Occupational &amp; Environmental Medicine | v56 pS23-S29
+      T: Performing a Lung Disability Evaluation
+      D: 10.1097/jom.0000000000000282
+==========================================================================================
+KEY: morita2004
+  [0] 2004 | MATERIALS TRANSACTIONS | v45 p2712-2718
+      T: The Solubility of MgO in Molten MgCl&lt;SUB&gt;2&lt;/SUB&gt;-CaCl&lt;SUB&gt;2&lt;/SUB&gt; Salt
+      D: 10.2320/matertrans.45.2712
+  [1] 2004 | MATERIALS TRANSACTIONS | v45 p502-508
+      T: Micromechanics Model Concerning Yield Behavior of Nanocrystalline Materials
+      D: 10.2320/matertrans.45.502
+  [2] 2004 | MATERIALS TRANSACTIONS | v45 p1010-1014
+      T: Fluorescent Properties of Porcelain-Restored Teeth and Their Discrimination
+      D: 10.2320/matertrans.45.1010
+==========================================================================================
+KEY: song2024
+  [0] 2024 | Journal of The Electrochemical Society | v171 p062501
+      T: Rare Earth Chlorides in Low-Hydration Magnesium Chloride Electrolysis: Mechanistic Insights
+      D: 10.1149/1945-7111/ad4f1d
+  [1] 2024 | Journal of The Electrochemical Society | v171 p122505
+      T: Preparation of Niobium through Electrolysis of NbC<sub>x</sub>O<sub>y</sub> Soluble Anode
+      D: 10.1149/1945-7111/ad9d7f
+  [2] 2024 | Journal of The Electrochemical Society | v171 p086506
+      T: Communication—Serialization of Electrochemical Impedance Spectra to Forecast Low-Frequency Impedances via Deep Learning Neural Networks
+      D: 10.1149/1945-7111/ad6c0c

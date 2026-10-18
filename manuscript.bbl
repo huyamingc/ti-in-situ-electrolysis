@@ -1,0 +1,156 @@
+\begin{thebibliography}{30}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{\url{https://doi.org/#1}}
+\providecommand{\eprint}[2][]{\url{#2}}
+ \bibcommenthead
+
+\bibitem[{Kroll(1937)}]{kroll1937}
+Kroll WJ (1937) Verformbares {T}itan und {Z}irkon. Z Anorg Allg Chem
+  234:42--50. \doi{10.1002/zaac.19372340105}
+
+\bibitem[{Ji et~al(2026)Ji, Guo, Gao, Yang, Yan, and Zeng}]{ji2026}
+Ji H, Guo S, Gao L, et~al (2026) Revolutionizing titanium production: a
+  comprehensive review of thermochemical and molten salt electrolysis
+  processes. Int J Miner Metall Mater 33:15--34.
+  \doi{10.1007/s12613-025-3210-y}
+
+\bibitem[{Chen et~al(2000)Chen, Fray, and Farthing}]{fray2000}
+Chen GZ, Fray DJ, Farthing TW (2000) Direct electrochemical reduction of
+  titanium dioxide to titanium in molten calcium chloride. Nature 407:361--364.
+  \doi{10.1038/35030069}
+
+\bibitem[{Jiao et~al(2023)Jiao, Liu, Wang, Lin, Qu, Song, and Jiao}]{jiao2023}
+Jiao H, Liu M, Wang Z, et~al (2023) Upcycling of titanium by molten salt
+  electrorefining. ACS Sustain Chem Eng 11:5764--5772.
+  \doi{10.1021/acssuschemeng.3c00645}
+
+\bibitem[{Ono and Suzuki(2002)}]{ono2002}
+Ono K, Suzuki RO (2002) A new concept for producing {Ti} sponge: calciothermic
+  reduction. JOM 54:59--61. \doi{10.1007/BF02701078}
+
+\bibitem[{Pal et~al(2001)Pal, Woolley, and Kenney}]{pal2001}
+Pal UB, Woolley DE, Kenney GB (2001) Emerging {SOM} technology for the green
+  synthesis of metals from oxides. JOM 53:32--35.
+  \doi{10.1007/s11837-001-0053-4}
+
+\bibitem[{Okabe and Waseda(1997)}]{okabe1997}
+Okabe TH, Waseda Y (1997) Producing titanium through an electronically mediated
+  reaction. JOM 49:28--32. \doi{10.1007/BF02914710}
+
+\bibitem[{Zhang et~al(2024)Zhang, Yan, Liu, Guo, Yang, Yang, Xia, Hu, and
+  Li}]{zhang2024}
+Zhang J, Yan H, Liu Z, et~al (2024) Review---progress in research and
+  application of molten salt electrolysis for titanium extraction. J
+  Electrochem Soc 171:082502. \doi{10.1149/1945-7111/ad6d95}
+
+\bibitem[{Taninouchi et~al(2016)Taninouchi, Hamanaka, and
+  Okabe}]{taninouchi2016}
+Taninouchi Y, Hamanaka Y, Okabe TH (2016) Electrochemical deoxidation of
+  titanium and its alloy using molten magnesium chloride. Metall Mater Trans B
+  47:3394--3404. \doi{10.1007/s11663-016-0792-9}
+
+\bibitem[{Lim et~al(2025)Lim, Nersisyan, Han, Park, Suh, and Lee}]{lee2025}
+Lim KS, Nersisyan H, Han SK, et~al (2025) Thermochemical response of {TiO}$_2$
+  upon heating with {CaMg}$_2$ reductant: experimental findings and theoretical
+  modeling. Next Mater 8:100803. \doi{10.1016/j.nxmate.2025.100803}
+
+\bibitem[{Pang et~al(2024)Pang, Kong, Zhu, Xu, Xu, Bai, and Yang}]{pang2024}
+Pang J, Kong LX, Zhu LG, et~al (2024) Preparation of ultralow-oxygen titanium
+  by direct reduction of {TiO}$_2$. Trans Nonferrous Met Soc China 34:681--693.
+  \doi{10.1016/S1003-6326(23)66427-1}
+
+\bibitem[{Zhu et~al(2025)Zhu, Zhang, Kong, Xu, and Yang}]{xu2025}
+Zhu L, Zhang Z, Kong L, et~al (2025) The clean production of low-oxygen
+  titanium powder through molten salt electrolysis-magnesiothermic reduction
+  ({MSE-MR}) of {TiO}$_2$. Electrochim Acta 533:146478.
+  \doi{10.1016/j.electacta.2025.146478}
+
+\bibitem[{Barin(1995)}]{barin1995}
+Barin I (1995) Thermochemical Data of Pure Substances, 3rd edn. VCH, Weinheim
+
+\bibitem[{Waldner and Eriksson(1999)}]{waldner1999}
+Waldner P, Eriksson G (1999) Thermodynamic modelling of the system
+  titanium-oxygen. Calphad 23:189--218. \doi{10.1016/S0364-5916(99)00025-5}
+
+\bibitem[{Zhang et~al(2008)Zhang, Wang, Shang, Chen, and Liu}]{zhang2008mgce}
+Zhang H, Wang Y, Shang SL, et~al (2008) Thermodynamic modeling of {Mg--Ca--Ce}
+  system by combining first-principles and {CALPHAD} method. J Alloys Compd
+  463:294--301. \doi{10.1016/j.jallcom.2007.09.020}
+
+\bibitem[{Sato et~al(1999)Sato, Kuroda, Nagatsu, Hoshi, Kim, and
+  Yamamura}]{sato1999}
+Sato Y, Kuroda Y, Nagatsu T, et~al (1999) Density and electrical conductivity
+  of molten {MgCl}$_2$--{CaCl}$_2$ binary melt. In: Molten Salts {XII}. The
+  Electrochemical Society, Pennington, NJ, PV 99-41, p 313,
+  \doi{10.1149/199941.0313PV}
+
+\bibitem[{Kubaschewski and Alcock(1979)}]{kubaschewski1979}
+Kubaschewski O, Alcock CB (1979) Metallurgical Thermochemistry, 5th edn.
+  Pergamon Press, Oxford
+
+\bibitem[{Chartrand and Pelton(2000)}]{chartrand2000}
+Chartrand P, Pelton AD (2000) Thermodynamic evaluation and optimization of the
+  {LiCl--NaCl--KCl--RbCl--CsCl--MgCl}$_2$--{CaCl}$_2$--{SrCl}$_2$ system using
+  the modified quasichemical model. Can Metall Q 39:405--420.
+  \doi{10.1179/cmq.2000.39.4.405}
+
+\bibitem[{Kleppa and McCarty(1966)}]{kleppa1966}
+Kleppa OJ, McCarty FG (1966) Thermochemistry of charge-unsymmetrical binary
+  fused halide systems. {II}. {Mixtures} of magnesium chloride with the alkali
+  chlorides and with silver chloride. J Phys Chem 70:1249--1255.
+  \doi{10.1021/j100876a045}
+
+\bibitem[{Pelton et~al(2000)Pelton, Degterov, Eriksson, Robelin, and
+  Dessureault}]{pelton2000mqm}
+Pelton AD, Degterov SA, Eriksson G, et~al (2000) The modified quasichemical
+  model {I}---binary solutions. Metall Mater Trans B 31:651--659.
+  \doi{10.1007/s11663-000-0103-2}
+
+\bibitem[{Nayeb-Hashemi and Clark(1987)}]{nayeb1987}
+Nayeb-Hashemi AA, Clark JB (1987) The {Ca--Mg} (calcium-magnesium) system. Bull
+  Alloy Phase Diagr 8:58--65. \doi{10.1007/BF02868900}
+
+\bibitem[{Hallstedt(2025)}]{hallstedt2025}
+Hallstedt B (2025) The {SGTE} collection of binary datasets. Calphad 89:102833.
+  \doi{10.1016/j.calphad.2025.102833}
+
+\bibitem[{Pletcher and Walsh(1990)}]{pletcher1990}
+Pletcher D, Walsh FC (1990) Industrial Electrochemistry, 2nd edn. Chapman and
+  Hall, London
+
+\bibitem[{Tang et~al(2015)Tang, Ren, Wang, Deng, Cai, Shao, Zhao, Gao, Yan, and
+  Zhang}]{tang2015}
+Tang H, Ren Y, Wang S, et~al (2015) Electrochemical co-deposition of {Mg--Ca}
+  alloys from {KCl--CaCl}$_2$--{MgCl}$_2$ melts. J Electrochem Soc
+  162:D520--D524. \doi{10.1149/2.0421510jes}
+
+\bibitem[{Yan and Fray(2007)}]{yan2007}
+Yan XY, Fray DJ (2007) Fused salt electrolytic reduction of solid oxides and
+  oxide mixtures for green production of metals and alloys. Miner Process Extr
+  Metall 116:17--24. \doi{10.1179/174328507X163742}
+
+\bibitem[{Littlewood(1962)}]{littlewood1962}
+Littlewood R (1962) Diagrammatic representation of the thermodynamics of
+  metal-fused chloride systems. J Electrochem Soc 109:525--534.
+  \doi{10.1149/1.2425462}
+
+\bibitem[{Levenspiel(1999)}]{levenspiel1999}
+Levenspiel O (1999) Chemical Reaction Engineering, 3rd edn. Wiley, New York
+
+\bibitem[{Kvande and Drabl{\o}s(2014)}]{kvande2014}
+Kvande H, Drabl{\o}s PA (2014) The aluminum smelting process and innovative
+  alternative technologies. J Occup Environ Med 56:S23--S32.
+  \doi{10.1097/JOM.0000000000000062}
+
+\bibitem[{Ito and Morita(2004)}]{morita2004}
+Ito M, Morita K (2004) The solubility of {MgO} in molten {MgCl}$_2$--{CaCl}$_2$
+  salt. Mater Trans 45:2712--2718. \doi{10.2320/matertrans.45.2712}
+
+\bibitem[{Song et~al(2024)Song, Zhao, He, and Lu}]{song2024}
+Song Z, Zhao J, He Z, et~al (2024) Rare earth chlorides in low-hydration
+  magnesium chloride electrolysis: mechanistic insights. J Electrochem Soc
+  171:062501. \doi{10.1149/1945-7111/ad4f1d}
+
+\end{thebibliography}

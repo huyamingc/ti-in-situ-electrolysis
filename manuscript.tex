@@ -1,48 +1,58 @@
-\documentclass[11pt]{article}
+\documentclass[pdflatex,sn-basic,Numbered]{sn-jnl}
 
-\usepackage[margin=1in]{geometry}
+%% Packages the sn-jnl class does not load itself.  xcolor must precede the
+%% class's \AtBeginDocument colour definitions, epstopdf converts the 15 EPS
+%% figures, and manyfoot/SetFootnoteHook are required by the class.
+\usepackage{xcolor}
+\usepackage{epstopdf}
+\usepackage{manyfoot}
 \usepackage{graphicx}
 \usepackage{multirow}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{amsthm}
-\usepackage{xcolor}
 \usepackage{textcomp}
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage[version=4]{mhchem}
-\usepackage{epstopdf}
-\usepackage[mathlines]{lineno}
-\usepackage{setspace}
+
+%% A 239-word abstract fills the title page in this class: with the stock
+%% \@maketitle skips the Keywords line -- which belongs to the front matter --
+%% is pushed onto page 2.  Tightening the two 24 pt gaps around the address and
+%% the corresponding-author line recovers 20 pt without touching the content,
+%% and is invisible compared with the class default.
 \usepackage{etoolbox}
-\usepackage[colorlinks=true,allcolors=blue]{hyperref}
-\hypersetup{pdftitle={Electrochemical Design Basis for Titanium Production by Mg--Ca Co-Deposition in a Quaternary Chloride Melt}, pdfauthor={Yaming Hu}}
+\makeatletter
+\patchcmd{\@maketitle}{\vskip24pt}{\vskip14pt}{}{}
+\patchcmd{\@maketitle}{\vskip24pt}{\vskip14pt}{}{}
+\makeatother
 
 \graphicspath{{figures_eps/}}
 
-\AtBeginEnvironment{table}{\singlespacing}
+%% The class inserts Orcidlogo.eps at its natural size, which overflows the
+%% author block and pushes it off the title page.  Orcidlogo-mark.pdf is the
+%% same TikZ mark rendered through pdflatex (so its media box is an exact
+%% 255 bp square, unlike the dvips EPS whose bounding box is padded), and it
+%% is scaled to text height here.
+\renewcommand{\orcidlogo}{\includegraphics[height=1em]{Orcidlogo-mark.pdf}}
+
+\hypersetup{pdftitle={Electrochemical Design Basis for Titanium Production by Mg--Ca Co-Deposition in a Quaternary Chloride Melt}, pdfauthor={Yaming Hu}}
 
 \begin{document}
 
-\linenumbers
-\doublespacing
+\title[Electrochemical Design Basis for Ti by Mg--Ca Co-Deposition]{Electrochemical Design Basis for Titanium Production by Mg--Ca Co-Deposition in a Quaternary Chloride Melt}
 
-\title{Electrochemical Design Basis for Titanium Production by Mg--Ca Co-Deposition in a Quaternary Chloride Melt}
+\author*[1]{\fnm{Yaming}\sur{Hu}\email{64687555@qq.com}\orcid{https://orcid.org/0009-0003-1406-0485}}
 
-\author{Yaming Hu\thanks{Independent Researcher, Guiyang, Guizhou, China. E-mail: 64687555@qq.com. ORCID: 0009-0003-1406-0485.}}
+\affil[1]{\orgname{Independent Researcher}, \city{Guiyang}, \state{Guizhou}, \country{China}}
 
-\date{}
+\abstract{This work establishes an electrochemical design basis for titanium production by in situ co-deposition of Mg and Ca, cyclic reductants of $\ce{TiO2}$, in a quaternary chloride melt ($\ce{MgCl2}$--$\ce{CaCl2}$--NaCl--KCl). Thermodynamics at 600~$^{\circ}$C gives $\Delta G^{\circ} = -231.0$ to $-307.5$~kJ/mol for the reduction pathways, with deoxidation limits of 3908~ppm O for Mg and 20.2~ppm for Ca ($\approx$77~ppm at the equimolar alloy activity). $\ce{Ca + MgO -> CaO + Mg}$ is exergonic at 600~$^{\circ}$C ($\Delta G^{\circ} = -38.2$~kJ/mol; $K = 194$), so Ca supplies the deoxidation driving force while Mg keeps the reductant liquid (both pure metals are solid at 600~$^{\circ}$C; the Mg--Ca eutectic melts at $\approx$517~$^{\circ}$C), reaching the deep-deoxidation limit only when $a_{\ce{MgO}} < 5\times10^{-3}$. The $\ce{Ca^{2+}/Na+}$ co-deposition window is 120.2~mV (ideal) and remains positive under activity-coefficient sensitivity, and mass transport limits Mg deposition to 0.56~A/cm$^2$: co-deposition spans 0.56--1.31~A/cm$^2$, the equimolar deposit requires $j \approx 1.1$~A/cm$^2$, and the 0.9~V ohmic budget constrains the gap to $\lesssim$1.1~cm. The shrinking-core model predicts complete reduction of 100~$\mu$m particles in 6.3~min. At the nominal design point ($\eta_I = 0.75$, $V_{\mathrm{cell}} = 4.1$~V) the net equivalent energy is 12{,}552~kWh/ton-Ti, or 12{,}933~kWh/ton-Ti ($+$3\%) if CaO rather than MgO--CaO is regenerated---the mechanistically favoured limit, since $\ce{Ca + MgO -> CaO + Mg}$ generates no solid product layer, with the 1:1 balance retained as the conservative basis; both are \emph{conditional on achieving $\eta_I > 0.70$}. Monte Carlo gives medians of 13{,}141 and 13{,}536~kWh/ton-Ti ($P(W<15{,}000) = 82.1\%$ and 76.6\%, which mainly restates the assumed $\eta_I$ prior). All results are theoretical; viability hinges on adequate $\ce{CaO}$ solubility at 600~$^{\circ}$C, on whether MgO is regenerated electrolytically or reduced chemically by Ca, on melt oxoacidity favouring $\ce{O2}$ over $\ce{Cl2}$, and on a durable inert anode.}
+
+\keywords{titanium production, molten salt electrolysis, Mg--Ca co-deposition, deoxidation, process design}
 
 \maketitle
 
-\begin{abstract}
-This work establishes an electrochemical design basis for titanium production by in situ co-deposition of Mg and Ca, cyclic reductants of $\ce{TiO2}$, in a quaternary chloride melt ($\ce{MgCl2}$--$\ce{CaCl2}$--NaCl--KCl). Thermodynamics at 600~$^{\circ}$C gives $\Delta G^{\circ} = -231.0$ to $-307.5$~kJ/mol for the reduction pathways, with deoxidation limits of 3908~ppm O for Mg and 20.2~ppm for Ca ($\approx$77~ppm at the equimolar alloy activity). $\ce{Ca + MgO -> CaO + Mg}$ is exergonic at 600~$^{\circ}$C ($\Delta G^{\circ} = -38.2$~kJ/mol; $K = 194$), so Ca supplies the deoxidation driving force while Mg keeps the reductant liquid (both pure metals are solid at 600~$^{\circ}$C; the Mg--Ca eutectic melts at $\approx$517~$^{\circ}$C), reaching the deep-deoxidation limit only when $a_{\ce{MgO}} < 5\times10^{-3}$. The $\ce{Ca^{2+}/Na+}$ co-deposition window is 120.2~mV (ideal) and remains positive under activity-coefficient sensitivity, and mass transport limits Mg deposition to 0.56~A/cm$^2$: co-deposition spans 0.56--1.31~A/cm$^2$, the equimolar deposit requires $j \approx 1.1$~A/cm$^2$, and the 0.9~V ohmic budget constrains the gap to $\lesssim$1.1~cm. The shrinking-core model predicts complete reduction of 100~$\mu$m particles in 6.3~min. At the nominal design point ($\eta_I = 0.75$, $V_{\mathrm{cell}} = 4.1$~V) the net equivalent energy is 12{,}552~kWh/ton-Ti, or 12{,}933~kWh/ton-Ti ($+$3\%) if CaO rather than MgO--CaO is regenerated---the mechanistically favoured limit, since $\ce{Ca + MgO -> CaO + Mg}$ generates no solid product layer, with the 1:1 balance retained as the conservative basis; both are \emph{conditional on achieving $\eta_I > 0.70$}. Monte Carlo gives medians of 13{,}141 and 13{,}536~kWh/ton-Ti ($P(W<15{,}000) = 82.1\%$ and 76.6\%, which mainly restates the assumed $\eta_I$ prior). All results are theoretical; viability hinges on adequate $\ce{CaO}$ solubility at 600~$^{\circ}$C, on whether MgO is regenerated electrolytically or reduced chemically by Ca, on melt oxoacidity favouring $\ce{O2}$ over $\ce{Cl2}$, and on a durable inert anode.
-\end{abstract}
 
-{\small\noindent\textbf{Keywords:} titanium production; molten salt electrolysis; Mg--Ca co-deposition; deoxidation; process design\par}
-
-\newpage
-
-\section*{Introduction}
+\section{Introduction}\label{sec:intro}
 
 Titanium is a strategic material for aerospace, marine engineering, and energy applications owing to its low density, high specific strength, and exceptional corrosion resistance. However, widespread civilian use remains limited by high production costs. The Kroll process, the dominant industrial route, requires multiple batch operations---chlorination, magnesiothermic reduction, and vacuum distillation---resulting in high energy consumption, severe pollution, and intermittent production \cite{kroll1937,ji2026}.
 
@@ -61,11 +71,9 @@ This paper proposes a quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ molten salt system 
 
 This work is a conceptual feasibility study conducted independently: all thermodynamic, electrochemical, and kinetic calculations, data processing, and uncertainty analyses were performed computationally by the author from published data and open-source tooling, without access to institutional laboratory facilities. The results are therefore intended as a quantitative design basis for subsequent experimental validation.
 
-\newpage
 
 \section*{Nomenclature}
 
-\begin{singlespace}
 \small
 \begin{tabular}{ll}
 \multicolumn{2}{l}{\textit{Thermodynamic quantities}} \\
@@ -116,11 +124,9 @@ $w_{[\mathrm{O}]}$ & Equilibrium oxygen content (wt\%) \\
 $p_{\mathrm{O}^{2-}}$ & Negative logarithm of oxide ion activity, $-\log_{10}(a_{\mathrm{O}^{2-}})$ \\
 $n_{\mathrm{Ti}}$ & Moles of Ti per metric ton ($\mathrm{mol/ton}$) \\
 \end{tabular}
-\end{singlespace}
 
-\newpage
 
-\section*{Process Description}
+\section{Process Description}\label{sec:process}
 
 The proposed process is designed over a 580--650~$^{\circ}$C operating range, with 600~$^{\circ}$C taken as the nominal \emph{design-basis} temperature at which all thermodynamic and kinetic figures herein are reported. Because of the liquidus uncertainty (Limitations~(4)), a pilot-scale operating floor of $\geq$620~$^{\circ}$C is recommended; the shift from 600 to 620~$^{\circ}$C changes the energy and co-deposition-window figures by only a few percent and does not alter the qualitative conclusions. The melt is a quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ mixture. $\ce{MgCl2}$ serves as the primary salt and magnesium source; $\ce{CaCl2}$ enhances oxide solubility and lowers the melting point; NaCl and KCl act as fluxes to improve ionic conductivity and reduce viscosity \cite{sato1999}. The recommended composition ($x_{\ce{MgCl2}} = 0.30$, $x_{\ce{CaCl2}} = 0.40$, $x_{\ce{NaCl}} = x_{\ce{KCl}} = 0.15$) is derived in the Salt Composition Design section from three requirements: a liquidus at least 30~$^{\circ}$C below the operating floor, a $\ce{Ca^{2+}/Na+}$ co-deposition window above 50~mV, and sufficient $\ce{CaCl2}$ to dissolve the by-product oxides. The operational cycle consists of: (i) electrolytic co-deposition of Mg and Ca at the cathode; (ii) reduction of $\ce{TiO2}$ powder by the co-deposited metals, with Ca supplying the thermodynamic driving force and Mg keeping the reductant liquid (Eq.~\ref{eq:camgo}); (iii) dissolution of the by-product oxides in the melt; and (iv) electrolytic regeneration of the reductant with oxygen evolution at the anode---MgO and CaO in Case~II of Table~\ref{tab:mbalance}, predominantly CaO if Ca acts as the sole net oxygen carrier. In a continuously operated cell these four processes proceed concurrently in the same vessel; the numbering expresses the functional charge and material flow, not a temporal sequence. Electrolysis and the $\ce{TiO2}$ feed are continuous, but the solids are not: because both the Ti product and the unreacted oxide settle, the cell is operated semi-continuously, the settled bed being drained periodically through a bottom isolation valve while fresh $\ce{TiO2}$ is fed to its surface (see the Reactor Configuration section). The net reaction is $\ce{TiO2 -> Ti + O2}$, driven by electrical energy, with Mg and Ca acting as cyclic mediators.
 
@@ -131,7 +137,7 @@ The proposed process is designed over a 580--650~$^{\circ}$C operating range, wi
 \label{fig:flowsheet}
 \end{figure}
 
-\subsection*{Feedstock, Reactor Concept and Product Recovery}
+\subsection{Feedstock, Reactor Concept and Product Recovery}
 
 \textbf{Feedstock.} All figures use pure $\ce{TiO2}$ as the balance basis; the metallurgical-grade case ($\geq$90~wt\% $\ce{TiO2}$, $\sim$186~kg of Fe/Si impurities per ton Ti) is treated in the E--$p\ce{O^{2-}}$ section, with the deliberately excluded impurity-separation energy quantified in Limitations~(7).
 
@@ -139,7 +145,7 @@ The proposed process is designed over a 580--650~$^{\circ}$C operating range, wi
 
 \textbf{Product recovery.} The product is a porous Ti powder that inherits the external dimensions of the 25--100~$\mu$m precursor and settles on the cell floor rather than forming a coherent cathode deposit, so recovery is a solid--liquid separation followed by a dry solid--solid separation. A 1~$\mu$m salt film on 25--100~$\mu$m powder corresponds to $\approx$11~wt\% (25~$\mu$m) down to $\approx$3~wt\% (100~$\mu$m) of entrained salt; as $\ce{CaCl2}$ and $\ce{MgCl2}$ are highly water-soluble, counter-current washing and drying remove the salt at of order 0.5--1.5~m$^3$ of wash water per ton Ti. The washed powder is nonetheless a mixture of metallic Ti and unreacted $\ce{TiO2}$ of essentially the same particle size, so screening alone cannot separate them; it is retained only to recycle the coarsest, least-reacted particles. Separation relies on the conductivity contrast---metallic Ti is an electronic conductor and $\ce{TiO2}$ an insulator---and is performed by dry electrostatic separation, preceded by gentle ultrasonic or gas-jet liberation of the friable Ti shell (milling is excluded: it would oxidise the product and destroy the size contrast on which classification depends). Where metallurgical-grade feedstock is used, reduced Fe and Si report partly as the free metals and are removed by high-gradient magnetic separation and mild alkaline leaching respectively, although intermetallic formation with Ti (Limitations~(7)) limits the efficiency of both steps. The separated oxide fraction is returned to the cell as feedstock, and all dry steps are enclosed under argon. The wash liquor is evaporated and the salt returned to the cell, so the ``post-treatment'' line of the energy balance is a pumping and drying duty (Limitations~(7) distinguishes it from impurity removal).
 
-\subsection*{Reactor Configuration and Semi-Continuous Operation}
+\subsection{Reactor Configuration and Semi-Continuous Operation}
 
 Three constraints fix the cell architecture: the density contrast that makes the product settle, the need to keep the reductant in contact with the particles, and the requirement that conductive solids never bridge the interelectrode gap. They are met at a single location, as set out under Reactor concept: a sloped floor acting as current collector, a settled bed that extends the cathode into the particle assembly, and a shroud-isolated anode in the clear melt above.
 
@@ -151,7 +157,7 @@ Operation follows a fixed sequence. The salts are vacuum-dehydrated and melted; 
 
 \textbf{Melt state at the design temperature.} All four pure salts melt above 600~$^{\circ}$C ($\ce{MgCl2}$ 714, $\ce{CaCl2}$ 772, KCl 770, NaCl 801~$^{\circ}$C), so the design temperature appears to lie below the melting range of every constituent. In a quaternary mixture, however, the liquidus is depressed by the entropy of mixing: applying the liquidus condition of Eq.~\ref{eq:liquidus} component by component gives 543.7~$^{\circ}$C, controlled by $\ce{CaCl2}$---the value quoted in the Salt Composition Design section---so the melt is fully liquid at 600~$^{\circ}$C with 56~$^{\circ}$C of superheat. The open question is therefore not whether the melt is liquid, but by how much the ideal-solution liquidus underestimates the real one (Limitations~(4)).
 
-\section*{Process Comparison}
+\section{Process Comparison}\label{sec:comparison}
 
 Table~\ref{tab:compare} compares the proposed process with established technologies. The key distinction is the electrochemical-thermochemical coupling: unlike FFC (pure electro-deoxidation) or Kroll (pure metallothermic), this process uses electrolysis to regenerate the reductant in situ while leveraging a liquid Mg--Ca alloy in which Ca supplies the thermodynamic deoxidation depth and Mg keeps the reductant molten at 600~$^{\circ}$C, where both pure metals are solid. The 600~$^{\circ}$C operating temperature is 300--350~$^{\circ}$C below the FFC route ($\sim$950~$^{\circ}$C) and the OS process ($\sim$900~$^{\circ}$C); that reduction is what the liquid alloy buys, and it lowers thermal losses and material corrosion without changing the thermodynamically required decomposition voltage.
 
@@ -178,9 +184,9 @@ Table~\ref{tab:compare} compares the proposed process with established technolog
   $^{b}$Hard pilot operating floor of $\geq$620~$^{\circ}$C recommended (Limitations~(4)); 600~$^{\circ}$C is the design-basis temperature at which the reported figures are calculated.
 \end{table}
 
-\section*{Thermodynamic Framework}
+\section{Thermodynamic Framework}\label{sec:thermo}
 
-\subsection*{Data Sources and Computational Methods}
+\subsection{Data Sources and Computational Methods}
 \label{subsec:data}
 
 All thermodynamic calculations use standard thermochemical data from Barin \cite{barin1995} and Kubaschewski and Alcock \cite{kubaschewski1979}, together with the CALPHAD (Calculation of Phase Diagrams) assessment of the Ti--O system by Waldner and Eriksson \cite{waldner1999}. Temperature-dependent Gibbs free energies are computed via the Gibbs-Helmholtz relation:
@@ -195,7 +201,7 @@ E_{\mathrm{red}} = E^{\circ}_{\mathrm{red}} + \frac{RT}{nF}\ln(a_{\mathrm{M}^{n+
 \end{equation}
 The standard-state data from Barin \cite{barin1995} are compiled for the range 298--1000~K; their use at 873~K (600~$^{\circ}$C) involves Cp extrapolation through the solid--liquid transition for Mg and Ca, which is expected to introduce an uncertainty of approximately $\pm$1--2~kJ/mol in $\Delta G^{\circ}$. All calculations are implemented in Python with CSV output for data traceability.
 
-\subsection*{Salt Composition Design and Liquidus Estimation}
+\subsection{Salt Composition Design and Liquidus Estimation}
 
 The liquidus temperature of the quaternary system is estimated using the ideal solution model. For each component $i$, the liquidus condition is:
 \begin{equation}
@@ -263,7 +269,7 @@ $\ce{NaCl-KCl}$ & solid solution & $\sim$657 \\
 \end{tabular}
 \end{table}
 
-\subsection*{Activity Coefficient Sensitivity Analysis}
+\subsection{Activity Coefficient Sensitivity Analysis}
 \label{subsec:activity}
 
 In the quaternary chloride melt, ion-ion interactions cause deviations from ideality ($\gamma \neq 1$). Experimental activity coefficient data for the quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ system at 600~$^{\circ}$C are limited in the open literature. Thermodynamic optimization of the $\ce{MgCl2-NaCl}$ binary system \cite{chartrand2000} reports negative deviation ($\gamma < 1$) due to strong $\ce{Mg^{2+}-Cl^{-}}$ interactions. By analogy, $\ce{CaCl2-NaCl}$ and other charge-unsymmetrical chloride mixtures are expected to exhibit similar negative deviation, as established by Kleppa's thermochemical studies of charge-unsymmetrical halide melts \cite{kleppa1966}, though direct activity measurements in the quaternary system remain scarce. The modified quasichemical model (MQM) used in the FactSage Salt database \cite{pelton2000mqm} formally captures these effects, but the database parameters are not publicly available.
@@ -282,7 +288,7 @@ The co-deposition window $\Delta E = E_{\mathrm{red}}(\ce{Ca^{2+}}) - E_{\mathrm
 
 Note that $\gamma_{\ce{CaCl2}}$ and $\gamma_{\ce{NaCl}}$ here denote component-scale activity coefficients of CaCl$_2$ and NaCl, obtained from binary-system measurements \cite{chartrand2000,kleppa1966}. In this work, component-scale activity coefficients are adopted for the Nernst-equation calculation as a feasible approximation, rather than ionic-scale activity coefficients. At high $\ce{CaCl2}$ fractions, the formation of $\ce{CaCl+}$ and $\ce{CaCl3-}$ associates breaks the full-dissociation assumption, which will cause deviation of ionic-scale activity from component-scale activity. This qualitative understanding of Ca--O association is consistent with the short-range-ordering framework adopted in the FactSalt MQM model developed by Pelton et al.\ \cite{pelton2000mqm}, in which ion-pair interactions are considered for molten-salt thermodynamic calculation. This approximation is only used for preliminary evaluation of the co-deposition window, and future MQM-based calculation can separate component activity and ionic activity precisely.
 
-\subsection*{Mg--Ca Liquid Alloy Thermodynamic Parameters}
+\subsection{Mg--Ca Liquid Alloy Thermodynamic Parameters}
 \label{subsec:MgCa}
 
 The in-situ co-deposited Mg--Ca forms a liquid alloy at 600~$^{\circ}$C (above the Mg--Ca eutectic at $\approx$517~$^{\circ}$C). The Mg--Ca system has been assessed by Nayeb-Hashemi and Clark \cite{nayeb1987} and re-assessed by Zhang et al. \cite{zhang2008mgce} using the CALPHAD method. The liquid phase is described by a Redlich--Kister expansion:
@@ -299,9 +305,9 @@ At 600~$^{\circ}$C (873~K), the mixing thermodynamics are:
 \end{equation}
 At equimolar composition: $\Delta G_{\mathrm{mix}} = -9.69$~kJ/mol, $\Delta H_{\mathrm{mix}} = -4.66$~kJ/mol, $\Delta S_{\mathrm{mix}} = 5.76$~J/(mol$\cdot$K), and activity coefficients $\gamma_{\mathrm{Mg(alloy)}} = \gamma_{\mathrm{Ca(alloy)}} = 0.526$. The negative $\Delta G_{\mathrm{mix}}$ indicates spontaneous alloy formation, suggesting homogeneous Mg--Ca co-deposition at the cathode. The strong negative deviation ($\gamma \ll 1$) suggests that the Mg--Ca liquid alloy is thermodynamically stable, which is what keeps the reductant in a liquid state at the 600~$^{\circ}$C design temperature, where both pure metals are solid. The regular solution approximation ($L_1 = 0$) introduces a minor deviation: at equimolar composition, the neglected $L_1$ term contributes $L_1 \cdot (x_{\mathrm{Mg}} - x_{\mathrm{Ca}}) \cdot x_{\mathrm{Mg}} x_{\mathrm{Ca}} = 0$ at $x = 0.5$ (since $x_{\mathrm{Mg}} - x_{\mathrm{Ca}} = 0$), and the maximum deviation occurs off-equimolar compositions at $<$1~kJ/mol, which does not affect the qualitative conclusion of spontaneous mixing. The $L_1$ term vanishes at the equimolar composition but not elsewhere: for the Ca-dilute local region discussed in the Reduction Thermodynamics section ($x_{\ce{Ca}} = 0.1$), the full Redlich--Kister activity coefficient $\gamma_{\ce{Ca}} = \exp\{x_{\ce{Mg}}^2[L_0 + L_1(3x_{\ce{Ca}} - x_{\ce{Mg}})]/RT\}$ gives $\gamma_{\ce{Ca}} = 0.111$ rather than the regular-solution value 0.125, i.e.\ an 11\% lower Ca activity and a correspondingly higher local oxygen endpoint ($\sim$1{,}800 instead of $\sim$1{,}600~ppm). The equimolar design point itself is unaffected, since $x_{\ce{Mg}} = x_{\ce{Ca}}$ makes the $L_1$ contribution vanish identically. Additionally, the regular-solution approximation neglects ordering effects associated with the stable $\ce{Mg2Ca}$ intermetallic; the resulting $\Delta G_{\mathrm{mix}}$ uncertainty is estimated at $\pm$2--3~kJ/mol near the $\ce{Mg2Ca}$ stoichiometry, but the qualitative conclusion of spontaneous alloy formation remains valid.
 
-\section*{Results and Discussion}
+\section{Results and Discussion}\label{sec:results}
 
-\subsection*{Reduction Thermodynamics and Deoxidation Limits}
+\subsection{Reduction Thermodynamics and Deoxidation Limits}
 
 Table~\ref{tab:thermo} presents the calculated $\Delta G^{\circ}$ and $\Delta H^{\circ}$ for three reduction pathways at 550--650~$^{\circ}$C.
 
@@ -365,13 +371,13 @@ The alloy-state correction then applies as before: with $a_M = \gamma_{\mathrm{a
 
 It should also be emphasized that $a_M = 0.263$ is a \emph{global} equimolar average; the cathode-surface alloy composition varies spatially and temporally, so the local equilibrium oxygen content is inhomogeneous. Which of the two limiting oxygen-transfer pictures applies---Mg and Ca each carrying roughly half of the oxygen (the 1:1 balance of Table~\ref{tab:mbalance}), or Ca acting as the sole net oxygen carrier---is decided by the competition between MgO dissolution and electrolytic regeneration on the one hand and its chemical reduction by the alloy at the alloy/salt interface on the other. That competition is kinetic rather than thermodynamic: the 1:1 material balance requires the electrolytic pathway to dominate, whereas if reaction~\ref{eq:camgo} is fast the regenerated species becomes CaO, the decomposition voltage rises from 2.73 to 2.83~V and the net energy consumption from 12{,}552 to 12{,}933~kWh/ton-Ti ($+$3\%; see the Material and Energy Balance section). Both limits lie below the FFC range, so the energy conclusion is unaffected either way. The interfacial kinetics of reaction~\ref{eq:camgo} are therefore identified as the critical unmeasured parameter of the proposed mechanism (Limitations~(10)).
 
-\subsection*{Cathodic Co-Deposition and the Identity of the Net Oxygen Carrier}
+\subsection{Cathodic Co-Deposition and the Identity of the Net Oxygen Carrier}
 
 Cathodic co-deposition and the identity of the net oxygen carrier are two distinct questions, and the design depends on separating them. At the cathode, $\ce{Mg^{2+}}$ discharges first---its equilibrium potential is $\sim$816~mV more positive---and $\ce{Ca^{2+}}$ joins once Mg deposition reaches its mass-transfer limit (Fig.~\ref{fig:current_regimes}a), so the alloy is genuinely co-deposited; that co-deposition is what supplies a liquid reductant at 600~$^{\circ}$C, where both pure metals are solid. The roles are not symmetric in the reduction that follows. MgO formed by Mg reducing $\ce{TiO2}$ is thermodynamically unstable in the presence of Ca (Eq.~\ref{eq:camgo}), and because that reaction generates no solid barrier---CaO leaves the interface by dissolution and Mg returns to the alloy---no product layer retards it, so its rate should not be lower than that of the interfacial deoxygenation of $\ce{TiO2}$, which must proceed through a growing Ti layer. Under that condition Ca is the net oxygen carrier: oxygen enters the melt as dissolved CaO and is evolved at the anode, while Mg shuttles oxygen between the particle surface and the dissolved Ca with no net chemical consumption (Table~\ref{tab:mbalance}, note~a).
 
 The opposite limit---MgO dissolving and being regenerated electrolytically, so that Mg and Ca each carry about half of the oxygen---remains the bounding case and is retained because the interfacial rate of Eq.~\ref{eq:camgo} has not been measured. The two limits differ by 3\% in net energy (12{,}933 versus 12{,}552~kWh/ton-Ti), so no conclusion of this work depends on which applies. The CaO-only case is identified as the mechanistically favoured steady state, while the 1:1 balance is retained as the conservative design basis, crediting the cell with two electrolytic regeneration paths and therefore imposing the more demanding assumption on the energy balance. What the title's ``co-deposition'' refers to is the cathodic event, not a partition of the oxygen between the two metals.
 
-\subsection*{Solid-State Deoxygenation and the Pore-Volume Constraint on \texorpdfstring{$a_{\ce{MgO}}$}{aMgO}}
+\subsection{Solid-State Deoxygenation and the Pore-Volume Constraint on \texorpdfstring{$a_{\ce{MgO}}$}{aMgO}}
 
 Because $\ce{TiO2}$ is insoluble in the quaternary chloride melt, the reduction is not an electrochemical deposition of dissolved titanium ions but a solid-state deoxygenation at a liquid-metal/oxide interface. The reductant is delivered to the particle as a liquid Mg--Ca phase, oxygen is stripped from the oxide lattice as $\ce{O^{2-}}$ and transferred to the melt, and the metallic Ti remains in place, inheriting the external dimensions of the precursor while developing an internal pore network. Two consequences follow. First, the product is necessarily a porous powder rather than a dense deposit, which is why recovery is a powder-handling problem (see the Product recovery paragraph above). Second, the rate-limiting step is interfacial deoxygenation coupled to transport through the product layer---the quantity the SCM analysis models---rather than solution-phase mass transfer, which is also why the FFC analogy for current efficiency applies to the electrolysis step only and not to the reduction step.
 
@@ -401,7 +407,7 @@ Ca / 650~$^{\circ}$C & $-44.7$ & 0.0029 & 29.4 & 0.0112 & 111.8 \\
 \end{tabular}
 \end{table}
 
-\subsection*{\texorpdfstring{$\ce{Ca^{2+}/Na+}$}{Ca2+/Na+} Co-Deposition Window}
+\subsection{\texorpdfstring{$\ce{Ca^{2+}/Na+}$}{Ca2+/Na+} Co-Deposition Window}
 
 Table~\ref{tab:Ed} lists the standard decomposition voltages ($E_d$) and the corresponding reduction potentials ($E^{\circ}_{\mathrm{red}} = -E_d$) of the four pure chlorides at 600~$^{\circ}$C, all referenced to the $\ce{Cl2/Cl-}$ electrode.
 
@@ -437,7 +443,7 @@ The above window is an \emph{equilibrium} quantity. Under polarization the effec
 
 \emph{Mg/Ca co-deposition ratio.} The analysis above concerns only the $\ce{Ca^{2+}/Na+}$ selectivity. The far larger $\ce{Mg^{2+}/Ca^{2+}}$ gap is not addressed by the equilibrium window: at the recommended composition ($x_{\ce{MgCl2}}=0.30$, $x_{\ce{CaCl2}}=0.40$), the Nernst-corrected potentials give $E_{\mathrm{red}}(\ce{Ca^{2+}}) - E_{\mathrm{red}}(\ce{Mg^{2+}}) \approx -816$~mV, i.e., Mg reduces $\sim$816~mV earlier than Ca. The equimolar Mg--Ca alloy assumed in the Mg--Ca alloy thermodynamic analysis and in the material balance (Table~\ref{tab:mbalance}) is therefore \emph{not} a thermodynamic outcome: it can only be approached when Mg deposition reaches its mass-transfer (diffusion) limit at the cathode, after which Ca co-deposits, as in conventional alloy co-deposition (e.g., Zn--Ni, Li--Na). Mg--Ca co-deposition has in fact been demonstrated experimentally in $\ce{KCl-CaCl2-MgCl2}$ melts at 943~K, where bulk alloys comprising $\alpha$-Mg and $\ce{Mg2Ca}$ were obtained by galvanostatic electrolysis at 6~A/cm$^2$ \cite{tang2015}. The actual Mg/Ca ratio is thus set by the operating current density relative to the Mg limiting current density, as quantified in the following section, and the 1:1 assumption should be regarded as a bounding idealization.
 
-\subsection*{Cathode Mass Transport and Operating Current Density}
+\subsection{Cathode Mass Transport and Operating Current Density}
 \label{subsec:masstransport}
 
 The qualitative argument above is made quantitative through a diffusion-layer analysis of the cathode. For each depositing cation, the limiting current density is
@@ -474,7 +480,7 @@ Because $j_{\mathrm{lim}} \propto D/\delta$, the regime boundaries inherit the u
 \label{fig:current_regimes}
 \end{figure}
 
-\subsection*{\texorpdfstring{E--$p\ce{O^{2-}}$}{E-pO2-} Stability Diagram and Impurity Separation}
+\subsection{\texorpdfstring{E--$p\ce{O^{2-}}$}{E-pO2-} Stability Diagram and Impurity Separation}
 
 The E--$p\ce{O^{2-}}$ (Pourbaix-type) diagram for fused chloride systems \cite{littlewood1962} (Fig.~\ref{fig:EpO2}) plots the M/MO equilibrium lines according to:
 \begin{equation}
@@ -492,7 +498,7 @@ where $p\ce{O^{2-}} = -\log_{10}(a_{\ce{O^{2-}}})$ and $E^{\circ}_{\mathrm{red}}
 
 The reduction potentials follow: $\ce{Fe2O3}$ ($-1.01$~V) $>$ $\ce{SiO2}$ ($-1.95$~V) $>$ $\ce{TiO2}$ ($-2.03$~V) $>$ $\ce{Al2O3}$ ($-2.42$~V) $>$ $\ce{MgO}$ $>$ $\ce{CaO}$, indicating that Fe and Si impurities reduce before Ti. This thermodynamic preferential reduction, combined with density differences (Fe: 7.87~g/cm$^3$ vs.\ Ti: 4.51~g/cm$^3$), suggests a potential pathway for physical separation of impurity metals from titanium powder. However, it should be noted that the Fe--Ti and Si--Ti systems exhibit extensive solid solubility and form intermetallic compounds (e.g., FeTi, $\ce{Fe2Ti}$, $\ce{Ti5Si3}$, $\ce{TiSi2}$) at 600~$^{\circ}$C, which may complicate gravity-based separation. The use of metallurgical-grade $\ce{TiO2}$ ($\geq$90~wt\%) thus requires further investigation of impurity phase distribution and may need complementary separation strategies (e.g., acid leaching). This thermodynamic basis indicates potential compatibility with metallurgical-grade $\ce{TiO2}$, subject to kinetic and purity validation. Notably, because $\ce{Ca^{2+}}$ exhibits stronger complexation with $\ce{O^{2-}}$ than $\ce{Mg^{2+}}$ does, the activity coefficient of dissolved CaO is suppressed more significantly than that of MgO. This differential non-ideality suggests that in a real chloride--oxide melt, the difference between CaO and MgO reduction potentials may be larger than predicted from pure-oxide standard states. Such a shift would be favorable for the proposed mechanism, reinforcing the division of labour adopted here: Ca provides the deoxidation depth, while the Mg--Ca alloy provides the liquid reductant phase and the transport path at the design temperature (see the Reduction Thermodynamics section).
 
-\subsection*{SCM Kinetics and Parameter Sensitivity}
+\subsection{SCM Kinetics and Parameter Sensitivity}
 \label{subsec:scm}
 
 \textbf{Model selection.} A shrinking-core formulation is adopted because the reduction proceeds by inward transport through a growing product layer around a shrinking unconverted core, which is the geometry of a solid--liquid reaction with a coherent product shell. The alternatives are less appropriate: pseudo-homogeneous (Avrami--Erofeev/JMAK) models assume reaction throughout the particle volume and describe nucleation-and-growth or gas--solid systems, whereas here the reductant is a liquid metal advancing from the particle surface inward; mixed-control formulations collapse to the shrinking-core result when internal diffusion through the product layer dominates, as argued below; and purely empirical rate laws would carry no predictive content for the $t \propto R^2$ particle-size scaling on which the process design depends. The weakest assumption of the model---diffusion control with a constant effective diffusivity---is examined below.
@@ -549,7 +555,7 @@ The added parameters act on \emph{feasibility} rather than on the per-ton energy
 \label{fig:tornado}
 \end{figure}
 
-\subsection*{Material and Energy Balance}
+\subsection{Material and Energy Balance}
 \label{subsec:energy}
 
 The material balance per ton Ti is split into two steps: (i) the chemical reduction step and (ii) the electrolytic regeneration step. In Step~(i), $\ce{TiO2}$ is reduced by Mg and Ca:
@@ -631,7 +637,7 @@ A particularly relevant analogy is the Hall--H\'eroult process for aluminum prod
 \label{fig:energy}
 \end{figure}
 
-\subsection*{Full-Process Energy Balance}
+\subsection{Full-Process Energy Balance}
 \label{subsec:heatbal}
 
 The full-process energy balance (Table~\ref{tab:heatbal}), \emph{conditional on achieving $\eta_I > 0.70$} as discussed in the Material and Energy Balance section, is structured to distinguish electrical energy inputs from thermal effects. The electrolysis gross electrical demand is 12{,}244~kWh/ton ($\eta_I=0.75$, $V_{\mathrm{cell}}=4.1$~V), or 12{,}625~kWh/ton at $V_{\mathrm{cell}}\approx4.23$~V in the CaO-only Case~I of Table~\ref{tab:mbalance}. Because the cell voltage exceeds the thermoneutral voltage of the regeneration step ($\approx$3.20~V, from $\Delta H^{\circ}_{f}(\ce{MgO})+\Delta H^{\circ}_{f}(\ce{CaO}) = 1{,}236.7$~kJ per mole of Ti, i.e., per 4~e$^-$), the electrolysis cell is strongly self-heating: of the 12{,}244~kWh/ton electrical input, only $\approx$5{,}483~kWh/ton is absorbed as net reaction enthalpy and $\approx$6{,}761~kWh/ton must be rejected as waste heat, in addition to the 1{,}690~kWh/ton released by the exothermic reduction step (the two figures are consistent: the regeneration step absorbs $\approx$7{,}173~kWh/ton, which minus the 1{,}690~kWh/ton reduction exotherm gives the $\approx$5{,}483~kWh/ton net). The reduction exotherm therefore arises inside an already self-heating cell and is \emph{not} credited against electrical energy; it is treated as waste heat available for internal heat integration, offsetting at most the external thermal demand ($\ce{TiO2}$ preheating 184, salt makeup preheating 7, cell wall loss 138; total 329~kWh/ton). Auxiliary electrical inputs (salt circulation pumping 50, post-treatment 300) add 350~kWh/ton. With full heat integration, the net equivalent consumption is 12{,}244 + 350 $-$ 42 (Ti powder cooling recovery) $=$ 12{,}552~kWh/ton-Ti; without heat integration it is 12{,}881~kWh/ton-Ti.
@@ -680,7 +686,7 @@ For comparison, the minimum thermodynamic work for $\ce{TiCl4}$ distillation (90
 
 Operating at the 620~$^{\circ}$C pilot floor of Limitations~(4) changes none of these conclusions. Recomputed at 620~$^{\circ}$C with the same thermochemical data and the same overpotential and ohmic budget, the mixed-regeneration decomposition voltage falls from 2.729 to 2.718~V and the $\ce{Ca^{2+}/Na+}$ co-deposition window narrows only from 120.2 to 119.6~mV (at 650~$^{\circ}$C: 118.6~mV), because the decomposition voltage of both oxides and the Nernst term of the window have similar temperature coefficients. The net equivalent consumption therefore changes by less than 0.3\% (12{,}552 $\to$ $\sim$12{,}520~kWh/ton-Ti for the nominal case, with only the decomposition term varying). Raising the operating temperature to the recommended 620~$^{\circ}$C floor thus costs well under 1\% of the energy advantage while removing the liquidus risk.
 
-\subsection*{Oxide Dissolution Mechanism and Salt Circulation}
+\subsection{Oxide Dissolution Mechanism and Salt Circulation}
 \label{subsec:dissolution}
 
 Under the reconstructed mechanism (Eq.~\ref{eq:camgo}) the species that must be dissolved and electrolytically regenerated in the steady state is predominantly CaO rather than a MgO--CaO mixture, and the activity of dissolved MgO must be held below $\approx 5\times10^{-3}$ (Eq.~\ref{eq:amgo}). A low MgO solubility is therefore consistent with, and in fact required by, the design: MgO must leave the reaction zone as it forms rather than accumulate. Because CaO solubility in $\ce{CaCl2}$-rich melts is substantially higher than that of MgO, the closed-loop constraint under this picture is less severe than the MgO threshold analysed below; that analysis is retained because it bounds the MgO side of the cycle and hence the Mg inventory.
@@ -741,7 +747,7 @@ $\ce{Ti + TiCl4 -> 2TiCl2}$ (873~K, est.) & $\approx -80$ \\
 
 A final constraint is the moisture sensitivity of the $\ce{MgCl2}$-bearing salt: anhydrous $\ce{MgCl2}$ cannot be obtained by open thermal dehydration (hydrolysis above $\sim$200--300~$^{\circ}$C gives $\ce{MgOHCl}$ + HCl), so improperly dried salt opens a parasitic hydrogen-evolution channel and releases HCl that re-chlorinates the freshly deposited reductant \cite{song2024}. Industrial $\ce{MgCl2}$ electrolysis controls this by vacuum dehydration or chlorinating pretreatment under a dry atmosphere \cite{pletcher1990}; these standard measures are assumed here, and the dehydration energy of the small makeup-salt stream is not itemised in Table~\ref{tab:heatbal}. Moisture is therefore an avoidable engineering requirement rather than an intrinsic limitation, but it must be met before the assumed $\eta_I = 0.75$--0.80 can be pursued experimentally.
 
-\section*{Uncertainties and Limitations}
+\section{Uncertainties and Limitations}\label{sec:limitations}
 
 This study is a conceptual design based on thermodynamic calculations and literature data. All quantitative results require future experimental validation; the key uncertainties are acknowledged below:
 
@@ -769,7 +775,7 @@ This study is a conceptual design based on thermodynamic calculations and litera
 
 (12) \textbf{Product separation chain}: The electrostatic separation of Ti from unreacted $\ce{TiO2}$, the liberation step that precedes it, and the magnetic/alkaline removal of reduced Fe and Si are standard unit operations but are not quantified here, and the efficiency of electrostatic separation below $\sim$10~$\mu$m is not established. The 300~kWh/ton post-treatment figure covers washing, drying and screening only and is distinct from these steps (see also Limitations~(7)).
 
-\section*{Conclusions}
+\section{Conclusions}\label{sec:conclusions}
 
 (1) The proposed quaternary $\ce{MgCl2-CaCl2-NaCl-KCl}$ molten salt process is designed to enable in-situ electrolytic co-deposition of Mg and Ca for complementary reduction of $\ce{TiO2}$. If the proposed bimetallic co-deposition can be realized experimentally, the process combines Ca as the thermodynamic deoxidation driver ($\ce{Ca + MgO -> CaO + Mg}$, $\Delta G^{\circ}(600~^{\circ}\mathrm{C}) = -38.2$~kJ/mol, Eq.~\ref{eq:camgo}) with Mg as the component that keeps the reductant liquid at 600~$^{\circ}$C, where both pure metals are solid: the equilibrium limits are 3908~ppm O for Mg acting alone versus 20.2~ppm for Ca (193$\times$), the latter becoming $\approx$77~ppm at the equimolar alloy activity---far below the 0.10--0.20~wt\% commercial target, provided the dissolved MgO activity is held below $\approx 5\times10^{-3}$ (Eq.~\ref{eq:amgo}).
 
@@ -791,82 +797,29 @@ This study is a conceptual design based on thermodynamic calculations and litera
 
 (10) The preferred cell is a semi-continuous reactor in which a settled $\ce{TiO2}$ bed on a sloped floor forms the cathode, the reductant is electrodeposited within the bed and retained there by capillarity, an anode suspended in the clear melt above is enclosed in a ceramic shroud, and the Ti/MgO/CaO slurry is drained periodically through a bottom isolation valve while fresh $\ce{TiO2}$ is fed to the bed surface. The interelectrode gap is set by the ohmic budget at $\lesssim$1.1~cm, so short-circuit protection must be geometric rather than dimensional. Screening alone cannot separate the Ti product from unreacted $\ce{TiO2}$ of the same particle size; dry electrostatic separation, exploiting the conductivity contrast, is the proposed primary step, with the oxide fraction returned to the cell.
 
-\noindent\textbf{Declarations}
+\backmatter
 
-\noindent\textbf{Data Availability}: All thermodynamic data are from the cited literature. The Python scripts used for calculations and figure generation are publicly available at \url{https://github.com/huyamingc/ti-in-situ-electrolysis}. A preprint version of this work has been deposited on Zenodo (DOI: \href{https://doi.org/10.5281/zenodo.21973469}{10.5281/zenodo.21973469}).
+\section*{Declarations}
 
-\noindent\textbf{Conflict of Interest}: The author declares no conflict of interest.
+\begin{itemize}
+\item[{Data availability}] All thermodynamic data are from the cited literature. The Python scripts used for calculations and figure generation are publicly available at \url{https://github.com/huyamingc/ti-in-situ-electrolysis}. A preprint version of this work has been deposited on Zenodo (DOI: \href{https://doi.org/10.5281/zenodo.21973469}{10.5281/zenodo.21973469}).
 
-\noindent\textbf{Ethics Approval}: Not applicable (no human or animal subjects).
+\item[{Conflict of interest}] The author declares no conflict of interest.
 
-\noindent\textbf{Consent to Participate}: Not applicable.
+\item[{Ethics approval}] Not applicable (no human or animal subjects).
 
-\noindent\textbf{Consent for Publication}: Not applicable.
+\item[{Consent to participate}] Not applicable.
 
-\noindent\textbf{Author Contributions}: Yaming Hu: Conceptualization, Methodology, Formal analysis, Investigation, Writing---original draft, Writing---review \& editing, Visualization.
+\item[{Consent for publication}] Not applicable.
 
-\noindent\textbf{Funding}: This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
+\item[{Author contributions}] Yaming Hu: Conceptualization, Methodology, Formal analysis, Investigation, Writing---original draft, Writing---review \& editing, Visualization.
 
-\begin{thebibliography}{99}
+\item[{Funding}] This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.
+\end{itemize}
 
-\bibitem{kroll1937} W. J. Kroll, Z. Anorg. Allg. Chem. 234, 42 (1937).
-
-\bibitem{ji2026} H. Ji, S. Guo, L. Gao, L. Yang, H. Yan, and H. Zeng, Int. J. Miner. Metall. Mater. 33, 15 (2026).
-
-\bibitem{fray2000} G. Z. Chen, D. J. Fray, and T. W. Farthing, Nature 407, 361 (2000).
-
-\bibitem{jiao2023} H. Jiao, M. Liu, Z. Wang, M. Lin, Z. Qu, J. Song, and S. Jiao, ACS Sustainable Chem. Eng. 11, 5764 (2023).
-
-\bibitem{ono2002} K. Ono and R. O. Suzuki, JOM 54, 59 (2002).
-
-\bibitem{pal2001} U. B. Pal, D. E. Woolley, and G. B. Kenney, JOM 53, 32 (2001).
-
-\bibitem{okabe1997} T. H. Okabe and Y. Waseda, JOM 49, 28 (1997).
-
-\bibitem{zhang2024} J. Zhang, H. Yan, Z. Liu, S. Guo, Y. Yang, G. Yang, R. Xia, M. Hu, and L. Li, J. Electrochem. Soc. 171, 082502 (2024).
-
-\bibitem{taninouchi2016} Y. Taninouchi, Y. Hamanaka, and T. H. Okabe, Metall. Mater. Trans. B 47, 3394 (2016).
-
-\bibitem{lee2025} K. S. Lim, H. Nersisyan, S. K. Han, K.-T. Park, H. Suh, and J. H. Lee, Next Mater. 8, 100803 (2025).
-
-\bibitem{pang2024} J. Pang, L.-X. Kong, L.-G. Zhu, B.-Q. Xu, J.-J. Xu, C.-L. Bai, and B. Yang, Trans. Nonferrous Met. Soc. China 34, 681 (2024).
-
-\bibitem{xu2025} L. Zhu, Z. Zhang, L. Kong, B. Xu, and B. Yang, Electrochim. Acta 533, 146478 (2025).
-
-\bibitem{barin1995} I. Barin, Thermochemical Data of Pure Substances, 3rd edn (VCH, Weinheim, 1995).
-
-\bibitem{waldner1999} P. Waldner and G. Eriksson, Calphad 23, 189 (1999).
-
-\bibitem{zhang2008mgce} H. Zhang, Y. Wang, S. L. Shang, L.-Q. Chen, and Z.-K. Liu, J. Alloys Compd. 463, 294 (2008).
-
-\bibitem{sato1999} Y. Sato, Y. Kuroda, T. Nagatsu, M. Hoshi, J.-I. Kim, and T. Yamamura, in Molten Salts XII, PV 99-41 (The Electrochemical Society, Pennington, NJ, 1999), p. 313.
-
-\bibitem{kubaschewski1979} O. Kubaschewski and C. B. Alcock, Metallurgical Thermochemistry, 5th edn (Pergamon Press, Oxford, 1979).
-
-\bibitem{chartrand2000} P. Chartrand and A. D. Pelton, Can. Metall. Q. 39, 405 (2000).
-
-\bibitem{pletcher1990} D. Pletcher and F. C. Walsh, Industrial Electrochemistry, 2nd edn (Chapman and Hall, London, 1990).
-
-\bibitem{kleppa1966} O. J. Kleppa and F. G. McCarty, J. Phys. Chem. 70, 1249 (1966).
-
-\bibitem{pelton2000mqm} A. D. Pelton, S. A. Degterov, G. Eriksson, C. Robelin, and Y. Dessureault, Metall. Mater. Trans. B 31, 651 (2000).
-
-\bibitem{nayeb1987} A. A. Nayeb-Hashemi and J. B. Clark, Bull. Alloy Phase Diagrams 8, 58 (1987).
-
-\bibitem{hallstedt2025} B. Hallstedt, Calphad 89, 102833 (2025).
-\bibitem{tang2015} H. Tang, Y. Ren, S. Wang, H. Deng, D. Cai, L. Shao, Y. Zhao, R. Gao, Y. Yan, and M. Zhang, J. Electrochem. Soc. 162, D520 (2015).
-\bibitem{yan2007} X. Y. Yan and D. J. Fray, Miner. Process. Extr. Metall. 116, 17 (2007).
-
-\bibitem{littlewood1962} R. Littlewood, J. Electrochem. Soc. 109, 525 (1962).
-
-\bibitem{levenspiel1999} O. Levenspiel, Chemical Reaction Engineering, 3rd edn (Wiley, New York, 1999).
-
-\bibitem{kvande2014} H. Kvande and P. A. Drabl{\o}s, J. Occup. Environ. Med. 56, S23 (2014).
-
-\bibitem{morita2004} M. Ito and K. Morita, Mater. Trans. 45, 2712 (2004).
-
-\bibitem{song2024} Z. Song, J. Zhao, Z. He, and G. Lu, J. Electrochem. Soc. 171, 062501 (2024).
-
-\end{thebibliography}
+%% The class selects sn-basic-reforder (see sn-jnl.cls): it is sn-basic.bst with
+%% only presort changed, so references are numbered in citation order as the
+%% Journal of Sustainable Metallurgy style requires rather than alphabetically.
+\bibliography{refs}
 
 \end{document}
