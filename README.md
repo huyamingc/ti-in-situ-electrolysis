@@ -28,7 +28,7 @@ table is reproducible from the commands in §14.
 | Item | Value |
 |---|---|
 | `manuscript.tex` | 827 lines, 141,053 B |
-| `manuscript.pdf` | **43 pages**, 3,292,491 B |
+| `manuscript.pdf` | **44 pages**, 2,905,524 B |
 | Figures / tables | 15 / 10 |
 | References | **35** (35 `\bibitem` entries in `manuscript.bbl`, 35 distinct `\cite` keys, none unused) |
 | Abstract | **248 words** (journal limit 250) |
@@ -54,7 +54,7 @@ table is reproducible from the commands in §14.
 ```
 .
 ├── manuscript.tex                — Manuscript (sn-jnl class, Basic numeric style)
-├── manuscript.pdf                — Compiled PDF (43 pages)
+├── manuscript.pdf                — Compiled PDF (44 pages)
 ├── manuscript.bbl                — BibTeX output, kept so the PDF rebuilds without bibtex
 ├── refs.bib                      — Bibliography database (35 entries, with titles and DOIs)
 ├── manuscript_v1.tex             — Frozen snapshot of the manuscript as reviewed (825 lines)
@@ -80,7 +80,7 @@ table is reproducible from the commands in §14.
 │   ├── fig_ga.py                    — Graphical abstract
 │   ├── verify_r1_liquidus.py        — Independent liquidus re-derivation (1 CSV)
 │   ├── verify_r3_reviewer3.py       — Ca + MgO thermochemistry (1 CSV)
-│   ├── verify_revision.py           — Text/number consistency sweep
+│   ├── verify_energy_rebase.py      — Single-potential re-basing sweep (round v1)
 │   ├── revision_r3_mechanism_numbers.py — Numbers moved by the mechanism rebuild (1 CSV)
 │   ├── analyze_length.py            — Paragraph / section length audit
 │   ├── crossref_titles.py           — Crossref title recovery for the bibliography
@@ -126,16 +126,16 @@ differences.
 | Window under γ sensitivity | 74.9–147.1 mV | `tab_window_sensitivity.csv` (18 rows) | `thermo_calc_v2.py` | Eq. 4–5 |
 | ΔG_mix, ΔH_mix, γ_Ca (equimolar) | −9.69 / −4.66 kJ/mol, 0.111 | `tab_MgCa_thermo.csv` → `dG_mix`, `dH_mix`, `gamma_Ca` | `thermo_calc_v2.py` | Eq. 6–7 |
 | Material balance, Case II | 508 kg Mg, 837 kg Ca, 1668 kg TiO₂ | `tab_mbalance.csv` → `Mass(kg)` | `thermo_calc_v2.py` | Table 7 |
-| Net energy, Case II / Case I | 12,552 / 12,933 kWh t⁻¹ | `tab_heat_balance_revised.csv` → `Net consumption`; `tab_case_baseline.csv` → `net` | `verification_fix.py`, `case_baseline_mc.py` | energy balance (§5.8–5.9) |
-| Gross electrolysis energy | 12,244 / 12,625 kWh t⁻¹ | `tab_heat_balance_revised.csv` → `Electrolysis (gross)`; `tab_r3_reconstruction.csv` → `gross_kWh_t` | `verification_fix.py`, `revision_r3_mechanism_numbers.py` | energy balance (§5.8–5.9) |
-| Regeneration enthalpy | 7,173 / 7,368 kWh t⁻¹ | `tab_case_baseline.csv` → `dH_regen` = 7175.55 / 7368.8 | `case_baseline_mc.py` | energy balance (§5.8–5.9) |
-| Waste heat, net absorbed | 6,761 / 5,483 kWh t⁻¹ | `tab_heat_balance_revised.csv` → `Waste heat rejected`, `Reaction enthalpy absorbed (net)` | `verification_fix.py` | heat balance (§5.9) |
+| Net energy (one value for both material cases) | 12,933 kWh t⁻¹ | `tab_heat_balance_revised.csv` → `Net consumption`; `tab_case_baseline.csv` → `net` (identical in both rows) | `verification_fix.py`, `case_baseline_mc.py` | energy balance (§5.8–5.9) |
+| Gross electrolysis energy | 12,625 kWh t⁻¹ | `tab_heat_balance_revised.csv` → `Electrolysis (gross)` | `verification_fix.py`, `case_baseline_mc.py` | energy balance (§5.8–5.9) |
+| Regeneration enthalpy | 7,369 (CaO) / 7,175 (1:1) kWh t⁻¹ | `tab_case_baseline.csv` → `dH_regen` = 7368.80 / 7175.59 | `case_baseline_mc.py` | energy balance (§5.8–5.9) |
+| Waste heat, net absorbed | 7,128 / 5,497 kWh t⁻¹ | `tab_heat_balance_revised.csv` → `Waste heat rejected`, `Reaction enthalpy absorbed (net)` | `verification_fix.py` | heat balance (§5.9) |
 | Auxiliary thermal demand | 329 / 50 / 300 kWh t⁻¹ | `tab_heat_balance_revised.csv` → `External thermal demand`, `Salt circulation pumping`, `Post-treatment` | `verification_fix.py` | Table 9 |
 | Activation-overpotential difference | 370 mV | `tab_overpotential.csv` → `effective_window_act-only` = 370.2 (at 0.5 A cm⁻²) | `verification_fix.py` | Butler–Volmer (§5.4) |
-| 620 °C recomputation | 119.6 mV, <0.3% energy change | `tab_dual_temperature.csv` → `window_mV`, `net_mixed_kWh_t` | `dual_temperature.py` | 620 °C case, §5.9 |
+| 620 °C recomputation | 119.6 mV, <0.3% energy change | `tab_dual_temperature.csv` → `window_mV`, `net_CaO_only_kWh_t` (12,903 at 620 °C) | `dual_temperature.py` | 620 °C case, §5.9 |
 | Ideal-solution liquidus | 544 °C | `tab_r1_liquidus_check.csv` (scan) + stdout of `verify_r1_liquidus.py` (543.7 °C at the design point) | `verify_r1_liquidus.py` | Eq. 3 |
 | ΔG°(Ca+MgO→CaO+Mg) | −38.25 kJ/mol, K = 194 | `tab_r3_verification.csv` → `value` = −38.23 | `verify_r3_reviewer3.py` | Eq. 9 |
-| Monte Carlo, all 18 statistics | 13,157 / 82.0% / 35.1% / 13,556 / 76.4% / 13,295 / 79.9% / 0.37 / 0.75 / 1.68 / 2.70 / 89 mV / 100% / 13.6 min | `tab_monte_carlo_v2_stats.csv` (18 rows, all quantities) | `monte_carlo_v2.py` | Eq. 15 (SCM) + energy model (§5.7) |
+| Monte Carlo, all statistics | 13,556 / 76.4% / 35.0% / 13,698 / 73.9% / 0.37 / 0.75 / 1.68 / 2.70 / 89 mV / 100% / 13.6 min | `tab_monte_carlo_v2_stats.csv` (all quantities) | `monte_carlo_v2.py` | Eq. 15 (SCM) + energy model (§5.7) |
 | j_lim,Mg = 0.56, j_lim,Ca = 0.75, j = 1.31, j_eq = 1.1 A cm⁻² | — | printed by `fig_current_regimes.py` (lines 42–44); no CSV | `fig_current_regimes.py` | Eq. 12–13 |
 
 ### 3.2 Figure → generator → EPS pipeline
@@ -160,8 +160,8 @@ follows the `\includegraphics` order in `manuscript.tex` (lines 135, 215, 365, 4
 | 10 | `figure7.eps` | `fig_scm_time_vs_size.pdf` | `improvements_calc.py` | no (gs) |
 | 11 | `figure8.eps` | `fig_monte_carlo.pdf` | `monte_carlo_v2.py` | yes |
 | 12 | `figure9.eps` | `fig_sensitivity_tornado.pdf` | `monte_carlo_v2.py` | yes |
-| 13 | `figure10.eps` | `fig_voltage_split.pdf` | `supplement_calc.py` | no (gs) |
-| 14 | `figure11.eps` | `fig_energy_sensitivity.pdf` | `improvements_calc.py` | no (gs) |
+| 13 | `figure10.eps` | `fig_voltage_split.pdf` | `supplement_calc.py`, then `review_workspace/_index/redraw_fig13_14.py` | EPS written directly by matplotlib (gs unavailable in this environment) |
+| 14 | `figure11.eps` | `fig_energy_sensitivity.pdf` | `improvements_calc.py`, then `review_workspace/_index/redraw_fig13_14.py` | EPS written directly by matplotlib |
 | 15 | `figure12.eps` | `fig_cl2_boundary.pdf` | `supplement_calc.py` | no (gs) |
 
 Two figures in `figures/` are **not** in the manuscript: `fig_heat_balance_revised.pdf` and
@@ -254,15 +254,17 @@ deliberate and none of them affects a conclusion.
 
 1. **Last-digit rounding (±1–3 kWh).** The text quotes 4 significant figures from
    integer-partitioned bookkeeping; the CSV keeps one formula's full precision. Examples:
-   net Case II = 12,552 (text, from 12,594 − 42) vs 12,551.45 (`tab_case_baseline.csv`);
-   net Case I = 12,933 vs 12,930.99; regeneration enthalpy = 7,173 vs 7,175.55; waste heat =
-   6,761 vs 6,757.89. The spread is ≤3 kWh against an MC standard deviation of ≈1,800 kWh.
-2. **Cell-voltage basis.** `manuscript.tex` uses V_cell = 4.1 V for Case II (12,244 kWh
-   gross) and 4.23 V for Case I. Earlier analysis passes in `tab_r3_reconstruction.csv` and
-   `tab_dual_temperature.csv` use the *summed* 4.13 V (12,330 / 12,638 kWh). Both are
-   internally consistent; do not mix them in one comparison. The 620 °C statement "energy
-   change < 0.3%" is quoted on the 4.13 V basis (12,638 → 12,606) and holds on 4.1 V too
-   (+0.43% on a much larger base is still inside the Monte Carlo spread).
+   net = 12,933 (text, from 12,975 − 42) vs 12,932.78 (`tab_case_baseline.csv`);
+   regeneration enthalpy = 7,369 vs 7,368.80; waste heat = 7,128 vs 7,127.99. The spread is
+   ≤1 kWh against an MC standard deviation of ≈1,800 kWh.
+2. **Cell-voltage basis.** `manuscript.tex` uses a single V_cell = 4.23 V, built as
+   2.8277 V (CaO step) + 0.30 + 0.20 + 0.90. The mixed MgO–CaO equivalent, 2.729 V, is the
+   average of two *separate* equilibrium potentials (2.630 and 2.828 V) and cannot be held by
+   one cathode, so it is reported as an unattainable energy-equivalent bound, never as a basis.
+   Earlier passes in `tab_r3_reconstruction.csv` and `tab_dual_temperature.csv` still carry the
+   summed 4.13 V (12,330 / 12,638 kWh) on the mixed basis; those columns are historical and
+   must not be mixed with the 4.23 V figures. The 620 °C statement "energy change < 0.3%" is
+   quoted on the CaO-only column (12,934 → 12,903).
 3. **Standard states.** The 120.2 mV window is quoted for **pure-solid-salt standard
    states**. The liquid-reference correction (−30 mV → ≈90 mV, worst case ≈45 mV) is given
    in the Table 2 footnote and was deliberately not propagated through the manuscript; see
@@ -291,7 +293,7 @@ column point into it.
 | # | What was wrong | What is right | Where |
 |---|---|---|---|
 | 1 | Eq. 6 wrote L₁(x_Mg − x_Ca) while the γ_Ca expression of Eq. 7 expanded L₁(3x_Ca − x_Mg) — two mutually exclusive conventions | Eq. 6 rewritten as L₁(x_Ca − x_Mg) and the convention declared in the text. Strict partial-molar re-derivation plus a Gibbs–Duhem check: γ_Ca = 0.1106 (text 0.111), ≈1832 ppm (text ≈1800 ppm), −11.5% vs regular solution (text 11%) — all unchanged | §8 |
-| 2 | "decomposition voltage of TiO₂ (≈2.73 V)" | 2.73 V is the **MgO + CaO regeneration** step (4 e⁻ per mol Ti); TiO₂ itself is 2.03 V at 783 kJ/mol | §8 |
+| 2 | "decomposition voltage of TiO₂ (≈2.73 V)" | 2.73 V is the **MgO + CaO regeneration** step (4 e⁻ per mol Ti); TiO₂ itself is 2.03 V at 783 kJ/mol. **Superseded by entry 24**: 2.73 V is the average of two separate equilibrium potentials and is not attainable at a single cathode, so the whole energy ledger now uses the CaO step, 2.83 V | §8, §24 |
 | 3 | The binary-subsystem table (Table 3) called CaMg₂Cl₆ a congruently melting compound at Mg:Ca = 2:1 that raises the liquidus by 111 °C | **Retracted.** MgCl₂–CaCl₂ is a simple eutectic: 620±1 °C at 52.8 mol% MgCl₂, ≈17 mol% solid solubility, **no compound**. Ideal model gives 607 °C at the eutectic composition (≈13 °C low, not 111), and 619.5 °C at the design ratio vs ≈622 °C measured | §12.2, §13 |
 | 4 | 620 °C floor presented as a *derived requirement* | Measured quaternary liquidus is *below* the ideal 544 °C, not above it, so the ±50 °C envelope is conservative. The floor is retained as a **conservative measure**, not as a demonstrated requirement | §15 |
 | 5 | "MgCl₂–CaCl₂-rich local composition adjacent to the cathode" | Direction reversed: at the Mg limiting current the interfacial Mg²⁺ concentration → 0, so it is **depletion**. Replaced by the direction-agnostic "towards the higher-melting side of the MgCl₂–CaCl₂ binary" | §16.1 |
@@ -309,11 +311,11 @@ column point into it.
 | 17 | Eq. 1 was called the "Gibbs–Helmholtz relation" | Eq. 1 is the ΔG = ΔH − TΔS definition; the Gibbs–Helmholtz relation is d(ΔG/T)/dT = −ΔH/T². The same pass confirmed that 873 K lies below both melting points (Mg 923 K, Ca 1115 K), so no solid–liquid transition is crossed by the extrapolation | §11.1 |
 | 18 | The text back-calculated c_s/c_b from the 816 mV gap and then called the result "consistent" (circular), with the "well before" ordering reversed | Circularity removed and the ordering corrected | §11.1 |
 | 19 | `floor` was used for four different things (580 °C target, 620 °C pilot, 3 mm gap, reactor hearth), and **L131 used it for two different temperatures inside one paragraph** — "a pilot-scale operating floor of ≥620 °C" and then "a liquidus at least 30 °C below the operating floor" (which by L211 means 580 °C) | Split into `target minimum operating temperature` (580 °C), `pilot floor` (620 °C), `gap floor` (3 mm), and the physical `cell floor`. 22 occurrences reviewed one by one; a blanket replacement would have re-attached the 30 °C criterion to 620 °C and contradicted L211 | this round |
-| 20 | Case II (1:1) was called the "bounding case" and the "conservative design basis", although it yields the **lower** of the two energy figures (12,552 vs 12,933) | Rewritten as the design basis "because it places the stricter demand on the cell — two regeneration paths must both operate — and it is for that reason the lower of the two energy figures, not the more conservative one". The Case numbering is now declared historical in the Table 7 note: Case I is the mechanistically favoured limit, Case II the design basis | this round |
+| 20 | Case II (1:1) was called the "bounding case" and the "conservative design basis", although it yields the **lower** of the two energy figures (12,552 vs 12,933) | Rewritten as the design basis "because it places the stricter demand on the cell — two regeneration paths must both operate — and it is for that reason the lower of the two energy figures, not the more conservative one". The Case numbering is now declared historical in the Table 7 note: Case I is the mechanistically favoured limit, Case II the design basis | this round **Superseded by entry 24**: the two cases turn out not to differ in energy at all, so no case is the "lower" one. |
 | 21 | The impurity paragraph argued that preferential Fe/Si reduction plus a density contrast "suggests a potential pathway for physical separation", then conceded that Fe–Ti and Si–Ti are fully miscible, and concluded with "potential compatibility" with metallurgical-grade TiO₂ | Direction reversed: preferential reduction is now stated as a **purity risk** (the impurities are reduced first and then retained in solid solution), the density argument is given as conditional on immiscibility and withdrawn, and the conclusion is "**conditionally** compatible". Conclusion (4) adjusted to match | this round |
 | 22 | Four smaller clarity items: (a) CaO was called "appreciably more soluble than MgO" and, two paragraphs later, "the unresolved solubility" — true (ranking vs absolute value) but never distinguished; (b) 620 °C was said to change the figures "by only a few percent" in L131 but "by less than 0.3%" in L689, and L689 described a 0.26% *decrease* as a "cost"; (c) κ = 1.4 S cm⁻¹ was cited to `sato1999`, a MgCl₂–CaCl₂ binary study; (d) the ±50 °C upper bound (594 °C) was called conservative in one place and as leaving "no margin" in another | (a) the ranking/absolute-value distinction now stated explicitly; (b) L131 gives 0.3% (energy) and 0.5% (window), L689 no longer says "costs"; (c) attributed as "a representative value (MgCl₂–CaCl₂ binary data: sato1999)"; (d) L220 now notes that 594 °C already exceeds the 580 °C target, which is why a 620 °C pilot floor is recommended | this round |
 | 23 | Six residual inconsistencies found in a final read-through, one of them introduced by entry 20 itself: (a) the abstract and conclusion (6) still called the 1:1 case the "conservative basis" after entry 20 had rewritten it as the design basis; (b) the Fig. 11 caption gave $V_{cell} \sim N(4.1, 0.3)$ while the body and `monte_carlo_v2.py` use 0.25 V; (c) the Fig. 12 caption claimed the correlations "over the eleven sampled parameters" although the script plots only those with ρ > 0.02; (d) "The competition is summarized in Fig. 3" had no explicit antecedent; (e) the abstract's closing 36-word sentence was joined to the previous one by a semicolon; (f) the submission cover letter still carried 41 pages, 30 references, −38.2 kJ/mol and 13,141 kWh/ton, and credited the 350 °C temperature saving to Kroll although 600 vs 950 °C is the FFC comparison (Kroll is 1000–1200 °C, Table 1) | (a) both now read "design basis"; (b) 0.25 V; (c) caption now says "showing only those with abs($\rho$) > 0.02"; (d) "The competition between the two reduction paths"; (e) full stop, no words added; (f) 43 pages / 35 references / −38.25 kJ/mol / 13,157 kWh/ton / 82.0%, and the temperature comparison replaced by the Table 1 values | this round |
-
+| 24 | **Single-potential energy re-basing (external peer review, round v1).** The ledger used 2.73 V as the decomposition term, although the text itself says that is the *energy-equivalent* voltage and that the single-potential floor is the CaO step. Because a cathode cannot hold 2.630 V (MgO) and 2.828 V (CaO) at once, the mixed 2.73 V is unattainable; the "+3% penalty" of the CaO-only case was an artefact of costing Case II at 2.73 V and Case I at 2.83 V. Four hard errors accompanied it: TiCl₂ was entered at its enthalpy (−464) in a ΔG table, making the disproportionation −202 instead of −105 and −80 instead of +18 kJ/mol; 2.81 V and 2.83 V were quoted for the same CaO quantity; the Barin data were said to need extrapolation beyond 1000 K although 873 K lies inside 298–1000 K; and the abstract had a missing semicolon before "deep deoxidation" | Whole ledger re-based on 2.83 V: V_cell 4.23 V, gross 12,625, net **12,933** (one value, both material cases), regeneration enthalpy 7,369, exotherm 1,872, net absorbed 5,497, waste heat 7,128, efficiencies 49.0 / 35.2 / 97.3%. The +3% and the "Case II is the design basis because it is the lower energy figure" claim are removed: the two cases differ in material balance and salt inventory, not in energy. Monte Carlo re-run at N(4.2276, 0.25): median 13,556, P(W<15,000) = 76.4%; correlated variant 13,698 / 73.9%. TiCl₂ → −416/−105/+18 with chlorine oxidation (−655) as the driving path. 2.81 V deleted. Extrapolation sentence replaced. Figs. 1, 13 and 14 redrawn. The a_MgO bound is now labelled an *interfacial* condition, and the salt inventory is computed for CaO alone (234 t; 470 t at 0.5 wt%), with the MgO-at-5×10⁻³ literal reading shown to need of order 10⁴ t | §24, this round |
 ---
 
 ## 5. Compiling the Manuscript
@@ -330,7 +332,7 @@ committed `manuscript.bbl` lets the PDF be rebuilt with `pdflatex` alone; delete
 full four-step sequence is needed again.
 
 `latexmk` is **not** usable in this environment (MiKTeX cannot find its Perl engine); use
-the four commands above. Expected result: 43 pages, 0 warnings, 0 undefined references,
+the four commands above. Expected result: 44 pages, 0 warnings, 0 undefined references,
 0 overfull hboxes.
 
 The manuscript references EPS figures in `figures_eps/` via `\graphicspath`; `pdflatex` +
@@ -389,7 +391,7 @@ pip install numpy matplotlib scipy
 | `verify_r1_liquidus.py` | Independent re-derivation of the liquidus (reproduces 543.7 °C) and the salt-entrainment estimate | numpy | 1 CSV |
 | `verify_r3_reviewer3.py` | Ca + MgO → CaO + Mg thermochemistry and design criteria | numpy | 1 CSV |
 | `revision_r3_mechanism_numbers.py` | Numbers moved by the mechanism rebuild | numpy | 1 CSV |
-| `verify_revision.py` | Text/number consistency sweep | stdlib | stdout |
+| `verify_energy_rebase.py` | Single-potential re-basing sweep (round v1) | stdlib | stdout |
 
 **Figures** — `fig_flowsheet.py`, `fig_mechanism.py`, `fig_current_regimes.py`,
 `fig_ga.py`. See §3.2 for which EPS each one owns.
@@ -431,14 +433,12 @@ record of how each edit was made.
   ≈517 °C)
 - **New design criteria**: the Ca-vs-MgO crossover is identically the Mg-only deoxidation
   limit (3908 ppm), and continuing below it requires a_MgO < 5 × 10⁻³
-- Net energy consumption: 12,552 kWh/ton-Ti (Case II: MgO + CaO regenerated) or
-  12,933 kWh/ton-Ti (Case I: CaO the sole regenerated species, +3%); conditional on
-  η_I > 0.70. Case II is the design basis; Case I is the mechanistically favoured limit
-  and is 3% more expensive, so the two bracket the energy claim rather than one being a
-  conservative version of the other.
-- Monte Carlo, eleven parameters (N = 10⁵, seed = 42): median 13,157 kWh/ton-Ti on the 1:1
-  basis and 13,556 on the CaO-only basis, with P(W_net < 15,000) = 82.0% and 76.4%
-  respectively; with the η–j correlation included, median 13,295 and P = 79.9%; the joint
+- Net energy consumption: 12,933 kWh/ton-Ti, a single value because the CaO step fixes the
+  cathode potential whichever oxide is regenerated; conditional on η_I > 0.70. Case II is the
+  bounding material balance and Case I the mechanistically favoured limit, but they do not
+  differ in net energy — only in which oxide is dissolved, and therefore in the salt inventory.
+- Monte Carlo, eleven parameters (N = 10⁵, seed = 42): median 13,556 kWh/ton-Ti with
+  P(W_net < 15,000) = 76.4%; with the η–j correlation included, median 13,698 and P = 73.9%; the joint
   feasibility figure at 620 °C is 100% of samples, which carries no information beyond the
   gap constraint because the window and liquidus conditions are essentially always met
 - Required interelectrode gap for the equimolar deposit: median 1.68 cm, P95 2.70 cm
@@ -569,8 +569,8 @@ cp figures_eps/figure*.eps figures_eps/figure_flowsheet.eps \
    figures_eps/figure_r3_*.eps submission_jsm/
 ```
 
-As of 2026-10-19 the package **is** current and needs no hand editing: 43 pages, 35 references,
-−38.25 kJ/mol, 13,157 kWh/ton-Ti and 82.0%, with the cover letter recompiled from the same
+As of 2026-10-19 the package **is** current and needs no hand editing: 44 pages, 35 references,
+−38.25 kJ/mol, 13,556 kWh/ton-Ti and 76.4%, with the cover letter recompiled from the same
 sources. Two errors were corrected in the letter while doing so — the Monte Carlo median
 (13,141) and a "350 °C relative to the Kroll process" saving that had in fact been measured
 against FFC (~950 °C); the letter now quotes the Table 1 values (1000–1200 °C). Re-run these
@@ -689,8 +689,8 @@ current-efficiency assumption — are stated in the same section of the paper.
 The current-efficiency assumption (η_I = 0.75–0.80) is an unvalidated hypothesis anchored to
 the Hall–Héroult, Downs and industrial MgCl₂-electrolysis analogies, and is the dominant
 uncertainty in the energy estimate (Monte Carlo Spearman ρ = −0.85). Adding the η–j
-correlation raises the median net consumption to 13,295 kWh/ton-Ti and lowers
-P(W_net < 15,000) to 79.9%.
+correlation raises the median net consumption to 13,698 kWh/ton-Ti and lowers
+P(W_net < 15,000) to 73.9%.
 
 Two quantities are deliberately outside the sampled set, with the reason recorded:
 
@@ -749,7 +749,9 @@ python scripts/fig_ga.py
 pdflatex manuscript && bibtex manuscript && pdflatex manuscript && pdflatex manuscript
 ```
 
-Expected: 43 pages, 3,292,491 B, 0 warnings, 0 undefined references, 0 overfull hboxes.
+Expected: 44 pages, ≈2.9 MB, 0 warnings, 0 undefined references, 0 overfull hboxes. The
+byte count depends on the matplotlib version, because `figure8`--`figure11` and
+`figure_flowsheet` are written as EPS directly by matplotlib.
 
 Check against the committed CSVs by diffing `output/` — the numbers are seeded
 (`seed = 42`) and otherwise deterministic, so the CSVs should reproduce exactly except for
@@ -757,7 +759,7 @@ the drift documented in §3.6.
 
 **Verified on a clean clone (2026-10-19, commit 42c1d5f).** Running the fourteen commands
 above from a fresh `git clone` regenerates all 17 CSVs **byte-for-byte identical** to the
-committed ones, and two `pdflatex` passes reproduce the same 43-page, 3,292,491-byte PDF with
+committed ones, and two `pdflatex` passes reproduce the same 44-page, 2,905,524-byte PDF with
 0 errors, 0 undefined references and 0 overfull boxes. The only files that show as modified
 afterwards are the tracked figures: their PDF/EPS metadata carries a creation timestamp
 (byte sizes and drawing content are unchanged). `figures_eps/*.png` are regenerated and

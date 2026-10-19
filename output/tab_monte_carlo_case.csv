@@ -1,3 +1,2 @@
-﻿case,median_kWh_t,p5,p95,P_lt_15000_pct,P_lt_14000_pct
-II,13141,10875,16722,82.1,67.6
-I,13536,11232,17215,76.6,59.8
+﻿case,median_kWh_t,p5,p95,P_lt_15000_pct,P_lt_12933_pct
+single-potential,13538,11233,17217,76.6,35.7

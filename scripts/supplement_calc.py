@@ -117,7 +117,7 @@ print("Saved: fig_cl2_boundary.pdf")
 print("\n" + "=" * 60)
 print("P1-5: Cell voltage decomposition (V_cell = E_decomp + eta + IR)")
 print("=" * 60)
-E_decomp = 2.729  # theoretical (MgO+CaO -> Mg+Ca+O2, 4e-, 873 K)
+E_decomp = 2.8277  # CaO step, single-potential basis (2 CaO -> 2 Ca + O2, 4e-, 873 K)
 j_op = 0.5        # A/cm2
 eta_anode = 0.30  # O2 evolution overpotential (order-of-magnitude)
 eta_cathode = 0.20  # Mg/Ca deposition overpotential (order-of-magnitude)
@@ -127,7 +127,7 @@ print(f"  E_decomp   = {E_decomp:.2f} V")
 print(f"  eta_anode  = {eta_anode:.2f} V (O2 evolution)")
 print(f"  eta_cathode= {eta_cathode:.2f} V (Mg/Ca deposition)")
 print(f"  IR_ohmic   = {IR_ohm:.2f} V")
-print(f"  V_cell     = {V_cell:.2f} V  (~4.1 V assumed in energy balance)")
+print(f"  V_cell     = {V_cell:.2f} V  (4.23 V adopted in the energy balance)")
 
 fig, ax = plt.subplots(figsize=(6, 4.5))
 labels = [r'$E_{\mathrm{decomp}}$', r'$\eta_{\mathrm{anode}}$', r'$\eta_{\mathrm{cathode}}$', r'$IR_{\mathrm{ohm}}$']

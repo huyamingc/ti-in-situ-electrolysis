@@ -188,13 +188,13 @@ W = 4 * F * n_Ti_per_ton * VCELL / (ETA * 3.6e6)  # kWh/ton Ti
 fig, ax = plt.subplots(figsize=(7, 5.5))
 levels = np.arange(6000, 20000, 500)
 cs = ax.contourf(ETA * 100, VCELL, W, levels=levels, cmap='YlOrRd_r', extend='both')
-# Note: the theoretical minimum (6112 kWh/ton) lies below this practical
+# Note: the theoretical minimum (6334 kWh/ton, CaO step) lies below this practical
 # range (~8.7–18.7 kWh×10³), so it is not plotted as a contour here.
 cs3 = ax.contour(ETA * 100, VCELL, W, levels=[10000, 12000, 15000],
                  colors=['navy','blue','royalblue'], linewidths=1.2, linestyles=':')
 ax.clabel(cs3, fmt='%d', fontsize=8, colors='blue')
-ax.plot(75, 4.1, 'w*', markersize=15, markeredgecolor='black', markeredgewidth=1,
-        label='Recommended ($\\eta$=75%, V=4.1V)')
+ax.plot(75, 4.23, 'w*', markersize=15, markeredgecolor='black', markeredgewidth=1,
+        label='Recommended ($\\eta$=75%, V=4.23V)')
 ax.plot(80, 4.0, 'w^', markersize=10, markeredgecolor='black', markeredgewidth=1,
         label='Optimistic ($\\eta$=80%, V=4.0V)')
 cbar = fig.colorbar(cs, ax=ax, label='Energy consumption (kWh/ton Ti)')
@@ -370,7 +370,7 @@ Q_post = 300  # kWh/ton-Ti; post-treatment (salt washing/drying/screening); impu
 Q_input = W_electrolysis + Q_preheat_TiO2 + Q_preheat_salt + Q_loss_kWh + Q_pumping + Q_post
 W_net = Q_input - Q_cool_Ti * 0.5
 electrolysis_fraction = W_electrolysis / Q_input * 100  # 能量占比（非㶲效率）
-W_min = 6112  # theoretical minimum kWh/ton
+W_min = 6334  # theoretical minimum kWh/ton (CaO step, single-potential basis)
 thermo_eff = W_min / W_net * 100
 
 print(f"INPUT:")

@@ -474,11 +474,11 @@ plt.savefig(os.path.join(FIGURE_DIR, 'fig_overpotential_window.pdf'), bbox_inche
 print("  已保存: fig_overpotential_window.pdf")
 
 # 10b. 修正后的热平衡 Sankey-style 柱状图
-# 新口径：电解槽 V_cell=4.1 V > 热中性电压 3.204 V，还原放热为槽内废热，
+# 单电位口径：V_cell=4.23 V（CaO 步骤）> 热中性电压 3.290 V，还原放热为槽内废热，
 # 仅可抵扣外部热需求 329 kWh/ton（预热184+盐预热7+槽壁138，经热集成供给）。
 fig, ax = plt.subplots(1, 1, figsize=(8, 5))
 categories = ['Electrolysis\n(gross)', 'Waste heat\nrejected', 'Heat-integration\ncredit', 'Pump +\npost-treatment', 'Ti cooling\nrecovery', 'Net\nconsumption']
-values = [12244, 6760, -329, 350, -42, 12552]
+values = [12625, 7128, -329, 350, -42, 12933]
 colors = ['#2196F3', '#B0BEC5', '#4CAF50', '#FF9800', '#4CAF50', '#F44336']
 bars = ax.bar(categories, values, color=colors, edgecolor='black', linewidth=0.5)
 ax.axhline(y=0, color='black', linewidth=0.8)
@@ -517,23 +517,25 @@ with open(f'{output_dir}/tab_overpotential.csv', 'w', newline='') as f:
         w.writerow([j, f'{eC:.1f}', f'{eN:.1f}', _ecC, _ecN, f'{eff:.1f}'])
 print(f"\n  已保存: tab_overpotential.csv")
 
-# 修正热平衡表（新口径：放热不抵扣电能，仅热集成抵扣外部热需求329）
+# 修正热平衡表（新口径：单电位基座，CaO 步骤定电位；放热不抵扣电能，仅热集成抵扣外部热需求329）
 with open(f'{output_dir}/tab_heat_balance_revised.csv', 'w', newline='') as f:
     w = csv.writer(f)
     w.writerow(['Item', 'Energy (kWh/ton)', 'Note'])
-    w.writerow(['Electrolysis (gross)', '12244', '4F*n_Ti*V/(eta*3.6e6) at eta=0.75, V=4.1 V'])
-    w.writerow(['Reaction enthalpy absorbed (net)', '5483', 'dH = 944.7 kJ/mol-Ti (TiO2 -> Ti + O2), 20891 mol/ton'])
-    w.writerow(['Waste heat rejected', '6760', 'V_cell 4.1 V > thermoneutral 3.204 V; includes reduction exotherm 1690 (NOT credited against electricity)'])
+    w.writerow(['Electrolysis (gross)', '12625', '4F*n_Ti*V/(eta*3.6e6) at eta=0.75, V=4.23 V (CaO step)'])
+    w.writerow(['Reaction enthalpy absorbed (net)', '5497', 'dH = 944.7 kJ/mol-Ti (TiO2 -> Ti + O2) = 5483; 0.3% from neglecting Cp in dHf'])
+    w.writerow(['Regeneration enthalpy absorbed', '7369', '2*dHf(CaO) = 1269.8 kJ/mol-Ti; case II (MgO+CaO) would be 7175'])
+    w.writerow(['Reduction exotherm', '1872', 'TiO2 + 2Ca -> Ti + 2CaO, dH = -322.6 kJ/mol-Ti'])
+    w.writerow(['Waste heat rejected', '7128', 'V_cell 4.23 V > thermoneutral 3.290 V; includes reduction exotherm 1872 (NOT credited against electricity)'])
     w.writerow(['External thermal demand', '329', 'TiO2 preheating 184 + salt preheating 7 + wall loss 138; met by reject-heat integration (credit -329)'])
     w.writerow(['Salt circulation pumping', '50', ''])
     w.writerow(['Post-treatment', '300', ''])
-    w.writerow(['Total external input', '12594', 'Electricity 12244 + pump/post 350 (thermal needs met by integration)'])
+    w.writerow(['Total external input', '12975', 'Electricity 12625 + pump/post 350 (thermal needs met by integration)'])
     w.writerow(['Ti powder cooling recovery', '-42', 'External heat recovery'])
-    w.writerow(['Net consumption', '12552', 'Without heat integration: 12881'])
-    w.writerow(['Theoretical minimum (electrolysis step)', '6112', ''])
-    w.writerow(['Process energy efficiency', '48.7%', '6112/12552'])
-    w.writerow(['Second-law efficiency', '36.3%', '4550/12552'])
-    w.writerow(['Electrolysis energy fraction', '97.2%', '12244/12594 (NOT a thermodynamic efficiency)'])
+    w.writerow(['Net consumption', '12933', 'Without heat integration: 13262'])
+    w.writerow(['Theoretical minimum (electrolysis step)', '6334', 'CaO step 2.8277 V; the mixed equivalent 6112 is not attainable'])
+    w.writerow(['Process energy efficiency', '49.0%', '6334/12933'])
+    w.writerow(['Second-law efficiency', '35.2%', '4550/12933'])
+    w.writerow(['Electrolysis energy fraction', '97.3%', '12625/12975 (NOT a thermodynamic efficiency)'])
 print(f"  已保存: tab_heat_balance_revised.csv")
 
 print("\n" + "=" * 60)

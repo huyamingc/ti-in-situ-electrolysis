@@ -1,19 +1,24 @@
-﻿# -*- coding: utf-8 -*-
-"""Case I / Case II baseline switch.
+# -*- coding: utf-8 -*-
+"""Baseline heat/material balance and Monte Carlo on the single-potential basis.
 
 Purpose
 -------
-The manuscript reports Case II (MgO+CaO co-regenerated, "1:1 oxygen partition")
-as the baseline and Case I (CaO-only regeneration, Ca as sole net oxygen carrier)
-as an upper bound. The mechanism argument (no product layer on the
-Ca + MgO -> CaO + Mg reaction) makes Case I the mechanistically favoured case,
-so this script:
+The manuscript reports ONE net energy, 12,933 kWh/ton-Ti, because the cathode
+potential is set by the more demanding regeneration step (CaO, 2.8277 V) whichever
+oxide is returned to the cell. The earlier version of this script treated Case II
+(MgO + CaO co-regenerated) as a cheaper baseline at 2.73 V; that mixed value is the
+average of the two separate equilibrium potentials and cannot be held by a single
+cathode, so it is recorded here as an unattainable energy-equivalent bound only.
 
-  1. reproduces every Case II figure quoted in the manuscript (self-check),
-  2. computes the corresponding Case I figures from the same equations,
-  3. re-runs the 11-parameter Monte Carlo for BOTH cases with one seed,
-  4. writes tab_case_baseline.csv and tab_monte_carlo_case.csv,
-  5. optionally redraws figure 8 / figure 9 for the Case I baseline.
+What the script does:
+  1. builds the full-process balance for both material-balance cases at the SAME
+     cell voltage, showing that only the split between regeneration enthalpy and
+     rejected heat changes between them;
+  2. reproduces the published figures as a self-check;
+  3. re-runs the 11-parameter Monte Carlo (one distribution, since both cases share
+     the cell voltage);
+  4. writes tab_case_baseline.csv and tab_monte_carlo_case.csv;
+  5. optionally redraws figures 8 and 9.
 
 Usage
 -----
@@ -40,60 +45,66 @@ ETA = 0.75                          # nominal current efficiency
 ETA_AN, ETA_CA, OHM = 0.30, 0.20, 0.90
 AUX = 50.0 + 300.0                  # salt pumping + post-treatment
 TI_COOL = 42.0                      # Ti powder cooling recovery
-EXO = 1690.0                        # reduction exotherm, kWh/ton-Ti
 
 # formation enthalpies at 298 K (Barin); Cp correction neglected, as in the paper
 dHf_MgO = 601.6e3                   # J/mol
 dHf_CaO = 634.9e3                   # J/mol
 
-W_ELECTROLYSIS_MIN_II = 6112.0      # 4F n_Ti * 2.73 / 3.6e6 (paper)
-W_REVERSIBLE = 4550.0               # TiO2 -> Ti + O2 reversible work
+# reduction exotherms, kWh/ton-Ti, from Delta H of the two reduction paths
+EXO_MIX = 1690.0                    # TiO2 + Mg + Ca -> Ti + MgO + CaO, -291.3 kJ/mol
+EXO_CA = 1872.0                     # TiO2 + 2 Ca -> Ti + 2 CaO,       -322.6 kJ/mol
+
+# single-potential decomposition voltage (CaO step) and adopt cell voltage
+E_DECOMP = 2.8277
+V_CELL = E_DECOMP + ETA_AN + ETA_CA + OHM      # 4.2277 V
+W_REVERSIBLE = 4550.0               # TiO2 -> Ti + O2 reversible work, kWh/ton
+
+# reversible minima: mixed is an unattainable bound, CaO is the realised path
+W_MIN_MIXED = 6112.0                # 4F n_Ti * 2.729 / 3.6e6
+W_MIN_CAO = 6334.0                  # 4F n_Ti * 2.8277 / 3.6e6
 
 
-def balance(tag, dH_regen, Ed_round, V_cell):
-    """Full-process balance for one regeneration case.
-
-    V_cell is passed explicitly (not rebuilt from E_decomp + overpotentials)
-    because the manuscript's energy figures are computed at the nominal
-    V_cell = 4.10 V (Case II) and 4.227 V (Case I), while the voltage
-    decomposition quoted in the text sums to 4.13 V. Using the nominal values
-    reproduces the published numbers exactly.
-    """
-    gross = 4.0 * F * n_Ti * V_cell / (ETA * 3.6e6)
+def balance(tag, dH_regen, exo, note):
+    """Full-process balance for one material-balance case at the shared V_cell."""
+    gross = 4.0 * F * n_Ti * V_CELL / (ETA * 3.6e6)
     total_in = gross + AUX
     net = total_in - TI_COOL
 
     dH_reg = dH_regen * n_Ti / 3.6e6          # kWh/ton absorbed by regeneration
-    net_abs = dH_reg - EXO                    # net reaction enthalpy absorbed
+    net_abs = dH_reg - exo                    # net reaction enthalpy absorbed
     waste = gross - net_abs                   # rejected as heat
     V_thermo = dH_regen / (4.0 * F)
 
     return dict(
         case=tag,
-        E_decomp=Ed_round,
+        E_decomp=E_DECOMP,
         V_thermoneutral=V_thermo,
-        V_cell=V_cell,
+        V_cell=V_CELL,
         gross=gross,
         total_input=total_in,
         net=net,
         dH_regen=dH_reg,
         net_absorbed=net_abs,
         waste_heat=waste,
-        eff_process=W_ELECTROLYSIS_MIN_II / net * 100.0,
+        eff_process=W_MIN_CAO / net * 100.0,
         eff_second_law=W_REVERSIBLE / net * 100.0,
         elec_fraction=gross / total_in * 100.0,
+        exotherm=exo,
+        w_min=W_MIN_CAO,
     )
 
 
 # ------------------------------------------------------------------ two cases
 case_II = balance('II (MgO+CaO co-regenerated, 1:1 O partition)',
-                  dHf_MgO + dHf_CaO, 2.73, 4.100)
+                  dHf_MgO + dHf_CaO, EXO_MIX,
+                  'regeneration enthalpy 7,175 kWh/t; gross and net unchanged')
 case_I = balance('I (CaO-only, Ca sole net oxygen carrier)',
-                 2.0 * dHf_CaO, 2.83, 4.2271)
+                 2.0 * dHf_CaO, EXO_CA,
+                 'regeneration enthalpy 7,369 kWh/t; gross and net unchanged')
 cases = [case_II, case_I]
 
 hdr = ('case', 'E_decomp', 'V_thermoneutral', 'V_cell', 'gross', 'total_input',
-       'net', 'dH_regen', 'net_absorbed', 'waste_heat',
+       'net', 'dH_regen', 'net_absorbed', 'waste_heat', 'exotherm',
        'eff_process', 'eff_second_law', 'elec_fraction')
 with open(os.path.join(OUT, 'tab_case_baseline.csv'), 'w', newline='',
           encoding='utf-8-sig') as f:
@@ -103,7 +114,7 @@ with open(os.path.join(OUT, 'tab_case_baseline.csv'), 'w', newline='',
         w.writerow([c[k] if isinstance(c[k], str) else round(c[k], 2) for k in hdr])
 
 print('=' * 78)
-print('FULL-PROCESS BALANCE, both cases (eta=0.75, gross+350-42)')
+print('FULL-PROCESS BALANCE, both material cases (eta=0.75, V_cell=%.4f V)' % V_CELL)
 print('=' * 78)
 print('%-46s %10s %10s' % ('quantity', 'Case II', 'Case I'))
 for k, lbl in (('E_decomp', 'decomposition voltage (V)'),
@@ -113,6 +124,7 @@ for k, lbl in (('E_decomp', 'decomposition voltage (V)'),
                ('total_input', 'total external input (kWh/t)'),
                ('net', 'NET consumption (kWh/t)'),
                ('dH_regen', 'regen enthalpy absorbed (kWh/t)'),
+               ('exotherm', 'reduction exotherm (kWh/t)'),
                ('net_absorbed', 'net enthalpy absorbed (kWh/t)'),
                ('waste_heat', 'rejected as waste heat (kWh/t)'),
                ('eff_process', 'process efficiency (%)'),
@@ -122,15 +134,18 @@ for k, lbl in (('E_decomp', 'decomposition voltage (V)'),
         else '%10.1f %10.1f'
     print('%-46s ' % lbl + fmt % (case_II[k], case_I[k]))
 
-print('\nSelf-check against the manuscript (Case II):')
-checks = [('gross electrical 12,244', case_II['gross'], 12244.0, 3),
-          ('net consumption 12,552', case_II['net'], 12552.0, 3),
-          ('regen absorbed 7,173', case_II['dH_regen'], 7173.0, 15),
-          ('net absorbed 5,483', case_II['net_absorbed'], 5483.0, 15),
-          ('waste heat 6,761', case_II['waste_heat'], 6761.0, 15),
-          ('process eff 48.7', case_II['eff_process'], 48.7, 0.15),
-          ('second law 36.3', case_II['eff_second_law'], 36.3, 0.15),
-          ('elec fraction 97.2', case_II['elec_fraction'], 97.2, 0.15)]
+print('\nSelf-check against the manuscript (single-potential basis):')
+checks = [('gross electrical 12,625', case_I['gross'], 12625.0, 3),
+          ('net consumption 12,933', case_I['net'], 12933.0, 3),
+          ('regen absorbed 7,369', case_I['dH_regen'], 7369.0, 15),
+          ('reduction exotherm 1,872', case_I['exotherm'], 1872.0, 1),
+          ('net absorbed 5,497', case_I['net_absorbed'], 5497.0, 15),
+          ('waste heat 7,128', case_I['waste_heat'], 7128.0, 15),
+          ('process eff 49.0', case_I['eff_process'], 49.0, 0.15),
+          ('second law 35.2', case_I['eff_second_law'], 35.2, 0.15),
+          ('elec fraction 97.3', case_I['elec_fraction'], 97.3, 0.15),
+          ('Case II gross identical', abs(case_II['gross'] - case_I['gross']), 0.0, 0.01),
+          ('Case II net identical', abs(case_II['net'] - case_I['net']), 0.0, 0.01)]
 for lbl, got, ref, tol in checks:
     ok = abs(got - ref) <= tol
     print('  %-28s got %9.2f  ref %9.2f  %s' % (lbl, got, ref, 'OK' if ok else 'DIFF'))
@@ -150,10 +165,8 @@ S_MgO = np.random.uniform(0.5, 1.2, N)
 delta = np.random.uniform(100e-6, 500e-6, N)
 x_red = np.random.uniform(0.005, 0.030, N)
 
-W = {}
-for tag, V0 in (('II', case_II['V_cell']), ('I', case_I['V_cell'])):
-    V_cell = np.clip(V0 + V_noise, V0 - 0.6, V0 + 0.4)
-    W[tag] = 4.0 * F * n_Ti * V_cell / (eta * 3.6e6) + AUX - TI_COOL
+V_cell = np.clip(V_CELL + V_noise, V_CELL - 0.6, V_CELL + 0.4)
+W = 4.0 * F * n_Ti * V_cell / (eta * 3.6e6) + AUX - TI_COOL
 
 
 def pct(a, p):
@@ -163,34 +176,30 @@ def pct(a, p):
 print('\n' + '=' * 78)
 print('MONTE CARLO, 11 parameters, seed 42, N = %d' % N)
 print('=' * 78)
-mc_rows = []
-for tag in ('II', 'I'):
-    a = W[tag]
-    row = dict(case=tag, median=np.median(a), p5=pct(a, 5), p95=pct(a, 95),
-               p_lt_15000=100.0 * np.mean(a < 15000),
-               p_lt_14000=100.0 * np.mean(a < 14000))
-    mc_rows.append(row)
-    lbl = 'Case II (baseline in the submitted draft)' if tag == 'II' else 'Case I (CaO-only)'
-    print('  %-42s median %8.0f   P5-P95 %6.0f-%6.0f   P(<15000) %5.1f%%'
-          % (lbl, row['median'], row['p5'], row['p95'], row['p_lt_15000']))
+mc_row = dict(case='single-potential', median=np.median(W), p5=pct(W, 5), p95=pct(W, 95),
+              p_lt_15000=100.0 * np.mean(W < 15000),
+              p_lt_12933=100.0 * np.mean(W < 12933))
+print('  %-42s median %8.0f   P5-P95 %6.0f-%6.0f   P(<15000) %5.1f%%'
+      % ('single-potential basis', mc_row['median'], mc_row['p5'], mc_row['p95'],
+         mc_row['p_lt_15000']))
 
 with open(os.path.join(OUT, 'tab_monte_carlo_case.csv'), 'w', newline='',
           encoding='utf-8-sig') as f:
     w = csv.writer(f)
-    w.writerow(['case', 'median_kWh_t', 'p5', 'p95', 'P_lt_15000_pct', 'P_lt_14000_pct'])
-    for r in mc_rows:
-        w.writerow([r['case'], round(r['median']), round(r['p5']), round(r['p95']),
-                    round(r['p_lt_15000'], 1), round(r['p_lt_14000'], 1)])
+    w.writerow(['case', 'median_kWh_t', 'p5', 'p95', 'P_lt_15000_pct', 'P_lt_12933_pct'])
+    w.writerow([mc_row['case'], round(mc_row['median']), round(mc_row['p5']),
+                round(mc_row['p95']), round(mc_row['p_lt_15000'], 1),
+                round(mc_row['p_lt_12933'], 1)])
 
-# sigma / rho for the Case I baseline (used in the text)
+# sigma / rho for the net energy
 from scipy import stats  # noqa: E402
 mat = [D, eps, tau, eta, V_noise, gamma_Ca, gamma_Na, T_liq, S_MgO, delta, x_red]
 names = ['D', 'eps', 'tau', 'eta_I', 'V_cell', 'gamma_CaCl2', 'gamma_NaCl',
          'T_liq', 'S_MgO', 'delta', 'c_red']
-rho = [(names[i], float(stats.spearmanr(mat[i], W['I']).correlation))
+rho = [(names[i], float(stats.spearmanr(mat[i], W).correlation))
        for i in range(len(names))]
 rho.sort(key=lambda t: -abs(t[1]))
-print('\n  Spearman rho with Case I net energy (top 5):')
+print('\n  Spearman rho with net energy (top 5):')
 for n, r in rho[:5]:
     print('    %-14s %+.3f' % (n, r))
 
@@ -233,14 +242,14 @@ if '--figures' in sys.argv:
     ax.legend(fontsize=7.5)
 
     ax = axs[0, 1]
-    ax.hist(W['I'], bins=140, range=(8000, 22000), color='#dd8452', alpha=0.85,
+    ax.hist(W, bins=140, range=(8000, 22000), color='#dd8452', alpha=0.85,
             density=True)
     ax.axvline(15000, color='r', ls=':', lw=1.5, label='FFC lower bound')
-    ax.axvline(np.median(W['I']), color='k', ls='--', lw=1.2,
-               label='median {:,.0f} kWh/t'.format(np.median(W['I'])))
+    ax.axvline(np.median(W), color='k', ls='--', lw=1.2,
+               label='median {:,.0f} kWh/t'.format(np.median(W)))
     ax.set_xlabel('net equivalent energy (kWh/ton-Ti)')
     ax.set_ylabel('density')
-    ax.set_title(r'(b) Energy consumption, CaO-only baseline', fontsize=10)
+    ax.set_title(r'(b) Energy consumption, single-potential basis', fontsize=10)
     ax.legend(fontsize=7.5)
 
     ax = axs[1, 0]
@@ -257,7 +266,7 @@ if '--figures' in sys.argv:
     ax.set_title('(c) Feasibility probabilities', fontsize=10)
 
     ax = axs[1, 1]
-    rho_w = [stats.spearmanr(mat[i], W['I']).correlation for i in range(len(names))]
+    rho_w = [stats.spearmanr(mat[i], W).correlation for i in range(len(names))]
     lab = ['D', r'$\varepsilon$', r'$\tau$', r'$\eta_I$', r'$V_{\rm cell}$',
            r'$\gamma_{\rm CaCl_2}$', r'$\gamma_{\rm NaCl}$', r'$T_{\rm liq}$',
            r'$S_{\rm MgO}$', r'$\delta$', r'$c_{\rm red}$']
@@ -292,6 +301,6 @@ if '--figures' in sys.argv:
     plt.tight_layout()
     fig2.savefig(os.path.join(FIG, 'fig_sensitivity_tornado.pdf'), bbox_inches='tight')
     fig2.savefig(os.path.join(EPS, 'figure9.eps'), bbox_inches='tight')
-    print('\n  -> figures 8 and 9 redrawn for the Case I baseline')
+    print('\n  -> figures 8 and 9 redrawn on the single-potential basis')
 
 print('\n  -> output/tab_case_baseline.csv, output/tab_monte_carlo_case.csv')

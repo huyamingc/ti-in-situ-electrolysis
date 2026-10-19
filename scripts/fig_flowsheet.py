@@ -123,11 +123,11 @@ box(1.5, 22, 29, 11,
 ax.add_patch(FancyBboxPatch((1.5, 2.5), 97, 15,
                             boxstyle='round,pad=0.5,rounding_size=1.0',
                             linewidth=0.9, edgecolor='#999999', facecolor='#fbfbfb'))
-ax.text(3.5, 14.0, 'Energy and cell parameters (per ton Ti; Case II with the CaO-only Case I in brackets)',
+ax.text(3.5, 14.0, 'Energy and cell parameters (per ton Ti, single-potential CaO basis)',
         fontsize=7.6, fontweight='bold', va='center')
 ax.text(3.5, 8.6,
-        'gross electrolysis 12 244 [12 625] kWh   |   net equivalent 12 552 [12 933] kWh   |   '
-        'cell voltage 4.1 [4.23] V\n'
+        'gross electrolysis 12 625 kWh   |   net equivalent 12 933 kWh   |   '
+        'cell voltage 4.23 V\n'
         r'$\eta_I$ = 0.75 (unvalidated)   |   interelectrode gap $L\lesssim$1.1 cm at $\kappa$ = 1.4 S/cm, $\delta \approx$ 200 $\mu$m   |   '
         r'current efficiency is the dominant uncertainty',
         fontsize=7.0, va='center', linespacing=1.7)

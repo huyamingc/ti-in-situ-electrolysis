@@ -1,14 +1,13 @@
 ﻿quantity,value,note
 samples,100000,seed 42
+basis,single-potential 4.2276 V,CaO step sets the cathode potential; the 2.729 V mixed equivalent is unattainable
 t_SCM median (min),13.6,P5-P95 4.0-55.2 (nominal 6.3 min at c_red = 3 mol%)
-W_net median (kWh/t),"13,157",P5-P95 10996-16721
-P(W_net < 15000),82.0 %,FFC lower bound
-P(W_net < 12552),35.1 %,beating the nominal design point
+W_net median (kWh/t),"13,556",P5-P95 11352-17215
+P(W_net < 15000),76.4 %,FFC lower bound
+P(W_net < 12933),35.0 %,beating the nominal design point
 P(L_req < 0.30 cm),0.00 %,gap-floor failure rate
-"W median, Case I CaO-only (kWh/t)","13,556",P5-P95 11352-17215 (V_cell +0.128 V)
-"P(W_net < 15000), Case I",76.4 %,CaO-only regeneration
-"W median, eta correlated with j (kWh/t)","13,295",P5-P95 11072-16931
-"P(W < 15000), eta correlated with j",79.9 %,beta = 0.10 per unit j/j_ref
+"W median, eta correlated with j (kWh/t)","13,698",P5-P95 11426-17431
+"P(W < 15000), eta correlated with j",73.9 %,beta = 0.10 per unit j/j_ref
 "j_lim,Mg median (A/cm2)",0.37,P5-P95 0.23-0.94
 j_design median (A/cm2),0.75,equimolar deposit
 L_req median (cm),1.68,P95 2.70 cm

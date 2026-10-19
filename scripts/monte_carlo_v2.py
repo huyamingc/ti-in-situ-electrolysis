@@ -46,7 +46,13 @@ D_melt = 1.0e-9                            # melt-phase cation diffusivity at th
 eps = np.random.uniform(0.10, 0.50, N)
 tau = np.random.uniform(1.5, 5.0, N)
 eta = np.random.triangular(0.50, 0.75, 0.88, N)
-V_cell = np.random.normal(4.10, 0.25, N)   # untruncated; sigma = quadrature sum of the budget items
+# Single-potential basis. The cathode potential is set by the more demanding of the
+# two regeneration steps: CaO at 2.8277 V, plus the overpotential/ohmic budget
+# (0.30 + 0.20 + 0.90) = 4.2276 V. The mixed reversible voltage of 2.729 V is the
+# energy-equivalent figure obtained by averaging the separate MgO (2.630 V) and CaO
+# (2.828 V) equilibrium potentials; a single cathode cannot hold both, so it is an
+# unattainable lower bound and is not used as a sampled basis.
+V_cell = np.random.normal(4.2276, 0.25, N)   # untruncated; sigma = quadrature sum of the budget items
 gamma_Ca = np.random.uniform(0.30, 1.00, N)
 gamma_Na = np.random.uniform(0.70, 1.00, N)
 T_liq = np.clip(543.7 + np.random.normal(0.0, 25.0, N), 494.0, 594.0)
@@ -62,11 +68,10 @@ t_scm = c_O * R_p**2 / (6.0 * D_eff * c_red) / 60.0        # min
 
 # ------------------------------------------------------------------ energy
 W_net = 4 * F * n_Ti * V_cell / (eta * 3.6e6) + 350.0 - 42.0
-# Case I (CaO-only regeneration): the cell voltage rises from 4.10 to 4.23 V, i.e. by
-# +0.128 V (the +0.099 V decomposition term plus the thermoneutral/accounting difference
-# of Table tab:heatbal), which reproduces the 12,552 -> 12,933 kWh/ton step of the paper.
-dV_I = 0.1276
-W_net_I = 4 * F * n_Ti * (V_cell + dV_I) / (eta * 3.6e6) + 350.0 - 42.0
+# No Case I / Case II split: on the single-potential basis both regeneration
+# scenarios draw the same 4 e- per mol Ti at the same cell voltage, so their
+# achievable net energies are identical. Which oxide actually dissolves (CaO only,
+# or MgO + CaO) changes the material balance and the salt inventory, not the energy.
 
 # ------------------------------------- equimolar design point and required gap
 c_b = 0.30 * 1.94e4
@@ -101,16 +106,15 @@ def pct(a, p):
 
 rows = [
     ['samples', N, 'seed 42'],
+    ['basis', 'single-potential 4.2276 V',
+     'CaO step sets the cathode potential; the 2.729 V mixed equivalent is unattainable'],
     ['t_SCM median (min)', '%.1f' % np.median(t_scm),
      'P5-P95 %.1f-%.1f (nominal 6.3 min at c_red = 3 mol%%)' % (pct(t_scm, 5), pct(t_scm, 95))],
     ['W_net median (kWh/t)', '{:,.0f}'.format(np.median(W_net)),
      'P5-P95 {:.0f}-{:.0f}'.format(pct(W_net, 5), pct(W_net, 95))],
     ['P(W_net < 15000)', '%.1f %%' % (100 * np.mean(W_net < 15000)), 'FFC lower bound'],
-    ['P(W_net < 12552)', '%.1f %%' % (100 * np.mean(W_net < 12552)), 'beating the nominal design point'],
+    ['P(W_net < 12933)', '%.1f %%' % (100 * np.mean(W_net < 12933)), 'beating the nominal design point'],
     ['P(L_req < 0.30 cm)', '%.2f %%' % (100 * np.mean(L_req < 0.30)), 'gap-floor failure rate'],
-    ['W median, Case I CaO-only (kWh/t)', '{:,.0f}'.format(np.median(W_net_I)),
-     'P5-P95 {:.0f}-{:.0f} (V_cell +0.128 V)'.format(pct(W_net_I, 5), pct(W_net_I, 95))],
-    ['P(W_net < 15000), Case I', '%.1f %%' % (100 * np.mean(W_net_I < 15000)), 'CaO-only regeneration'],
     ['W median, eta correlated with j (kWh/t)', '{:,.0f}'.format(np.median(W_corr)),
      'P5-P95 {:.0f}-{:.0f}'.format(pct(W_corr, 5), pct(W_corr, 95))],
     ['P(W < 15000), eta correlated with j', '%.1f %%' % (100 * np.mean(W_corr < 15000)),

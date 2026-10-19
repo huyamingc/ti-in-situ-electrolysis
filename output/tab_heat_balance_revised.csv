@@ -1,14 +1,16 @@
 Item,Energy (kWh/ton),Note
-Electrolysis (gross),12244,"4F*n_Ti*V/(eta*3.6e6) at eta=0.75, V=4.1 V"
-Reaction enthalpy absorbed (net),5483,"dH = 944.7 kJ/mol-Ti (TiO2 -> Ti + O2), 20891 mol/ton"
-Waste heat rejected,6760,V_cell 4.1 V > thermoneutral 3.204 V; includes reduction exotherm 1690 (NOT credited against electricity)
+Electrolysis (gross),12625,"4F*n_Ti*V/(eta*3.6e6) at eta=0.75, V=4.23 V (CaO step)"
+Reaction enthalpy absorbed (net),5497,dH = 944.7 kJ/mol-Ti (TiO2 -> Ti + O2) = 5483; 0.3% from neglecting Cp in dHf
+Regeneration enthalpy absorbed,7369,2*dHf(CaO) = 1269.8 kJ/mol-Ti; case II (MgO+CaO) would be 7175
+Reduction exotherm,1872,"TiO2 + 2Ca -> Ti + 2CaO, dH = -322.6 kJ/mol-Ti"
+Waste heat rejected,7128,V_cell 4.23 V > thermoneutral 3.290 V; includes reduction exotherm 1872 (NOT credited against electricity)
 External thermal demand,329,TiO2 preheating 184 + salt preheating 7 + wall loss 138; met by reject-heat integration (credit -329)
 Salt circulation pumping,50,
 Post-treatment,300,
-Total external input,12594,Electricity 12244 + pump/post 350 (thermal needs met by integration)
+Total external input,12975,Electricity 12625 + pump/post 350 (thermal needs met by integration)
 Ti powder cooling recovery,-42,External heat recovery
-Net consumption,12552,Without heat integration: 12881
-Theoretical minimum (electrolysis step),6112,
-Process energy efficiency,48.7%,6112/12552
-Second-law efficiency,36.3%,4550/12552
-Electrolysis energy fraction,97.2%,12244/12594 (NOT a thermodynamic efficiency)
+Net consumption,12933,Without heat integration: 13262
+Theoretical minimum (electrolysis step),6334,CaO step 2.8277 V; the mixed equivalent 6112 is not attainable
+Process energy efficiency,49.0%,6334/12933
+Second-law efficiency,35.2%,4550/12933
+Electrolysis energy fraction,97.3%,12625/12975 (NOT a thermodynamic efficiency)
