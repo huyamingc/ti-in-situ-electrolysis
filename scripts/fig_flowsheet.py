@@ -46,17 +46,17 @@ def arrow(x1, y1, x2, y2, label=None, lx=0, ly=0, ha='center', va='center', fs=7
 
 
 # ---------------------------------------------------------------- feedstock
-box(1.5, 79, 25, 14,
+box(1.5, 79, 27.5, 14,
     r'$\bf{TiO_2}$ feedstock' + '\n'
     r'1668 kg per ton Ti' + '\n'
     r'metallurgical grade, $\geq$90 wt%' + '\n'
     r'(Fe, Si impurities)',
-    C_FEED, 7.6)
+    C_FEED, 7.4)
 
 # ---------------------------------------------------------------- cell
 box(31, 60, 44, 33, '', C_CELL)
 ax.text(53, 90.0, 'Electrolysis cell, 600 $^{\\circ}$C (sealed, dry Ar)',
-        ha='center', va='center', fontsize=8.6, fontweight='bold')
+        ha='center', va='center', fontsize=8.4, fontweight='bold')
 ax.add_patch(Rectangle((33.6, 64.0), 38.8, 22.0, linewidth=0.9,
                        edgecolor='#4a7a45', facecolor='white', zorder=1))
 ax.text(53, 84.2, 'quaternary chloride melt', ha='center', fontsize=7.4, style='italic')
@@ -77,27 +77,28 @@ box(80, 80, 18.5, 12, r'$\bf{O_2}$' + '\n668 kg per ton Ti' + '\n(green by-produ
 arrow(75, 86, 80, 86)
 
 # ---------------------------------------------------------------- makeup salt
-box(1.5, 60, 25, 14,
+box(1.5, 60, 27.5, 14,
     r'$\bf{Makeup\ salt}$' + '\n'
     r'MgCl$_2$ / CaCl$_2$, vacuum-dried' + '\n'
     r'replaces Mg lost by evaporation' + '\n'
     r'($p_{\rm Mg}\approx$180 Pa at 600 $^{\circ}$C)',
-    C_FEED, 7.4)
-arrow(26.5, 67, 31, 70)
+    C_FEED, 7.3)
+arrow(29.0, 67, 31, 70)
 
 # ---------------------------------------------------------------- product recovery
-box(31, 42, 47, 12,
+box(31, 41, 47, 13,
     r'$\bf{Product\ recovery}$' + '\n'
     r'counter-current water wash $\rightarrow$ drying $\rightarrow$ screening' + '\n'
-    r'entrained CaCl$_2$/MgCl$_2$ is water-soluble; the wash liquor is recycled',
+    r'entrained CaCl$_2$/MgCl$_2$ is water-soluble;' + '\n'
+    r'the wash liquor is recycled',
     C_REC, 7.6)
 arrow(53, 60, 53, 54, 'Ti powder +\nentrained salt\n(3--11 wt%)', lx=17.5, ly=0.0, fs=6.8)
 
 # ---------------------------------------------------------------- outputs
 box(34, 22, 20, 11, r'$\bf{Ti\ powder}$' + '\n1000 kg per ton Ti', C_PROD, 8.0)
-arrow(44, 42, 44, 33)
+arrow(44, 41, 44, 33)
 
-box(61, 22, 25, 11,
+box(58, 22, 31, 11,
     r'$\bf{Salt\ recovery}$' + '\n'
     r'evaporation / crystallisation' + '\n'
     r'$\rightarrow$ makeup salt returned to the cell',
@@ -120,15 +121,16 @@ box(1.5, 22, 29, 11,
     '#f7f7f7', 7.4)
 
 # ---------------------------------------------------------------- energy footer
-ax.add_patch(FancyBboxPatch((1.5, 2.5), 97, 15,
+ax.add_patch(FancyBboxPatch((1.5, 2.5), 97, 16,
                             boxstyle='round,pad=0.5,rounding_size=1.0',
                             linewidth=0.9, edgecolor='#999999', facecolor='#fbfbfb'))
-ax.text(3.5, 14.0, 'Energy and cell parameters (per ton Ti, single-potential CaO basis)',
+ax.text(3.5, 14.8, 'Energy and cell parameters (per ton Ti, single-potential CaO basis)',
         fontsize=7.6, fontweight='bold', va='center')
-ax.text(3.5, 8.6,
+ax.text(3.5, 8.0,
         'gross electrolysis 12 625 kWh   |   net equivalent 12 933 kWh   |   '
         'cell voltage 4.23 V\n'
-        r'$\eta_I$ = 0.75 (unvalidated)   |   interelectrode gap $L\lesssim$1.1 cm at $\kappa$ = 1.4 S/cm, $\delta \approx$ 200 $\mu$m   |   '
+        r'$\eta_I$ = 0.75 (unvalidated)   |   interelectrode gap $L\lesssim$1.1 cm at $\kappa$ = 1.4 S/cm, $\delta \approx$ 200 $\mu$m'
+        '\n'
         r'current efficiency is the dominant uncertainty',
         fontsize=7.0, va='center', linespacing=1.7)
 
