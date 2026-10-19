@@ -749,3 +749,12 @@ Expected: 43 pages, 3,292,491 B, 0 warnings, 0 undefined references, 0 overfull 
 Check against the committed CSVs by diffing `output/` — the numbers are seeded
 (`seed = 42`) and otherwise deterministic, so the CSVs should reproduce exactly except for
 the drift documented in §3.6.
+
+**Verified on a clean clone (2026-10-19, commit 42c1d5f).** Running the fourteen commands
+above from a fresh `git clone` regenerates all 17 CSVs **byte-for-byte identical** to the
+committed ones, and two `pdflatex` passes reproduce the same 43-page, 3,292,491-byte PDF with
+0 errors, 0 undefined references and 0 overfull boxes. The only files that show as modified
+afterwards are the tracked figures: their PDF/EPS metadata carries a creation timestamp
+(byte sizes and drawing content are unchanged). `figures_eps/*.png` are regenerated and
+gitignored. Nothing in this chain depends on the 26 one-off editing scripts or on the
+ten-parameter MC output that were moved out of the repository in 42c1d5f.
