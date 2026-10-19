@@ -38,11 +38,15 @@ table is reproducible from the commands in §14.
 | Vector figures | 17 PDF (`figures/`) → 15 EPS (`figures_eps/`) |
 | Build state | 0 LaTeX warnings, 0 errors, 0 undefined references, 0 overfull hboxes (the 14 `LaTeX Font Warning` size substitutions emitted by the class for the 4 pt figure annotations are template-inherent and do not indicate a defect) |
 
-> **Zenodo version note.** The deposited preprint is **v3 (record 21973469, 2026-09-02)**.
-> It predates the Monte Carlo re-run described in §4 (entry 11): its abstract carries the
-> *pre-re-run* values **13,141 kWh/ton-Ti and 82.1%**, whereas `manuscript.tex` here carries
-> the *post-re-run* values **13,157 and 82.0%**. Every other number is identical between the
-> two. Cite the repository, not v3, if the MC figures matter.
+> **Zenodo note.** The DOI cited in `Data availability` — **10.5281/zenodo.21973469** — is
+> the **concept DOI**: it always resolves to the latest deposited version, so adding a version
+> does not require touching the manuscript. The current deposit is **v3** (version DOI
+> `10.5281/zenodo.22249453`, 2026-09-02; the other versions are 21973470 and 22129477). It
+> predates the Monte Carlo re-run of §4 entry 11 — its abstract carries **13,141 kWh/ton-Ti
+> and 82.1%**, against **13,157 and 82.0%** in `manuscript.tex`. Publishing a **v4** through
+> Zenodo's “New version” button makes the cited concept DOI resolve to it, with no edit to
+> the paper. Until that is done, cite this repository rather than the preprint if the MC
+> figures matter.
 
 ---
 
