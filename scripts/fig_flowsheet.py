@@ -66,7 +66,7 @@ ax.text(53, 79.6, r'(liquidus 544 $^{\circ}$C; fully molten at 600 $^{\circ}$C)'
         ha='center', fontsize=7.0)
 ax.text(53, 76.6, r'cathode: liquid Mg--Ca alloy,  $j\approx$1.1 A/cm$^2$',
         ha='center', fontsize=7.2)
-ax.text(53, 74.3, r'TiO$_2$ particles suspended in the melt', ha='center', fontsize=7.2)
+ax.text(53, 74.3, r'TiO$_2$ particles settle on the cathode floor', ha='center', fontsize=7.2)
 ax.text(53, 71.6, r'anode: O$^{2-}\rightarrow\frac{1}{2}$O$_2$ + 2e$^-$  (inert or graphite)',
         ha='center', fontsize=7.2)
 ax.text(53, 68.4, r'CaO / MgO dissolve and are regenerated', ha='center', fontsize=7.2)
@@ -91,7 +91,7 @@ box(31, 42, 47, 12,
     r'counter-current water wash $\rightarrow$ drying $\rightarrow$ screening' + '\n'
     r'entrained CaCl$_2$/MgCl$_2$ is water-soluble; the wash liquor is recycled',
     C_REC, 7.6)
-arrow(53, 60, 53, 54, 'Ti powder +\nentrained salt\n(1.2--4.8 wt%)', lx=17.5, ly=0.0, fs=6.8)
+arrow(53, 60, 53, 54, 'Ti powder +\nentrained salt\n(3--11 wt%)', lx=17.5, ly=0.0, fs=6.8)
 
 # ---------------------------------------------------------------- outputs
 box(34, 22, 20, 11, r'$\bf{Ti\ powder}$' + '\n1000 kg per ton Ti', C_PROD, 8.0)
