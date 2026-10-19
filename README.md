@@ -28,7 +28,7 @@ table is reproducible from the commands in §14.
 | Item | Value |
 |---|---|
 | `manuscript.tex` | 827 lines, 141,053 B |
-| `manuscript.pdf` | **44 pages**, 2,905,053 B |
+| `manuscript.pdf` | **44 pages**, 2,905,538 B |
 | Figures / tables | 15 / 10 |
 | References | **35** (35 `\bibitem` entries in `manuscript.bbl`, 35 distinct `\cite` keys, none unused) |
 | Abstract | **248 words** (journal limit 250) |
@@ -759,7 +759,7 @@ the drift documented in §3.6.
 
 **Verified on a clean clone (2026-10-19, commit 42c1d5f).** Running the fourteen commands
 above from a fresh `git clone` regenerates all 17 CSVs **byte-for-byte identical** to the
-committed ones, and two `pdflatex` passes reproduce the same 44-page, 2,905,053-byte PDF with
+committed ones, and two `pdflatex` passes reproduce the same 44-page, 2,905,538-byte PDF with
 0 errors, 0 undefined references and 0 overfull boxes. The only files that show as modified
 afterwards are the tracked figures: their PDF/EPS metadata carries a creation timestamp
 (byte sizes and drawing content are unchanged). `figures_eps/*.png` are regenerated and
