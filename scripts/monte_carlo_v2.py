@@ -41,11 +41,12 @@ F, Rg, T = 96485.0, 8.314, 873.15
 n_Ti = 1.0e6 / 47.867
 
 # ------------------------------------------------------------------ parameters
-D = np.random.uniform(1.0e-9, 3.0e-9, N)
+D = np.random.uniform(1.0e-9, 3.0e-9, N)   # product-layer diffusivity, SCM only
+D_melt = 1.0e-9                            # melt-phase cation diffusivity at the design point, j_lim only
 eps = np.random.uniform(0.10, 0.50, N)
 tau = np.random.uniform(1.5, 5.0, N)
 eta = np.random.triangular(0.50, 0.75, 0.88, N)
-V_cell = np.clip(np.random.normal(4.10, 0.30, N), 3.5, 4.5)
+V_cell = np.random.normal(4.10, 0.25, N)   # untruncated; sigma = quadrature sum of the budget items
 gamma_Ca = np.random.uniform(0.30, 1.00, N)
 gamma_Na = np.random.uniform(0.70, 1.00, N)
 T_liq = np.clip(543.7 + np.random.normal(0.0, 25.0, N), 494.0, 594.0)
@@ -61,10 +62,15 @@ t_scm = c_O * R_p**2 / (6.0 * D_eff * c_red) / 60.0        # min
 
 # ------------------------------------------------------------------ energy
 W_net = 4 * F * n_Ti * V_cell / (eta * 3.6e6) + 350.0 - 42.0
+# Case I (CaO-only regeneration): the cell voltage rises from 4.10 to 4.23 V, i.e. by
+# +0.128 V (the +0.099 V decomposition term plus the thermoneutral/accounting difference
+# of Table tab:heatbal), which reproduces the 12,552 -> 12,933 kWh/ton step of the paper.
+dV_I = 0.1276
+W_net_I = 4 * F * n_Ti * (V_cell + dV_I) / (eta * 3.6e6) + 350.0 - 42.0
 
 # ------------------------------------- equimolar design point and required gap
 c_b = 0.30 * 1.94e4
-j_lim = 2 * F * D * c_b / delta / 1e4                      # A/cm2
+j_lim = 2 * F * D_melt * c_b / delta / 1e4                  # A/cm2
 j_design = 2.0 * j_lim                                     # equimolar deposit
 L_req = 0.9 * 1.4 / j_design                               # cm, 0.9 V budget
 
@@ -73,7 +79,7 @@ L_req = 0.9 * 1.4 / j_design                               # cm, 0.9 V budget
 # Na co-deposition both scale with j, as noted in the text); beta is the
 # fractional loss per unit relative increase in j.
 BETA, J_REF = 0.10, 1.10
-eta_eff = np.clip(eta * (1.0 - BETA * (j_design / J_REF - 1.0)), 0.40, 0.95)
+eta_eff = np.clip(eta * (1.0 - BETA * np.maximum(j_design / J_REF - 1.0, 0.0)), 0.40, 0.95)
 W_corr = 4 * F * n_Ti * V_cell / (eta_eff * 3.6e6) + 350.0 - 42.0
 
 # ------------------------------------------------------------ feasibility
@@ -100,6 +106,11 @@ rows = [
     ['W_net median (kWh/t)', '{:,.0f}'.format(np.median(W_net)),
      'P5-P95 {:.0f}-{:.0f}'.format(pct(W_net, 5), pct(W_net, 95))],
     ['P(W_net < 15000)', '%.1f %%' % (100 * np.mean(W_net < 15000)), 'FFC lower bound'],
+    ['P(W_net < 12552)', '%.1f %%' % (100 * np.mean(W_net < 12552)), 'beating the nominal design point'],
+    ['P(L_req < 0.30 cm)', '%.2f %%' % (100 * np.mean(L_req < 0.30)), 'gap-floor failure rate'],
+    ['W median, Case I CaO-only (kWh/t)', '{:,.0f}'.format(np.median(W_net_I)),
+     'P5-P95 {:.0f}-{:.0f} (V_cell +0.128 V)'.format(pct(W_net_I, 5), pct(W_net_I, 95))],
+    ['P(W_net < 15000), Case I', '%.1f %%' % (100 * np.mean(W_net_I < 15000)), 'CaO-only regeneration'],
     ['W median, eta correlated with j (kWh/t)', '{:,.0f}'.format(np.median(W_corr)),
      'P5-P95 {:.0f}-{:.0f}'.format(pct(W_corr, 5), pct(W_corr, 95))],
     ['P(W < 15000), eta correlated with j', '%.1f %%' % (100 * np.mean(W_corr < 15000)),
@@ -149,7 +160,7 @@ ax.axvline(np.median(W_net), color='k', ls='--', lw=1.2,
            label='median {:,.0f} kWh/t'.format(np.median(W_net)))
 ax.set_xlabel('net equivalent energy (kWh/ton-Ti)')
 ax.set_ylabel('density')
-ax.set_title(r'(b) Energy consumption (10 parameters)', fontsize=10)
+ax.set_title(r'(b) Energy consumption (11 parameters)', fontsize=10)
 ax.legend(fontsize=7.5)
 
 ax = axs[1, 0]

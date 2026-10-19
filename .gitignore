@@ -53,3 +53,6 @@ submission_jsm/
 # Downloaded Springer Nature template sources (third-party; the files actually
 # used, sn-jnl.cls and the two .bst, are vendored at the repository root)
 _snjnl/
+
+# PNG previews written by the figure scripts (regenerable; the EPS/PDF is the artefact)
+figures_eps/*.png

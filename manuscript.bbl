@@ -1,4 +1,4 @@
-\begin{thebibliography}{30}
+\begin{thebibliography}{35}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{{#1}}
 \providecommand{\urlprefix}{URL }
@@ -90,6 +90,26 @@ Sato Y, Kuroda Y, Nagatsu T, et~al (1999) Density and electrical conductivity
 Kubaschewski O, Alcock CB (1979) Metallurgical Thermochemistry, 5th edn.
   Pergamon Press, Oxford
 
+\bibitem[{Grjotheim et~al(1970)Grjotheim, Holm, and Malmo}]{grjotheim1970}
+Grjotheim K, Holm JL, Malmo J (1970) The phase diagram of the system
+  {MgCl}$_2$--{CaCl}$_2$, and thermodynamic properties of molten mixtures in
+  this system. Acta Chem Scand 24:77--86. \doi{10.3891/acta.chem.scand.24-0077}
+
+\bibitem[{Hattori et~al(1985)Hattori, Igarashi, and Mochinaga}]{hattori1985}
+Hattori T, Igarashi K, Mochinaga J (1985) Phase diagram of quaternary
+  {KCl--NaCl--CaCl}$_2$--{MgCl}$_2$ system. Denki Kagaku oyobi Kogyo Butsuri
+  Kagaku 53:424--425. \doi{10.5796/kogyobutsurikagaku.53.424}
+
+\bibitem[{Grjotheim et~al(1972)Grjotheim, Holm, and R{\o}tnes}]{grjotheim1972}
+Grjotheim K, Holm JL, R{\o}tnes M (1972) The phase diagrams of the systems
+  {NaCl--MgCl}$_2$ and {KCl--MgCl}$_2$. Acta Chem Scand 26:3802--3803.
+  \doi{10.3891/acta.chem.scand.26-3802}
+
+\bibitem[{Seltveit and Flood(1958)}]{seltveit1958}
+Seltveit A, Flood H (1958) Determination of the solidus curve by a tracer
+  technique. {The} system {CaCl}$_2$--{NaCl}. Acta Chem Scand 12:1030--1041.
+  \doi{10.3891/acta.chem.scand.12-1030}
+
 \bibitem[{Chartrand and Pelton(2000)}]{chartrand2000}
 Chartrand P, Pelton AD (2000) Thermodynamic evaluation and optimization of the
   {LiCl--NaCl--KCl--RbCl--CsCl--MgCl}$_2$--{CaCl}$_2$--{SrCl}$_2$ system using
@@ -143,6 +163,11 @@ Levenspiel O (1999) Chemical Reaction Engineering, 3rd edn. Wiley, New York
 Kvande H, Drabl{\o}s PA (2014) The aluminum smelting process and innovative
   alternative technologies. J Occup Environ Med 56:S23--S32.
   \doi{10.1097/JOM.0000000000000062}
+
+\bibitem[{Wang et~al(2008)Wang, Zhang, Liu, and Zhang}]{wang2008cao}
+Wang S, Zhang F, Liu X, et~al (2008) {CaO} solubility and activity coefficient
+  in molten salts {CaCl}$_2$--x (x = 0, {NaCl}, {KCl}, {SrCl}$_2$, {BaCl}$_2$
+  and {LiCl}). Thermochim Acta 470:105--107. \doi{10.1016/j.tca.2008.02.007}
 
 \bibitem[{Ito and Morita(2004)}]{morita2004}
 Ito M, Morita K (2004) The solubility of {MgO} in molten {MgCl}$_2$--{CaCl}$_2$

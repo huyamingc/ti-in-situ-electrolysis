@@ -4,7 +4,7 @@
   (A) fig_r3_competition : driving force of Ca + [O] -> CaO and Mg + [O] -> MgO vs the
       oxygen content in Ti, against the constant driving force of the cross reaction
       Ca + MgO -> CaO + Mg.  Shows that the crossover is identically the Mg-only
-      deoxidation limit (3910 ppm), and marks the a_MgO ceiling below it.
+      deoxidation limit (3908 ppm), and marks the a_MgO ceiling below it.
   (B) fig_r3_shuttle : the two oxygen-transfer channels at a TiO2 particle /
       liquid Mg-Ca alloy / melt interface.
 """
@@ -24,7 +24,7 @@ for d in (FIG, EPS):
 R, T = 8.314, 873.15
 RT = R * T
 DG_CA, DG_MG, DG_CROSS = -45016.0, -6816.0, -38200.0
-W_CROSS = 3910.0
+W_CROSS = 3908.0
 
 # ==================================================== (A) competition diagram
 w_ppm = np.logspace(1, 5.4, 600)
@@ -46,12 +46,12 @@ ax.set_ylim(-72, 78)
 ax.set_xlabel(r'oxygen content in Ti,  $w_{[\rm O]}$  (ppm)')
 ax.set_ylabel(r'$\Delta G$  (kJ mol$^{-1}$)')
 
-ax.text(W_CROSS, 74, '3910 ppm\n= Mg-only limit\n= crossover', ha='center', va='top', fontsize=7.4,
+ax.text(W_CROSS, 74, '3908 ppm\n= Mg-only limit\n= crossover', ha='center', va='top', fontsize=7.4,
         bbox=dict(boxstyle='round,pad=0.28', fc='white', ec='0.65'))
 ax.text(70, 14, 'Ca attacks\ndissolved MgO', fontsize=8.2, ha='center', color='#2f4c7a')
 ax.text(2.6e4, -24, 'Ca attacks\nthe Ti oxygen', fontsize=8.2, ha='center', color='#8c2f33')
 ax.text(1.3, 74,
-        r'below 3910 ppm, continuing to the Ca endpoint requires'
+        r'below 3908 ppm, continuing to the Ca endpoint requires'
         '\n'
         r'$a_{\rm MgO} < 5\times10^{-3}$   (Eq. 11)',
         fontsize=7.4, va='top',
