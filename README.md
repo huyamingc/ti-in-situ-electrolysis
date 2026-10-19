@@ -28,7 +28,7 @@ table is reproducible from the commands in §14.
 | Item | Value |
 |---|---|
 | `manuscript.tex` | 827 lines, 141,053 B |
-| `manuscript.pdf` | **45 pages**, 2,908,706 B |
+| `manuscript.pdf` | **46 pages**, 2,916,399 B |
 | Figures / tables | 15 / 10 |
 | References | **35** (35 `\bibitem` entries in `manuscript.bbl`, 35 distinct `\cite` keys, none unused) |
 | Abstract | **248 words** (journal limit 250) |
@@ -54,7 +54,7 @@ table is reproducible from the commands in §14.
 ```
 .
 ├── manuscript.tex                — Manuscript (sn-jnl class, Basic numeric style)
-├── manuscript.pdf                — Compiled PDF (45 pages)
+├── manuscript.pdf                — Compiled PDF (46 pages)
 ├── manuscript.bbl                — BibTeX output, kept so the PDF rebuilds without bibtex
 ├── refs.bib                      — Bibliography database (35 entries, with titles and DOIs)
 ├── manuscript_v1.tex             — Frozen snapshot of the manuscript as reviewed (825 lines)
@@ -318,6 +318,7 @@ column point into it.
 | 24 | **Single-potential energy re-basing (external peer review, round v1).** The ledger used 2.73 V as the decomposition term, although the text itself says that is the *energy-equivalent* voltage and that the single-potential floor is the CaO step. Because a cathode cannot hold 2.630 V (MgO) and 2.828 V (CaO) at once, the mixed 2.73 V is unattainable; the "+3% penalty" of the CaO-only case was an artefact of costing Case II at 2.73 V and Case I at 2.83 V. Four hard errors accompanied it: TiCl₂ was entered at its enthalpy (−464) in a ΔG table, making the disproportionation −202 instead of −105 and −80 instead of +18 kJ/mol; 2.81 V and 2.83 V were quoted for the same CaO quantity; the Barin data were said to need extrapolation beyond 1000 K although 873 K lies inside 298–1000 K; and the abstract had a missing semicolon before "deep deoxidation" | Whole ledger re-based on 2.83 V: V_cell 4.23 V, gross 12,625, net **12,933** (one value, both material cases), regeneration enthalpy 7,369, exotherm 1,872, net absorbed 5,497, waste heat 7,128, efficiencies 49.0 / 35.2 / 97.3%. The +3% and the "Case II is the design basis because it is the lower energy figure" claim are removed: the two cases differ in material balance and salt inventory, not in energy. Monte Carlo re-run at N(4.2276, 0.25): median 13,556, P(W<15,000) = 76.4%; correlated variant 13,698 / 73.9%. TiCl₂ → −416/−105/+18 with chlorine oxidation (−655) as the driving path. 2.81 V deleted. Extrapolation sentence replaced. Figs. 1, 13 and 14 redrawn. The a_MgO bound is now labelled an *interfacial* condition, and the salt inventory is computed for CaO alone (234 t; 470 t at 0.5 wt%), with the MgO-at-5×10⁻³ literal reading shown to need of order 10⁴ t | §24, this round |
 | 25 | **Round-v2 descriptive sweep (external peer review, round v2, batch 1).** Re-basing leftovers of the descriptive kind, none altering a computed quantity but several able to mislead a reader trying to reproduce one: (a) the Monte Carlo prior was still quoted as N(4.10, 0.25) in the text and in the Monte Carlo figure caption although the script, the CSV and entry 24 all use 4.2276 V, so a reader re-running the stated prior obtains 13,147 rather than the reported 13,556; (b) one paragraph gave two different electrolysis-step windows, 4.1-4.3 V giving 11,500-12,800 and 4.0-4.3 V giving 11,200-12,800; (c) the energy-sensitivity figure caption called 6,112 kWh/ton "the electrolysis step minimum", although 6,112 is the unattainable mixed equivalent and the minimum is 6,334; (d) the Nomenclature listed only K while the text uses K1 and K2; (e) the 0.25 V standard deviation was described as the "quadrature sum of the voltage-budget items", whose own quadrature sum is 0.97 V; (f) the text called "the NaCl/KCl-bearing binaries" low-melting at 426-500 °C although Table 3 puts CaCl2-KCl at ~600 and NaCl-KCl at ~657 °C; (g) 2.83 V was attached to the "MgO-CaO regeneration step", whose mixed equivalent is 2.73 V; (h) Table 8 showed 4.23 V against 12,625 kWh/ton, a 7 kWh display-computation gap; (i) the two efficiency rows of Table 9 lacked thousands separators; (j) the heat-balance note said "acid-leaching" while Limitations (12) said "alkaline removal" | Prior corrected to N(4.2276, 0.25) with its provenance stated (±0.10, ±0.10 and ±0.20 V giving 0.245 V, rounded to 0.25 V); a single window (4.0-4.3 V giving 11,200-12,800); caption minimum 6,334 (CaO step at a single cathode potential); K1/K2 glossed in the Nomenclature; the Table 8 caption now records that 12,625 is computed at the exact 4.2276 V; the 426-500 range is limited to the MgCl2-bearing binaries with the two CaCl2 edges named separately; "CaO regeneration step"; thousands separators throughout; Fe removed magnetically and Si leached, the reagent left open. Five argumentative gaps from the same round were identified alongside these and are addressed in entry 26: the Mg-vapour recovery efficiency, the metal-phase reference state of the 120.2 mV window, boundary-layer freezing against the 657 °C NaCl-KCl liquidus, the lower-bound qualifier on 12,933, and the Case I round-trip rows of Table 7 | §25, this round |
 | 26 | **Round-v2 argumentative gaps (external peer review, round v2, batch 2).** Five places where the re-based text was numerically right but left an argument unfinished: (a) the ≥620 °C pilot floor was presented as the answer to a risk that includes a ~657 °C local liquidus, which the floor cannot bound, and the co-deposition design point j = 2 j_lim,Mg is exactly the condition of maximal boundary-layer Mg depletion; (b) the reactor concept said the Mg vapour is "condensed and returned" while the material balance and the make-up sizing treated evaporation as a loss, with no recovery efficiency to connect them; (c) the 120.2 mV window was quoted against pure-solid-salt standard states but its metal-phase reference was left implicit, although Ca is deposited into an alloy with a_Ca = 0.263; (d) the 12,933 kWh/ton figure was disclosed as a lower bound at one point but stated without qualification in the abstract, conclusion (5) and Table 9; (e) the Case I column of the material balance did not add across, because the 1016 kg Mg round-trip throughput sat in the "input" column | The floor is now stated to bound the bulk liquidus only, with boundary-layer freezing carried as an independent open risk and a third go/no-go criterion (a cap on j/j_lim,Mg); a ≥95% condenser recovery is assumed and used in both places, so evaporation enters only as its uncondensed fraction; the metal-phase correction is given explicitly (RT/2F ln(1/0.263) = +50 mV, alloy-referenced window =170 mV, 120.2 mV a conservative lower bound, distinct from the ±6% activity sensitivity); the three headline statements now read ≥12,933; the Case I Mg entry is 0 with the 1016 kg round trip footnoted, so 1668 + 0 + 1675 = 3343 = 1000 + 2343 | §26, this round |
+| 27 | **Round-v3 substantive review (external peer review, round v3).** Four substantive findings and six smaller ones. Two were accepted outright: (a) the equimolar Mg–Ca alloy is **not** liquid at 600 °C — “above the eutectic at ≈517 °C” does not make every composition liquid, since Mg₂Ca melts congruently at ≈715 °C and the equimolar liquidus interpolates to ≈620 °C, so the design point sits in the L + Mg₂Ca field with ≈19% solid; (b) the identity of the regenerated oxide is fixed by the **deposit ratio**, not by the rate of reaction 9 — a per-mole-of-Ti balance gives net oxide ≡ deposited metal with the Eq. 9 extent cancelling, so the CaO-only picture is the b → 0 limit (beyond the Na⁺ onset), not a second operating point | (a) a new paragraph computes the liquidus, the ≈80% liquid fraction and the two-phase consequences — a_Ca ≈ 0.31, Ca endpoint 77 → ≈65 ppm, Eq. 10 bound 5×10⁻³ → ≈3.6×10⁻³ — all in the conservative direction, so no quoted number changes; “liquid” → “liquid-bearing” in the abstract, conclusion (1) and four body sites. (b) causality rewritten and the b → 0 limit stated. One reviewer claim was **rejected**: the “+50 mV” that the voltage ledger supposedly omits is a 50 mV *reduction*, not an increase — depositing Ca into the alloy (a_Ca = 0.263) lowers the CaO decomposition voltage, so 2.83 V is an upper bound, and the reviewer had inverted the activity ratio inside his own formula (it evaluates to 2.7775 V, not 2.878 V). Accepted from the same report: the CaO/Ca standard state is declared together with the saturation requirement and an a_CaO sensitivity (+0.26 V at 10⁻³, +0.35 V at 10⁻⁴, +6–8% on the net energy); the three energy figures (12,933 design point, 11,500–13,100 parameter sweep, 9,222 best case) are now layered explicitly; the “primarily through reduced operating temperature” attribution is corrected to the η_I assumption, with the 138 kWh/ton wall loss as the actual temperature contribution; the solid-state D range 10⁻¹²–10⁻¹⁰ corrected to 10⁻¹²–10⁻¹¹; and go/no-go criterion (iv) added for the Ca–MgO interfacial kinetics, which governs whether a_MgO can be held below 5×10⁻³ and hence whether the 77 ppm endpoint is reachable at all. Two further reviewer items were checked and **not** applied: his estimate that D = 10⁻¹⁰ m²/s would give 12.7 min (it gives 127 min; 12.7 min is D = 10⁻⁹), and his claim that the 300 kWh/ton post-treatment is optimistic because 0.5–1.5 m³/t of wash water needs 314–942 kWh/t of latent heat (that is a thermal figure, whereas the item is electrical and MVR-compressed, giving 50–300 kWh/t). | §27, this round |
 ---
 
 ## 5. Compiling the Manuscript
@@ -334,8 +335,8 @@ committed `manuscript.bbl` lets the PDF be rebuilt with `pdflatex` alone; delete
 full four-step sequence is needed again.
 
 `latexmk` is **not** usable in this environment (MiKTeX cannot find its Perl engine); use
-the four commands above. Expected result: 45 pages, 0 warnings, 0 undefined references,
-0 overfull hboxes.
+the four commands above. Expected result: 46 pages, 0 undefined references, 0 overfull hboxes, and one
+`Text page 28 contains only floats` note (a float-only page, not an error).
 
 The manuscript references EPS figures in `figures_eps/` via `\graphicspath`; `pdflatex` +
 `epstopdf` converts them on the fly. The compiled `manuscript.pdf` is not tracked in this
@@ -571,7 +572,7 @@ cp figures_eps/figure*.eps figures_eps/figure_flowsheet.eps \
    figures_eps/figure_r3_*.eps submission_jsm/
 ```
 
-As of 2026-10-19 the package **is** current and needs no hand editing: 45 pages, 35 references,
+As of 2026-10-19 the package **is** current and needs no hand editing: 46 pages, 35 references,
 −38.25 kJ/mol, 13,556 kWh/ton-Ti and 76.4%, with the cover letter recompiled from the same
 sources. Two errors were corrected in the letter while doing so — the Monte Carlo median
 (13,141) and a "350 °C relative to the Kroll process" saving that had in fact been measured
@@ -751,7 +752,8 @@ python scripts/fig_ga.py
 pdflatex manuscript && bibtex manuscript && pdflatex manuscript && pdflatex manuscript
 ```
 
-Expected: 45 pages, ≈2.9 MB, 0 warnings, 0 undefined references, 0 overfull hboxes. The
+Expected: 46 pages, ≈2.92 MB, 0 undefined references, 0 overfull hboxes, and one float-only
+page note. The
 byte count depends on the matplotlib version, because `figure8`--`figure11` and
 `figure_flowsheet` are written as EPS directly by matplotlib.
 
@@ -761,8 +763,9 @@ the drift documented in §3.6.
 
 **Verified on a clean clone (2026-10-19, commit 42c1d5f).** Running the fourteen commands
 above from a fresh `git clone` regenerates all 17 CSVs **byte-for-byte identical** to the
-committed ones, and two `pdflatex` passes reproduce the same 45-page, 2,908,706-byte PDF with
-0 errors, 0 undefined references and 0 overfull boxes. The only files that show as modified
+committed ones, and The current tree compiles to 46 pages and 2,916,399 bytes, with 0 errors,
+0 undefined references and 0 overfull boxes (43 pages before the single-potential re-basing,
+45 after it, and 46 after the round-v3 additions of entry 27). The only files that show as modified
 afterwards are the tracked figures: their PDF/EPS metadata carries a creation timestamp
 (byte sizes and drawing content are unchanged). `figures_eps/*.png` are regenerated and
 gitignored. Nothing in this chain depends on the 26 one-off editing scripts or on the
